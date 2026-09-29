@@ -1,0 +1,73 @@
+/* MyRepo prototype — shared skeleton styles
+   Blank canvases for layout design. Each screen file links here. */
+
+:root {
+  --bg:          #f4f5f7;
+  --panel:       #ffffff;
+  --border:      #e3e6ea;
+  --border-firm: #d3d8de;
+  --ink:         #1c2024;
+  --ink-soft:    #5a626b;
+  --ink-muted:   #8b939c;
+  --accent:      #2563eb;
+  --radius:      8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* Prototype chrome — the bar is tooling, not product UI. Remove per screen. */
+.proto-bar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 20px;
+  background: #17181a;
+  color: #cfd3d8;
+  font-size: 12px;
+  letter-spacing: .02em;
+  z-index: 10;
+}
+.proto-bar a { color: #9db7f0; text-decoration: none; margin-left: 12px; }
+.proto-bar a:hover { text-decoration: underline; }
+.proto-crumb { color: #fff; font-weight: 600; }
+.proto-num { color: #8b939c; font-weight: 400; margin-left: 8px; }
+
+/* The drawing canvas — one per screen. */
+.canvas {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 24px 80px;
+}
+.canvas h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+.canvas .sub {
+  color: var(--ink-muted);
+  font-size: 13px;
+  margin: 0 0 24px;
+}
+.blank {
+  min-height: 560px;
+  border: 1.5px dashed var(--border-firm);
+  border-radius: var(--radius);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 23px, rgba(0,0,0,.015) 23px 24px),
+    var(--panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-muted);
+  font-size: 13px;
+}
