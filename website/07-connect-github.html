@@ -1,29 +1,48 @@
 <!doctype html>
-<!--
-  SCREEN 07 — CONNECT GITHUB
-  Elements to draw:
-    journey step indicator
-    two cards: "Create a private repo in my account" / "Use an existing repo"
-    mock authorization panel (approximates GitHub's own screen)
-    live verification checklist: account · repo · write permission · private
-    subtext: your repo, scoped app grant, revocable anytime
--->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Connect GitHub — MyRepo prototype</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>07 · Connect GitHub — MyRepo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="proto-bar">
-  <span class="proto-crumb">MyRepo prototype <span class="proto-num">07 / 14</span></span>
-  <nav><a href="06-onboarding-preview.html">← prev</a><a href="index.html">all screens</a><a href="08-provisioned.html">next →</a></nav>
-</header>
-<main class="canvas">
-  <h1>Connect GitHub</h1>
-  <p class="sub">User grants access on GitHub's side; we verify what actually got granted.</p>
-  <div class="blank">blank canvas</div>
-</main>
+
+  <!--
+    SCREEN 07 — CONNECT GITHUB
+    Element spec:
+    - step indicator (this is where the repo actually gets created)
+    - two cards: "Create a private repo in my account" / "Use an existing repo"
+    - mock GitHub authorization panel
+    - verification checklist, live-looking: account / repo created-or-found / write permission / private
+    - subtext: "the repo is yours — MyRepo writes through a scoped app grant, revocable anytime"
+
+    MENU RAIL on this screen: minimal — setup steps or none
+  -->
+
+  <header class="proto-bar">
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">07 / 14 — Connect GitHub</span></span>
+    <span><a href="06-onboarding-preview.html">&larr; prev</a><a href="08-provisioned.html">next &rarr;</a></span>
+  </header>
+
+  <header class="app-header">
+    <a class="wordmark" href="index.html">MyRepo</a>
+  </header>
+
+  <div class="app-body">
+    <aside class="sidebar">
+      <p class="menu-label">Menus</p>
+      <!-- menu items for this screen go here -->
+      <a class="menu-item placeholder" href="#">menu item</a>
+      <a class="menu-item placeholder" href="#">menu item</a>
+    </aside>
+
+    <main class="canvas">
+      <h1>Connect GitHub</h1>
+      <p class="sub">Authorize, then we provision the template.</p>
+      <div class="blank">blank canvas</div>
+    </main>
+  </div>
+
 </body>
 </html>

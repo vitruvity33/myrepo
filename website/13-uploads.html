@@ -1,30 +1,50 @@
 <!doctype html>
-<!--
-  SCREEN 13 — UPLOADS
-  Elements to draw:
-    drop zone / choose files
-    per file: preview card + three-mode radio:
-      Keep private · Make discoverable (index card only) · Share selected context
-    modes 2–3: exact-Markdown preview of what lands in the repo + Approve & publish
-    past uploads list: mode badge · repo path if published · Update / Unpublish
-    line: uploading publishes nothing by itself
--->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Uploads — MyRepo prototype</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>13 · Upload a file — MyRepo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="proto-bar">
-  <span class="proto-crumb">MyRepo prototype <span class="proto-num">13 / 14</span></span>
-  <nav><a href="12-inbox.html">← prev</a><a href="index.html">all screens</a><a href="14-connections.html">next →</a></nav>
-</header>
-<main class="canvas">
-  <h1>Upload a file</h1>
-  <p class="sub">Private by default; three explicit choices for what reaches GitHub.</p>
-  <div class="blank">blank canvas</div>
-</main>
+
+  <!--
+    SCREEN 13 — UPLOADS
+    Element spec:
+    - drop zone / "Choose files"
+    - per uploaded file: preview card -> three-mode radio:
+        1. Keep private       — stays in your vault, zero GitHub footprint
+        2. Make discoverable  — publishes an approved index card only
+        3. Share selected ctx — publishes the summary/facts you pick
+    - for modes 2-3: exact-Markdown preview of what hits the repo + "Approve & publish"
+    - list of past uploads: mode badge / repo path if published / Update / Unpublish
+
+    MENU RAIL on this screen: same area tree as the browser
+  -->
+
+  <header class="proto-bar">
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">13 / 14 — Uploads</span></span>
+    <span><a href="12-inbox.html">&larr; prev</a><a href="14-connections.html">next &rarr;</a></span>
+  </header>
+
+  <header class="app-header">
+    <a class="wordmark" href="index.html">MyRepo</a>
+  </header>
+
+  <div class="app-body">
+    <aside class="sidebar">
+      <p class="menu-label">Menus</p>
+      <!-- menu items for this screen go here -->
+      <a class="menu-item placeholder" href="#">menu item</a>
+      <a class="menu-item placeholder" href="#">menu item</a>
+    </aside>
+
+    <main class="canvas">
+      <h1>Upload a file</h1>
+      <p class="sub">Private by default — publish only what you preview.</p>
+      <div class="blank">blank canvas</div>
+    </main>
+  </div>
+
 </body>
 </html>

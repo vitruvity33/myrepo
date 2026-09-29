@@ -1,31 +1,50 @@
 <!doctype html>
-<!--
-  SCREEN 04 — ONBOARDING STEP 2: YOUR AREAS
-  Elements to draw:
-    progress indicator (step 2 of 4)
-    question: "What domains matter right now?"
-    suggestion chips + free-text add
-    per added area: editable name · number preview (10_, 20_…) · kind picker
-      (endeavor/entity) · remove
-    note: start small — add or move later, never renumbered
-    Next / Back
--->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Onboarding — areas — MyRepo prototype</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>04 · Onboarding — areas — MyRepo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="proto-bar">
-  <span class="proto-crumb">MyRepo prototype <span class="proto-num">04 / 14</span></span>
-  <nav><a href="03-onboarding-who.html">← prev</a><a href="index.html">all screens</a><a href="05-onboarding-subjects.html">next →</a></nav>
-</header>
-<main class="canvas">
-  <h1>Onboarding 2 — Your areas</h1>
-  <p class="sub">The numbered top-level folders. Machinery ships free; these are theirs.</p>
-  <div class="blank">blank canvas</div>
-</main>
+
+  <!--
+    SCREEN 04 — ONBOARDING 2: YOUR AREAS
+    Element spec:
+    - progress: step 2 of 4
+    - question: "What domains matter right now?"
+    - suggestion chips (click to add): People / Projects / Research / Goals ...
+    - free-text add
+    - each added area: editable name + number preview (10_, 20_...) + kind picker (endeavor/entity) + remove
+    - note: "start small — add or move areas later; numbers never change"
+    - Next / Back
+
+    MENU RAIL on this screen: the 4 onboarding steps (progress rail)
+  -->
+
+  <header class="proto-bar">
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">04 / 14 — Onboarding 2</span></span>
+    <span><a href="03-onboarding-who.html">&larr; prev</a><a href="05-onboarding-subjects.html">next &rarr;</a></span>
+  </header>
+
+  <header class="app-header">
+    <a class="wordmark" href="index.html">MyRepo</a>
+  </header>
+
+  <div class="app-body">
+    <aside class="sidebar">
+      <p class="menu-label">Menus</p>
+      <!-- menu items for this screen go here -->
+      <a class="menu-item placeholder" href="#">menu item</a>
+      <a class="menu-item placeholder" href="#">menu item</a>
+    </aside>
+
+    <main class="canvas">
+      <h1>Onboarding 2 — Your areas</h1>
+      <p class="sub">Name the domains of your life. They become governed folders.</p>
+      <div class="blank">blank canvas</div>
+    </main>
+  </div>
+
 </body>
 </html>

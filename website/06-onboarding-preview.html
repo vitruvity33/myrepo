@@ -1,30 +1,47 @@
 <!doctype html>
-<!--
-  SCREEN 06 — ONBOARDING STEP 4: PREVIEW
-  Elements to draw:
-    progress indicator (step 4 of 4)
-    full rendered tree of the proposed repo — root AGENTS.md, each area's
-      AGENTS.md + README.md, 01_RECORDS slots, 02_REFERENCES machinery
-    callout: "these names are yours — everything editable later"
-    "Looks right" confirm → GitHub connect
-    Back
--->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Onboarding — preview — MyRepo prototype</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>06 · Onboarding — preview — MyRepo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="proto-bar">
-  <span class="proto-crumb">MyRepo prototype <span class="proto-num">06 / 14</span></span>
-  <nav><a href="05-onboarding-subjects.html">← prev</a><a href="index.html">all screens</a><a href="07-connect-github.html">next →</a></nav>
-</header>
-<main class="canvas">
-  <h1>Onboarding 4 — Preview your repo</h1>
-  <p class="sub">The exact tree that gets committed, before anything happens.</p>
-  <div class="blank">blank canvas</div>
-</main>
+
+  <!--
+    SCREEN 06 — ONBOARDING 4: PREVIEW YOUR REPO
+    Element spec:
+    - progress: step 4 of 4
+    - full rendered tree of what will be committed: root AGENTS.md, each area's AGENTS.md + README.md, 01_RECORDS/ slots, 02_REFERENCES/ machinery
+    - callout: "these names are examples — everything is editable later"
+    - "Looks right" primary action -> connect GitHub
+
+    MENU RAIL on this screen: the 4 onboarding steps (progress rail)
+  -->
+
+  <header class="proto-bar">
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">06 / 14 — Onboarding 4</span></span>
+    <span><a href="05-onboarding-subjects.html">&larr; prev</a><a href="07-connect-github.html">next &rarr;</a></span>
+  </header>
+
+  <header class="app-header">
+    <a class="wordmark" href="index.html">MyRepo</a>
+  </header>
+
+  <div class="app-body">
+    <aside class="sidebar">
+      <p class="menu-label">Menus</p>
+      <!-- menu items for this screen go here -->
+      <a class="menu-item placeholder" href="#">menu item</a>
+      <a class="menu-item placeholder" href="#">menu item</a>
+    </aside>
+
+    <main class="canvas">
+      <h1>Onboarding 4 — Preview your repo</h1>
+      <p class="sub">Exactly what gets committed, before anything exists.</p>
+      <div class="blank">blank canvas</div>
+    </main>
+  </div>
+
 </body>
 </html>

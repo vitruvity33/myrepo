@@ -1,29 +1,48 @@
 <!doctype html>
-<!--
-  SCREEN 14 — CONNECTED ACCOUNTS
-  Elements to draw:
-    card per provider: ChatGPT · Claude · Devin · other
-    per card: status dot · connected account · last successful use ·
-      scope chips (read / propose saves) · Revoke · Reconnect
-    empty state: connect a tool → it reads the repo → saves land as drafts
-    honest note: direct GitHub connection today · MyRepo connection coming soon
--->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Connections — MyRepo prototype</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>14 · Connected accounts — MyRepo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="proto-bar">
-  <span class="proto-crumb">MyRepo prototype <span class="proto-num">14 / 14</span></span>
-  <nav><a href="13-uploads.html">← prev</a><a href="index.html">all screens</a></nav>
-</header>
-<main class="canvas">
-  <h1>Connected accounts</h1>
-  <p class="sub">Every AI grant listed, scoped, revocable.</p>
-  <div class="blank">blank canvas</div>
-</main>
+
+  <!--
+    SCREEN 14 — CONNECTED ACCOUNTS
+    Element spec:
+    - cards per provider: ChatGPT / Claude / Devin / other
+    - per card: status dot / "connected as <account>" / last successful use /
+      scope chips (read / propose saves) / Revoke / Reconnect
+    - empty state: "connect a tool -> it reads your repo -> saves land here as drafts"
+    - honest note: "direct GitHub connection today — MyRepo connection coming soon"
+
+    MENU RAIL on this screen: same area tree as the browser
+  -->
+
+  <header class="proto-bar">
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">14 / 14 — Connections</span></span>
+    <span><a href="13-uploads.html">&larr; prev</a><a href="index.html">next &rarr;</a></span>
+  </header>
+
+  <header class="app-header">
+    <a class="wordmark" href="index.html">MyRepo</a>
+  </header>
+
+  <div class="app-body">
+    <aside class="sidebar">
+      <p class="menu-label">Menus</p>
+      <!-- menu items for this screen go here -->
+      <a class="menu-item placeholder" href="#">menu item</a>
+      <a class="menu-item placeholder" href="#">menu item</a>
+    </aside>
+
+    <main class="canvas">
+      <h1>Connected accounts</h1>
+      <p class="sub">The AI tools that read and propose saves.</p>
+      <div class="blank">blank canvas</div>
+    </main>
+  </div>
+
 </body>
 </html>

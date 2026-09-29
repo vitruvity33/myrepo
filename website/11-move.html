@@ -1,30 +1,49 @@
 <!doctype html>
-<!--
-  SCREEN 11 — MOVE / ORGANIZE
-  Elements to draw:
-    selected record/folder chip + "Move to…" dialog
-    target picker: area tree — valid slots highlighted, invalid dimmed with why
-      ("disputes go to 05_PUSH_BACK")
-    routing hint: "decision → 06_DECISIONS"
-    confirm → mock commit message preview
-    new-area flow: "+ New area" → AGENTS.md + README.md generated together preview
--->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Move — MyRepo prototype</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>11 · Move / organize — MyRepo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="proto-bar">
-  <span class="proto-crumb">MyRepo prototype <span class="proto-num">11 / 14</span></span>
-  <nav><a href="10-record.html">← prev</a><a href="index.html">all screens</a><a href="12-inbox.html">next →</a></nav>
-</header>
-<main class="canvas">
-  <h1>Move / organize</h1>
-  <p class="sub">Routing made visible — the rules decide where things can land.</p>
-  <div class="blank">blank canvas</div>
-</main>
+
+  <!--
+    SCREEN 11 — MOVE / ORGANIZE
+    Element spec:
+    - record or folder selected -> "Move to..." dialog
+    - target picker: the area tree — valid slots highlighted, invalid dimmed + why
+    - routing hint auto-shown: "decision -> 06_DECISIONS"
+    - confirm -> mock commit message preview
+    - new-area flow: "+ New area" -> generates AGENTS.md + README.md preview
+      ("created together, always")
+
+    MENU RAIL on this screen: same area tree as the browser
+  -->
+
+  <header class="proto-bar">
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">11 / 14 — Move</span></span>
+    <span><a href="10-record.html">&larr; prev</a><a href="12-inbox.html">next &rarr;</a></span>
+  </header>
+
+  <header class="app-header">
+    <a class="wordmark" href="index.html">MyRepo</a>
+  </header>
+
+  <div class="app-body">
+    <aside class="sidebar">
+      <p class="menu-label">Menus</p>
+      <!-- menu items for this screen go here -->
+      <a class="menu-item placeholder" href="#">menu item</a>
+      <a class="menu-item placeholder" href="#">menu item</a>
+    </aside>
+
+    <main class="canvas">
+      <h1>Move / organize</h1>
+      <p class="sub">Drag it, retag it, commit the move.</p>
+      <div class="blank">blank canvas</div>
+    </main>
+  </div>
+
 </body>
 </html>
