@@ -1,133 +1,337 @@
-/* MyRepo prototype — shared skeleton styles
-   Base shell per the layout sketch: top wordmark bar, left menu rail,
-   full-bleed main canvas. Each screen file links here. */
+/* ============================================================================
+   MyRepo prototype — shared styles
+   ----------------------------------------------------------------------------
+   Style: hand-drawn / sketch (matches the Excalidraw layout drawings).
+   Everything visual flows from the tokens below — change a token, the whole
+   prototype changes. Rules for working in this folder: see AGENTS.md.
+   ========================================================================== */
+
+/* ── Design tokens ───────────────────────────────────────────────────────── */
 
 :root {
-  --bg:          #f4f5f7;
-  --panel:       #ffffff;
-  --border:      #e3e6ea;
-  --border-firm: #d3d8de;
-  --ink:         #1c2024;
-  --ink-soft:    #5a626b;
-  --ink-muted:   #8b939c;
-  --accent:      #2563eb;
-  --accent-dark: #1d4ed8;
-  --radius:      8px;
+  /* color */
+  --paper:          #ffffff;
+  --ink:            #1b1b1f;
+  --ink-soft:       #4a4f55;
+  --ink-muted:      #9aa1a8;
+  --line:           #1b1b1f;
+  --accent:         #1971c2;
+  --hover-fill:     #d0ebff;   /* every button/interactive element uses this */
+  --warn-fill:      #ffe8cc;
+  --ok-fill:        #d3f9d8;
+
+  /* type — Patrick Hand approximates Excalidraw's Virgil */
+  --font-hand:      'Patrick Hand', 'Segoe Print', 'Bradley Hand', cursive;
+  --font-ui:        'Patrick Hand', Inter, -apple-system, sans-serif;
+  --text-xs:        12px;
+  --text-sm:        14px;
+  --text-md:        17px;
+  --text-lg:        22px;
+  --text-xl:        30px;
+
+  /* sketch borders — subtly irregular radius reads as hand-drawn,
+     without the giant cartoon corner curves */
+  --stroke:         2px solid var(--line);
+  --stroke-thin:    1.5px solid var(--line);
+  --radius-sketch:    18px 22px 16px 24px / 22px 16px 24px 18px;
+  --radius-sketch-b:  22px 16px 24px 18px / 18px 22px 16px 24px;
+  --radius-sketch-sm: 10px 14px 8px 12px / 12px 8px 14px 10px;
+  --radius-pill:      999px;
+
+  /* space */
+  --gap-1:  6px;
+  --gap-2:  12px;
+  --gap-3:  20px;
+  --gap-4:  32px;
+  --gap-5:  48px;
+
+  /* component sizing — elements of a kind are always identical */
+  --menu-row-width:  720px;
+  --menu-row-height: 60px;
+  --sq-btn-size:     88px;    /* rail squares — screen-btn & global-btn */
+  --rail-width:      120px;   /* side-bar-left / side-bar-right */
 }
 
-* { box-sizing: border-box; }
+/* ── Reset ───────────────────────────────────────────────────────────────── */
 
+* { box-sizing: border-box; }
 html, body { height: 100%; }
 
 body {
   margin: 0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--panel);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  background: var(--paper);
   color: var(--ink);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* ── Prototype chrome (tooling — not product UI) ─────────────────────── */
+a { color: var(--accent); }
+
+/* ── Prototype chrome (tooling only — never ships to the product) ────────── */
+
 .proto-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 6px 20px;
+  gap: var(--gap-3);
+  padding: 4px 20px;
   background: #17181a;
   color: #cfd3d8;
-  font-size: 12px;
-  letter-spacing: .02em;
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
 }
 .proto-bar a { color: #9db7f0; text-decoration: none; margin-left: 12px; }
 .proto-bar a:hover { text-decoration: underline; }
 .proto-crumb { color: #fff; font-weight: 600; }
-.proto-num { color: #8b939c; font-weight: 400; margin-left: 8px; }
+.proto-num { color: #8b939c; margin-left: 8px; }
 
-/* ── Product shell — the sketch: header + sidebar + main ─────────────── */
+/* ── App shell — the sketch: header + menu rail + canvas ─────────────────── */
 
-/* top strip: wordmark only (per sketch). Height ~56. */
 .app-header {
+  position: relative;
   display: flex;
   align-items: center;
-  height: 56px;
+  height: 60px;
   padding: 0 28px;
-  border-bottom: 1px solid var(--border);
-  background: var(--panel);
+  border-bottom: var(--stroke);
+  background: var(--paper);
 }
 .app-header .wordmark {
+  font-family: var(--font-hand);
+  font-size: var(--text-lg);
   font-weight: 700;
-  font-size: 18px;
   color: var(--ink);
   text-decoration: none;
-  letter-spacing: -.01em;
+}
+.app-header .page-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-hand);
+  font-size: var(--text-lg);
+  color: var(--ink);
 }
 
-/* row: left menu rail + main canvas, fills remaining viewport */
 .app-body {
   flex: 1;
   display: flex;
+  gap: var(--gap-3);
   min-height: 0;
+  padding: var(--gap-2) var(--gap-3) var(--gap-3);
 }
 
-.sidebar {
-  width: 200px;
+/* side rails — rounded boxes of big square sketch buttons (per sketch:
+   each button nearly fills the rail width). Mirrors: left = Screens,
+   right = Global Tools. */
+.side-bar-left,
+.side-bar-right {
+  width: var(--rail-width);
   flex-shrink: 0;
-  border-right: 1px solid var(--border);
-  background: var(--panel);
-  padding: 16px 14px;
+  border: var(--stroke);
+  border-radius: var(--radius-sketch-b);
+  background: var(--paper);
+  padding: var(--gap-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-3);
 }
-.sidebar .menu-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin: 0 4px 10px;
-}
-/* placeholder menu row — for drawing, not final nav */
-.sidebar .menu-item {
-  display: block;
-  padding: 7px 10px;
-  border-radius: 6px;
+.menu-label { display: none; }   /* hidden per current sketch — squares only */
+
+/* hidden rail — invisible but still holds its space, so the canvas stays
+   in exactly the same position on screens that "hide" the rails */
+.side-bar-left--hidden,
+.side-bar-right--hidden { visibility: hidden; }
+
+/* rail squares — .screen-btn in side-bar-left, .global-btn in side-bar-right */
+.screen-btn,
+.global-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sq-btn-size);
+  height: var(--sq-btn-size);
   color: var(--ink-soft);
   text-decoration: none;
-  font-size: 13.5px;
-  border: 1px dashed transparent;
+  font-size: var(--text-xs);
+  border: var(--stroke);
+  border-radius: var(--radius-sketch-sm);
+  background: var(--paper);
 }
-.sidebar .menu-item.placeholder {
-  color: var(--ink-muted);
-  border-color: var(--border-firm);
-  margin-bottom: 6px;
-}
+.screen-btn:hover,
+.global-btn:hover { background: var(--hover-fill); color: var(--ink); }
+.screen-btn.placeholder,
+.global-btn.placeholder { font-size: 0; }   /* empty square — like the drawing */
 
-/* main canvas — full-bleed white */
+/* main canvas — one rounded sketch box, between the two mirrored rails.
+   Landing + sign-in omit both rails entirely (per sketches). */
 .canvas {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 28px 36px 40px;
   min-width: 0;
+  border: var(--stroke);
+  border-radius: var(--radius-sketch);
+  background: var(--paper);
+  padding: var(--gap-3) var(--gap-4);
 }
 .canvas h1 {
-  font-size: 20px;
-  font-weight: 600;
+  font-family: var(--font-hand);
+  font-size: var(--text-xl);
   margin: 0 0 4px;
 }
 .canvas .sub {
   color: var(--ink-muted);
-  font-size: 13px;
-  margin: 0 0 24px;
+  font-size: var(--text-sm);
+  margin: 0;
 }
+
+/* the drawable area — the box IS the canvas */
 .blank {
   flex: 1;
-  border: 1.5px dashed var(--border-firm);
-  border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--ink-muted);
-  font-size: 13px;
+  font-family: var(--font-hand);
+  font-size: var(--text-md);
+}
+
+/* centered screen title inside the canvas (e.g. "How it works") */
+.canvas-title {
+  font-family: var(--font-hand);
+  font-size: var(--text-lg);
+  text-align: center;
+  margin: var(--gap-2) 0 var(--gap-4);
+}
+
+/* menu rows — the center-menu rectangle. One size, one style, centered.
+   Used for numbered steps AND standalone actions (sign-in buttons). */
+.menu-rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-4);
+  margin: auto;
+  width: 100%;
+}
+.menu-row {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-4);
+  width: min(var(--menu-row-width), 82%);
+  min-height: var(--menu-row-height);
+  padding: 0 32px;
+  border: var(--stroke);
+  border-radius: var(--radius-sketch);
+  background: var(--paper);
+  font-family: var(--font-hand);
+  font-size: var(--text-lg);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-row:hover { background: var(--hover-fill); }
+.menu-row:nth-child(even) { border-radius: var(--radius-sketch-b); }
+.menu-row .n { flex-shrink: 0; }          /* optional number */
+.menu-row .t { flex: 1; text-align: center; }
+
+/* ── Standardized components — reuse these, don't invent new classes ────── */
+
+/* buttons */
+.btn {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: var(--text-md);
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--stroke);
+  border-radius: var(--radius-sketch-sm);
+  padding: 8px 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: var(--hover-fill); }
+.btn--primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn--primary:hover { background: var(--hover-fill); border-color: var(--ink); color: var(--ink); }
+.btn--quiet { border-color: var(--ink-muted); color: var(--ink-soft); }
+
+/* card / panel — the rounded sketch box */
+.card {
+  border: var(--stroke);
+  border-radius: var(--radius-sketch);
+  padding: var(--gap-3);
+  background: var(--paper);
+}
+
+/* chip — small labeled element (badges, tags, kinds) */
+.chip {
+  display: inline-block;
+  font-size: var(--text-sm);
+  padding: 2px 12px;
+  border: var(--stroke-thin);
+  border-radius: var(--radius-pill);
+  color: var(--ink-soft);
+}
+
+/* ── Screen workspace structure (per master sketch) ──────────────────────
+   canvas = top-menu-bar (screen modes) + tool-bar (mode's tools + nav)
+            + panes (draggable viewing areas)                              */
+
+.top-menu-bar,
+.tool-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-2);
+  border: var(--stroke);
+  border-radius: var(--radius-sketch-sm);
+  padding: var(--gap-2) var(--gap-3);
+}
+.top-menu-bar { margin-bottom: var(--gap-2); }
+.tool-bar     { margin-bottom: var(--gap-3); }
+
+/* rectangle buttons inside the two strips — same style, different roles */
+.menu-btn,
+.tool-btn,
+.nav-btn {
+  font-family: var(--font-hand);
+  font-size: var(--text-md);
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--stroke);
+  border-radius: var(--radius-sketch-sm);
+  padding: 6px 18px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-btn:hover,
+.tool-btn:hover,
+.nav-btn:hover { background: var(--hover-fill); }
+
+/* right-aligned clusters inside the strips */
+.menu-bar-end,  /* screen-level global actions, right end of top-menu-bar */
+.tool-bar-end { /* navigation, right end of tool-bar */
+  margin-left: auto;
+  display: flex;
+  gap: var(--gap-2);
+}
+
+/* panes — the draggable viewing areas */
+.panes {
+  flex: 1;
+  display: flex;
+  gap: var(--gap-3);
+  min-height: 0;
+}
+.pane {
+  flex: 1;
+  border: var(--stroke);
+  border-radius: var(--radius-sketch);
+  background: var(--paper);
+  padding: var(--gap-3);
+  min-width: 0;
 }
