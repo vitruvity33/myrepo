@@ -15,8 +15,8 @@ Read this before editing any file in this folder.
 ## What this is
 
 The product website for MyRepo, being designed screen-by-screen from Excalidraw
-drawings. **Prototype stage:** static HTML + one shared stylesheet, no build
-step, no framework, no JavaScript. Serve locally:
+drawings. **Prototype stage:** static HTML + one shared stylesheet + `app.js`
+(vanilla JS, localStorage state — no build step, no framework). Serve locally:
 
 ```bash
 python3 -m http.server 8000   # from this folder → http://localhost:8000
@@ -93,7 +93,8 @@ or add a token:
 | `--stroke*`, `--radius-*` | borders/shape |
 | `--gap-*` | spacing |
 | `--menu-row-*` | component sizing |
-| `--sq-btn-size`, `--rail-width` | rails & rail squares |
+| `--sq-btn-size`, `--rail-width`, `--rail-btn-h` | rails, squares & rail actions |
+| `--active-fill` | selected/active state (same blue as hover) |
 
 **Sizing tokens.** Elements of the same kind are always identical —
 `.menu-row` is exactly `--menu-row-width` × `--menu-row-height`;
@@ -118,6 +119,12 @@ Swapping the real design later = replacing token values, not rewriting markup.
 | `.menu-rows` + `.menu-row` (`.n` / `.t`) | **the center-menu rectangle** — numbered steps AND standalone actions; same size, centered, hover-fill |
 | `.screen-btn` | square in `.side-bar-left` (a Screen) |
 | `.global-btn` | square in `.side-bar-right` (a Global Tool) |
+| `.rail-btn` (`--active`) | labeled rectangle action in a rail (`+ Folder`, `+ Agents`) — used during build steps when the rail carries actions instead of screens |
+| `.action-btn` (`--active`), `.action-row` | squarish action buttons inside canvas content (GitHub, Connect a Repo) |
+| `.note` (`--small`) | step/instruction text inside the canvas |
+| `.folder-tree` + `.folder` + `.folder-icon` (`.caret`) + `.folder-children` | folder rows — square tabbed icon + name text beside it; caret `v`/`>`, `.folder--open` fills the icon, children indent |
+| `.folder-input`, `.row-actions` + `.mini-btn` | inline folder-name editing; row glyphs (`+` subfolder, `×` delete) |
+| `.agent-row`, `.btn--connected` | agent list rows; connected state (ok-fill) |
 | `.menu-btn` / `.tool-btn` / `.nav-btn` | rectangle buttons in the two canvas strips |
 | `.top-menu-bar`, `.tool-bar`, `.menu-bar-end`, `.tool-bar-end` | the two strips + right-aligned clusters |
 | `.panes`, `.pane` | the draggable viewing areas |
@@ -138,6 +145,47 @@ in `styles.css` with token-backed styles — no inline styles, no per-page
   file. Update it when the screen gets built — it records intent.
 - **Every page links `styles.css` + the Patrick Hand font.** Copy an existing
   `<head>` when adding a screen.
+
+## Prototype behavior — `github.js` · `app.js` · `build.js`
+
+- **Three scripts, in this order**, at the end of `<body>` on pages that need
+  them; `<body data-page="…">` picks which init runs:
+  - `github.js` — the GitHub API layer (`GitHub.*`: `connect`, `createRepo`,
+    `putFile`, `getFile`, `listTree`, `commitFiles`, `templateManifest`,
+    `templateFileBase64`). No DOM code.
+  - `app.js` — shared state (`MyRepo.load/save`) + screens 03, 07, 08, 05, 06
+    and the dispatch.
+  - `build.js` — screen 04 (folder tree, live commits, `areasFromTree`,
+    `areaFiles`). Also loaded on 06 for `areasFromTree`.
+- **State lives in `localStorage`** under `myrepo.*` keys: `connected`,
+  `folders`, `agents`, and — live mode only — `token`, `user`
+  (`{login, avatar_url, name}`), `repo` (`{owner, name, url}`).
+- **Two modes.** *Live* = a token is stored → real API calls. *Demo* = no
+  token → the original mock behaviour; nothing leaves the browser. Every
+  screen must keep working in demo mode.
+- **Live flow.** 03 token → `GET /user` · 08 `POST /user/repos` (private),
+  then every template file is read raw from `vitruvity33/myrepo` (minus
+  `website/`) and `PUT` byte-identical; files that already exist are skipped,
+  never overwritten · 04 loads the tree from the repo (GitHub is the source
+  of truth) and each new folder commits `AGENTS.md` + `README.md` +
+  `01_RECORDS/README.md` in **one** commit (git data API) · 06 counts from
+  the repo tree.
+- **"Area" = a folder holding an `AGENTS.md`**, excluding the root, the
+  template's own `01_READ_FIRST/ 02_REFERENCES/ 99_OTHER/`, and anything
+  inside `01_RECORDS/` or `work/`.
+- Folder model: `{ name, children: [], open, editing, synced, error }` —
+  `synced` is `true | 'saving' | 'error'` in live mode.
+- Keep it dependency-free; this is scaffolding, not architecture.
+
+### ⚠ PAT auth is prototype-only
+
+The token is a **personal access token (classic, `repo` scope) stored in
+plain text in `localStorage`**. Acceptable for the owner's own testing, on
+his own machine. **Before anyone else uses this**, replace it with a GitHub
+App + a backend that does the OAuth token exchange (the exchange needs
+`client_secret`, which can never ship to the browser). Until then: never
+deploy this site publicly with the live path enabled, and revoke test
+tokens at github.com/settings/tokens when done.
 
 ## Data (when screens get real content)
 

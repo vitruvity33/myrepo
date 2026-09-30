@@ -3,50 +3,76 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>03 · Onboarding — who — MyRepo</title>
+  <title>03 · Connect your repo — MyRepo</title>
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
-<body>
+<body data-page="connect">
 
   <!--
-    SCREEN 03 — ONBOARDING 1: WHO IS THIS FOR
-    Element spec:
-    - progress: step 1 of 4
-    - question: "What are you building context for?"
-    - two big radio cards: Personal / Team or company
-    - optional repo name field (default suggestion: my-repo)
-    - Next / Back
-
-    MENU RAIL on this screen: the 4 onboarding steps (progress rail)
+    SCREEN 03 — STEP 1: CONNECT YOUR REPO
+    Per Excalidraw drawing: rails hidden, canvas content top-left.
+    - instruction: "1. Create a GitHub account here"
+    - two .action-btn squares: GitHub (active fill, -> 15 signup mock)
+      · Connect Existing Repo (opens the token panel below)
+    - LIVE (github.js): token panel — paste a personal access token (classic,
+      `repo` scope) -> GET /user -> "Connected as @login" -> Continue (07).
+      Already connected on load -> shows the connected state + Disconnect.
+      PROTOTYPE ONLY: token is kept in localStorage (see AGENTS.md).
   -->
 
   <header class="proto-bar">
-    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">03 / 14 — Onboarding 1</span></span>
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">03 / 14 — Connect repo</span></span>
     <span><a href="02-sign-in.html">&larr; prev</a><a href="04-onboarding-areas.html">next &rarr;</a></span>
   </header>
 
   <header class="app-header">
     <a class="wordmark" href="index.html">MyRepo</a>
+    <span class="page-title">Connect Your Repo</span>
   </header>
 
   <div class="app-body">
-    <aside class="side-bar-left">
-      <!-- screens go here -->
+    <aside class="side-bar-left side-bar-left--hidden">
       <a class="screen-btn placeholder" href="#">screen</a>
       <a class="screen-btn placeholder" href="#">screen</a>
     </aside>
 
     <main class="canvas">
-      <h1>Onboarding 1 — Who is this for?</h1>
-      <p class="sub">Personal or team — and what to call the repo.</p>
-      <div class="blank">blank canvas</div>
+      <div class="action-center">
+        <p class="note">1. If you don't have a GitHub account, create one or connect to an existing Repo</p>
+        <div class="action-row">
+          <a class="action-btn action-btn--lg action-btn--active" href="15-github-signup.html">GitHub</a>
+            <a class="action-btn" id="connect-repo" href="07-connect-github.html">Connect Existing Repo</a>
+        </div>
+
+        <div class="card token-panel" id="token-panel" hidden>
+          <div id="token-form">
+            <p class="note">Connect with a GitHub access token</p>
+            <p class="note note--small">
+              <a href="https://github.com/settings/tokens/new?scopes=repo&amp;description=MyRepo%20prototype" target="_blank" rel="noopener">Create a token on GitHub</a>
+              (classic, <strong>repo</strong> scope), then paste it here. It stays in this browser only.
+            </p>
+            <div class="field-stack">
+              <input class="input" id="token-input" type="password" placeholder="ghp_…" autocomplete="off" spellcheck="false">
+            </div>
+            <a class="btn btn--primary" id="token-connect" href="#">Connect</a>
+          </div>
+          <p class="status" id="token-status"></p>
+          <div class="action-row" id="token-continue" hidden>
+            <a class="btn btn--primary" href="07-connect-github.html">Continue &rarr;</a>
+            <a class="btn btn--quiet" id="token-disconnect" href="#">Disconnect</a>
+          </div>
+        </div>
+      </div>
     </main>
-    <aside class="side-bar-right">
+
+    <aside class="side-bar-right side-bar-right--hidden">
       <a class="global-btn placeholder" href="#">tool</a>
       <a class="global-btn placeholder" href="#">tool</a>
     </aside>
   </div>
 
+  <script src="github.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

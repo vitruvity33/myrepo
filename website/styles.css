@@ -19,6 +19,7 @@
   --hover-fill:     #d0ebff;   /* every button/interactive element uses this */
   --warn-fill:      #ffe8cc;
   --ok-fill:        #d3f9d8;
+  --error-ink:      #c92a2a;   /* failed API call / not saved */
 
   /* type — Patrick Hand approximates Excalidraw's Virgil */
   --font-hand:      'Patrick Hand', 'Segoe Print', 'Bradley Hand', cursive;
@@ -48,8 +49,16 @@
   /* component sizing — elements of a kind are always identical */
   --menu-row-width:  720px;
   --menu-row-height: 60px;
-  --sq-btn-size:     88px;    /* rail squares — screen-btn & global-btn */
-  --rail-width:      120px;   /* side-bar-left / side-bar-right */
+  --sq-btn-size:     120px;   /* rail squares — screen-btn & global-btn */
+  --rail-width:      160px;   /* side-bar-left / side-bar-right */
+  --rail-btn-h:      120px;   /* labeled rail actions — same square footprint */
+  --active-fill:     #d0ebff; /* selected/active state — same blue as hover */
+  --folder-icon-w:   120px;   /* folder glyph, top level — big, per build sketch */
+  --folder-icon-h:   96px;
+  --folder-icon-sm-w: 96px;   /* folder glyph, nested */
+  --folder-icon-sm-h: 64px;
+  --avatar-size:     32px;    /* GitHub avatar next to "Connected as" */
+  --token-panel-width: 560px; /* PAT entry card on connect */
 }
 
 /* ── Reset ───────────────────────────────────────────────────────────────── */
@@ -335,3 +344,218 @@ a { color: var(--accent); }
   padding: var(--gap-3);
   min-width: 0;
 }
+
+/* ── connect / authorize / provisioning ─────────────────────────────────── */
+
+.auth-card { max-width: 480px; }
+.field-stack { display: flex; flex-direction: column; gap: var(--gap-3); margin-bottom: var(--gap-3); }
+.input {
+  font-family: var(--font-hand);
+  font-size: var(--text-md);
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--stroke);
+  border-radius: var(--radius-sketch-sm);
+  padding: 10px 16px;
+  outline: none;
+  width: 100%;
+}
+.input:focus { border-color: var(--accent); }
+.input::placeholder { color: var(--ink-muted); }
+.auth-list {
+  font-family: var(--font-hand);
+  font-size: var(--text-md);
+  color: var(--ink-soft);
+  margin: 0 0 var(--gap-3);
+  padding-left: var(--gap-4);
+}
+
+/* provisioning — lines tick in as the automated steps complete */
+.prov-list { display: flex; flex-direction: column; gap: var(--gap-3); margin-top: var(--gap-4); }
+.prov-row {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-2);
+  font-family: var(--font-hand);
+  font-size: var(--text-lg);
+  color: var(--ink-muted);
+}
+.prov-row--done { color: var(--ink); }
+.prov-row--active { color: var(--ink-soft); }
+.prov-row--error { color: var(--ink); }
+.prov-row .check { color: var(--accent); width: 26px; text-align: center; }
+.prov-row--error .check { color: var(--error-ink); }
+.prov-row .detail { font-size: var(--text-md); color: var(--ink-soft); }
+.prov-row--error .detail { color: var(--error-ink); }
+.prov-row .row-actions { margin-left: var(--gap-3); }
+
+/* live GitHub connection — token entry, connection status, repo name */
+.token-panel { width: var(--token-panel-width); max-width: 100%; margin-bottom: var(--gap-5); }
+.token-panel .field-stack { margin: var(--gap-2) 0; }
+.status {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-2);
+  font-family: var(--font-hand);
+  font-size: var(--text-md);
+  margin: var(--gap-2) 0;
+}
+.status:empty { display: none; }
+.status--ok { color: var(--ink); }
+.status--error { color: var(--error-ink); }
+.avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border: var(--stroke-thin);
+  border-radius: var(--radius-pill);
+}
+.repo-name-row { display: flex; align-items: center; gap: var(--gap-1); font-family: var(--font-hand); font-size: var(--text-md); }
+.repo-name-row .input { width: auto; flex: 1; }
+.sync { font-size: var(--text-sm); color: var(--ink-soft); margin-left: var(--gap-2); white-space: nowrap; }
+.sync--ok { color: var(--accent); }
+.sync--error { color: var(--error-ink); }
+
+/* ── build-your-repo ────────────────────────────────────────────────────── */
+
+/* labeled rectangle action in a rail (e.g. + Folder, + Agents during build) —
+   same family as the rail squares, but it carries a label */
+.rail-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sq-btn-size);
+  min-height: var(--rail-btn-h);
+  padding: 8px;
+  border: var(--stroke);
+  border-radius: var(--radius-sketch-sm);
+  background: var(--paper);
+  font-family: var(--font-hand);
+  font-size: var(--text-lg);
+  color: var(--ink);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+.rail-btn:hover { background: var(--hover-fill); }
+.rail-btn--active { background: var(--active-fill); }
+
+/* squarish action buttons in canvas content (e.g. GitHub / Connect a Repo) */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 210px;
+  min-height: 125px;
+  padding: var(--gap-2) var(--gap-3);
+  border: var(--stroke);
+  border-radius: var(--radius-sketch-sm);
+  background: var(--paper);
+  font-family: var(--font-hand);
+  font-size: var(--text-lg);
+  color: var(--ink);
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+.action-btn:hover { background: var(--hover-fill); }
+.action-btn--active { background: var(--active-fill); }
+.action-btn--lg { min-width: 240px; min-height: 135px; font-size: var(--text-xl); }
+.action-row { display: flex; gap: var(--gap-4); margin: var(--gap-3) 0; }
+.action-center {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.action-center > .note { margin-top: var(--gap-5); }
+.action-center .action-row { margin: auto; }   /* buttons centered in the canvas */
+
+/* step/instruction text inside the canvas */
+.note { font-family: var(--font-hand); font-size: var(--text-md); margin: 0 0 var(--gap-2); }
+.note--small { font-size: var(--text-sm); color: var(--ink-soft); }
+
+/* folder tree — a folder is a square tabbed ICON + its name beside it,
+   with a hairline running from the name column to the right edge;
+   children indent (per the build sketch) */
+.folder-tree { display: flex; flex-direction: column; gap: var(--gap-3); margin-top: var(--gap-3); }
+.folder {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-3);
+  width: 100%;
+  margin-top: 12px;               /* room for the icon's tab */
+  padding-bottom: var(--gap-2);
+  font-family: var(--font-hand);
+  font-size: var(--text-xl);
+  color: var(--ink);
+  cursor: pointer;
+}
+.folder-icon {                    /* the folder glyph — inline SVG */
+  flex-shrink: 0;
+  display: inline-flex;
+}
+.folder-icon svg {
+  width: var(--folder-icon-w);
+  height: var(--folder-icon-h);
+  display: block;
+}
+.folder-icon--sm svg {            /* nested folders draw smaller */
+  width: var(--folder-icon-sm-w);
+  height: var(--folder-icon-sm-h);
+}
+/* name + divider — the line starts at the name column, runs right */
+.folder-name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-2);
+  padding: 8px 0;
+  border-bottom: var(--stroke);
+}
+.folder:hover .folder-name { border-bottom-color: var(--accent); }
+.folder--open .folder-icon svg path { fill: var(--active-fill); }
+.folder .caret { color: var(--accent); font-size: var(--text-md); cursor: pointer; }
+.folder-row { display: flex; flex-direction: column; }
+.folder-level { display: flex; flex-direction: column; gap: var(--gap-3); width: 100%; }
+.folder-children {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-3);
+  margin-left: 60px;
+}
+
+/* folder row actions — small glyph buttons (+ subfolder, × delete) */
+.row-actions { display: inline-flex; gap: var(--gap-2); margin-left: var(--gap-2); }
+.mini-btn {
+  color: var(--ink-muted);
+  cursor: pointer;
+  font-size: var(--text-md);
+  padding: 0 4px;
+}
+.mini-btn:hover { color: var(--ink); }
+
+/* inline folder-name input — sits on the name line */
+.folder-input {
+  font-family: var(--font-hand);
+  font-size: var(--text-xl);
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 240px;
+}
+
+/* ── agents ─────────────────────────────────────────────────────────────── */
+
+.agent-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--gap-2) 0;
+  border-bottom: var(--stroke-thin);
+  font-family: var(--font-hand);
+}
+.agent-row:last-child { border-bottom: none; }
+.btn--connected { background: var(--ok-fill); }
+.btn--connected:hover { background: var(--hover-fill); }

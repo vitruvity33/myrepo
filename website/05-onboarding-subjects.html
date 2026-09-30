@@ -3,50 +3,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>05 · Onboarding — subjects — MyRepo</title>
+  <title>05 · Agents — MyRepo</title>
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
-<body>
+<body data-page="agents">
 
   <!--
-    SCREEN 05 — ONBOARDING 3: FIRST SUBJECTS
-    Element spec:
-    - progress: step 3 of 4
-    - per chosen area: optional "first subjects" input (unnumbered sub-areas)
-    - explainer: "subjects get their own rules + records — internal folders just inherit"
-    - skip allowed
-    - Next / Back
-
-    MENU RAIL on this screen: the 4 onboarding steps (progress rail)
+    SCREEN 05 — STEP 3: AGENTS (functional)
+    Per Excalidraw drawing: rail carries + Folder · + Agents (active).
+    Canvas = two .panes — left is the tool picker (Connect toggles),
+    right shows what's connected. Persisted in localStorage via app.js.
   -->
 
   <header class="proto-bar">
-    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">05 / 14 — Onboarding 3</span></span>
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">05 / 14 — Agents</span></span>
     <span><a href="04-onboarding-areas.html">&larr; prev</a><a href="06-onboarding-preview.html">next &rarr;</a></span>
   </header>
 
   <header class="app-header">
     <a class="wordmark" href="index.html">MyRepo</a>
+    <span class="page-title">Step 3 — Agents</span>
   </header>
 
   <div class="app-body">
     <aside class="side-bar-left">
-      <!-- screens go here -->
-      <a class="screen-btn placeholder" href="#">screen</a>
-      <a class="screen-btn placeholder" href="#">screen</a>
+      <a class="rail-btn" href="04-onboarding-areas.html">+ Folder</a>
+      <a class="rail-btn rail-btn--active" href="#">+ Agents</a>
     </aside>
 
     <main class="canvas">
-      <h1>Onboarding 3 — First subjects</h1>
-      <p class="sub">Optional sub-areas inside your areas.</p>
-      <div class="blank">blank canvas</div>
+      <div class="panes">
+        <div class="pane">
+          <p class="note">3. Connect your agents</p>
+          <div id="agent-list"></div>
+        </div>
+        <div class="pane">
+          <p class="note">Connected</p>
+          <div id="connected-list"></div>
+          <p class="note note--small" style="margin-top:24px">
+            <a href="06-onboarding-preview.html">Done — finish setup &rarr;</a>
+          </p>
+        </div>
+      </div>
     </main>
-    <aside class="side-bar-right">
+
+    <aside class="side-bar-right side-bar-right--hidden">
       <a class="global-btn placeholder" href="#">tool</a>
       <a class="global-btn placeholder" href="#">tool</a>
     </aside>
   </div>
 
+  <script src="app.js"></script>
 </body>
 </html>

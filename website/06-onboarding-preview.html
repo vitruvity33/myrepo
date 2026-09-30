@@ -3,49 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>06 · Onboarding — preview — MyRepo</title>
+  <title>06 · Done — MyRepo</title>
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
-<body>
+<body data-page="done">
 
   <!--
-    SCREEN 06 — ONBOARDING 4: PREVIEW YOUR REPO
-    Element spec:
-    - progress: step 4 of 4
-    - full rendered tree of what will be committed: root AGENTS.md, each area's AGENTS.md + README.md, 01_RECORDS/ slots, 02_REFERENCES/ machinery
-    - callout: "these names are examples — everything is editable later"
-    - "Looks right" primary action -> connect GitHub
-
-    MENU RAIL on this screen: the 4 onboarding steps (progress rail)
+    SCREEN 06 — SETUP DONE
+    Repo is connected and folders built — single action into the app.
+    (Replaces the old "preview" step: the folder tree on screen 04 IS
+    the preview — folders commit live.)
+    LIVE: summary counts come from the repo's tree on GitHub; the repo
+    link + "Open my repo" go to the real github.com URL.
   -->
 
   <header class="proto-bar">
-    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">06 / 14 — Onboarding 4</span></span>
-    <span><a href="05-onboarding-subjects.html">&larr; prev</a><a href="07-connect-github.html">next &rarr;</a></span>
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">06 / 14 — Done</span></span>
+    <span><a href="05-onboarding-subjects.html">&larr; prev</a><a href="09-browser.html">next &rarr;</a></span>
   </header>
 
   <header class="app-header">
     <a class="wordmark" href="index.html">MyRepo</a>
+    <span class="page-title">Your repo is live</span>
   </header>
 
   <div class="app-body">
-    <aside class="side-bar-left">
-      <!-- screens go here -->
+    <aside class="side-bar-left side-bar-left--hidden">
       <a class="screen-btn placeholder" href="#">screen</a>
       <a class="screen-btn placeholder" href="#">screen</a>
     </aside>
 
     <main class="canvas">
-      <h1>Onboarding 4 — Preview your repo</h1>
-      <p class="sub">Exactly what gets committed, before anything exists.</p>
-      <div class="blank">blank canvas</div>
+      <p class="note" id="repo-summary" style="text-align:center"></p>
+      <p class="note" style="text-align:center" hidden><a id="repo-link" href="#"></a></p>
+      <div class="menu-rows">
+        <a class="menu-row" id="open-repo" href="09-browser.html"><span class="t">Open my repo</span></a>
+      </div>
     </main>
-    <aside class="side-bar-right">
+
+    <aside class="side-bar-right side-bar-right--hidden">
       <a class="global-btn placeholder" href="#">tool</a>
       <a class="global-btn placeholder" href="#">tool</a>
     </aside>
   </div>
 
+  <script src="github.js"></script>
+  <script src="app.js"></script>
+  <script src="build.js"></script>
 </body>
 </html>

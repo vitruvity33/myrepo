@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>15 · GitHub — create account — MyRepo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+
+  <!--
+    SCREEN 15 — GITHUB SIGNUP (mock of github.com/join)
+    This screen happens ON github.com — mocked so the whole path is visible.
+    User without an account lands here from 03 "GitHub".
+    Fields are inert; Create account -> email verify (16).
+  -->
+
+  <header class="proto-bar">
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">15 — GitHub signup</span></span>
+    <span><a href="03-onboarding-who.html">&larr; prev</a><a href="16-github-verify.html">next &rarr;</a></span>
+  </header>
+
+  <header class="app-header">
+    <a class="wordmark" href="index.html">MyRepo</a>
+    <span class="page-title">github.com — Create your account</span>
+  </header>
+
+  <div class="app-body">
+    <aside class="side-bar-left side-bar-left--hidden">
+      <a class="screen-btn placeholder" href="#">screen</a>
+      <a class="screen-btn placeholder" href="#">screen</a>
+    </aside>
+
+    <main class="canvas">
+      <div class="action-center">
+        <div class="card auth-card">
+          <p class="note">Create your GitHub account</p>
+          <div class="field-stack">
+            <input class="input" type="text" placeholder="Username">
+            <input class="input" type="email" placeholder="Email">
+            <input class="input" type="password" placeholder="Password">
+          </div>
+          <div class="action-row">
+            <a class="btn btn--primary" href="16-github-verify.html">Create account</a>
+          </div>
+          <p class="note note--small">This happens on github.com — mocked for the prototype.</p>
+        </div>
+      </div>
+    </main>
+
+    <aside class="side-bar-right side-bar-right--hidden">
+      <a class="global-btn placeholder" href="#">tool</a>
+      <a class="global-btn placeholder" href="#">tool</a>
+    </aside>
+  </div>
+
+</body>
+</html>

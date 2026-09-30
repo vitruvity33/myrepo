@@ -3,50 +3,62 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>07 · Connect GitHub — MyRepo</title>
+  <title>07 · Authorize GitHub — MyRepo</title>
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
-<body>
+<body data-page="authorize">
 
   <!--
-    SCREEN 07 — CONNECT GITHUB
-    Element spec:
-    - step indicator (this is where the repo actually gets created)
-    - two cards: "Create a private repo in my account" / "Use an existing repo"
-    - mock GitHub authorization panel
-    - verification checklist, live-looking: account / repo created-or-found / write permission / private
-    - subtext: "the repo is yours — MyRepo writes through a scoped app grant, revocable anytime"
-
-    MENU RAIL on this screen: minimal — setup steps or none
+    SCREEN 07 — AUTHORIZE GITHUB (mock OAuth)
+    What the real step will be: GitHub's own authorization page.
+    Card lists what MyRepo is asking for; Authorize -> provisioning (08);
+    Cancel -> back to connect (03).
+    LIVE: with a token stored, shows "Signed in to GitHub as @login".
   -->
 
   <header class="proto-bar">
-    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">07 / 14 — Connect GitHub</span></span>
-    <span><a href="06-onboarding-preview.html">&larr; prev</a><a href="08-provisioned.html">next &rarr;</a></span>
+    <span><span class="proto-crumb">MyRepo prototype</span><span class="proto-num">07 / 14 — Authorize</span></span>
+    <span><a href="03-onboarding-who.html">&larr; prev</a><a href="08-provisioned.html">next &rarr;</a></span>
   </header>
 
   <header class="app-header">
     <a class="wordmark" href="index.html">MyRepo</a>
+    <span class="page-title">Authorize GitHub</span>
   </header>
 
   <div class="app-body">
-    <aside class="side-bar-left">
-      <!-- screens go here -->
+    <aside class="side-bar-left side-bar-left--hidden">
       <a class="screen-btn placeholder" href="#">screen</a>
       <a class="screen-btn placeholder" href="#">screen</a>
     </aside>
 
     <main class="canvas">
-      <h1>Connect GitHub</h1>
-      <p class="sub">Authorize, then we provision the template.</p>
-      <div class="blank">blank canvas</div>
+      <div class="action-center">
+        <div class="card auth-card">
+          <p class="note"><strong>MyRepo</strong> is requesting access to your GitHub account</p>
+          <p class="note note--small" id="auth-who" hidden></p>
+          <p class="note note--small">This will allow MyRepo to:</p>
+          <ul class="auth-list">
+            <li>Create a private repository in your account</li>
+            <li>Read and write files in that repository</li>
+          </ul>
+          <div class="action-row">
+            <a class="btn btn--primary" href="08-provisioned.html">Authorize</a>
+            <a class="btn btn--quiet" href="03-onboarding-who.html">Cancel</a>
+          </div>
+          <p class="note note--small">You can revoke this anytime in GitHub settings.</p>
+        </div>
+      </div>
     </main>
-    <aside class="side-bar-right">
+
+    <aside class="side-bar-right side-bar-right--hidden">
       <a class="global-btn placeholder" href="#">tool</a>
       <a class="global-btn placeholder" href="#">tool</a>
     </aside>
   </div>
 
+  <script src="github.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
