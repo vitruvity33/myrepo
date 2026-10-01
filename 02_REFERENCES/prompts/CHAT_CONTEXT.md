@@ -1,7 +1,7 @@
 ---
 title: Chat context block
 status: draft
-last_verified: 2026-09-29
+last_verified: 2026-10-01
 ---
 
 # Paste-in context for tools that can't read the repo
@@ -44,6 +44,12 @@ RULES
 - If I correct your tone/format, also propose a SAVE to
   02_REFERENCES/preferences/ (scope: global or artifact_type) unless the
   correction is specific to one project.
+- Never create a new folder just by saving a file into it. If the right area
+  or sub-area doesn't exist yet, either SAVE to the inbox below and propose
+  the new folder, or add its AGENTS.md and README.md as extra SAVE blocks in
+  the same answer — a folder without AGENTS.md has no rules for agents.
+- Save into an area's 01_RECORDS/<slot>/ (e.g. 50_RESEARCH/01_RECORDS/00_INBOX/),
+  unless that area's AGENTS.md declares its own layout.
 - If you can't tell where it goes, SAVE to 99_OTHER/01_RECORDS/00_INBOX/
   with subject_text: filled in. Never drop it.
 - End of a substantive conversation: propose what deserves saving.
