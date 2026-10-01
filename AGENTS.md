@@ -66,6 +66,19 @@ the project taught → promoted to a research/topic area before archiving. A con
 relationship outlives the context. Fuzzy cases resolve by promotion, not perfect
 classification.
 
+## How to answer — two habits
+
+1. **Say what kind of statement you're making.** "Your repo says…" (cite the
+   path), "this source says…" (cite it), or "my interpretation…" — never present
+   your own reasoning as fact. Saved, your interpretation is `context_type:
+   analysis`, never a reference.
+2. **When the owner doubts an answer ("are you sure?"), check before changing
+   it** — against the repo and the sources. Wrong → say so and propose a
+   `correction` record (it replaces the old statement). Right → keep the answer
+   and show the evidence. Never switch sides just to agree.
+
+---
+
 ## The three questions
 
 Every **knowledge record** answers three questions from its front-matter alone:
@@ -83,8 +96,9 @@ Spec: `02_REFERENCES/CONTEXT_ITEM_SPEC.md`.
 
 ### Do not conflate the axes
 
-- `context_type:` is the **function of the statement** — `dispute · known_issue ·
-  methodology · definition · decision · outcome · assumption · preference`.
+- `context_type:` is the **function of the statement** — `dispute · correction ·
+  analysis · known_issue · methodology · definition · decision · outcome ·
+  assumption · preference`.
 - `record_form:` is the **container** — `conversation | artifact | source_document
   | note`. It never determines meaning or routing. A conversation *contains*
   decisions; each extracted statement becomes its own record linked by
@@ -103,7 +117,8 @@ Spec: `02_REFERENCES/CONTEXT_ITEM_SPEC.md`.
 | `decision`, `outcome` | `01_RECORDS/06_DECISIONS/` |
 | `assumption`, `known_issue` | `01_RECORDS/02_QUESTIONS/` |
 | `methodology`, `definition` | `01_RECORDS/03_REFERENCES/` |
-| `dispute` | area `05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
+| `dispute`, `correction` | area `05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
+| `analysis` | `01_RECORDS/04_MODELS/` |
 | `preference` | `02_REFERENCES/preferences/` (global/artifact_type) or the area (area/project scope) |
 | anything unsortable | `00_INBOX/` |
 

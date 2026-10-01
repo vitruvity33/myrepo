@@ -34,7 +34,9 @@ Any tool must be able to answer these from the front-matter alone.
 | `known_issue` | A confirmed, stable problem or limitation | `01_RECORDS/02_QUESTIONS/` |
 | `methodology` | How something should be done or analyzed | `01_RECORDS/03_REFERENCES/` |
 | `definition` | What a term means | `01_RECORDS/03_REFERENCES/` |
-| `dispute` | Someone says a conclusion, number or record is wrong | area `05_PUSH_BACK/` · cross-area: `90_PUSH_BACK/` |
+| `dispute` | Someone questions a conclusion, number or record — still open ("are you sure?" counts) | area `05_PUSH_BACK/` · cross-area: `90_PUSH_BACK/` |
+| `correction` | An earlier statement was wrong; this replaces it. Fill `supersedes:` and mark the old record `status: superseded` + `superseded_by:` — the old one is no longer cited | area `05_PUSH_BACK/` · cross-area: `90_PUSH_BACK/` |
+| `analysis` | An interpretation or reasoning — not a sourced fact. List what it rests on in `references:` / `source_refs:`; never file it as a reference | `01_RECORDS/04_MODELS/` |
 | `preference` | How the owner wants output produced | `02_REFERENCES/preferences/` (scope `global`/`artifact_type`) or the area (scope `area`/`project`) |
 | *(unsure)* | Unsorted capture | `00_INBOX/` |
 

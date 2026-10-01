@@ -10,6 +10,8 @@ Push-back is **mandatory** — see root `AGENTS.md`.
 
 ## When to write a push-back record
 
+- The owner **questions** an answer or a record — "are you sure?", "that doesn't
+  sound right" — even without a counter-claim yet. Record it open, then check it
 - Someone disagrees with a conclusion, number, or recommendation
 - **Your analysis contradicts an existing record**
 - An assumption is challenged
@@ -33,7 +35,15 @@ Filename: `YYYY-MM-DD_SHORT-TOPIC.md`.
 3. **Evidence** — links, records, `source_refs:` — never transcripts
 4. **Proposed resolution** — what should change if accepted
 
-Front-matter: `context_type: dispute`, `resolution: unresolved`,
+Two kinds:
+
+- **Question / dispute** — still open: `context_type: dispute`, `resolution: unresolved`
+  until checked, then `accepted | rejected | partial`.
+- **Correction** — it was wrong and this is the right version: `context_type:
+  correction`, `supersedes: [<the old record>]`; mark the old record `status:
+  superseded` + `superseded_by:` so it stops being cited.
+
+Front-matter for a dispute: `context_type: dispute`, `resolution: unresolved`,
 `challenges: [<IDs of challenged records>]` (`[]` if about data not a document).
 
 ## Rules
