@@ -97,7 +97,7 @@ Spec: `02_REFERENCES/CONTEXT_ITEM_SPEC.md`.
 ### Do not conflate the axes
 
 - `context_type:` is the **function of the statement** — `dispute · correction ·
-  analysis · known_issue · methodology · definition · decision · outcome ·
+  analysis · known_issue · methodology · definition · evidence · decision · outcome ·
   assumption · preference`.
 - `record_form:` is the **container** — `conversation | artifact | source_document
   | note`. It never determines meaning or routing. A conversation *contains*
@@ -116,11 +116,15 @@ Spec: `02_REFERENCES/CONTEXT_ITEM_SPEC.md`.
 |---|---|
 | `decision`, `outcome` | `01_RECORDS/06_DECISIONS/` |
 | `assumption`, `known_issue` | `01_RECORDS/02_QUESTIONS/` |
-| `methodology`, `definition` | `01_RECORDS/03_REFERENCES/` |
+| `evidence`, `methodology`, `definition` | `01_RECORDS/03_REFERENCES/` |
 | `dispute`, `correction` | area `05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
 | `analysis` | `01_RECORDS/04_MODELS/` |
 | `preference` | `02_REFERENCES/preferences/` (global/artifact_type) or the area (area/project scope) |
 | anything unsortable | `00_INBOX/` |
+
+The header is the truth and the folder must agree — a push where they disagree
+fails the repo rules check. `evidence` needs `source_refs:`; without a source it
+is an `assumption`.
 
 `record_form` never routes: raw conversations land in `00_INBOX/` or
 `03_REFERENCES/`; artifacts-in-progress live in `work/`.

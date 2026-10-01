@@ -20,8 +20,10 @@ NN_AREA_NAME/                  top level: unused number, any length. Sub-area: n
 │   ├── 00_INBOX/              unsorted captures — never cite
 │   ├── 01_GOALS/              goals with aligns_with: one level up
 │   ├── 02_QUESTIONS/          assumptions, known issues
-│   ├── 03_REFERENCES/         methods, definitions, source docs, conversations
-│   ├── 04_MODELS/             scenarios, comparisons, projections
+│   ├── 03_REFERENCES/         sourced facts (evidence), methods, definitions —
+│   │                          what you can rely on
+│   ├── 04_MODELS/             analysis: interpretations, proposed designs,
+│   │                          comparisons, scenarios — not facts
 │   ├── 05_PUSH_BACK/          disputes about this area
 │   ├── 06_DECISIONS/          decisions + outcomes
 │   └── 99_ARCHIVE/            superseded — never cite

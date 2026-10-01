@@ -16,6 +16,10 @@ Nothing here is hardcoded to this repo's areas — they are read from the tree:
    any length (60_, 620_, 0622_) and mean nothing on their own — they only
    keep areas in order. A new top-level folder with AGENTS.md or README.md but
    no number, or with a number another top-level folder already has, fails.
+4. A record's folder agrees with its header. For a record added or changed in
+   the push, context_type decides the slot (root AGENTS.md §Routing): an
+   analysis in 03_REFERENCES fails. Inbox, goals and archive take anything.
+   `evidence` must name its source in source_refs.
 """
 
 import argparse
@@ -31,6 +35,17 @@ REPO_MACHINERY = {"01_READ_FIRST", "02_REFERENCES"}
 RULES_FILES = {"README.md", "AGENTS.md", "FOCUS.md"}
 RECORD_FOLDERS = STRUCTURAL_NAMES - {"work"}
 NUMBERED = re.compile(r"^(\d+)_")
+
+
+ROUTES = {
+    "decision": "06_DECISIONS", "outcome": "06_DECISIONS",
+    "assumption": "02_QUESTIONS", "known_issue": "02_QUESTIONS",
+    "methodology": "03_REFERENCES", "definition": "03_REFERENCES", "evidence": "03_REFERENCES",
+    "analysis": "04_MODELS",
+    "dispute": "PUSH_BACK", "correction": "PUSH_BACK",
+}
+ROUTED_SLOTS = {"02_QUESTIONS", "03_REFERENCES", "04_MODELS", "06_DECISIONS"}
+PUSH_BACK = re.compile(r"^\d+_PUSH_BACK$", re.IGNORECASE)
 
 
 def git(*args):
@@ -103,6 +118,64 @@ def has_front_matter(path):
     return head.lstrip("﻿").startswith("---")
 
 
+def front_matter(path):
+    try:
+        text = git("show", f"HEAD:{path}").lstrip("\ufeff")
+    except subprocess.CalledProcessError:
+        return None
+    if not text.startswith("---"):
+        return None
+    end = text.find("\n---", 3)
+    return text[3:end] if end != -1 else None
+
+
+def field(head, name):
+    """A front-matter value, and whether a list under it has items."""
+    lines = head.splitlines()
+    for i, line in enumerate(lines):
+        if line.startswith(f"{name}:"):
+            value = line.split(":", 1)[1].split(" #")[0].strip().strip("'\"")
+            items = False
+            for nxt in lines[i + 1:]:
+                if not nxt.startswith((" ", "-")):
+                    break
+                items = items or nxt.lstrip().startswith("- ")
+            return value, items
+    return None, False
+
+
+def slot_of(path):
+    for part in path.split("/")[:-1]:
+        if PUSH_BACK.match(part):
+            return "PUSH_BACK"
+        if part.upper() in ROUTED_SLOTS:
+            return part.upper()
+    return None
+
+
+def routing_problems(changed):
+    problems = []
+    for path in changed:
+        if not path.lower().endswith(".md") or path.split("/")[-1] in RULES_FILES:
+            continue
+        slot = slot_of(path)
+        if slot is None:
+            continue
+        head = front_matter(path)
+        if head is None:
+            continue
+        kind, _ = field(head, "context_type")
+        want = ROUTES.get((kind or "").lower())
+        if want and want != slot:
+            where = "a push-back folder" if want == "PUSH_BACK" else f"01_RECORDS/{want}/"
+            problems.append(f"{path} — context_type: {kind} belongs in {where}; move it or fix the header")
+        if (kind or "").lower() == "evidence":
+            value, items = field(head, "source_refs")
+            if not items and value in (None, "", "[]"):
+                problems.append(f"{path} — evidence without source_refs; name the source, or call it an assumption")
+    return problems
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True, help="commit to compare against")
@@ -118,6 +191,8 @@ def main():
             if absent:
                 problems.append(f"{path}/ — new folder without {' and '.join(absent)}")
     problems.extend(top_level_problems(new_dirs, head_files))
+    changed = git("diff", "--name-only", "--diff-filter=AMR", args.base, "HEAD").splitlines()
+    problems.extend(routing_problems(changed))
     for path in sorted(head_files - base_files):
         if needs_header(path) and not has_front_matter(path):
             problems.append(f"{path} — new record without a front-matter header (the three questions)")
