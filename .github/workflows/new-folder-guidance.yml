@@ -1,0 +1,23 @@
+name: Repo rules check
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  check-new-folders:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: New folders have AGENTS.md + README.md; new records have a header
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -n "$BASE_SHA" ]; then
+            python3 scripts/check_new_folder_guidance.py --base "$BASE_SHA"
+          else
+            echo "No base commit supplied; run on a pull request or push."
+          fi

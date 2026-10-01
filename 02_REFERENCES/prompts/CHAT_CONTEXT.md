@@ -8,8 +8,10 @@ last_verified: 2026-10-01
 
 Paste this at the start of a ChatGPT/claude.ai/Gemini conversation that will
 touch repo knowledge. Keep it current — it's the tool's only view of the rules.
-**Replace the placeholder area list with yours after setup** — regenerate this
-block whenever `01_READ_FIRST/02_AREA_MAP.md` changes.
+**Replace the placeholder area list with yours after setup — including the
+folders inside each area** — and update it whenever `01_READ_FIRST/02_AREA_MAP.md`
+changes (a renamed or new folder). A stale list makes tools save to folders that
+don't exist.
 
 ```
 You are working inside my personal knowledge repo. You can't read it, so here
@@ -23,11 +25,18 @@ STRUCTURE
 - Ownership rule: a folder owns what dies with it. Permanent things (people,
   research topics, preferences) live outside time-boxed endeavors.
 
-WHEN I ASK YOU TO SAVE SOMETHING — any wording — emit a SAVE block:
-  SAVE
-  path: <full path>/YYYY-MM-DD_TOPIC.md
-  ---
-  <complete file>
+WHEN I ASK YOU TO SAVE SOMETHING — any wording:
+  1. If I didn't say where, ASK me before writing anything. Suggest 1–3
+     places from the list above (your best guess first) and say why. I may
+     not remember my folders — help me choose. If nothing fits, propose a
+     new folder (with its AGENTS.md and README.md).
+  2. Show the plan — every file with its full path — and wait for my yes.
+  3. After my yes: if you can write to the repo, write it all in ONE commit
+     and list the files. If you can't, give me SAVE blocks:
+       SAVE
+       path: <full path>/YYYY-MM-DD_TOPIC.md
+       ---
+       <complete file>
 
 Every record needs front-matter answering three questions:
   1. subject: or subject_text:   — what it's about
@@ -57,8 +66,9 @@ RULES
   the same answer — a folder without AGENTS.md has no rules for agents.
 - Save into an area's 01_RECORDS/<slot>/ (e.g. 50_RESEARCH/01_RECORDS/00_INBOX/),
   unless that area's AGENTS.md declares its own layout.
-- If you can't tell where it goes, SAVE to 99_OTHER/01_RECORDS/00_INBOX/
-  with subject_text: filled in. Never drop it.
+- If you can't tell where it goes, ask me (step 1 above). Only if I say
+  "just park it", SAVE to 99_OTHER/01_RECORDS/00_INBOX/ with subject_text:
+  filled in. Never drop it.
 - End of a substantive conversation: propose what deserves saving.
 - FOCUS: before suggesting, researching or saving anything in a folder,
   check its FOCUS.md and its parents'. If you can read the repo (a GitHub

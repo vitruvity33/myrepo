@@ -137,9 +137,15 @@ Spec: `02_REFERENCES/CONTEXT_ITEM_SPEC.md`.
 ## Saving — proposals, not auto-writes
 
 - Any expression of "this should persist" — in any words — is a save event.
+- **Ask where, then confirm.** When the owner asks to save and didn't say where,
+  ask before writing: suggest 1–3 places from `01_READ_FIRST/02_AREA_MAP.md` (best
+  guess first, with the reason) — the owner may not remember the folders. Then
+  show the plan (every file, full path, and whether it updates or supersedes an
+  existing record) and write only after a yes. Unsure where → ask; never default
+  to the inbox unless the owner says to park it.
 - **Mandatory proposals** (agent proposes what, where, and whether it supersedes an
   existing record; writes after approval): a durable decision, a disagreement or
-  correction, a preference. Exception: the user already asked to persist it.
+  correction, a preference — even when the owner didn't ask to save.
 - **Close-out:** at the end of a substantive conversation, propose what deserves
   filing. Nothing is written without a yes.
 - **Correction loop:** durable style/format push-back ("that's cliché," "not my
@@ -196,6 +202,9 @@ to `canonical`.
 
 ## Deferred machinery
 
+- `scripts/check_new_folder_guidance.py` runs on every push (GitHub Actions): a new
+  area or sub-area without AGENTS.md + README.md, or a new record without a
+  header, fails the check.
 - `03_REPORTS/` + index generator — add when cross-area search gets painful.
 - `90_PUSH_BACK/` — create on first cross-area dispute.
 - Sensitivity-gated areas (finance, health, admin) — reserve a number when needed;
