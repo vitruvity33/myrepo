@@ -12,6 +12,10 @@ Nothing here is hardcoded to this repo's areas — they are read from the tree:
    folder (00_INBOX … 06_DECISIONS, 99_ARCHIVE) — needs front-matter (--- … ---)
    so it can answer the three questions (root AGENTS.md). Lists, profiles and
    other views a topic defines in its own AGENTS.md are not records.
+3. A new top-level area starts with a number nobody else uses. Numbers can be
+   any length (60_, 620_, 0622_) and mean nothing on their own — they only
+   keep areas in order. A new top-level folder with AGENTS.md or README.md but
+   no number, or with a number another top-level folder already has, fails.
 """
 
 import argparse
@@ -26,7 +30,7 @@ STRUCTURAL_NAMES = {
 REPO_MACHINERY = {"01_READ_FIRST", "02_REFERENCES"}
 RULES_FILES = {"README.md", "AGENTS.md", "FOCUS.md"}
 RECORD_FOLDERS = STRUCTURAL_NAMES - {"work"}
-NUMBERED = re.compile(r"^\d{2}_")
+NUMBERED = re.compile(r"^(\d+)_")
 
 
 def git(*args):
@@ -56,6 +60,28 @@ def requires_local_guidance(path):
     if len(parts) == 1:
         return is_area(parts[0])
     return len(parts) == 2 and is_area(parts[0])
+
+
+def number_of(name):
+    found = NUMBERED.match(name)
+    return found.group(1) if found else None
+
+
+def top_level_problems(new_dirs, head_files):
+    tops = {d for d in directories(head_files) if "/" not in d}
+    problems = []
+    for path in new_dirs:
+        if "/" in path or path.startswith("."):
+            continue
+        num = number_of(path)
+        if num is None:
+            if f"{path}/AGENTS.md" in head_files or f"{path}/README.md" in head_files:
+                problems.append(f"{path}/ — new top-level area without a number (e.g. 60_{path})")
+            continue
+        clash = sorted(t for t in tops if t != path and number_of(t) == num)
+        if clash:
+            problems.append(f"{path}/ — number {num} is already used by {', '.join(clash)}; pick an unused one")
+    return problems
 
 
 def needs_header(path):
@@ -91,6 +117,7 @@ def main():
             absent = [n for n in ("AGENTS.md", "README.md") if f"{path}/{n}" not in head_files]
             if absent:
                 problems.append(f"{path}/ — new folder without {' and '.join(absent)}")
+    problems.extend(top_level_problems(new_dirs, head_files))
     for path in sorted(head_files - base_files):
         if needs_header(path) and not has_front_matter(path):
             problems.append(f"{path} — new record without a front-matter header (the three questions)")

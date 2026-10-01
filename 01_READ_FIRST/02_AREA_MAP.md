@@ -1,7 +1,7 @@
 ---
 title: Area Map
 status: draft
-last_verified: 2026-09-29
+last_verified: 2026-10-01
 ---
 
 # Area Map
@@ -27,18 +27,18 @@ numbered area as you create it.
 | `01_READ_FIRST/` | Orientation — which area answers which question | reference | `RF-` | active |
 | `02_REFERENCES/` | Shared machinery: record spec, push-back protocol, ID registry, preferences, prompts | reference | `REF-` | active |
 | `99_OTHER/` | Catch-all; `01_RECORDS/00_INBOX/` receives unsorted captures | — | — | active |
-| _(your areas — `10_`, `20_`, `30_` …)_ | _one row per area you create_ | _endeavor / entity / governance_ | _`XXX-`_ | — |
+| _(your areas — `10_`, `30_`, `620_` …)_ | _one row per area you create_ | _endeavor / entity / governance_ | _`XXX-`_ | — |
 
 ## Reserved — not created
 
-Materialize on first content. Numbers are held here so insertion never renumbers.
-Reserve your own as needed — a few conventions worth keeping:
+Ideas, not promises — no number is held. When one is created it gets an
+unused number (root AGENTS.md §Creating a top-level area).
 
-| Number | Intended use | Note |
+| Folder | Intended use | Note |
 |---|---|---|
-| `90` | `90_PUSH_BACK` | Cross-area disputes only; create on first one |
-| `03` | `03_REPORTS` | Generated index/views when search earns it |
-| _(high numbers)_ | Sensitivity-gated areas | Finance, health, admin — only with an explicit owner decision; this repo may be public |
+| `90_PUSH_BACK` | Cross-area disputes | Create on first one |
+| `03_REPORTS` | Generated index/views | When search earns it |
+| _(finance, health, admin)_ | Sensitivity-gated areas | Only with an explicit owner decision; this repo may be public |
 
 ## Promotion paths
 
@@ -46,5 +46,5 @@ Reserve your own as needed — a few conventions worth keeping:
   people area when the relationship outlives the context.
 - **Knowledge:** research inside an endeavor → distilled durable knowledge
   promoted to a research/topic area before the endeavor archives.
-- **Sub-areas:** any unnumbered area may be promoted to a top-level number —
-  a move, not a redesign.
+- **Sub-areas:** any unnumbered area may be promoted to top level with an
+  unused number — a move, not a redesign.

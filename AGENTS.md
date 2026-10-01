@@ -1,7 +1,7 @@
 ---
 title: Agents
 status: draft
-last_verified: 2026-09-29
+last_verified: 2026-10-01
 ---
 
 # AGENTS.md — MyRepo
@@ -170,8 +170,11 @@ a chat window is a silent drop — which this repository exists to prevent.
 
 ## Structure rules
 
-- Top-level areas are numbered (`10_`, `20_` …) with gaps for insertion.
-  **Never renumber.**
+- Top-level areas start with a number and an underscore (`10_`, `620_`,
+  `0622_`). The number only keeps areas in order — it **means nothing on its
+  own**, can be any length, and must not already be used by another top-level
+  folder. `01_` and `02_` belong to MyRepo's own folders. **Never renumber.**
+  How to pick one: §Creating a top-level area.
 - A sub-area is any unnumbered folder with its own `AGENTS.md` — same shape
   recursively. **Every folder that owns ongoing work is a governed area** — it gets
   `AGENTS.md` + `README.md` in the same operation. Promoting a sub-area to top
@@ -184,6 +187,29 @@ a chat window is a silent drop — which this repository exists to prevent.
 - **Never invent a registry ID** — use `subject_text:` and let a human mint the ID.
 - `work/` is unvalidated space — drafts and artifacts-in-progress. Quote it only
   when asked, and label it.
+
+## Creating a top-level area
+
+Do this only when nothing existing fits — most new topics are sub-areas
+(unnumbered folders inside an area). If unsure which, ask the owner.
+
+1. **Pick a number.** Any unused number works; choose one that sorts next to
+   the area it's most related to. Folders sort like library call numbers — a
+   longer number that starts with a shorter one sits right after it:
+   `60_` → `620_` → `622_` → `63_`. So a new area close to `60_HEALTH` can be
+   `620_` (or `622_` to go finer); something that belongs before everything
+   else can be `062_` or `0622_`. Unrelated: take any free number. Don't infer
+   meaning from a number — read the folder name and the Area Map.
+2. **Tell the owner the full folder name before creating it** (e.g.
+   `620_DESIGN/`) and wait for a yes.
+3. **In the same commit:** the folder's `AGENTS.md` + `README.md`
+   (`02_REFERENCES/AREA_TEMPLATE/`), a row in `01_READ_FIRST/02_AREA_MAP.md`,
+   its ID prefix in `02_REFERENCES/ID_REGISTRY.md`, and the folder in the area
+   list of `02_REFERENCES/prompts/CHAT_CONTEXT.md`.
+
+Finding things relies on the Area Map and indexes, never on what a number
+"should" mean. `scripts/check_new_folder_guidance.py` fails a push that adds a
+top-level area without a number or with a number already in use.
 
 ## Push-back is mandatory
 
@@ -204,9 +230,9 @@ to `canonical`.
 
 - `scripts/check_new_folder_guidance.py` runs on every push (GitHub Actions): a new
   area or sub-area without AGENTS.md + README.md, or a new record without a
-  header, fails the check.
+  header, or a new top-level area without an unused number, fails the check.
 - `03_REPORTS/` + index generator — add when cross-area search gets painful.
 - `90_PUSH_BACK/` — create on first cross-area dispute.
-- Sensitivity-gated areas (finance, health, admin) — reserve a number when needed;
+- Sensitivity-gated areas (finance, health, admin) — not created by default;
   sensitive personal content does not enter this repo without an explicit owner
   decision.

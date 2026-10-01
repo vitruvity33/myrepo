@@ -29,7 +29,11 @@ WHEN I ASK YOU TO SAVE SOMETHING — any wording:
   1. If I didn't say where, ASK me before writing anything. Suggest 1–3
      places from the list above (your best guess first) and say why. I may
      not remember my folders — help me choose. If nothing fits, propose a
-     new folder (with its AGENTS.md and README.md).
+     new folder (with its AGENTS.md and README.md). Prefer a sub-folder
+     inside an area (no number). A new TOP-LEVEL folder needs a number no
+     other top-level folder uses — numbers mean nothing, they only sort:
+     pick one next to the most related area and add digits to go finer
+     (60_ → 620_ → 622_). Say the full name and ask before creating it.
   2. Show the plan — every file with its full path — and wait for my yes.
   3. After my yes: if you can write to the repo, write it all in ONE commit
      and list the files. If you can't, give me SAVE blocks:

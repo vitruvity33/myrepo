@@ -1,7 +1,7 @@
 ---
 title: Area Template
 status: draft
-last_verified: 2026-09-29
+last_verified: 2026-10-01
 ---
 
 # Area Template
@@ -10,7 +10,7 @@ last_verified: 2026-09-29
 repo navigable by an agent that cannot ask questions.
 
 ```
-NN_AREA_NAME/                  top level: two-digit number. Sub-area: no number
+NN_AREA_NAME/                  top level: unused number, any length. Sub-area: no number
 ├── AGENTS.md                  REQUIRED. Scoped rules, ID prefix, slot menu
 ├── README.md                  REQUIRED. Orientation for people
 ├── FOCUS.md                   optional. What the owner is after here — agents read it
@@ -47,7 +47,11 @@ everything under it.
 
 ## Numbering
 
-- **Top-level areas: 10, 20, 30…** — gaps allow insertion without renumbering.
+- **Top-level areas start with a number** — any length, unused by another
+  top-level folder, no fixed meaning (`10_`, `620_`, `0622_`). Pick one that
+  sorts next to the most related area; add digits to refine (`60_` → `620_` →
+  `622_`). `01_`/`02_` are MyRepo's. Full steps: root `AGENTS.md`
+  §Creating a top-level area.
 - **Sub-areas are unnumbered** folders with their own `AGENTS.md`.
 - **Never renumber** — it breaks every cross-reference.
 
@@ -63,9 +67,10 @@ everything under it.
 
 ## Checklist for a new area
 
-- [ ] Folder created (top level: next free number · sub-area: no number)
+- [ ] Folder created (top level: unused number, told to the owner first · sub-area: no number)
 - [ ] `AGENTS.md` + `README.md` written **in the same operation**
 - [ ] If goals exist: `01_RECORDS/01_GOALS/00_GOALS.md` with `aligns_with:` up one level
 - [ ] ID prefix registered in `02_REFERENCES/ID_REGISTRY.md`
 - [ ] Area added to `01_READ_FIRST/02_AREA_MAP.md`
+- [ ] Top level: area added to the list in `02_REFERENCES/prompts/CHAT_CONTEXT.md`
 - [ ] Other slots appear on first use — not before
