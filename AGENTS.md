@@ -28,6 +28,27 @@ Orientation: `01_READ_FIRST/01_START_HERE.md` → `01_READ_FIRST/02_AREA_MAP.md`
 
 ---
 
+## Focus — check it before you suggest anything
+
+A folder may have a `FOCUS.md` next to its `AGENTS.md`: what the owner is after
+there right now. **Before suggesting, researching, recommending or saving anything
+in a folder, read its `FOCUS.md` and every parent folder's** (the root included) —
+fresh each time, never from memory: the owner edits them, often from the MyRepo app.
+
+Each `##` section is one focus, with four rails:
+
+- **Looking for** — what to find and bring.
+- **Not looking for** — never suggest these, not even as a contrast.
+- **Already covered** — the owner knows these; don't repeat them.
+- **Status** — `active` (apply it) · `paused` · `done` (ignore it).
+
+If a request conflicts with an active focus, say so and ask — don't silently
+follow either one. When the owner states a new interest or exclusion in
+conversation ("I already know that story", "not that kind of person"), propose
+adding it to that folder's `FOCUS.md` — a rail left only in a chat window is lost.
+
+---
+
 ## The ownership rule
 
 > **A folder owns what dies with it.**

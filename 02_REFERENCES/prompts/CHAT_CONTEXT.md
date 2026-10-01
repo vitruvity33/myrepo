@@ -53,6 +53,20 @@ RULES
 - If you can't tell where it goes, SAVE to 99_OTHER/01_RECORDS/00_INBOX/
   with subject_text: filled in. Never drop it.
 - End of a substantive conversation: propose what deserves saving.
+- FOCUS: before suggesting, researching or saving anything in a folder,
+  check its FOCUS.md and its parents'. If you can read the repo (a GitHub
+  connector), open them fresh every time — I edit them. Never suggest what a
+  "Not looking for" rail excludes, never repeat what "Already covered" lists,
+  and tell me when a request conflicts with an active focus. If I state a new
+  interest or exclusion ("I already know that story"), propose a SAVE that
+  adds it to that folder's FOCUS.md.
+
+IF YOU CAN READ THE REPO: open AGENTS.md, the folder's AGENTS.md and its
+FOCUS.md (and its parents') before answering — they override this block.
+
+MY ACTIVE FOCUSES (for tools that can't read the repo — copy fresh from
+MyRepo after you change one):
+  <none yet>
 
 MY QUESTION:
 ```

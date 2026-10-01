@@ -13,6 +13,8 @@ repo navigable by an agent that cannot ask questions.
 NN_AREA_NAME/                  top level: two-digit number. Sub-area: no number
 ├── AGENTS.md                  REQUIRED. Scoped rules, ID prefix, slot menu
 ├── README.md                  REQUIRED. Orientation for people
+├── FOCUS.md                   optional. What the owner is after here — agents read it
+│                              before suggesting anything (root AGENTS.md §Focus)
 ├── 01_RECORDS/                The governed layer. Slots are a menu — create on
 │   │                          first use; every area can use:
 │   ├── 00_INBOX/              unsorted captures — never cite
@@ -24,6 +26,23 @@ NN_AREA_NAME/                  top level: two-digit number. Sub-area: no number
 │   ├── 06_DECISIONS/          decisions + outcomes
 │   └── 99_ARCHIVE/            superseded — never cite
 └── work/                      unvalidated space — drafts, artifacts-in-progress
+```
+
+## FOCUS.md (optional)
+
+One `##` section per focus; a folder can have several. Applies to the folder and
+everything under it.
+
+```markdown
+# Focus — <folder>
+
+## <What I'm after>
+<One line: why, or where this started.>
+
+- **Looking for:** …
+- **Not looking for:** …
+- **Already covered:** …
+- **Status:** active
 ```
 
 ## Numbering
