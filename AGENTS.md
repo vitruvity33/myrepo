@@ -258,18 +258,18 @@ top-level area without a number or with a number already in use.
   fits inside an existing one. When 3 or more sibling folders share a
   theme, propose grouping them: in a group folder, or in a new top-level area
   if they are used differently (§Creating a top-level area).
-- **Learn, or keep to look up?** A topic is either a **study topic** (learned
-  over time — "I want to learn…", "what should I read on…") or a **reference
-  topic** (kept to look up and build with — "save this, I'll need it"). Tell
-  from how the owner talks; if unclear, ask that one question. A reference
-  topic becomes a study topic when the owner starts studying it.
-- **Topic layouts.** Every study topic has `RESOURCES.md` (trusted reading — each source with its link and what it contributes) and `STUDY_TRACKING/` (study queue, reading queue, people to explore, what was actually studied). A reference topic
-  has an index of what's there instead, and its records carry trust labels
-  (`evidence` vs `analysis`). Beyond those, pick a shape from the menu in
-  `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts — topics differ, so
-  propose one with reasons, ask, and record it in the topic's `AGENTS.md`.
-  Start flat: one index file per kind of thing; give a kind its own folder once
-  3 or more entries need their own pages.
+- **Explore, study, or keep?** A topic is for **exploring** (curiosity — things
+  the owner is drawn to and collects), **studying** (learning over time, in an
+  order) or **reference** (kept to look up and build with). Tell from how the
+  owner talks; if unclear, ask that one question. A topic can change kind later.
+- **Topic layouts — the architecture pattern.** A topic has a folder for each kind
+  of thing in its shape; inside it, `INDEX.md` lists the items and each item studied
+  in depth gets its own page. Test: grows by **pages** → folder; grows by **rows**
+  → a file in a list. Every topic also has `RESOURCES/` (trusted reading — each source with its link and what it contributes) and `COLLECTIONS/` (studied · to explore · favorites, plus a reading queue or places to visit where they fit).
+  Studying one thing = its page + a row in `COLLECTIONS/STUDIED.md`. Shapes and
+  details: `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts — propose one
+  with reasons, ask, and record it in the topic's `AGENTS.md`. Same layout from day
+  one, however small — never reorganize a topic later.
 <!-- myrepo:end proposing -->
 
 ## Push-back is mandatory

@@ -21,56 +21,57 @@
     },
     "tracking": {
       "on": true,
-      "name": "Study tracking"
+      "name": "Collections"
     },
     "shapes": [
       {
         "name": "Things in the world",
         "fits": "architecture, anthropology, history",
         "files": [
-          "PEOPLE.md",
-          "PLACES.md",
-          "WORKS.md",
-          "IDEAS.md"
+          "People",
+          "Places",
+          "Works",
+          "Ideas"
         ]
       },
       {
         "name": "Concepts and practice",
         "fits": "philosophies, internal arts, awareness",
         "files": [
-          "CONCEPTS.md",
-          "PRACTICES.md",
-          "PEOPLE.md (teachers, lineages)"
+          "Concepts",
+          "Practices",
+          "People (teachers, lineages)"
         ]
       },
       {
         "name": "Progression",
         "fits": "a skill: stretching, a language, an instrument",
         "files": [
-          "FOUNDATIONS.md",
-          "TECHNIQUES.md (in study order, each with a level, basic → advanced)"
+          "Foundations",
+          "Techniques (in study order, each with a level, basic → advanced)",
+          "People"
         ]
       },
       {
         "name": "Method",
         "fits": "a system that makes claims: a therapy, a framework",
         "files": [
-          "METHODS.md",
-          "CONCEPTS.md (incl. how to judge it)",
-          "PEOPLE.md"
+          "Methods",
+          "Concepts (incl. how to judge it)",
+          "People"
         ]
       },
       {
         "name": "Reference",
         "fits": "knowledge kept to look up: a technology, a field you build in",
         "files": [
-          "CONCEPTS.md",
-          "SYSTEMS.md (products, tools, implementations)",
-          "PATTERNS.md (reusable designs)"
+          "Concepts",
+          "Systems (products, tools, implementations)",
+          "Patterns (reusable designs)",
+          "Decisions"
         ]
       }
-    ],
-    "splitAt": 3
+    ]
   },
   "classifications": [
     {

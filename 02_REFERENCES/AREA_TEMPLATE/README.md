@@ -50,50 +50,56 @@ everything under it.
 <!-- myrepo:begin topic-layouts -->
 ## Topic layouts
 
-A topic (a sub-area for one subject, practice or field) is laid out so a person
-can browse it. First, which kind it is — tell from how the owner talks, or ask:
+Every topic (one subject, practice or field) is laid out the way
+`50_LEARNING/architecture/` is: a folder for each kind of thing, a page for each
+thing studied in depth, and lists that track them. The layout is set in MyRepo
+(repo ⚙ → Studying) and the topic's choice in its `AGENTS.md` (folder ⚙ → Topic).
 
-- **Study topic** — learned over time ("I want to learn…"). Gets the files below, then a shape.
-- **Reference topic** — kept to look up and build with ("save this, I'll need
-  it"). Gets the Reference shape and no study tracking; what matters is finding
-  things fast and the trust label on each record (`evidence` with a source vs
-  `analysis`). It becomes a study topic when the owner starts studying it.
+**What the topic is for** — tell from how the owner talks, or ask:
 
-Topics differ, so the layout is chosen per topic, from a short menu, and written
-into the topic's `AGENTS.md` §Layout. The menu is set in MyRepo (repo ⚙ → Studying).
+- **Explore** — curiosity: things the owner is drawn to and collects (architects, CEOs).
+- **Study** — learning over time, in an order (a stretching method, a practice). Starts
+  with `STUDY_GUIDE.md`, the overview read first.
+- **Reference** — kept to look up and build with (a technology). Records carry trust
+  labels (`evidence` with a source vs `analysis`).
 
-**In every study topic:**
+**The test — pages or rows?** What grows by adding a *page per item* (an architect, a
+technique, a concept gone into deeply) is a **folder**: `INDEX.md` lists the items, and
+each studied item gets its page (`frei-otto/PROFILE.md`, `hold-relax.md`). What grows
+by adding *rows* (a queue, favorites, what was studied) is a **file**. Every topic uses
+the full layout from day one, however small — nothing is reorganized later.
 
-| File | Holds |
+**Every topic has** its kinds as numbered folders in reading order (`01_`, `02_` …), then:
+
+| Folder | Holds |
 |---|---|
-| `RESOURCES.md` | Trusted reading — primary texts, books, papers, reference sources. Each with its link and what it contributes |
-| `STUDY_TRACKING/` | `STUDY_QUEUE.md` (what's next) · `READING_QUEUE.md` · `PEOPLE_TO_EXPLORE.md` · `STUDIED.md` (what was actually studied — only the owner marks things done) |
+| `NN_RESOURCES/` | `INDEX.md`: trusted reading — primary texts, books, papers, reference sources, each with its link and what it contributes. Notes on one source become a page |
+| `NN_COLLECTIONS/` | `STUDIED.md` (what was actually studied — only the owner marks things done) · `TO_EXPLORE.md` · `FAVORITES.md` · plus `READING_QUEUE.md` or `PLACES_TO_VISIT.md` where they fit |
 
-**Then one shape:**
+**The kinds come from its shape:**
 
-| Shape | Fits | Index files |
+| Shape | Fits | Kind folders |
 |---|---|---|
-| Things in the world | architecture, anthropology, history | `PEOPLE.md` · `PLACES.md` · `WORKS.md` · `IDEAS.md` |
-| Concepts and practice | philosophies, internal arts, awareness | `CONCEPTS.md` · `PRACTICES.md` · `PEOPLE.md` (teachers, lineages) |
-| Progression | a skill: stretching, a language, an instrument | `FOUNDATIONS.md` · `TECHNIQUES.md` (in study order, each with a level, basic → advanced) |
-| Method | a system that makes claims: a therapy, a framework | `METHODS.md` · `CONCEPTS.md` (incl. how to judge it) · `PEOPLE.md` |
-| Reference | knowledge kept to look up: a technology, a field you build in | `CONCEPTS.md` · `SYSTEMS.md` (products, tools, implementations) · `PATTERNS.md` (reusable designs) |
+| Things in the world | architecture, anthropology, history | `PEOPLE/` · `PLACES/` · `WORKS/` · `IDEAS/` |
+| Concepts and practice | philosophies, internal arts, awareness | `CONCEPTS/` · `PRACTICES/` · `PEOPLE/` |
+| Progression | a skill: stretching, a language, an instrument | `FOUNDATIONS/` · `TECHNIQUES/` · `PEOPLE/` |
+| Method | a system that makes claims: a therapy, a framework | `METHODS/` · `CONCEPTS/` · `PEOPLE/` |
+| Reference | knowledge kept to look up: a technology, a field you build in | `CONCEPTS/` · `SYSTEMS/` · `PATTERNS/` · `DECISIONS/` |
 | Its own | anything else | whatever fits — written down in the topic's `AGENTS.md` |
 
-**How to choose:** when a topic is created — or once it holds a few files and
-it's clear what it is — propose a shape with one line of why, and ask. Use the
-names above so topics stay alike; add a kind only when the topic needs it.
+**Studying one thing** = a page in its kind's folder + a row in its `INDEX.md` +
+a row in `COLLECTIONS/STUDIED.md` (and `FAVORITES.md` if it resonated). A page starts
+with a memory hook, then what it is, what the sources say (linked), what resonated,
+and questions left. Levels and favorites are fields and lists, not folders — a
+technique that proves harder changes its `level:`, it doesn't move.
+
+**Titles stay short inside a topic** — "People", "Reading queue", not
+"People — Body Awareness".
 
 **Many topics on one subject?** Make a group folder (`ai-infra/`) with one topic
 per subject inside (`memory-and-context/`, `databases/`), not siblings sharing a
 prefix (`ai-infra-chats/`, `ai-infra-dbs/`). Name a topic after what it is about,
 not where the material came from.
-
-**Start flat.** Each kind is one index file (a table) while the topic is small.
-Give it a folder (`techniques/`, `people/`) once 3 or more entries need their
-own pages; the index then links to them. Levels, favorites and queues are
-fields and views, not folders — a technique that proves harder changes its
-`level:`, it doesn't move.
 <!-- myrepo:end topic-layouts -->
 
 ## Numbering
