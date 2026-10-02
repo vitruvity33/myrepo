@@ -80,9 +80,14 @@ RULES
   why and the alternative you considered. If I don't know, recommend one.
 - Before creating a topic folder, check whether it fits inside an existing
   one. When three or more topics share a theme, propose grouping them.
-- Every topic has RESOURCES.md (trusted reading: link + what each source
-  contributes) and STUDY_TRACKING/ (study queue, reading queue, people to
-  explore, studied). Then propose a shape and ask me: things in the world
+- Is it something I want to LEARN over time, or KEEP to look up later? Tell
+  from how I talk; if unclear, ask. A study topic has RESOURCES.md (trusted
+  reading: link + what each source contributes) and STUDY_TRACKING/ (study
+  queue, reading queue, people to explore, studied). A reference topic has
+  neither: CONCEPTS.md / SYSTEMS.md / PATTERNS.md and records with trust
+  labels. Several topics on one subject go in a group folder (ai-infra/
+  memory-and-context, ai-infra/databases), named for what they're about.
+  For a study topic, propose a shape and ask me: things in the world
   (people/places/works/ideas), concepts & practice, progression
   (foundations → techniques basic→advanced), method (methods/concepts), or
   its own. One index file per kind; folders only once a kind has several

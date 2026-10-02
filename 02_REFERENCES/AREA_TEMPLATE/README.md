@@ -49,11 +49,20 @@ everything under it.
 
 ## Topic layouts
 
-A topic (a sub-area someone studies — a subject, a practice, a field) is laid
-out so a person can browse it. Topics differ, so the layout is chosen per topic,
-from a short menu, and written into the topic's `AGENTS.md` §Layout.
+A topic (a sub-area for one subject, practice or field) is laid out so a person
+can browse it. First, which kind it is — tell from how the owner talks, or ask:
 
-**In every topic:**
+- **Study topic** — learned over time ("I want to learn…"). Gets the two files
+  below, then a shape.
+- **Reference topic** — kept to look up and build with ("save this, I'll need
+  it"). Gets the Reference shape and no study tracking; what matters is finding
+  things fast and the trust label on each record (`evidence` with a source vs
+  `analysis`). It becomes a study topic when the owner starts studying it.
+
+Topics differ, so the layout is chosen per topic, from a short menu, and written
+into the topic's `AGENTS.md` §Layout.
+
+**In every study topic:**
 
 | File | Holds |
 |---|---|
@@ -68,11 +77,17 @@ from a short menu, and written into the topic's `AGENTS.md` §Layout.
 | Concepts and practice | philosophies, internal arts, awareness | `CONCEPTS.md` · `PRACTICES.md` · `PEOPLE.md` (teachers, lineages) |
 | Progression | a skill: stretching, a language, an instrument | `FOUNDATIONS.md` · `TECHNIQUES.md` (in study order, each with a level, basic → advanced) |
 | Method | a system that makes claims: a therapy, a framework | `METHODS.md` · `CONCEPTS.md` (incl. how to judge it) · `PEOPLE.md` |
+| Reference | knowledge kept to look up: a technology, a field you build in | `CONCEPTS.md` · `SYSTEMS.md` (products, tools, implementations) · `PATTERNS.md` (reusable designs) — content in `01_RECORDS/` |
 | Its own | anything else | whatever fits — written down in the topic's `AGENTS.md` |
 
 **How to choose:** when a topic is created — or once it holds a few files and
 it's clear what it is — propose a shape with one line of why, and ask. Use the
 names above so topics stay alike; add a kind only when the topic needs it.
+
+**Many topics on one subject?** Make a group folder (`ai-infra/`) with one topic
+per subject inside (`memory-and-context/`, `databases/`), not siblings sharing a
+prefix (`ai-infra-chats/`, `ai-infra-dbs/`). Name a topic after what it is about,
+not where the material came from.
 
 **Start flat.** Each kind is one index file (a table) while the topic is small.
 Give it a folder (`techniques/`, `people/`) only once several entries need their

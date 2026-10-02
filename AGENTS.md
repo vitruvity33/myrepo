@@ -228,9 +228,16 @@ top-level area without a number or with a number already in use.
   fits inside an existing one. When three or more sibling folders share a
   theme, propose grouping them: in a group folder, or in a new top-level area
   if they are used differently (§Creating a top-level area).
-- **Topic layouts.** Every topic has `RESOURCES.md` (trusted reading — each
-  source with its link and what it contributes) and `STUDY_TRACKING/` (study
-  queue, reading queue, what was actually studied). Beyond those, pick a shape
+- **Learn, or keep to look up?** A topic is either a **study topic** (learned
+  over time — "I want to learn…", "what should I read on…") or a **reference
+  topic** (kept to look up and build with — "save this, I'll need it"). Tell
+  from how the owner talks; if unclear, ask that one question. A reference
+  topic becomes a study topic when the owner starts studying it.
+- **Topic layouts.** Every study topic has `RESOURCES.md` (trusted reading —
+  each source with its link and what it contributes) and `STUDY_TRACKING/`
+  (study queue, reading queue, what was actually studied). A reference topic
+  needs neither — it has an index of what's there, and its records carry trust
+  labels (`evidence` vs `analysis`). Beyond those, pick a shape
   from the menu in `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts —
   topics differ, so propose one with reasons, ask, and record it in the
   topic's `AGENTS.md`. Start flat: one index file per kind of thing; give a
