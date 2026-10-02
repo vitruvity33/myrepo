@@ -250,150 +250,178 @@ top-level area without a number or with a number already in use.
 <!-- myrepo:begin modes -->
 ## Folder contexts and conversation modes
 
-Before saving anything, know four things:
+Six labels, each with one job. The first three describe the folder and stay put; the last
+two change as you talk:
 
-1. **Where am I?** — the folder (e.g. `june/recommendations/`).
-2. **What kind of workspace is this?** — its **folder context**, in the `myrepo:begin topic` block of
-   the nearest `AGENTS.md` up the tree. None anywhere → **Study** (this repo’s default).
-3. **What are we doing right now?** — the **conversation mode**. It can change mid-conversation.
-4. **What did we just produce?** — a **record type** and its **state** (below). That decides what
-   survives the conversation and how far it can be trusted.
-
-**Folder contexts** — set in each folder’s ⚙; they stay put:
-
-| Context | The work | Starts with |
+| Label | Where it comes from | What it tells you |
 |---|---|---|
-| Study | understanding a domain over time | §Working in a topic |
-| Research | establishing something well enough to act on it — it has a question and a point where it stops | `QUESTION.md`, `FINDINGS.md` (§Research folders) |
-| Product | turning a problem into something buildable | `OVERVIEW.md`, `DECISIONS.md`, `GAPS.md` (§Product folders) |
+| **Function** | the area’s ⚙ (Leadership, Operations, Finance, People, Product or the owner’s own) | vocabulary, templates, who decides by default, what never to save |
+| **Area** | the nearest folder up the tree marked “Area of” (June, Finance) | the ongoing home of the work — what lasts lives here |
+| **Work type** | the work folder’s ⚙ — Study, Research, Initiative, Operation | how the work ends: keeps growing, gets answered, gets achieved, or repeats |
+| **Folder name** | the folder | the specific subject (image-derived canvas, customer onboarding) |
+| **Doing now** | the conversation — Explore, Learn, Investigate, Strategize, Decide, Plan, Coordinate, Execute, Monitor, Review, Communicate | how to help at this moment |
+| **Save as** | each thing worth keeping — proposal, assumption, finding, decision, commitment, outcome … | what was actually established, and how far to trust it |
 
-A folder inside another may **narrow** the context above it — “Serves: the Product folder above”
-means *research for this product*: it keeps asking what the findings mean for that product.
-A child narrows; it never silently replaces. Study and Research differ in when they stop: study
-can keep branching; research stops when the question can be answered with stated confidence.
+Find them in the `myrepo:begin topic` block of the folder’s `AGENTS.md` and the folders above it. A
+folder that says nothing is Study (this repo’s default).
 
-**Conversation modes** — what the conversation is doing right now, in any folder. Switch when the
-conversation does, and say so in one line (“Sounds like we’re deciding now”); the people you’re
-working with can correct it (“no, still researching”). The folder context keeps the bigger
-picture: research in a product folder serves the product; it isn’t a tour of the subject.
+**How the people here work** — work this way:
 
-**Study** — *What am I trying to understand?*
-- Listen for: what the owner already knows; what resonates; a misconception; a connection to something studied before; an idea of the owner’s own; the next useful question.
-- Push back like: “What drew you to that?” · “That connects to X — want to follow that thread?” · “Is that the established view, or your own reading?”
-- Save: what was learned, on the pages it touched; the owner’s own ideas as concepts (origin: owner); a learning-path entry when the direction changed; what to explore next, as a row.
+> We think out loud. Brainstorming stays loose until someone argues for something — then it is that person’s position. Keep who said what; an agent’s suggestion is a proposal, never a decision. When we stop, save what was decided and why, what changed, who committed to what, and what is still open.
 
-**Research** — *What are we trying to establish?*
-- Listen for: the question and what answering it is for; a hypothesis; “I think…” — an assumption, not evidence; the quality of a source; a contradiction; how confident we are; enough evidence to stop.
-- Push back like: “What would this need to establish for you to decide?” · “That’s an assumption so far — what would make it a finding?” · “We have evidence for A; B is still assumed. Investigate B?” · In a product folder: “What does this tell us about the product?”
-- Save: findings, each with its confidence and sources; evidence (linked); open questions and remaining unknowns; whether the stopping point was reached.
+### Areas and work folders
 
-**Product** — *What are we trying to make true?*
-- Listen for: problem vs solution; requirement vs the current design; current vs proposed; intended vs actual behavior; a known gap vs an open question; a principle hiding in a correction (“actually, I don’t want…”).
-- Push back like: “Is that a requirement, or just the current design solution?” · “What should the user be able to do — what is the button for?” · “Is that how it works today, or what you’re proposing?” · “Is X an accepted constraint, or just the easiest option right now?”
-- Save: the problem, users and intent (OVERVIEW.md); requirements and design, marked current or proposed; architecture implications; new gaps (GAPS.md); decisions (DECISIONS.md).
+- **An area** is a function’s ongoing home (June → Product; monthly finance → Finance). It keeps
+  what lasts: `OVERVIEW.md` (what it is and how it works now), `DECISIONS.md` (decisions that still
+  hold), `GAPS.md`. It never “finishes”.
+- **A work folder** sits inside an area and has a work type:
 
-**Decision** — *What are we choosing, and why?*
-- Listen for: the options; the criteria; positions — “I want X”, “I think Y” — and who holds each; assumptions that differ; the tradeoff being accepted; an actual choice (“okay, let’s do B”).
-- Push back like: “What are we deciding, and why now?” · “There are two positions here — record it as unresolved?” · “I’ll record B as decided because X, accepting Y. What would make you revisit it?”
-- Save: a DECISIONS.md entry: options, positions (who), decision, decided_by, because, tradeoff, revisit_if; or the open decision with its positions — never a decision nobody made.
+| Work type | For | Ends | Starts with |
+|---|---|---|---|
+| Study | understanding a subject over time | never — understanding keeps growing | §Working in a topic — unchanged |
+| Research | answering a question well enough to act on it | when the question is answered with stated confidence | `QUESTION.md` (incl. when we know enough to stop), `FINDINGS.md` |
+| Initiative | achieving an outcome | when the outcome is achieved (or dropped) | `OVERVIEW.md` (outcome, why, scope, done when), `DECISIONS.md`, `GAPS.md` |
+| Operation | running something that repeats | never — it runs on a cadence | `PROCESS.md` (cadence, owner, steps, handoffs), `DECISIONS.md`, `MEASURES.md` when something is watched |
 
-**Execution** — *What has to change, and what happened?*
-- Listen for: what exists vs what was intended; what changed; what failed, and why; what building it exposed.
-- Push back like: “Is that a new product problem, or is the design right and the implementation failing?” · “The intended behavior and the implementation disagree — which is authoritative?”
-- Save: outcomes and what implementation revealed (Implementation pages, DECISIONS.md outcomes); new gaps; never task status, owners or due dates — those belong in a task tracker.
+- Research lists in `90_TRACKING/`: `OPEN_QUESTIONS.md` · `SOURCES_TO_READ.md`.
+- Initiative lists in `90_TRACKING/`: `OPEN_QUESTIONS.md` · `NEXT_UP.md`.
+- Operation lists in `90_TRACKING/`: `EXCEPTIONS_TO_REVIEW.md`.
+- **Closing.** When an Initiative is achieved (or dropped), write its outcome at the top of its
+  `OVERVIEW.md` and move what lasts **up to the area** — how things work now, decisions that still
+  hold, open gaps. When Research is answered, its conclusion goes up to the folder it served.
+  Nobody should need a finished folder to know how things work today.
+- **Serves the folder above.** A folder that serves the one above narrows it (research for this
+  initiative); it never silently replaces it, and its results must answer that folder’s need.
+- **Templates.** A work folder may follow one of its function’s templates; its stage folders
+  (`10_`, `20_` …) appear only when they have a page. Stages guide; they aren’t gates.
+- **A file existing means something** — no placeholders, no empty stage folders.
+- Every design, architecture or process page says `describes: current` (how it is),
+  `describes: proposed` (what we want) or `describes: partial` (half-done).
 
-**One challenge at a time.** Pick the one that matters most; a conversation is not an interrogation.
-Decisions come up inside other work — when a choice is being made, use the Decision mode wherever
-you are.
+**Functions** — set in Settings → Functions:
 
-**Record types and states** — two separate things. Every row in `DECISIONS.md`, `GAPS.md` and the
-lists, and every page header, says both where it applies:
+- **Leadership** — direction, priorities and cross-functional tradeoffs. Default decider: the CEO. Templates: Strategy cycle (Situation → Objectives → Options → Direction → Follow-through).
+- **Operations** — processes, handoffs, service levels and exceptions. Default decider: the COO. Templates: Process change (Current process → Problem → Redesign → Rollout → Review); Recurring operation (Prepare → Run → Check → Exceptions → Improve).
+- **Finance** — models, forecasts, actuals, controls and funding. Default decider: the CFO. Templates: Forecast (Assumptions → Model → Forecast → Actuals → Variance); Monthly close (Prepare → Reconcile → Review → Close → Report); Financing (Need → Options → Terms → Decision → Close). **Never save:** Bank, card and account numbers; Pay or compensation of named people.
+- **People** — roles, hiring, policies and how people work together. Default decider: the head of People. Templates: Hiring cycle (Need → Role → Sourcing → Interviews → Offer → Onboarding); Policy (Need → Draft → Review → Approve → Communicate). **Never save:** Individual employee records; Salaries, performance reviews and complaints about named people; Health, leave or personal circumstances of anyone.
+- **Product** — problems, users, experience, design and how it is built. Default decider: the product owner. Templates: Product build (Research → Product → Design → Architecture → Implementation); Experiment (Hypothesis → Design → Run → Results → Decision).
+
+A default decider is a default, not an approval: a title alone never makes something decided.
+
+### Doing now
+
+Recognize what the conversation is doing; don’t make anyone pick from a list. Name a shift only
+when it changes what you’ll produce (“We’ve moved from exploring options to choosing one”) —
+not every small turn — and let them correct you. One challenge at a time.
+
+**Explore** — *What could this be?*
+- Listen for: the idea in the person’s own words; possibilities and tensions; which parts are theirs and which the agent suggested.
+- Push back like: “Which part of that is yours, and which did I add?” · “Want to keep this as a possibility, or is it becoming a proposal?”
+- Save: the original idea, in their words; possibilities worth returning to, and objections; how the thinking changed — never as a plan or decision.
+
+**Learn** — *What am I trying to understand?*
+- Listen for: what the person already knows; what resonates; a misconception; a connection to earlier material; the next useful question.
+- Push back like: “What drew you to that?” · “That connects to X — follow that thread?” · “Is that the established view, or your own reading?”
+- Save: what was learned, on the pages it touched; the person’s own ideas as concepts (origin: owner); what to explore next.
+
+**Investigate** — *What are we trying to establish?*
+- Listen for: the question and what the answer is for; “I think…” — an assumption, not evidence; the quality of a source; a contradiction; enough evidence to stop.
+- Push back like: “What would this need to establish for you to decide?” · “That’s an assumption so far — what would make it a finding?” · Inside an initiative: “What does this tell us about it?”
+- Save: findings with confidence and sources; assumptions still untested; what remains unknown.
+
+**Strategize** — *Which direction, and what do we give up?*
+- Listen for: the outcome that matters most; competing goals and constraints; what each path requires giving up.
+- Push back like: “What are we choosing between?” · “What would we stop doing if we went this way?”
+- Save: the chosen direction, rationale and rejected alternatives; assumptions that could change it, and when to revisit; the decisions and plans it leads to.
+
+**Decide** — *What are we choosing, and who chooses?*
+- Listen for: the decision question; options and criteria; positions — who holds each; who has authority here; an actual choice (“okay, let’s do B”).
+- Push back like: “There are two positions here — record it as unresolved?” · “Who makes this call?” · “I’ll record B as decided by you, because X, accepting Y. What would make you revisit it?”
+- Save: a decision: options, positions, decided_by, date, because, tradeoff, revisit_if; or the open decision with its positions — a proposal stays a proposal until the decider chooses.
+
+**Plan** — *What has to happen, in what order?*
+- Listen for: the agreed outcome; workstreams and sequence; dependencies and resources; a constraint that reopens the decision.
+- Push back like: “What must happen first?” · “Who owns this part — have they agreed?” · “This plan needs X we don’t have — back to the decision?”
+- Save: scope, sequence, milestones and dependencies; proposed owners (until they accept); changes to the plan and why.
+
+**Coordinate** — *Who is doing what, and who is waiting on whom?*
+- Listen for: commitments vs suggestions; handoffs; people understanding the work differently.
+- Push back like: “Has X accepted that, or did we assign it?” · “Who needs to know?”
+- Save: commitments — who accepted what, by when; handoff expectations; unresolved disagreements.
+
+**Execute** — *What was authorized, and what happened?*
+- Listen for: what was approved vs what is being done; what exists vs what was intended; an exception that needs a decision; what doing it exposed.
+- Push back like: “Is that the approved change, or a new one that needs a decision?” · “The design and what we built disagree — which is right?”
+- Save: what was done, by whom, when, linked to its decision or plan; deviations and what they revealed; never live task status — that belongs in a task tracker.
+
+**Monitor** — *Is reality moving away from what we expected?*
+- Listen for: the measure and its expected range; a change; normal variation vs a signal.
+- Push back like: “Is that noise, or a signal we act on?” · “What range did we expect?”
+- Save: measure definitions and thresholds; meaningful changes and why they did or didn’t lead to action.
+
+**Review** — *What did we expect, what happened, and what changes?*
+- Listen for: the original expectation; the actual outcome; why they differ.
+- Push back like: “What did we expect when we decided this?” · “Is this a lesson, or a change we’re agreeing to make?”
+- Save: outcomes and variance; corrected assumptions; agreed changes — linked to the original decision or plan.
+
+**Communicate** — *Who needs to understand what?*
+- Listen for: the audience and what they need to know or decide; evidence and tone; questions and objections that come back.
+- Push back like: “Who is this for, and what should they do after reading it?”
+- Save: the approved position and meaningful feedback — not every draft; promised follow-ups.
+
+### Save as
+
+What kind of thing it is and where it stands are two separate fields. Every row in
+`DECISIONS.md`, `GAPS.md` and the lists, and every page header, says both where it applies:
 
 | Type | What it is | Must carry |
 |---|---|---|
 | brainstorm | loose possibilities while thinking out loud | — **never saved as knowledge** |
-| position | someone is actually arguing for this | `held_by:` |
+| proposal | a specific option someone (or an agent) suggests | `proposed_by:` — stays a proposal until the decider chooses |
+| position | someone is arguing for this | `held_by:` |
 | assumption | the work depends on it being true, unproven | what would test it |
 | evidence | something supported outside the conversation | its source (linked) |
 | finding | a conclusion research supports | confidence and the evidence |
-| question | something still to find out | who is asking, why it matters |
-| decision | an authorized choice | `decided_by:`, date, `because:`, `revisit_if:` |
-| outcome | what actually happened | what it changed or revealed |
+| question | something still to find out | why it matters |
+| decision | an authorized choice | `decided_by:` (who actually chose), date, `because:`, `revisit_if:` |
+| commitment | someone accepted responsibility | `owner:` (who accepted — not who was suggested), what, by when |
+| outcome | what actually happened | what it changed or revealed, linked to its decision or plan |
 
 States: `open` · `accepted` · `rejected` · `superseded` (link what replaced it — never delete it).
+Live task status (who is doing what today) belongs in a task tracker, not here.
 
-**Who said it.** Name the person behind every position and decision. “Sam thinks X” and
-“we decided X” are different records — never collapse two positions into one, and never write
-“the team decided” unless they did. Unclear who? Ask.
+**Who said it.** Name the person behind every proposal, position, decision and commitment.
+“Sam thinks X” and “we decided X” are different records — never collapse two positions into
+one, and never write “decided” unless someone with the authority chose it. Unclear? Ask.
 
-**Which record answers which question** — answer from the right one; when records disagree, say
-so and cite both instead of averaging them:
+**Which record answers which question** — when records disagree, say so and cite both:
 
 | Question | Answer from |
 |---|---|
-| What are we building / what is the intent? | `OVERVIEW.md` and `accepted` decisions |
-| Why? | the decision’s `because:` and the research findings |
-| How does it work today? | pages marked `describes: current` |
-| What does someone think? | their positions (`held_by:`) |
+| What are we doing / what is the intent? | the area’s and initiative’s `OVERVIEW.md`, and `accepted` decisions |
+| Why? | the decision’s `because:` and the findings behind it |
+| How does it work today? | pages marked `describes: current`, an operation’s `PROCESS.md` |
+| Who is doing it? | `accepted` commitments |
+| What does someone think? | their proposals and positions |
 | What is still uncertain? | open questions, assumptions and `GAPS.md` |
 
-### Product folders
+**Example**
 
-How the people here work — work this way:
+| Moment | Function / area | Work type | Folder | Doing now | Save as |
+|---|---|---|---|---|---|
+| Canvas discussion | Product / June | Initiative | image-derived canvas | Explore | proposal |
+| Canvas approach chosen | Product / June | Initiative | image-derived canvas | Decide | decision |
+| COO fixes onboarding | Operations / customer onboarding | Operation | onboarding process | Execute | commitment, outcome |
+| CFO checks runway | Finance / planning | Research | runway assumptions | Investigate | finding, assumption |
+| CEO sets direction | Leadership / company strategy | Initiative | next-year priorities | Strategize | proposal, then decision |
 
-> We think out loud together. Brainstorming stays loose until one of us argues for something — then it is that person’s position. Keep who said what; never turn a suggestion into a decision. When we stop, save it: what was decided and why, what changed, what is still open.
-
-The order of thinking: *Why does this exist? → What do we know? → What are we designing? → How
-will it work? → What exists? → What is unresolved?*
-
-```
-product/
-  OVERVIEW.md          ← the problem, who has it, the intent, in/out of scope, where it stands
-  DECISIONS.md         ← one entry per decision (open or accepted), newest first
-  GAPS.md              ← | Gap | Type | Owner | Blocking? | Where it came up | State |
-  10_RESEARCH/         ← appears with its first page
-  20_PRODUCT/          ← appears with its first page
-  30_DESIGN/           ← appears with its first page
-  40_ARCHITECTURE/     ← appears with its first page
-  50_IMPLEMENTATION/   ← appears with its first page
-  90_TRACKING/         ← OPEN_QUESTIONS.md, NEXT_UP.md
-```
-
-- Gap types: product · knowledge · technical · dependency · open question. A gap gets its own
-  page only when it needs one.
-- Every design, architecture and implementation page says `describes: current` (how it is),
-  `describes: proposed` (what we want) or `describes: partial` (half-built).
-- A `DECISIONS.md` entry:
-
-```
-## 2026-10 — Image sets the hue; tokens own the rest
-state: accepted · decided_by: Sam, Alex · because: the image had too much control
-options: image sets all colors · image sets hue only · fixed palette
-positions: (who argued what) · tradeoff: less variety · revisit_if: designers find it flat
-replaces: (earlier decision, if any)
-```
-
-- Implementation knowledge belongs here (what we built, what failed, what it exposed); task
-  status, owners and due dates do not — they go stale.
-- Folders of the team’s own are numbered after the stages; note them in the folder’s `AGENTS.md`.
-
-### Research folders
-
-- `QUESTION.md` first: what we are trying to establish, what the answer is for, and what would be
-  enough to stop.
-- `FINDINGS.md`: each finding with its confidence (high / medium / low) and the evidence behind it;
-  what was contradicted; what remains unknown.
-- A page per substantive source or line of evidence, in the kinds folders (`19_RESOURCES/` …).
-- Lists in `90_TRACKING/`: `OPEN_QUESTIONS.md` · `SOURCES_TO_READ.md`.
-- Inside a product folder, the findings must say what they mean for that product.
-
-Contexts: Study, Research, Product — set in MyRepo (each folder’s ⚙; the default in Settings → Ways of working).
+Work types: Study, Research, Initiative, Operation — set in MyRepo (each folder’s ⚙; the default in Settings → Ways of working).
 <!-- myrepo:end modes -->
 
 <!-- myrepo:begin working -->
 ## Working in a topic
 
-How a **Study** folder works (Research and Product: §Folder contexts and conversation modes).
+How a **Study** folder works (Research, Initiative, Operation and areas: §Folder contexts and conversation modes).
 Every study topic works the same way, so the owner can ask the same things anywhere.
 
 **Open a topic** — read, in order: its `AGENTS.md` (what it is for and which kinds it
