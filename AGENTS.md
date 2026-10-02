@@ -271,6 +271,27 @@ types); each kind suggests a starting set:
 - **When it ends** — when Research is answered or an Initiative reaches its outcome, move what
   lasts up to the folder it served; the finished folder keeps its history.
 
+**Research folders**
+
+- When it isn’t clear, ask: “What are we trying to find out, and what is the answer for?”
+- Every Research folder keeps: `QUESTION.md` (the question, what the answer is for, and when we know enough to stop); `FINDINGS.md` (each finding, how sure we are, and its sources).
+- How I research — work this way: I start by describing what I’m after, roughly. Show me things in the ballpark, then help me pin down exactly what I’m trying to find. Once that’s clear, we go into the specifics. Use diagrams and maps wherever they help — lots of them. Keep what’s known apart from what’s assumed, and say how sure you are.
+- Progress, kept apart from the work in `90_TRACKING/`: `OPEN_QUESTIONS.md` · `SOURCES_TO_READ.md` · `ANSWERED.md`.
+
+**Initiative folders**
+
+- When it isn’t clear, ask: “What outcome are we after, and how will we know it’s done?”
+- Every Initiative folder keeps: `OVERVIEW.md` (the outcome, why, what’s in and out, and when it’s done); `DECISIONS.md` (what was chosen, who chose, why, and what would change it); `GAPS.md` (what’s still missing or unresolved).
+- How I run an initiative — work this way: Think out loud — ideas stay loose until someone argues for one. A suggestion isn’t a decision until someone chooses it. When we stop, save what was decided and why, who agreed to do what, and what’s still open.
+- Progress, kept apart from the work in `90_TRACKING/`: `OPEN_QUESTIONS.md` · `NEXT_UP.md` · `DONE.md`.
+
+**Operation folders**
+
+- When it isn’t clear, ask: “What repeats, how often, and who handles it?”
+- Every Operation folder keeps: `PROCESS.md` (how it runs, how often, and who does what); `DECISIONS.md` (changes to the process — who decided and why).
+- How I run an operation — work this way: Keep the process current. Each time it runs, note only what was unusual and who handled it. The process changes only when someone decides to change it.
+- Progress, kept apart from the work in `90_TRACKING/`: `EXCEPTIONS_TO_REVIEW.md` · `IMPROVEMENTS_TO_TRY.md`.
+
 Set in MyRepo (repo ⚙ → Studying → choose the kind of work).
 <!-- myrepo:end kinds-of-work -->
 

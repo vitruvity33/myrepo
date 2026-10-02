@@ -275,6 +275,84 @@
         "Incidents",
         "Improvements"
       ]
+    },
+    "other": {
+      "research": {
+        "ask": true,
+        "pages": [
+          {
+            "file": "QUESTION.md",
+            "what": "the question, what the answer is for, and when we know enough to stop",
+            "on": true
+          },
+          {
+            "file": "FINDINGS.md",
+            "what": "each finding, how sure we are, and its sources",
+            "on": true
+          }
+        ],
+        "how": "I start by describing what I’m after, roughly. Show me things in the ballpark, then help me pin down exactly what I’m trying to find. Once that’s clear, we go into the specifics. Use diagrams and maps wherever they help — lots of them. Keep what’s known apart from what’s assumed, and say how sure you are.",
+        "tracking": {
+          "on": true,
+          "lists": [
+            "Open questions",
+            "Sources to read",
+            "Answered"
+          ]
+        }
+      },
+      "initiative": {
+        "ask": true,
+        "pages": [
+          {
+            "file": "OVERVIEW.md",
+            "what": "the outcome, why, what’s in and out, and when it’s done",
+            "on": true
+          },
+          {
+            "file": "DECISIONS.md",
+            "what": "what was chosen, who chose, why, and what would change it",
+            "on": true
+          },
+          {
+            "file": "GAPS.md",
+            "what": "what’s still missing or unresolved",
+            "on": true
+          }
+        ],
+        "how": "Think out loud — ideas stay loose until someone argues for one. A suggestion isn’t a decision until someone chooses it. When we stop, save what was decided and why, who agreed to do what, and what’s still open.",
+        "tracking": {
+          "on": true,
+          "lists": [
+            "Open questions",
+            "Next up",
+            "Done"
+          ]
+        }
+      },
+      "operation": {
+        "ask": true,
+        "pages": [
+          {
+            "file": "PROCESS.md",
+            "what": "how it runs, how often, and who does what",
+            "on": true
+          },
+          {
+            "file": "DECISIONS.md",
+            "what": "changes to the process — who decided and why",
+            "on": true
+          }
+        ],
+        "how": "Keep the process current. Each time it runs, note only what was unusual and who handled it. The process changes only when someone decides to change it.",
+        "tracking": {
+          "on": true,
+          "lists": [
+            "Exceptions to review",
+            "Improvements to try"
+          ]
+        }
+      }
     }
   },
   "classifications": [
