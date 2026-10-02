@@ -236,43 +236,32 @@
     },
     "suggested": {
       "research": [
-        "Concepts",
-        "Resources",
         "Sources",
         "Evidence",
-        "Interviews",
         "Data",
-        "Experiments",
-        "Results"
+        "Experiments"
+      ],
+      "idea": [
+        "Concepts",
+        "Options",
+        "Resources"
+      ],
+      "decide": [
+        "Options",
+        "Evidence",
+        "Sources"
       ],
       "initiative": [
-        "Systems",
-        "Experiments",
-        "Results",
         "Options",
         "Plans",
         "Workstreams",
-        "Timeline",
-        "Responsibilities",
-        "Dependencies",
-        "Research",
-        "Design",
-        "Build",
-        "Launch",
-        "Review",
-        "Measures"
+        "Results"
       ],
       "operation": [
-        "Practices",
-        "Systems",
-        "Responsibilities",
-        "Dependencies",
-        "Schedule",
         "Processes",
         "Checklists",
         "Runs",
         "Measures",
-        "Incidents",
         "Improvements"
       ]
     },
@@ -282,7 +271,7 @@
         "pages": [
           {
             "file": "QUESTION.md",
-            "what": "the question, what the answer is for, and when we know enough to stop",
+            "what": "the question you’re actually trying to answer, what it’s for, and when you’ll know enough",
             "on": true
           },
           {
@@ -291,67 +280,108 @@
             "on": true
           }
         ],
-        "how": "I start by describing what I’m after, roughly. Show me things in the ballpark, then help me pin down exactly what I’m trying to find. Once that’s clear, we go into the specifics. Use diagrams and maps wherever they help — lots of them. Keep what’s known apart from what’s assumed, and say how sure you are.",
+        "how": "I may start with an approximate description, examples, or something that caught my attention. Help me locate the question I’m actually trying to answer. Begin broad enough to map the territory, then follow the strongest leads into specifics. Show me diagrams or maps when they make the relationships easier to see. Keep sources, findings, assumptions and disagreements distinct. Help me recognize when I know enough to use the answer, and what remains uncertain.",
         "tracking": {
           "on": true,
           "lists": [
-            "Open questions",
-            "Sources to read",
+            "Leads to follow",
+            "Sources to examine",
+            "Findings to check",
             "Answered"
           ]
-        }
+        },
+        "closeWhen": "the answer is useful enough for its purpose, or what remains uncertain is clearly stated"
+      },
+      "idea": {
+        "ask": true,
+        "pages": [
+          {
+            "file": "IDEA.md",
+            "what": "the idea in your own words, and how it has changed",
+            "on": true
+          }
+        ],
+        "how": "I may start with a hunch, an image or half a sentence. Help me say it in my own words, then show me what it could become — possibilities, tensions, objections. Keep my idea apart from what you add. Don’t turn it into a plan before I’m ready; when a direction appears, help me decide whether to research it, decide on it or start it.",
+        "tracking": {
+          "on": true,
+          "lists": [
+            "Possibilities",
+            "Objections",
+            "Questions that would sharpen it"
+          ]
+        },
+        "closeWhen": "you choose a direction, set it aside, or turn it into other work"
+      },
+      "decide": {
+        "ask": true,
+        "pages": [
+          {
+            "file": "DECISION.md",
+            "what": "the choice, the options, what matters most, who decides — and the decision, why, what it gives up and what would make you revisit it",
+            "on": true
+          }
+        ],
+        "how": "I usually start with the choice in front of me and a gut feeling. Help me lay out the options and what matters most, find what I don’t know yet, and hear the views that differ from mine. Keep what’s been proposed apart from what’s been decided. When I choose, record the reason, what I’m giving up, and what would make me revisit it.",
+        "tracking": {
+          "on": true,
+          "lists": [
+            "Options to compare",
+            "Questions to answer first",
+            "Decided"
+          ]
+        },
+        "closeWhen": "a choice is made, deferred, or rejected with a reason"
       },
       "initiative": {
         "ask": true,
         "pages": [
           {
             "file": "OVERVIEW.md",
-            "what": "the outcome, why, what’s in and out, and when it’s done",
+            "what": "what you’re trying to change, why, what’s in and out, and how you’ll know it’s done",
             "on": true
           },
           {
             "file": "DECISIONS.md",
             "what": "what was chosen, who chose, why, and what would change it",
             "on": true
-          },
-          {
-            "file": "GAPS.md",
-            "what": "what’s still missing or unresolved",
-            "on": true
           }
         ],
-        "how": "First I look into it on my own. Then I start asking people — what they need, what’s been tried, what worries them. Once I have an idea, I write down the outcome and how we’ll know it’s done, and share it for push-back. Then we work out who does what, in what order, by when — and start. Along the way, keep what’s been decided apart from what’s only been suggested, and note who agreed to what. Diagrams of how the pieces fit help.",
+        "how": "I may start with a problem, a possibility, a request, or an outcome I want. Help me understand what is happening and who it affects. Bring in other perspectives where they matter, develop possible approaches, and help me choose what to try. Keep ideas and proposals separate from decisions. Record who actually accepted a commitment, what we did, what happened, and what still needs attention. Start wherever the work really is; I may need to revisit an earlier choice.",
         "tracking": {
           "on": true,
           "lists": [
-            "Open questions",
+            "Questions to resolve",
+            "Decisions needed",
             "Next up",
-            "Done"
+            "Outcomes"
           ]
-        }
+        },
+        "closeWhen": "the outcome is achieved, abandoned, or handed into recurring work"
       },
       "operation": {
         "ask": true,
         "pages": [
           {
             "file": "PROCESS.md",
-            "what": "how it runs, how often, and who does what",
+            "what": "what normally happens, who handles each part, and what a good run looks like",
             "on": true
           },
           {
-            "file": "DECISIONS.md",
-            "what": "changes to the process — who decided and why",
+            "file": "MEASURES.md",
+            "what": "what is watched, and what counts as normal",
             "on": true
           }
         ],
-        "how": "I start by writing down how it runs today, step by step — who does what, how often, and what it depends on. Each time it runs, I note only what was unusual and how it was handled. When something keeps going wrong, we look at why and decide whether to change the process. Checklists and flow diagrams help.",
+        "how": "Help me describe what normally happens, who handles each part, and what a good result looks like. As it repeats, focus on meaningful exceptions and patterns rather than writing up every ordinary run. When we consider changing the process, show the reason, the alternatives, who decides, and how we will tell whether the change helped. Keep the current process aligned with decisions that were actually made.",
         "tracking": {
           "on": true,
           "lists": [
             "Exceptions to review",
-            "Improvements to try"
+            "Improvements to try",
+            "Changes decided"
           ]
-        }
+        },
+        "closeWhen": "the recurring work is retired or replaced"
       }
     }
   },

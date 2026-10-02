@@ -254,12 +254,14 @@ A folder holds one kind of work. **Study** works as §Working in a topic says. T
 draw from the same menu of folder types (`02_REFERENCES/AREA_TEMPLATE/README.md` §Folder
 types); each kind suggests a starting set:
 
-| Kind | For | Ends | Suggested folder types |
+| Kind | For | Close it when | Suggested folder types |
 |---|---|---|---|
-| Study | understanding a subject over time | never — understanding keeps growing | `10_PEOPLE/` · `11_GROUPS/` · `12_PERIODS/` · `13_WORKS/` · `14_PLACES/` · `15_CONCEPTS/` · `16_PRACTICES/` · `17_SYSTEMS/` · `18_PATTERNS/` · `19_RESOURCES/` |
-| Research | answering a question well enough to act on it | when the question is answered; the answer moves up to the folder it served | `15_CONCEPTS/` · `19_RESOURCES/` · `30_SOURCES/` · `31_EVIDENCE/` · `32_INTERVIEWS/` · `33_DATA/` · `34_EXPERIMENTS/` · `35_RESULTS/` |
-| Initiative | reaching an outcome | when the outcome is reached; what lasts moves up to the folder above | `17_SYSTEMS/` · `34_EXPERIMENTS/` · `35_RESULTS/` · `36_OPTIONS/` · `37_PLANS/` · `38_WORKSTREAMS/` · `39_TIMELINE/` · `40_RESPONSIBILITIES/` · `41_DEPENDENCIES/` · `43_RESEARCH/` · `44_DESIGN/` · `45_BUILD/` · `46_LAUNCH/` · `47_REVIEW/` · `51_MEASURES/` |
-| Operation | running something that repeats | never — it repeats | `16_PRACTICES/` · `17_SYSTEMS/` · `40_RESPONSIBILITIES/` · `41_DEPENDENCIES/` · `42_SCHEDULE/` · `48_PROCESSES/` · `49_CHECKLISTS/` · `50_RUNS/` · `51_MEASURES/` · `52_INCIDENTS/` · `53_IMPROVEMENTS/` |
+| Study | building understanding over time | when you no longer want to keep it up | `10_PEOPLE/` · `11_GROUPS/` · `12_PERIODS/` · `13_WORKS/` · `14_PLACES/` · `15_CONCEPTS/` · `16_PRACTICES/` · `17_SYSTEMS/` · `18_PATTERNS/` · `19_RESOURCES/` |
+| Research | answering a particular question | the answer is useful enough for its purpose, or what remains uncertain is clearly stated | `30_SOURCES/` · `31_EVIDENCE/` · `33_DATA/` · `34_EXPERIMENTS/` |
+| Idea | developing a thought before you know the question or goal | you choose a direction, set it aside, or turn it into other work | `15_CONCEPTS/` · `19_RESOURCES/` · `36_OPTIONS/` |
+| Decide | choosing between possible actions | a choice is made, deferred, or rejected with a reason | `30_SOURCES/` · `31_EVIDENCE/` · `36_OPTIONS/` |
+| Initiative | making a change or achieving an outcome | the outcome is achieved, abandoned, or handed into recurring work | `35_RESULTS/` · `36_OPTIONS/` · `37_PLANS/` · `38_WORKSTREAMS/` |
+| Operation | keeping recurring work running | the recurring work is retired or replaced | `48_PROCESSES/` · `49_CHECKLISTS/` · `50_RUNS/` · `51_MEASURES/` · `53_IMPROVEMENTS/` |
 
 - **Which kind a folder is** — its `AGENTS.md` says so. If it doesn’t, ask before creating
   folders in it.
@@ -268,29 +270,48 @@ types); each kind suggests a starting set:
 - **No empty folders** — a type’s folder appears with its first page. Turning a type off never
   deletes or moves anything already there.
 - **Responsibilities** record only what someone has agreed to — a suggested owner is not one.
-- **When it ends** — when Research is answered or an Initiative reaches its outcome, move what
-  lasts up to the folder it served; the finished folder keeps its history.
+- **When a folder closes** (each kind says when, below), move what lasts up to the folder it
+  served; the finished folder keeps its history.
 
 **Research folders**
 
-- When it isn’t clear, ask: “What are we trying to find out, and what is the answer for?”
-- Every Research folder keeps: `QUESTION.md` (the question, what the answer is for, and when we know enough to stop); `FINDINGS.md` (each finding, how sure we are, and its sources).
-- How I research — work this way: I start by describing what I’m after, roughly. Show me things in the ballpark, then help me pin down exactly what I’m trying to find. Once that’s clear, we go into the specifics. Use diagrams and maps wherever they help — lots of them. Keep what’s known apart from what’s assumed, and say how sure you are.
-- Progress, kept apart from the work in `90_TRACKING/`: `OPEN_QUESTIONS.md` · `SOURCES_TO_READ.md` · `ANSWERED.md`.
+- When it isn’t clear, ask: “What are you looking for so far, and what would finding it help you do?”
+- Every Research folder keeps: `QUESTION.md` (the question you’re actually trying to answer, what it’s for, and when you’ll know enough); `FINDINGS.md` (each finding, how sure we are, and its sources).
+- How I research — work this way: I may start with an approximate description, examples, or something that caught my attention. Help me locate the question I’m actually trying to answer. Begin broad enough to map the territory, then follow the strongest leads into specifics. Show me diagrams or maps when they make the relationships easier to see. Keep sources, findings, assumptions and disagreements distinct. Help me recognize when I know enough to use the answer, and what remains uncertain.
+- Close it when the answer is useful enough for its purpose, or what remains uncertain is clearly stated.
+- Progress, kept apart from the work in `90_TRACKING/`: `LEADS_TO_FOLLOW.md` · `SOURCES_TO_EXAMINE.md` · `FINDINGS_TO_CHECK.md` · `ANSWERED.md`.
+
+**Idea folders**
+
+- When it isn’t clear, ask: “What’s the thought, and what could it become?”
+- Every Idea folder keeps: `IDEA.md` (the idea in your own words, and how it has changed).
+- How I develop an idea — work this way: I may start with a hunch, an image or half a sentence. Help me say it in my own words, then show me what it could become — possibilities, tensions, objections. Keep my idea apart from what you add. Don’t turn it into a plan before I’m ready; when a direction appears, help me decide whether to research it, decide on it or start it.
+- Close it when you choose a direction, set it aside, or turn it into other work.
+- Progress, kept apart from the work in `90_TRACKING/`: `POSSIBILITIES.md` · `OBJECTIONS.md` · `QUESTIONS_THAT_WOULD_SHARPEN_IT.md`.
+
+**Decide folders**
+
+- When it isn’t clear, ask: “What are you choosing between, and by when?”
+- Every Decide folder keeps: `DECISION.md` (the choice, the options, what matters most, who decides — and the decision, why, what it gives up and what would make you revisit it).
+- How I make a decision — work this way: I usually start with the choice in front of me and a gut feeling. Help me lay out the options and what matters most, find what I don’t know yet, and hear the views that differ from mine. Keep what’s been proposed apart from what’s been decided. When I choose, record the reason, what I’m giving up, and what would make me revisit it.
+- Close it when a choice is made, deferred, or rejected with a reason.
+- Progress, kept apart from the work in `90_TRACKING/`: `OPTIONS_TO_COMPARE.md` · `QUESTIONS_TO_ANSWER_FIRST.md` · `DECIDED.md`.
 
 **Initiative folders**
 
-- When it isn’t clear, ask: “What outcome are we after, and how will we know it’s done?”
-- Every Initiative folder keeps: `OVERVIEW.md` (the outcome, why, what’s in and out, and when it’s done); `DECISIONS.md` (what was chosen, who chose, why, and what would change it); `GAPS.md` (what’s still missing or unresolved).
-- How I run an initiative — work this way: First I look into it on my own. Then I start asking people — what they need, what’s been tried, what worries them. Once I have an idea, I write down the outcome and how we’ll know it’s done, and share it for push-back. Then we work out who does what, in what order, by when — and start. Along the way, keep what’s been decided apart from what’s only been suggested, and note who agreed to what. Diagrams of how the pieces fit help.
-- Progress, kept apart from the work in `90_TRACKING/`: `OPEN_QUESTIONS.md` · `NEXT_UP.md` · `DONE.md`.
+- When it isn’t clear, ask: “What are you trying to change or make happen, even if the outcome is still taking shape?”
+- Every Initiative folder keeps: `OVERVIEW.md` (what you’re trying to change, why, what’s in and out, and how you’ll know it’s done); `DECISIONS.md` (what was chosen, who chose, why, and what would change it).
+- How I move an initiative forward — work this way: I may start with a problem, a possibility, a request, or an outcome I want. Help me understand what is happening and who it affects. Bring in other perspectives where they matter, develop possible approaches, and help me choose what to try. Keep ideas and proposals separate from decisions. Record who actually accepted a commitment, what we did, what happened, and what still needs attention. Start wherever the work really is; I may need to revisit an earlier choice.
+- Close it when the outcome is achieved, abandoned, or handed into recurring work.
+- Progress, kept apart from the work in `90_TRACKING/`: `QUESTIONS_TO_RESOLVE.md` · `DECISIONS_NEEDED.md` · `NEXT_UP.md` · `OUTCOMES.md`.
 
 **Operation folders**
 
-- When it isn’t clear, ask: “What repeats, how often, and who handles it?”
-- Every Operation folder keeps: `PROCESS.md` (how it runs, how often, and who does what); `DECISIONS.md` (changes to the process — who decided and why).
-- How I run an operation — work this way: I start by writing down how it runs today, step by step — who does what, how often, and what it depends on. Each time it runs, I note only what was unusual and how it was handled. When something keeps going wrong, we look at why and decide whether to change the process. Checklists and flow diagrams help.
-- Progress, kept apart from the work in `90_TRACKING/`: `EXCEPTIONS_TO_REVIEW.md` · `IMPROVEMENTS_TO_TRY.md`.
+- When it isn’t clear, ask: “What happens repeatedly, and what should a good run look like?”
+- Every Operation folder keeps: `PROCESS.md` (what normally happens, who handles each part, and what a good run looks like); `MEASURES.md` (what is watched, and what counts as normal).
+- How I run an operation — work this way: Help me describe what normally happens, who handles each part, and what a good result looks like. As it repeats, focus on meaningful exceptions and patterns rather than writing up every ordinary run. When we consider changing the process, show the reason, the alternatives, who decides, and how we will tell whether the change helped. Keep the current process aligned with decisions that were actually made.
+- Close it when the recurring work is retired or replaced.
+- Progress, kept apart from the work in `90_TRACKING/`: `EXCEPTIONS_TO_REVIEW.md` · `IMPROVEMENTS_TO_TRY.md` · `CHANGES_DECIDED.md`.
 
 Set in MyRepo (repo ⚙ → Studying → choose the kind of work).
 <!-- myrepo:end kinds-of-work -->
