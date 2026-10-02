@@ -47,20 +47,20 @@ everything under it.
 - **Status:** active
 ```
 
+<!-- myrepo:begin topic-layouts -->
 ## Topic layouts
 
 A topic (a sub-area for one subject, practice or field) is laid out so a person
 can browse it. First, which kind it is — tell from how the owner talks, or ask:
 
-- **Study topic** — learned over time ("I want to learn…"). Gets the two files
-  below, then a shape.
+- **Study topic** — learned over time ("I want to learn…"). Gets the files below, then a shape.
 - **Reference topic** — kept to look up and build with ("save this, I'll need
   it"). Gets the Reference shape and no study tracking; what matters is finding
   things fast and the trust label on each record (`evidence` with a source vs
   `analysis`). It becomes a study topic when the owner starts studying it.
 
 Topics differ, so the layout is chosen per topic, from a short menu, and written
-into the topic's `AGENTS.md` §Layout.
+into the topic's `AGENTS.md` §Layout. The menu is set in MyRepo (repo ⚙ → Studying).
 
 **In every study topic:**
 
@@ -77,7 +77,7 @@ into the topic's `AGENTS.md` §Layout.
 | Concepts and practice | philosophies, internal arts, awareness | `CONCEPTS.md` · `PRACTICES.md` · `PEOPLE.md` (teachers, lineages) |
 | Progression | a skill: stretching, a language, an instrument | `FOUNDATIONS.md` · `TECHNIQUES.md` (in study order, each with a level, basic → advanced) |
 | Method | a system that makes claims: a therapy, a framework | `METHODS.md` · `CONCEPTS.md` (incl. how to judge it) · `PEOPLE.md` |
-| Reference | knowledge kept to look up: a technology, a field you build in | `CONCEPTS.md` · `SYSTEMS.md` (products, tools, implementations) · `PATTERNS.md` (reusable designs) — content in `01_RECORDS/` |
+| Reference | knowledge kept to look up: a technology, a field you build in | `CONCEPTS.md` · `SYSTEMS.md` (products, tools, implementations) · `PATTERNS.md` (reusable designs) |
 | Its own | anything else | whatever fits — written down in the topic's `AGENTS.md` |
 
 **How to choose:** when a topic is created — or once it holds a few files and
@@ -90,10 +90,11 @@ prefix (`ai-infra-chats/`, `ai-infra-dbs/`). Name a topic after what it is about
 not where the material came from.
 
 **Start flat.** Each kind is one index file (a table) while the topic is small.
-Give it a folder (`techniques/`, `people/`) only once several entries need their
+Give it a folder (`techniques/`, `people/`) once 3 or more entries need their
 own pages; the index then links to them. Levels, favorites and queues are
 fields and views, not folders — a technique that proves harder changes its
 `level:`, it doesn't move.
+<!-- myrepo:end topic-layouts -->
 
 ## Numbering
 

@@ -26,20 +26,22 @@ Any tool must be able to answer these from the front-matter alone.
 
 ## `context_type` — function of the statement, and where it files
 
+<!-- myrepo:begin types -->
 | `context_type` | Use when | File in |
 |---|---|---|
-| `decision` | A decision was made, with the evidence behind it | `01_RECORDS/06_DECISIONS/` |
-| `outcome` | What happened after a decision | `01_RECORDS/06_DECISIONS/` |
-| `assumption` | Taken as true, not yet tested | `01_RECORDS/02_QUESTIONS/` |
-| `known_issue` | A confirmed, stable problem or limitation | `01_RECORDS/02_QUESTIONS/` |
-| `methodology` | How something should be done or analyzed | `01_RECORDS/03_REFERENCES/` |
-| `definition` | What a term means | `01_RECORDS/03_REFERENCES/` |
-| `evidence` | A fact from a source — a spec sheet, a measurement, a document, a test result. `source_refs:` is required; no source means it is an `assumption` | `01_RECORDS/03_REFERENCES/` |
-| `dispute` | Someone questions a conclusion, number or record — still open ("are you sure?" counts) | area `05_PUSH_BACK/` · cross-area: `90_PUSH_BACK/` |
-| `correction` | An earlier statement was wrong; this replaces it. Fill `supersedes:` and mark the old record `status: superseded` + `superseded_by:` — the old one is no longer cited | area `05_PUSH_BACK/` · cross-area: `90_PUSH_BACK/` |
-| `analysis` | An interpretation or reasoning — not a sourced fact. List what it rests on in `references:` / `source_refs:`; never file it as a reference | `01_RECORDS/04_MODELS/` |
-| `preference` | How the owner wants output produced | `02_REFERENCES/preferences/` (scope `global`/`artifact_type`) or the area (scope `area`/`project`) |
+| `decision` | Decision — A decision was made, with the evidence behind it | `01_RECORDS/06_DECISIONS/` |
+| `outcome` | Outcome — What happened after a decision | `01_RECORDS/06_DECISIONS/` |
+| `assumption` | Assumption — Taken as true, not yet tested | `01_RECORDS/02_QUESTIONS/` |
+| `known_issue` | Known issue — A confirmed, stable problem or limitation | `01_RECORDS/02_QUESTIONS/` |
+| `methodology` | Method / how-to — How something should be done or analyzed | `01_RECORDS/03_REFERENCES/` |
+| `definition` | Definition — What a term means | `01_RECORDS/03_REFERENCES/` |
+| `evidence` | Fact from a source — A fact from a source — a spec sheet, a measurement, a document, a test result; without a source it is an assumption | `01_RECORDS/03_REFERENCES/` |
+| `dispute` | Question / dispute — Someone questions a conclusion, number or record — still open ("are you sure?" counts) | area `05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
+| `correction` | Correction — An earlier statement was wrong; this replaces it. Fill supersedes: and mark the old record superseded | area `05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
+| `analysis` | Interpretation — An interpretation or reasoning — not a sourced fact; list what it rests on in references: / source_refs: | `01_RECORDS/04_MODELS/` |
+| `preference` | Preference — How the owner wants output produced | `02_REFERENCES/preferences/` (global/artifact_type) or the area (area/project scope) |
 | *(unsure)* | Unsorted capture | `00_INBOX/` |
+<!-- myrepo:end types -->
 
 **The header is the truth; the folder must agree.** A record's slot follows its
 `context_type` (inbox and archive take any). `scripts/check_new_folder_guidance.py`

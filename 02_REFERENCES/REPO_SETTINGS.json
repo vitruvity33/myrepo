@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "rules": {
+    "askWhere": true,
+    "showPlan": true,
+    "sayWhy": true,
+    "draftOnly": true,
+    "checkBeforeSwitching": true,
+    "voice": ""
+  },
+  "organizing": {
+    "numberTopLevel": true,
+    "askTopLevel": true,
+    "groupAt": 3
+  },
+  "studying": {
+    "askKind": true,
+    "resources": {
+      "on": true,
+      "name": "Resources"
+    },
+    "tracking": {
+      "on": true,
+      "name": "Study tracking"
+    },
+    "shapes": [
+      {
+        "name": "Things in the world",
+        "fits": "architecture, anthropology, history",
+        "files": [
+          "PEOPLE.md",
+          "PLACES.md",
+          "WORKS.md",
+          "IDEAS.md"
+        ]
+      },
+      {
+        "name": "Concepts and practice",
+        "fits": "philosophies, internal arts, awareness",
+        "files": [
+          "CONCEPTS.md",
+          "PRACTICES.md",
+          "PEOPLE.md (teachers, lineages)"
+        ]
+      },
+      {
+        "name": "Progression",
+        "fits": "a skill: stretching, a language, an instrument",
+        "files": [
+          "FOUNDATIONS.md",
+          "TECHNIQUES.md (in study order, each with a level, basic → advanced)"
+        ]
+      },
+      {
+        "name": "Method",
+        "fits": "a system that makes claims: a therapy, a framework",
+        "files": [
+          "METHODS.md",
+          "CONCEPTS.md (incl. how to judge it)",
+          "PEOPLE.md"
+        ]
+      },
+      {
+        "name": "Reference",
+        "fits": "knowledge kept to look up: a technology, a field you build in",
+        "files": [
+          "CONCEPTS.md",
+          "SYSTEMS.md (products, tools, implementations)",
+          "PATTERNS.md (reusable designs)"
+        ]
+      }
+    ],
+    "splitAt": 3
+  },
+  "classifications": [
+    {
+      "type": "decision",
+      "label": "Decision",
+      "slot": "06_DECISIONS",
+      "needsSource": false,
+      "note": "A decision was made, with the evidence behind it"
+    },
+    {
+      "type": "outcome",
+      "label": "Outcome",
+      "slot": "06_DECISIONS",
+      "needsSource": false,
+      "note": "What happened after a decision"
+    },
+    {
+      "type": "assumption",
+      "label": "Assumption",
+      "slot": "02_QUESTIONS",
+      "needsSource": false,
+      "note": "Taken as true, not yet tested"
+    },
+    {
+      "type": "known_issue",
+      "label": "Known issue",
+      "slot": "02_QUESTIONS",
+      "needsSource": false,
+      "note": "A confirmed, stable problem or limitation"
+    },
+    {
+      "type": "methodology",
+      "label": "Method / how-to",
+      "slot": "03_REFERENCES",
+      "needsSource": false,
+      "note": "How something should be done or analyzed"
+    },
+    {
+      "type": "definition",
+      "label": "Definition",
+      "slot": "03_REFERENCES",
+      "needsSource": false,
+      "note": "What a term means"
+    },
+    {
+      "type": "evidence",
+      "label": "Fact from a source",
+      "slot": "03_REFERENCES",
+      "needsSource": true,
+      "note": "A fact from a source — a spec sheet, a measurement, a document, a test result; without a source it is an assumption"
+    },
+    {
+      "type": "dispute",
+      "label": "Question / dispute",
+      "slot": "05_PUSH_BACK",
+      "needsSource": false,
+      "note": "Someone questions a conclusion, number or record — still open (\"are you sure?\" counts)"
+    },
+    {
+      "type": "correction",
+      "label": "Correction",
+      "slot": "05_PUSH_BACK",
+      "needsSource": false,
+      "note": "An earlier statement was wrong; this replaces it. Fill supersedes: and mark the old record superseded"
+    },
+    {
+      "type": "analysis",
+      "label": "Interpretation",
+      "slot": "04_MODELS",
+      "needsSource": false,
+      "note": "An interpretation or reasoning — not a sourced fact; list what it rests on in references: / source_refs:"
+    },
+    {
+      "type": "preference",
+      "label": "Preference",
+      "slot": "PREFERENCES",
+      "needsSource": false,
+      "note": "How the owner wants output produced"
+    }
+  ],
+  "privacy": {
+    "neverSave": [
+      "Passwords, API keys and other secrets",
+      "Personal medical records — diagnoses, test results, treatment",
+      "Financial account details"
+    ]
+  }
+}

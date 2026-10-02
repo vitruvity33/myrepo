@@ -19,10 +19,13 @@ Nothing here is hardcoded to this repo's areas — they are read from the tree:
 4. A record's folder agrees with its header. For a record added or changed in
    the push, context_type decides the slot (root AGENTS.md §Routing): an
    analysis in 03_REFERENCES fails. Inbox, goals and archive take anything.
-   `evidence` must name its source in source_refs.
+   `evidence` must name its source in source_refs. The kinds and where each goes
+   come from 02_REFERENCES/REPO_SETTINGS.json (set in MyRepo → Classifications)
+   when the repo has it; the template's defaults otherwise.
 """
 
 import argparse
+import json
 import re
 import subprocess
 import sys
@@ -44,7 +47,9 @@ ROUTES = {
     "analysis": "04_MODELS",
     "dispute": "PUSH_BACK", "correction": "PUSH_BACK",
 }
+NEEDS_SOURCE = {"evidence"}
 ROUTED_SLOTS = {"02_QUESTIONS", "03_REFERENCES", "04_MODELS", "06_DECISIONS"}
+SETTINGS = "02_REFERENCES/REPO_SETTINGS.json"
 PUSH_BACK = re.compile(r"^\d+_PUSH_BACK$", re.IGNORECASE)
 
 
@@ -153,7 +158,29 @@ def slot_of(path):
     return None
 
 
+def load_routes():
+    """The repo's own kinds from its settings file — or the defaults above."""
+    try:
+        settings = json.loads(git("show", f"HEAD:{SETTINGS}"))
+        kinds = settings["classifications"]
+    except (subprocess.CalledProcessError, ValueError, KeyError, TypeError):
+        return ROUTES, NEEDS_SOURCE
+    routes, sourced = {}, set()
+    for kind in kinds:
+        if not isinstance(kind, dict) or not isinstance(kind.get("type"), str):
+            continue
+        slot = kind.get("slot")
+        if slot == "05_PUSH_BACK":
+            routes[kind["type"]] = "PUSH_BACK"
+        elif slot in ROUTED_SLOTS:
+            routes[kind["type"]] = slot
+        if kind.get("needsSource") is True:
+            sourced.add(kind["type"])
+    return routes, sourced
+
+
 def routing_problems(changed):
+    routes, sourced = load_routes()
     problems = []
     for path in changed:
         if not path.lower().endswith(".md") or path.split("/")[-1] in RULES_FILES:
@@ -165,14 +192,14 @@ def routing_problems(changed):
         if head is None:
             continue
         kind, _ = field(head, "context_type")
-        want = ROUTES.get((kind or "").lower())
+        want = routes.get((kind or "").lower())
         if want and want != slot:
             where = "a push-back folder" if want == "PUSH_BACK" else f"01_RECORDS/{want}/"
             problems.append(f"{path} — context_type: {kind} belongs in {where}; move it or fix the header")
-        if (kind or "").lower() == "evidence":
+        if (kind or "").lower() in sourced:
             value, items = field(head, "source_refs")
             if not items and value in (None, "", "[]"):
-                problems.append(f"{path} — evidence without source_refs; name the source, or call it an assumption")
+                problems.append(f"{path} — {kind} without source_refs; name the source, or call it an assumption")
     return problems
 
 

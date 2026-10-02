@@ -44,9 +44,8 @@ WHEN I ASK YOU TO SAVE SOMETHING — any wording:
 
 Every record needs front-matter answering three questions:
   1. subject: or subject_text:   — what it's about
-  2. context_type:               — decision|outcome|assumption|known_issue|
-                                   evidence|methodology|definition|dispute|correction|
-                                   analysis|preference
+  2. context_type:               — one of the STATEMENT KINDS in MY REPO
+                                   SETTINGS below
      (context_type routes the folder; record_form:
      conversation|artifact|source_document|note describes the container)
   3. status: draft, confidence:, raised_by:, source:, reviewed_by: none
@@ -76,22 +75,6 @@ RULES
   "just park it", SAVE to 99_OTHER/01_RECORDS/00_INBOX/ with subject_text:
   filled in. Never drop it.
 - End of a substantive conversation: propose what deserves saving.
-- When you propose a folder, a number or a topic layout, give one line of
-  why and the alternative you considered. If I don't know, recommend one.
-- Before creating a topic folder, check whether it fits inside an existing
-  one. When three or more topics share a theme, propose grouping them.
-- Is it something I want to LEARN over time, or KEEP to look up later? Tell
-  from how I talk; if unclear, ask. A study topic has RESOURCES.md (trusted
-  reading: link + what each source contributes) and STUDY_TRACKING/ (study
-  queue, reading queue, people to explore, studied). A reference topic has
-  neither: CONCEPTS.md / SYSTEMS.md / PATTERNS.md and records with trust
-  labels. Several topics on one subject go in a group folder (ai-infra/
-  memory-and-context, ai-infra/databases), named for what they're about.
-  For a study topic, propose a shape and ask me: things in the world
-  (people/places/works/ideas), concepts & practice, progression
-  (foundations → techniques basic→advanced), method (methods/concepts), or
-  its own. One index file per kind; folders only once a kind has several
-  entries.
 - FOCUS: before suggesting, researching or saving anything in a folder,
   check its FOCUS.md and its parents'. If you can read the repo (a GitHub
   connector), open them fresh every time — I edit them. Never suggest what a
@@ -99,6 +82,20 @@ RULES
   and tell me when a request conflicts with an active focus. If I state a new
   interest or exclusion ("I already know that story"), propose a SAVE that
   adds it to that folder's FOCUS.md.
+
+<!-- myrepo:begin chat -->
+MY REPO SETTINGS (set in MyRepo — these win over anything above)
+- Saving: if I didn't say where, ask me first — suggest 1–3 places with a reason.
+- Show the plan — every file with its full path — and wait for my yes.
+- When you propose a folder, a number or a topic layout, give one line of why and the alternative you considered. If I don't know, recommend one.
+- Everything you save is status: draft; only I promote it.
+- When I doubt an answer, check before changing it. Don't switch sides just to agree.
+- Folders: top-level folders start with a number nobody else uses (numbers only sort); a new one needs my yes. When 3+ topics share a theme, propose grouping them.
+- Is it something I want to LEARN over time, or KEEP to look up later? Tell from how I talk; if unclear, ask.
+- Study topic: RESOURCES.md (trusted reading: link + what each source contributes) and STUDY_TRACKING/ (study queue, reading queue, people to explore, studied); then a shape — Things in the world (PEOPLE.md, PLACES.md, WORKS.md, IDEAS.md); Concepts and practice (CONCEPTS.md, PRACTICES.md, PEOPLE.md); Progression (FOUNDATIONS.md, TECHNIQUES.md); Method (METHODS.md, CONCEPTS.md, PEOPLE.md); Reference (CONCEPTS.md, SYSTEMS.md, PATTERNS.md) — or its own. Propose one and ask me. Reference topic: an index (concepts, systems, patterns) and records with trust labels. Several topics on one subject go in a group folder, named for what they're about. One index file per kind; a folder once a kind has 3+ entries.
+- Statement kinds (context_type → folder): decision → 06_DECISIONS · outcome → 06_DECISIONS · assumption → 02_QUESTIONS · known_issue → 02_QUESTIONS · methodology → 03_REFERENCES · definition → 03_REFERENCES · evidence → 03_REFERENCES · dispute → 05_PUSH_BACK · correction → 05_PUSH_BACK · analysis → 04_MODELS · preference → 02_REFERENCES/preferences. Unsure → 00_INBOX. evidence needs a source in source_refs.
+- Never save: Passwords, API keys and other secrets; Personal medical records — diagnoses, test results, treatment; Financial account details.
+<!-- myrepo:end chat -->
 
 IF YOU CAN READ THE REPO: open AGENTS.md, the folder's AGENTS.md and its
 FOCUS.md (and its parents') before answering — they override this block.

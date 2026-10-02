@@ -110,24 +110,26 @@ Spec: `02_REFERENCES/CONTEXT_ITEM_SPEC.md`.
   every connected tool can read it** — flag `private`/`restricted` content *before*
   saving it, and treat `restricted` as "does not belong here."
 
+<!-- myrepo:begin routing -->
 ### Routing (context_type → slot)
 
 | context_type | Files to |
 |---|---|
 | `decision`, `outcome` | `01_RECORDS/06_DECISIONS/` |
 | `assumption`, `known_issue` | `01_RECORDS/02_QUESTIONS/` |
-| `evidence`, `methodology`, `definition` | `01_RECORDS/03_REFERENCES/` |
+| `methodology`, `definition`, `evidence` | `01_RECORDS/03_REFERENCES/` |
 | `dispute`, `correction` | area `05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
 | `analysis` | `01_RECORDS/04_MODELS/` |
 | `preference` | `02_REFERENCES/preferences/` (global/artifact_type) or the area (area/project scope) |
 | anything unsortable | `00_INBOX/` |
 
 The header is the truth and the folder must agree — a push where they disagree
-fails the repo rules check. `evidence` needs `source_refs:`; without a source it
-is an `assumption`.
+fails the repo rules check. `evidence` needs `source_refs:`; without a source it is an `assumption`.
+The kinds are set in MyRepo (repo ⚙ → Classifications).
 
 `record_form` never routes: raw conversations land in `00_INBOX/` or
 `03_REFERENCES/`; artifacts-in-progress live in `work/`.
+<!-- myrepo:end routing -->
 
 ## Status and promotion
 
@@ -137,6 +139,33 @@ is an `assumption`.
   how much authority the content has. Drafts legitimately live on `main`.
 - Anything in `99_ARCHIVE/` is superseded — never cite it. Anything in
   `00_INBOX/` is unsorted and unreviewed — never cite it.
+
+<!-- myrepo:begin settings -->
+## Your settings
+
+Set in MyRepo (repo ⚙ → Rules, Organizing, Privacy) and stored in
+`02_REFERENCES/REPO_SETTINGS.json`. Where this file says otherwise, these win.
+
+**How AI tools work here**
+
+- Ask where before saving anything the owner didn’t place — suggest 1–3 places, best guess first, each with its reason.
+- Show the plan — every file with its full path — and write only after a yes.
+- Every folder, number or layout you propose comes with one line of why and the alternative you considered.
+- Everything an agent saves is `status: draft`; only the owner promotes it.
+- When the owner doubts an answer ("are you sure?"), check before changing it — never switch sides just to agree.
+
+**Organizing**
+
+- Top-level folders start with an unused number — numbers only sort, they mean nothing (§Creating a top-level area).
+- A new top-level folder needs the owner’s yes.
+- Suggest grouping when 3 or more sibling folders share a theme.
+
+**Never save here** — every connected tool can read this repo
+
+- Passwords, API keys and other secrets
+- Personal medical records — diagnoses, test results, treatment
+- Financial account details
+<!-- myrepo:end settings -->
 
 ## Saving — proposals, not auto-writes
 
@@ -218,6 +247,7 @@ Finding things relies on the Area Map and indexes, never on what a number
 "should" mean. `scripts/check_new_folder_guidance.py` fails a push that adds a
 top-level area without a number or with a number already in use.
 
+<!-- myrepo:begin proposing -->
 ## Proposing folders and topic layouts
 
 - **Say why.** Every folder, number or layout you propose comes with one line
@@ -225,7 +255,7 @@ top-level area without a number or with a number already in use.
   where something goes, recommend — and when the content later shows a
   pattern, say so and propose the better home.
 - **Group before adding.** Before creating a folder, check whether the subject
-  fits inside an existing one. When three or more sibling folders share a
+  fits inside an existing one. When 3 or more sibling folders share a
   theme, propose grouping them: in a group folder, or in a new top-level area
   if they are used differently (§Creating a top-level area).
 - **Learn, or keep to look up?** A topic is either a **study topic** (learned
@@ -233,15 +263,14 @@ top-level area without a number or with a number already in use.
   topic** (kept to look up and build with — "save this, I'll need it"). Tell
   from how the owner talks; if unclear, ask that one question. A reference
   topic becomes a study topic when the owner starts studying it.
-- **Topic layouts.** Every study topic has `RESOURCES.md` (trusted reading —
-  each source with its link and what it contributes) and `STUDY_TRACKING/`
-  (study queue, reading queue, what was actually studied). A reference topic
-  needs neither — it has an index of what's there, and its records carry trust
-  labels (`evidence` vs `analysis`). Beyond those, pick a shape
-  from the menu in `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts —
-  topics differ, so propose one with reasons, ask, and record it in the
-  topic's `AGENTS.md`. Start flat: one index file per kind of thing; give a
-  kind its own folder only once several entries need their own pages.
+- **Topic layouts.** Every study topic has `RESOURCES.md` (trusted reading — each source with its link and what it contributes) and `STUDY_TRACKING/` (study queue, reading queue, people to explore, what was actually studied). A reference topic
+  has an index of what's there instead, and its records carry trust labels
+  (`evidence` vs `analysis`). Beyond those, pick a shape from the menu in
+  `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts — topics differ, so
+  propose one with reasons, ask, and record it in the topic's `AGENTS.md`.
+  Start flat: one index file per kind of thing; give a kind its own folder once
+  3 or more entries need their own pages.
+<!-- myrepo:end proposing -->
 
 ## Push-back is mandatory
 
