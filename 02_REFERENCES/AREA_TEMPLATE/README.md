@@ -106,6 +106,11 @@ on a practice's page, never folders.
 per subject inside (`memory-and-context/`, `databases/`), not siblings sharing a
 prefix (`ai-infra-chats/`, `ai-infra-dbs/`). Name a topic after what it is about,
 not where the material came from.
+
+**Research and Product folders** are laid out differently — research starts with
+`QUESTION.md` and `FINDINGS.md`; a product starts with `OVERVIEW.md`, `DECISIONS.md` and
+`GAPS.md`, with stage folders (`10_RESEARCH/`, `20_PRODUCT/`, `30_DESIGN/`, `40_ARCHITECTURE/`, `50_IMPLEMENTATION/`) appearing as they
+fill. Root `AGENTS.md` §Folder contexts and conversation modes has both layouts.
 <!-- myrepo:end topic-layouts -->
 
 ## Numbering

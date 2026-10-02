@@ -247,10 +247,154 @@ Finding things relies on the Area Map and indexes, never on what a number
 "should" mean. `scripts/check_new_folder_guidance.py` fails a push that adds a
 top-level area without a number or with a number already in use.
 
+<!-- myrepo:begin modes -->
+## Folder contexts and conversation modes
+
+Before saving anything, know four things:
+
+1. **Where am I?** — the folder (e.g. `june/recommendations/`).
+2. **What kind of workspace is this?** — its **folder context**, in the `myrepo:begin topic` block of
+   the nearest `AGENTS.md` up the tree. None anywhere → **Study** (this repo’s default).
+3. **What are we doing right now?** — the **conversation mode**. It can change mid-conversation.
+4. **What did we just produce?** — a **record type** and its **state** (below). That decides what
+   survives the conversation and how far it can be trusted.
+
+**Folder contexts** — set in each folder’s ⚙; they stay put:
+
+| Context | The work | Starts with |
+|---|---|---|
+| Study | understanding a domain over time | §Working in a topic |
+| Research | establishing something well enough to act on it — it has a question and a point where it stops | `QUESTION.md`, `FINDINGS.md` (§Research folders) |
+| Product | turning a problem into something buildable | `OVERVIEW.md`, `DECISIONS.md`, `GAPS.md` (§Product folders) |
+
+A folder inside another may **narrow** the context above it — “Serves: the Product folder above”
+means *research for this product*: it keeps asking what the findings mean for that product.
+A child narrows; it never silently replaces. Study and Research differ in when they stop: study
+can keep branching; research stops when the question can be answered with stated confidence.
+
+**Conversation modes** — what the conversation is doing right now, in any folder. Switch when the
+conversation does, and say so in one line (“Sounds like we’re deciding now”); the people you’re
+working with can correct it (“no, still researching”). The folder context keeps the bigger
+picture: research in a product folder serves the product; it isn’t a tour of the subject.
+
+**Study** — *What am I trying to understand?*
+- Listen for: what the owner already knows; what resonates; a misconception; a connection to something studied before; an idea of the owner’s own; the next useful question.
+- Push back like: “What drew you to that?” · “That connects to X — want to follow that thread?” · “Is that the established view, or your own reading?”
+- Save: what was learned, on the pages it touched; the owner’s own ideas as concepts (origin: owner); a learning-path entry when the direction changed; what to explore next, as a row.
+
+**Research** — *What are we trying to establish?*
+- Listen for: the question and what answering it is for; a hypothesis; “I think…” — an assumption, not evidence; the quality of a source; a contradiction; how confident we are; enough evidence to stop.
+- Push back like: “What would this need to establish for you to decide?” · “That’s an assumption so far — what would make it a finding?” · “We have evidence for A; B is still assumed. Investigate B?” · In a product folder: “What does this tell us about the product?”
+- Save: findings, each with its confidence and sources; evidence (linked); open questions and remaining unknowns; whether the stopping point was reached.
+
+**Product** — *What are we trying to make true?*
+- Listen for: problem vs solution; requirement vs the current design; current vs proposed; intended vs actual behavior; a known gap vs an open question; a principle hiding in a correction (“actually, I don’t want…”).
+- Push back like: “Is that a requirement, or just the current design solution?” · “What should the user be able to do — what is the button for?” · “Is that how it works today, or what you’re proposing?” · “Is X an accepted constraint, or just the easiest option right now?”
+- Save: the problem, users and intent (OVERVIEW.md); requirements and design, marked current or proposed; architecture implications; new gaps (GAPS.md); decisions (DECISIONS.md).
+
+**Decision** — *What are we choosing, and why?*
+- Listen for: the options; the criteria; positions — “I want X”, “I think Y” — and who holds each; assumptions that differ; the tradeoff being accepted; an actual choice (“okay, let’s do B”).
+- Push back like: “What are we deciding, and why now?” · “There are two positions here — record it as unresolved?” · “I’ll record B as decided because X, accepting Y. What would make you revisit it?”
+- Save: a DECISIONS.md entry: options, positions (who), decision, decided_by, because, tradeoff, revisit_if; or the open decision with its positions — never a decision nobody made.
+
+**Execution** — *What has to change, and what happened?*
+- Listen for: what exists vs what was intended; what changed; what failed, and why; what building it exposed.
+- Push back like: “Is that a new product problem, or is the design right and the implementation failing?” · “The intended behavior and the implementation disagree — which is authoritative?”
+- Save: outcomes and what implementation revealed (Implementation pages, DECISIONS.md outcomes); new gaps; never task status, owners or due dates — those belong in a task tracker.
+
+**One challenge at a time.** Pick the one that matters most; a conversation is not an interrogation.
+Decisions come up inside other work — when a choice is being made, use the Decision mode wherever
+you are.
+
+**Record types and states** — two separate things. Every row in `DECISIONS.md`, `GAPS.md` and the
+lists, and every page header, says both where it applies:
+
+| Type | What it is | Must carry |
+|---|---|---|
+| brainstorm | loose possibilities while thinking out loud | — **never saved as knowledge** |
+| position | someone is actually arguing for this | `held_by:` |
+| assumption | the work depends on it being true, unproven | what would test it |
+| evidence | something supported outside the conversation | its source (linked) |
+| finding | a conclusion research supports | confidence and the evidence |
+| question | something still to find out | who is asking, why it matters |
+| decision | an authorized choice | `decided_by:`, date, `because:`, `revisit_if:` |
+| outcome | what actually happened | what it changed or revealed |
+
+States: `open` · `accepted` · `rejected` · `superseded` (link what replaced it — never delete it).
+
+**Who said it.** Name the person behind every position and decision. “Sam thinks X” and
+“we decided X” are different records — never collapse two positions into one, and never write
+“the team decided” unless they did. Unclear who? Ask.
+
+**Which record answers which question** — answer from the right one; when records disagree, say
+so and cite both instead of averaging them:
+
+| Question | Answer from |
+|---|---|
+| What are we building / what is the intent? | `OVERVIEW.md` and `accepted` decisions |
+| Why? | the decision’s `because:` and the research findings |
+| How does it work today? | pages marked `describes: current` |
+| What does someone think? | their positions (`held_by:`) |
+| What is still uncertain? | open questions, assumptions and `GAPS.md` |
+
+### Product folders
+
+How the people here work — work this way:
+
+> We think out loud together. Brainstorming stays loose until one of us argues for something — then it is that person’s position. Keep who said what; never turn a suggestion into a decision. When we stop, save it: what was decided and why, what changed, what is still open.
+
+The order of thinking: *Why does this exist? → What do we know? → What are we designing? → How
+will it work? → What exists? → What is unresolved?*
+
+```
+product/
+  OVERVIEW.md          ← the problem, who has it, the intent, in/out of scope, where it stands
+  DECISIONS.md         ← one entry per decision (open or accepted), newest first
+  GAPS.md              ← | Gap | Type | Owner | Blocking? | Where it came up | State |
+  10_RESEARCH/         ← appears with its first page
+  20_PRODUCT/          ← appears with its first page
+  30_DESIGN/           ← appears with its first page
+  40_ARCHITECTURE/     ← appears with its first page
+  50_IMPLEMENTATION/   ← appears with its first page
+  90_TRACKING/         ← OPEN_QUESTIONS.md, NEXT_UP.md
+```
+
+- Gap types: product · knowledge · technical · dependency · open question. A gap gets its own
+  page only when it needs one.
+- Every design, architecture and implementation page says `describes: current` (how it is),
+  `describes: proposed` (what we want) or `describes: partial` (half-built).
+- A `DECISIONS.md` entry:
+
+```
+## 2026-10 — Image sets the hue; tokens own the rest
+state: accepted · decided_by: Sam, Alex · because: the image had too much control
+options: image sets all colors · image sets hue only · fixed palette
+positions: (who argued what) · tradeoff: less variety · revisit_if: designers find it flat
+replaces: (earlier decision, if any)
+```
+
+- Implementation knowledge belongs here (what we built, what failed, what it exposed); task
+  status, owners and due dates do not — they go stale.
+- Folders of the team’s own are numbered after the stages; note them in the folder’s `AGENTS.md`.
+
+### Research folders
+
+- `QUESTION.md` first: what we are trying to establish, what the answer is for, and what would be
+  enough to stop.
+- `FINDINGS.md`: each finding with its confidence (high / medium / low) and the evidence behind it;
+  what was contradicted; what remains unknown.
+- A page per substantive source or line of evidence, in the kinds folders (`19_RESOURCES/` …).
+- Lists in `90_TRACKING/`: `OPEN_QUESTIONS.md` · `SOURCES_TO_READ.md`.
+- Inside a product folder, the findings must say what they mean for that product.
+
+Contexts: Study, Research, Product — set in MyRepo (each folder’s ⚙; the default in Settings → Ways of working).
+<!-- myrepo:end modes -->
+
 <!-- myrepo:begin working -->
 ## Working in a topic
 
-Every topic works the same way, so the owner can ask the same things anywhere.
+How a **Study** folder works (Research and Product: §Folder contexts and conversation modes).
+Every study topic works the same way, so the owner can ask the same things anywhere.
 
 **Open a topic** — read, in order: its `AGENTS.md` (what it is for and which kinds it
 holds), `STUDY_GUIDE.md` if it has one, `LEARNING_PATH.md`, `HISTORY.md`, then `90_TRACKING/`.

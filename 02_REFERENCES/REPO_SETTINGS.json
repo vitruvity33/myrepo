@@ -91,6 +91,149 @@
       ]
     }
   },
+  "working": {
+    "defaultContext": "study",
+    "modes": [
+      {
+        "key": "study",
+        "name": "Study",
+        "question": "What am I trying to understand?",
+        "listensFor": [
+          "what the owner already knows",
+          "what resonates",
+          "a misconception",
+          "a connection to something studied before",
+          "an idea of the owner’s own",
+          "the next useful question"
+        ],
+        "asks": [
+          "“What drew you to that?”",
+          "“That connects to X — want to follow that thread?”",
+          "“Is that the established view, or your own reading?”"
+        ],
+        "saves": [
+          "what was learned, on the pages it touched",
+          "the owner’s own ideas as concepts (origin: owner)",
+          "a learning-path entry when the direction changed",
+          "what to explore next, as a row"
+        ]
+      },
+      {
+        "key": "research",
+        "name": "Research",
+        "question": "What are we trying to establish?",
+        "listensFor": [
+          "the question and what answering it is for",
+          "a hypothesis",
+          "“I think…” — an assumption, not evidence",
+          "the quality of a source",
+          "a contradiction",
+          "how confident we are",
+          "enough evidence to stop"
+        ],
+        "asks": [
+          "“What would this need to establish for you to decide?”",
+          "“That’s an assumption so far — what would make it a finding?”",
+          "“We have evidence for A; B is still assumed. Investigate B?”",
+          "In a product folder: “What does this tell us about the product?”"
+        ],
+        "saves": [
+          "findings, each with its confidence and sources",
+          "evidence (linked)",
+          "open questions and remaining unknowns",
+          "whether the stopping point was reached"
+        ]
+      },
+      {
+        "key": "product",
+        "name": "Product",
+        "question": "What are we trying to make true?",
+        "listensFor": [
+          "problem vs solution",
+          "requirement vs the current design",
+          "current vs proposed",
+          "intended vs actual behavior",
+          "a known gap vs an open question",
+          "a principle hiding in a correction (“actually, I don’t want…”)"
+        ],
+        "asks": [
+          "“Is that a requirement, or just the current design solution?”",
+          "“What should the user be able to do — what is the button for?”",
+          "“Is that how it works today, or what you’re proposing?”",
+          "“Is X an accepted constraint, or just the easiest option right now?”"
+        ],
+        "saves": [
+          "the problem, users and intent (OVERVIEW.md)",
+          "requirements and design, marked current or proposed",
+          "architecture implications",
+          "new gaps (GAPS.md)",
+          "decisions (DECISIONS.md)"
+        ]
+      },
+      {
+        "key": "decision",
+        "name": "Decision",
+        "question": "What are we choosing, and why?",
+        "listensFor": [
+          "the options",
+          "the criteria",
+          "positions — “I want X”, “I think Y” — and who holds each",
+          "assumptions that differ",
+          "the tradeoff being accepted",
+          "an actual choice (“okay, let’s do B”)"
+        ],
+        "asks": [
+          "“What are we deciding, and why now?”",
+          "“There are two positions here — record it as unresolved?”",
+          "“I’ll record B as decided because X, accepting Y. What would make you revisit it?”"
+        ],
+        "saves": [
+          "a DECISIONS.md entry: options, positions (who), decision, decided_by, because, tradeoff, revisit_if",
+          "or the open decision with its positions — never a decision nobody made"
+        ]
+      },
+      {
+        "key": "execution",
+        "name": "Execution",
+        "question": "What has to change, and what happened?",
+        "listensFor": [
+          "what exists vs what was intended",
+          "what changed",
+          "what failed, and why",
+          "what building it exposed"
+        ],
+        "asks": [
+          "“Is that a new product problem, or is the design right and the implementation failing?”",
+          "“The intended behavior and the implementation disagree — which is authoritative?”"
+        ],
+        "saves": [
+          "outcomes and what implementation revealed (Implementation pages, DECISIONS.md outcomes)",
+          "new gaps",
+          "never task status, owners or due dates — those belong in a task tracker"
+        ]
+      }
+    ],
+    "product": {
+      "stages": [
+        "Research",
+        "Product",
+        "Design",
+        "Architecture",
+        "Implementation"
+      ],
+      "lists": [
+        "Open questions",
+        "Next up"
+      ],
+      "howWeWork": "We think out loud together. Brainstorming stays loose until one of us argues for something — then it is that person’s position. Keep who said what; never turn a suggestion into a decision. When we stop, save it: what was decided and why, what changed, what is still open."
+    },
+    "research": {
+      "lists": [
+        "Open questions",
+        "Sources to read"
+      ]
+    }
+  },
   "classifications": [
     {
       "type": "decision",
