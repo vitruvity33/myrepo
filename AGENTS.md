@@ -282,14 +282,14 @@ types); each kind suggests a starting set:
 
 - When it isn’t clear, ask: “What outcome are we after, and how will we know it’s done?”
 - Every Initiative folder keeps: `OVERVIEW.md` (the outcome, why, what’s in and out, and when it’s done); `DECISIONS.md` (what was chosen, who chose, why, and what would change it); `GAPS.md` (what’s still missing or unresolved).
-- How I run an initiative — work this way: Think out loud — ideas stay loose until someone argues for one. A suggestion isn’t a decision until someone chooses it. When we stop, save what was decided and why, who agreed to do what, and what’s still open.
+- How I run an initiative — work this way: First I look into it on my own. Then I start asking people — what they need, what’s been tried, what worries them. Once I have an idea, I write down the outcome and how we’ll know it’s done, and share it for push-back. Then we work out who does what, in what order, by when — and start. Along the way, keep what’s been decided apart from what’s only been suggested, and note who agreed to what. Diagrams of how the pieces fit help.
 - Progress, kept apart from the work in `90_TRACKING/`: `OPEN_QUESTIONS.md` · `NEXT_UP.md` · `DONE.md`.
 
 **Operation folders**
 
 - When it isn’t clear, ask: “What repeats, how often, and who handles it?”
 - Every Operation folder keeps: `PROCESS.md` (how it runs, how often, and who does what); `DECISIONS.md` (changes to the process — who decided and why).
-- How I run an operation — work this way: Keep the process current. Each time it runs, note only what was unusual and who handled it. The process changes only when someone decides to change it.
+- How I run an operation — work this way: I start by writing down how it runs today, step by step — who does what, how often, and what it depends on. Each time it runs, I note only what was unusual and how it was handled. When something keeps going wrong, we look at why and decide whether to change the process. Checklists and flow diagrams help.
 - Progress, kept apart from the work in `90_TRACKING/`: `EXCEPTIONS_TO_REVIEW.md` · `IMPROVEMENTS_TO_TRY.md`.
 
 Set in MyRepo (repo ⚙ → Studying → choose the kind of work).
