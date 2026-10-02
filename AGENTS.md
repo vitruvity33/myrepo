@@ -290,6 +290,13 @@ Knowledge pages never say whether the owner studied them — progress lives only
   Only the owner marks things studied — talking about something isn’t studying it.
 - **“Another one we haven’t covered”** — anything not in `STUDIED.md`.
 
+**The lists in `90_TRACKING/`** — one row per item, linking to its page:
+
+- `TO_EXPLORE.md`: `| # | [Name](../10_PEOPLE/first-last/PROFILE.md) | Person | why it’s queued for the owner |`
+- `STUDIED.md`: `| Date | [Name](…) | Person | favorite or not, and why — in the owner’s words |`
+- `FAVORITES.md`: `| [Name](…) | Person | why |` — only when the owner says so
+- Moving an item = delete its row from one list and add it to the other. If an item already has a page, update it — never make a second one.
+
 **Writing** — every page is written the same way, in every topic:
 
 - Plain language; short titles inside a topic ("People", not "People — Architecture").
