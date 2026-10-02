@@ -247,6 +247,56 @@ Finding things relies on the Area Map and indexes, never on what a number
 "should" mean. `scripts/check_new_folder_guidance.py` fails a push that adds a
 top-level area without a number or with a number already in use.
 
+<!-- myrepo:begin working -->
+## Working in a topic
+
+Every topic works the same way, so the owner can ask the same things anywhere.
+
+**Open a topic** — read, in order: its `AGENTS.md` (what it is for and which kinds
+it holds), `STUDY_GUIDE.md` if it has one, `HISTORY.md`, then `90_TRACKING/`.
+
+**The folders are always the same** — numbered by the one list in
+`02_REFERENCES/REPO_SETTINGS.json`; a topic has only the ones it uses:
+
+| Folder | Holds | One item is |
+|---|---|---|
+| `10_PEOPLE/` | a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md | a folder `first-last/` with `PROFILE.md` + `WORKS.md` |
+| `11_GROUPS/` | schools, movements, organizations, lineages | a page `short-name.md` |
+| `12_PERIODS/` | eras and events worth studying on their own | a page `short-name.md` |
+| `13_WORKS/` | buildings, books, artworks — studied as objects in themselves | a page `short-name.md` |
+| `14_PLACES/` | real locations | a page `short-name.md` |
+| `15_CONCEPTS/` | ideas, principles and terms | a page `short-name.md` |
+| `16_PRACTICES/` | techniques, methods, exercises — things you do (with a level when there is an order) | a page `short-name.md` |
+| `17_SYSTEMS/` | products, tools and implementations (technology topics) | a page `short-name.md` |
+| `18_PATTERNS/` | reusable designs (technology topics) | a page `short-name.md` |
+| `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes | a page `short-name.md` |
+| `90_TRACKING/` | the owner’s progress — `TO_EXPLORE.md` · `STUDIED.md` · `READING_QUEUE.md` · `FAVORITES.md` | a row linking to the item’s page |
+
+Knowledge pages never say whether the owner studied them — progress lives only in
+`90_TRACKING/`. Link with relative links (`../10_PEOPLE/frei-otto/PROFILE.md`) so pages open on GitHub and in MyRepo.
+
+**When the owner says…**
+
+- **“What’s next?”** — the first row of `90_TRACKING/TO_EXPLORE.md` not already in `STUDIED.md`;
+  in a study topic follow `STUDY_GUIDE.md`’s order. Open its page (create it if
+  missing) and teach from it, citing the sources on the page.
+- **“Tell me more about X”** — find X’s page (a person: `10_PEOPLE/first-last/PROFILE.md` and `WORKS.md`), read it,
+  then go further. Offer to add what was new to the page — as a plan, not a write.
+- **“Add X”** (a person, concept, practice …) — pick the kind; if the topic doesn’t
+  hold that kind yet, say so and propose adding its folder. Create the page from
+  the template below and add a row to `90_TRACKING/TO_EXPLORE.md`. Never invent facts: what isn’t sourced
+  is marked as interpretation.
+- **“I studied X” / “done”** — move its row to `STUDIED.md` with the date; add it to `FAVORITES.md` only when the owner says it resonated.
+  Only the owner marks things studied — talking about something isn’t studying it.
+- **“Another one we haven’t covered”** — anything not in `STUDIED.md`.
+
+**Page template** — every page starts with a record header (`CONTEXT_ITEM_SPEC.md`),
+then: a one-line memory hook · what it is · the story or how it works · what the
+sources say (linked) · how it connects (links to people, concepts, works) · what
+resonated with the owner (only what they said) · questions left.
+A person’s `WORKS.md` is a table: work · where / when · what to study.
+<!-- myrepo:end working -->
+
 <!-- myrepo:begin proposing -->
 ## Proposing folders and topic layouts
 
@@ -262,14 +312,11 @@ top-level area without a number or with a number already in use.
   the owner is drawn to and collects), **studying** (learning over time, in an
   order) or **reference** (kept to look up and build with). Tell from how the
   owner talks; if unclear, ask that one question. A topic can change kind later.
-- **Topic layouts — the architecture pattern.** A topic has a folder for each kind
-  of thing in its shape; inside it, `INDEX.md` lists the items and each item studied
-  in depth gets its own page. Test: grows by **pages** → folder; grows by **rows**
-  → a file in a list. Every topic also has `RESOURCES/` (trusted reading — each source with its link and what it contributes) and `COLLECTIONS/` (studied · to explore · favorites, plus a reading queue or places to visit where they fit).
-  Studying one thing = its page + a row in `COLLECTIONS/STUDIED.md`. Shapes and
-  details: `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts — propose one
-  with reasons, ask, and record it in the topic's `AGENTS.md`. Same layout from day
-  one, however small — never reorganize a topic later.
+- **A new topic** picks its kinds from the one list (§Working in a topic) — propose
+  which, with reasons, ask, and record the choice in the topic's `AGENTS.md`. Never
+  invent a new kind of folder inside a topic; if nothing fits, propose adding a kind
+  to the list (MyRepo → repo ⚙ → Studying). Details: `02_REFERENCES/AREA_TEMPLATE/README.md`
+  §Topic layouts.
 <!-- myrepo:end proposing -->
 
 ## Push-back is mandatory

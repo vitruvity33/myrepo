@@ -15,63 +15,68 @@
   },
   "studying": {
     "askKind": true,
-    "resources": {
-      "on": true,
-      "name": "Resources"
-    },
+    "kinds": [
+      {
+        "name": "People",
+        "what": "a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md",
+        "perItem": "folder"
+      },
+      {
+        "name": "Groups",
+        "what": "schools, movements, organizations, lineages",
+        "perItem": "page"
+      },
+      {
+        "name": "Periods",
+        "what": "eras and events worth studying on their own",
+        "perItem": "page"
+      },
+      {
+        "name": "Works",
+        "what": "buildings, books, artworks — studied as objects in themselves",
+        "perItem": "page"
+      },
+      {
+        "name": "Places",
+        "what": "real locations",
+        "perItem": "page"
+      },
+      {
+        "name": "Concepts",
+        "what": "ideas, principles and terms",
+        "perItem": "page"
+      },
+      {
+        "name": "Practices",
+        "what": "techniques, methods, exercises — things you do (with a level when there is an order)",
+        "perItem": "page"
+      },
+      {
+        "name": "Systems",
+        "what": "products, tools and implementations (technology topics)",
+        "perItem": "page"
+      },
+      {
+        "name": "Patterns",
+        "what": "reusable designs (technology topics)",
+        "perItem": "page"
+      },
+      {
+        "name": "Resources",
+        "what": "what you learn from — books, papers, courses, videos — each with its link and what it contributes",
+        "perItem": "page"
+      }
+    ],
+    "history": true,
     "tracking": {
       "on": true,
-      "name": "Collections"
-    },
-    "shapes": [
-      {
-        "name": "Things in the world",
-        "fits": "architecture, anthropology, history",
-        "files": [
-          "People",
-          "Places",
-          "Works",
-          "Ideas"
-        ]
-      },
-      {
-        "name": "Concepts and practice",
-        "fits": "philosophies, internal arts, awareness",
-        "files": [
-          "Concepts",
-          "Practices",
-          "People (teachers, lineages)"
-        ]
-      },
-      {
-        "name": "Progression",
-        "fits": "a skill: stretching, a language, an instrument",
-        "files": [
-          "Foundations",
-          "Techniques (in study order, each with a level, basic → advanced)",
-          "People"
-        ]
-      },
-      {
-        "name": "Method",
-        "fits": "a system that makes claims: a therapy, a framework",
-        "files": [
-          "Methods",
-          "Concepts (incl. how to judge it)",
-          "People"
-        ]
-      },
-      {
-        "name": "Reference",
-        "fits": "knowledge kept to look up: a technology, a field you build in",
-        "files": [
-          "Concepts",
-          "Systems (products, tools, implementations)",
-          "Patterns (reusable designs)",
-          "Decisions"
-        ]
-      }
-    ]
+      "lists": [
+        "To explore",
+        "Studied",
+        "Reading queue",
+        "Favorites"
+      ]
+    }
   },
   "classifications": [
     {

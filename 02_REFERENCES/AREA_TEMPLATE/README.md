@@ -50,48 +50,51 @@ everything under it.
 <!-- myrepo:begin topic-layouts -->
 ## Topic layouts
 
-Every topic (one subject, practice or field) is laid out the way
-`50_LEARNING/architecture/` is: a folder for each kind of thing, a page for each
-thing studied in depth, and lists that track them. The layout is set in MyRepo
-(repo ⚙ → Studying) and the topic's choice in its `AGENTS.md` (folder ⚙ → Topic).
+Every topic (one subject, practice or field) is laid out the same way, so the owner
+and every AI tool always know where to look. The list of kinds is set in MyRepo
+(repo ⚙ → Studying); each topic's choice is in its `AGENTS.md` (folder ⚙ → Topic).
+How agents work in a topic: root `AGENTS.md` §Working in a topic.
 
 **What the topic is for** — tell from how the owner talks, or ask:
 
 - **Explore** — curiosity: things the owner is drawn to and collects (architects, CEOs).
-- **Study** — learning over time, in an order (a stretching method, a practice). Starts
-  with `STUDY_GUIDE.md`, the overview read first.
-- **Reference** — kept to look up and build with (a technology). Records carry trust
-  labels (`evidence` with a source vs `analysis`).
+- **Study** — learning over time, in an order (a stretching method, a practice).
+- **Reference** — kept to look up and build with (a technology).
 
-**The test — pages or rows?** What grows by adding a *page per item* (an architect, a
-technique, a concept gone into deeply) is a **folder**: `INDEX.md` lists the items, and
-each studied item gets its page (`frei-otto/PROFILE.md`, `hold-relax.md`). What grows
-by adding *rows* (a queue, favorites, what was studied) is a **file**. Every topic uses
-the full layout from day one, however small — nothing is reorganized later.
+**Every topic has:**
 
-**Every topic has** its kinds as numbered folders in reading order (`01_`, `02_` …), then:
+```
+topic/
+  STUDY_GUIDE.md        ← study topics: what to learn, in what order, how to judge it
+  HISTORY.md            ← how the field developed — links to its people, groups, works
+  10_PEOPLE/            ← first-last/PROFILE.md + WORKS.md
+  11_GROUPS/            ← one page per item
+  12_PERIODS/           ← one page per item
+  …                     ← only the kinds this topic holds
+  90_TRACKING/          ← the owner’s progress: TO_EXPLORE.md, STUDIED.md, READING_QUEUE.md, FAVORITES.md
+```
+
+**The kinds** — one list for every topic; the number comes from the list order:
 
 | Folder | Holds |
 |---|---|
-| `NN_RESOURCES/` | `INDEX.md`: trusted reading — primary texts, books, papers, reference sources, each with its link and what it contributes. Notes on one source become a page |
-| `NN_COLLECTIONS/` | `STUDIED.md` (what was actually studied — only the owner marks things done) · `TO_EXPLORE.md` · `FAVORITES.md` · plus `READING_QUEUE.md` or `PLACES_TO_VISIT.md` where they fit |
+| `10_PEOPLE/` | a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md |
+| `11_GROUPS/` | schools, movements, organizations, lineages |
+| `12_PERIODS/` | eras and events worth studying on their own |
+| `13_WORKS/` | buildings, books, artworks — studied as objects in themselves |
+| `14_PLACES/` | real locations |
+| `15_CONCEPTS/` | ideas, principles and terms |
+| `16_PRACTICES/` | techniques, methods, exercises — things you do (with a level when there is an order) |
+| `17_SYSTEMS/` | products, tools and implementations (technology topics) |
+| `18_PATTERNS/` | reusable designs (technology topics) |
+| `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes |
 
-**The kinds come from its shape:**
-
-| Shape | Fits | Kind folders |
-|---|---|---|
-| Things in the world | architecture, anthropology, history | `PEOPLE/` · `PLACES/` · `WORKS/` · `IDEAS/` |
-| Concepts and practice | philosophies, internal arts, awareness | `CONCEPTS/` · `PRACTICES/` · `PEOPLE/` |
-| Progression | a skill: stretching, a language, an instrument | `FOUNDATIONS/` · `TECHNIQUES/` · `PEOPLE/` |
-| Method | a system that makes claims: a therapy, a framework | `METHODS/` · `CONCEPTS/` · `PEOPLE/` |
-| Reference | knowledge kept to look up: a technology, a field you build in | `CONCEPTS/` · `SYSTEMS/` · `PATTERNS/` · `DECISIONS/` |
-| Its own | anything else | whatever fits — written down in the topic's `AGENTS.md` |
-
-**Studying one thing** = a page in its kind's folder + a row in its `INDEX.md` +
-a row in `COLLECTIONS/STUDIED.md` (and `FAVORITES.md` if it resonated). A page starts
-with a memory hook, then what it is, what the sources say (linked), what resonated,
-and questions left. Levels and favorites are fields and lists, not folders — a
-technique that proves harder changes its `level:`, it doesn't move.
+**Rules:** an item gets its page as soon as it is added (a person gets their folder) — no
+summary tables standing in for pages. A page grows into a folder only when it needs
+more than one file. Knowledge folders hold no status: “queued”, “studied”,
+“favorite” live only in `90_TRACKING/`. Historical context is `HISTORY.md`; an era or
+event gets a page only when it is studied on its own. Levels are a field on a
+practice's page, never folders.
 
 **Titles stay short inside a topic** — "People", "Reading queue", not
 "People — Body Awareness".
@@ -131,4 +134,4 @@ not where the material came from.
 - [ ] Area added to `01_READ_FIRST/02_AREA_MAP.md`
 - [ ] Top level: area added to the list in `02_REFERENCES/prompts/CHAT_CONTEXT.md`
 - [ ] Other slots appear on first use — not before
-- [ ] A topic: its shape proposed with a reason, chosen by the owner, and written in its `AGENTS.md` §Layout (§Topic layouts)
+- [ ] A topic: what it is for and the kinds it holds, proposed with a reason, chosen by the owner, and recorded in its `AGENTS.md` (folder ⚙ → Topic; §Topic layouts)
