@@ -252,11 +252,46 @@ top-level area without a number or with a number already in use.
 
 Every topic works the same way, so the owner can ask the same things anywhere.
 
-**Open a topic** — read, in order: its `AGENTS.md` (what it is for and which kinds
-it holds), `STUDY_GUIDE.md` if it has one, `HISTORY.md`, then `90_TRACKING/`.
+**Open a topic** — read, in order: its `AGENTS.md` (what it is for and which kinds it
+holds), `STUDY_GUIDE.md` if it has one, `LEARNING_PATH.md`, `HISTORY.md`, then `90_TRACKING/`.
+
+**How the owner learns** — teach this way in every topic:
+
+> Through conversation. You teach; I call out what resonates and we follow that thread; along the way you name the few things worth remembering, and they stick. When we stop, save it: update the pages it touched (what resonated, what to remember), add any idea of mine as a concept, and add a learning-path entry if the inquiry changed direction.
+
+- Teach in conversation, one thread at a time; follow what the owner calls out rather than a script.
+- When something resonates, say so back in a line and keep going down that thread.
+- At natural points, name 1–3 things to remember — short and memorable. They become the page’s *What to remember* and memory hook.
+- When the conversation stops, offer **“save this”** (below) as a plan.
+
+**Four layers — keep them apart:**
+
+| Layer | The question it answers | Home |
+|---|---|---|
+| Knowledge | What have we actually learned about this person or thing? | `10_PEOPLE/`, `11_GROUPS/`, `12_PERIODS/` … |
+| Synthesis | What ideas has the owner developed from studying these things? | `15_CONCEPTS/` — marked as the owner’s |
+| Learning path | How did one question or discovery lead to the next? | `LEARNING_PATH.md` |
+| Future inquiry | What does the owner want to investigate, and why? | `90_TRACKING/TO_EXPLORE.md` |
+
+**Where something goes — the lifecycle:**
+
+| What happened | Where it goes |
+|---|---|
+| Mentioned in passing (a building, a book, an example) | inside the existing page it belongs to — e.g. a person’s `WORKS.md` |
+| Interesting, not yet studied | a row in `90_TRACKING/TO_EXPLORE.md` — no page |
+| The conversation or research produced substantive knowledge worth retrieving on its own | its page (a person: `10_PEOPLE/first-last/`), and its row moves to `STUDIED.md` |
+| A cross-cutting insight emerged | `15_CONCEPTS/` — with its origin marked |
+| The inquiry changed direction | a short entry in `LEARNING_PATH.md` |
+| A repeatable way of studying the subject developed | `STUDY_GUIDE.md` (any topic may have one) |
+| The owner explicitly loves it | `90_TRACKING/FAVORITES.md` |
+
+**A file existing means something.** A page exists only when there is substantive
+knowledge in it — never a placeholder, a stub or a “not written yet”. Agents must be
+able to trust that every page is real knowledge without opening it.
 
 **The folders are always the same** — numbered by the one list in
-`02_REFERENCES/REPO_SETTINGS.json`; a topic has only the ones it uses:
+`02_REFERENCES/REPO_SETTINGS.json`; a topic has only the ones it uses, and a folder
+appears with its first page:
 
 | Folder | Holds | One item is |
 |---|---|---|
@@ -270,32 +305,47 @@ it holds), `STUDY_GUIDE.md` if it has one, `HISTORY.md`, then `90_TRACKING/`.
 | `17_SYSTEMS/` | products, tools and implementations (technology topics) | a page `short-name.md` |
 | `18_PATTERNS/` | reusable designs (technology topics) | a page `short-name.md` |
 | `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes | a page `short-name.md` |
-| `90_TRACKING/` | the owner’s progress — `TO_EXPLORE.md` · `STUDIED.md` · `READING_QUEUE.md` · `FAVORITES.md` | a row linking to the item’s page |
+| `90_TRACKING/` | the owner’s progress — `TO_EXPLORE.md` · `STUDIED.md` · `READING_QUEUE.md` · `FAVORITES.md` | a row per item |
 
-Knowledge pages never say whether the owner studied them — progress lives only in
+Pages never say whether the owner studied them — progress lives only in
 `90_TRACKING/`. Link with relative links (`../10_PEOPLE/frei-otto/PROFILE.md`) so pages open on GitHub and in MyRepo.
 
 **When the owner says…**
 
-- **“What’s next?”** — the first row of `90_TRACKING/TO_EXPLORE.md` not already in `STUDIED.md`;
-  in a study topic follow `STUDY_GUIDE.md`’s order. Open its page (create it if
-  missing) and teach from it, citing the sources on the page.
-- **“Tell me more about X”** — find X’s page (a person: `10_PEOPLE/first-last/PROFILE.md` and `WORKS.md`), read it,
-  then go further. Offer to add what was new to the page — as a plan, not a write.
-- **“Add X”** (a person, concept, practice …) — pick the kind; if the topic doesn’t
-  hold that kind yet, say so and propose adding its folder. Create the page from
-  the template below and add a row to `90_TRACKING/TO_EXPLORE.md`. Never invent facts: what isn’t sourced
-  is marked as interpretation.
-- **“I studied X” / “done”** — move its row to `STUDIED.md` with the date; add it to `FAVORITES.md` only when the owner says it resonated.
+- **“What’s next?”** — the first row of `90_TRACKING/TO_EXPLORE.md`; in a topic with a
+  `STUDY_GUIDE.md`, follow its order. Teach from the row’s question and starting point.
+- **“Tell me more about X”** — read X’s page if it has one (or its row), then go further.
+  When the conversation produces substantive knowledge, offer to save it — as a plan.
+- **“Add X”** — if it’s only worth exploring, add a row to `TO_EXPLORE.md`; if we’ve learned something
+  substantive, create or update its page. Never invent facts.
+- **“I studied X” / “done”** — turn its row into knowledge: write its page from what we learned,
+  delete the row from `TO_EXPLORE.md` and add one to `STUDIED.md` with the date; `FAVORITES.md` only when the owner says so.
   Only the owner marks things studied — talking about something isn’t studying it.
 - **“Another one we haven’t covered”** — anything not in `STUDIED.md`.
+- **“Save this”** at the end of a study conversation — update the pages it touched (*What resonated*,
+  *What to remember*), add any new concept, and add a `LEARNING_PATH.md` entry if the inquiry changed direction.
 
-**The lists in `90_TRACKING/`** — one row per item, linking to its page:
+**The lists in `90_TRACKING/`:**
 
-- `TO_EXPLORE.md`: `| # | [Name](../10_PEOPLE/first-last/PROFILE.md) | Person | why it’s queued for the owner |`
-- `STUDIED.md`: `| Date | [Name](…) | Person | favorite or not, and why — in the owner’s words |`
-- `FAVORITES.md`: `| [Name](…) | Person | why |` — only when the owner says so
-- Moving an item = delete its row from one list and add it to the other. If an item already has a page, update it — never make a second one.
+- `TO_EXPLORE.md` — a rich row, no page: `| # | Name | Kind | Why queued | Connection to the current inquiry | Question to investigate | Start with |`
+- `STUDIED.md` — `| Date | [Name](link to its page) | Kind | favorite or not, and why — in the owner’s words |`
+- `FAVORITES.md` — `| [Name](…) | Kind | why |` — only when the owner says so
+- If an item already has a page, update it — never make a second one.
+
+**Concepts — mark the origin.** Every concept page’s header has `origin: established`
+(a recognized idea, e.g. form-finding — cite sources) or `origin: owner` (the owner’s own
+synthesis, e.g. “systems that generate form vs systems that impose it” — say which
+comparisons it came from, `context_type: analysis`). Never let the owner’s interpretation
+read as an established fact.
+
+**`LEARNING_PATH.md`** — deliberately sparse: no transcripts, no session logs. One entry
+each time the inquiry changes direction:
+
+```
+## 2026-09 — Frei Otto → Louis Kahn
+<two or three sentences: what shifted, and why>
+Led to: <concepts, people or questions — linked>
+```
 
 **Writing** — every page is written the same way, in every topic:
 
@@ -306,8 +356,9 @@ Knowledge pages never say whether the owner studied them — progress lives only
 **Page template** — every page starts with a record header (`CONTEXT_ITEM_SPEC.md`),
 then: a one-line memory hook · what it is · the story or how it works · what the
 sources say (linked) · how it connects (links to people, concepts, works) · what
-resonated with the owner (only what they said) · questions left.
-A person’s `WORKS.md` is a table: work · where / when · what to study.
+resonated with the owner (only what they said) · questions left. A topic’s `AGENTS.md`
+may set its own sections (architecture: §Adding an architect).
+A person’s `WORKS.md` is a table: work · where / when · what to study — works mentioned in passing live here.
 <!-- myrepo:end working -->
 
 <!-- myrepo:begin proposing -->

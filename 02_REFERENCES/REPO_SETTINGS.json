@@ -6,7 +6,8 @@
     "sayWhy": true,
     "draftOnly": true,
     "checkBeforeSwitching": true,
-    "voice": ""
+    "voice": "",
+    "custom": []
   },
   "organizing": {
     "numberTopLevel": true,
@@ -19,55 +20,67 @@
       {
         "name": "People",
         "what": "a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md",
-        "perItem": "folder"
+        "perItem": "folder",
+        "on": true
       },
       {
         "name": "Groups",
         "what": "schools, movements, organizations, lineages",
-        "perItem": "page"
+        "perItem": "page",
+        "on": true
       },
       {
         "name": "Periods",
         "what": "eras and events worth studying on their own",
-        "perItem": "page"
+        "perItem": "page",
+        "on": true
       },
       {
         "name": "Works",
         "what": "buildings, books, artworks — studied as objects in themselves",
-        "perItem": "page"
+        "perItem": "page",
+        "on": true
       },
       {
         "name": "Places",
         "what": "real locations",
-        "perItem": "page"
+        "perItem": "page",
+        "on": true
       },
       {
         "name": "Concepts",
         "what": "ideas, principles and terms",
-        "perItem": "page"
+        "perItem": "page",
+        "on": true
       },
       {
         "name": "Practices",
         "what": "techniques, methods, exercises — things you do (with a level when there is an order)",
-        "perItem": "page"
+        "perItem": "page",
+        "on": true
       },
       {
         "name": "Systems",
         "what": "products, tools and implementations (technology topics)",
-        "perItem": "page"
+        "perItem": "page",
+        "on": true
       },
       {
         "name": "Patterns",
         "what": "reusable designs (technology topics)",
-        "perItem": "page"
+        "perItem": "page",
+        "on": true
       },
       {
         "name": "Resources",
         "what": "what you learn from — books, papers, courses, videos — each with its link and what it contributes",
-        "perItem": "page"
+        "perItem": "page",
+        "on": true
       }
     ],
     "history": true,
+    "learningPath": true,
+    "howILearn": "Through conversation. You teach; I call out what resonates and we follow that thread; along the way you name the few things worth remembering, and they stick. When we stop, save it: update the pages it touched (what resonated, what to remember), add any idea of mine as a concept, and add a learning-path entry if the inquiry changed direction.",
     "tracking": {
       "on": true,
       "lists": [

@@ -65,12 +65,13 @@ How agents work in a topic: root `AGENTS.md` §Working in a topic.
 
 ```
 topic/
-  STUDY_GUIDE.md        ← study topics: what to learn, in what order, how to judge it
+  STUDY_GUIDE.md        ← what to learn, in what order, how to judge it (any topic that has a method)
+  LEARNING_PATH.md      ← how one question led to the next — sparse, one entry per turn
   HISTORY.md            ← how the field developed — links to its people, groups, works
   10_PEOPLE/            ← first-last/PROFILE.md + WORKS.md
   11_GROUPS/            ← one page per item
   12_PERIODS/           ← one page per item
-  …                     ← only the kinds this topic holds
+  …                     ← only the kinds this topic holds; a folder appears with its first page
   90_TRACKING/          ← the owner’s progress: TO_EXPLORE.md, STUDIED.md, READING_QUEUE.md, FAVORITES.md
 ```
 
@@ -89,12 +90,14 @@ topic/
 | `18_PATTERNS/` | reusable designs (technology topics) |
 | `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes |
 
-**Rules:** an item gets its page as soon as it is added (a person gets their folder) — no
-summary tables standing in for pages. A page grows into a folder only when it needs
-more than one file. Knowledge folders hold no status: “queued”, “studied”,
-“favorite” live only in `90_TRACKING/`. Historical context is `HISTORY.md`; an era or
-event gets a page only when it is studied on its own. Levels are a field on a
-practice's page, never folders.
+**Rules:** a page exists only when there is substantive knowledge worth retrieving on
+its own — something merely interesting is a row in `90_TRACKING/TO_EXPLORE.md`, something
+mentioned in passing lives inside the page it belongs to (a building in its architect’s `WORKS.md`). No stubs, no
+“not written yet”. A page grows into a folder only when it needs more than one file.
+Pages hold no status: “queued”, “studied”, “favorite” live only in `90_TRACKING/`.
+Concept pages mark their origin (`origin: established` or `origin: owner`). Historical
+context of the field is `HISTORY.md`; the owner’s own path through the topic is `LEARNING_PATH.md`. Levels are a field
+on a practice's page, never folders.
 
 **Titles stay short inside a topic** — "People", "Reading queue", not
 "People — Body Awareness".
