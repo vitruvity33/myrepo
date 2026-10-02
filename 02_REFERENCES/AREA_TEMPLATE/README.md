@@ -108,6 +108,53 @@ prefix (`ai-infra-chats/`, `ai-infra-dbs/`). Name a topic after what it is about
 not where the material came from.
 <!-- myrepo:end topic-layouts -->
 
+<!-- myrepo:begin folder-types -->
+## Folder types
+
+One menu for every kind of work (Study, Research, Initiative, Operation). Each kind suggests
+some types; any folder may use any of them. A type keeps the same number everywhere; its
+folder appears with its first page.
+
+| Folder | Holds | Suggested for |
+|---|---|---|
+| `10_PEOPLE/` | a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md | Study |
+| `11_GROUPS/` | schools, movements, organizations, lineages | Study |
+| `12_PERIODS/` | eras and events worth studying on their own | Study |
+| `13_WORKS/` | buildings, books, artworks — studied as objects in themselves | Study |
+| `14_PLACES/` | real locations | Study |
+| `15_CONCEPTS/` | ideas, principles and terms | Study, Research |
+| `16_PRACTICES/` | techniques, methods, exercises — things you do (with a level when there is an order) | Study, Operation |
+| `17_SYSTEMS/` | products, tools and implementations (technology topics) | Study, Initiative, Operation |
+| `18_PATTERNS/` | reusable designs (technology topics) | Study |
+| `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes | Study, Research |
+| `30_SOURCES/` | where information came from — reports, sites, documents — each with its link | Research |
+| `31_EVIDENCE/` | facts that support or challenge a claim, each tied to its source | Research |
+| `32_INTERVIEWS/` | conversations with people, and what was learned from each | Research |
+| `33_DATA/` | numbers and datasets, and where they came from | Research |
+| `34_EXPERIMENTS/` | tests that were run — what was tried, how, and what happened | Research, Initiative |
+| `35_RESULTS/` | what came out of the work — outcomes, findings, numbers | Research, Initiative |
+| `36_OPTIONS/` | the choices on the table, side by side | Initiative |
+| `37_PLANS/` | how something will get done — steps, order, who | Initiative |
+| `38_WORKSTREAMS/` | parallel strands of the work, each with its own owner | Initiative |
+| `39_TIMELINE/` | milestones and target dates | Initiative |
+| `40_RESPONSIBILITIES/` | who does each part, and who covers when they’re out — only what people have agreed to | Initiative, Operation |
+| `41_DEPENDENCIES/` | what this needs from other people or systems, and what relies on it | Initiative, Operation |
+| `42_SCHEDULE/` | how often something happens, deadlines and the calendar | Operation |
+| `43_RESEARCH/` | what was looked into for this work (a folder type — not the Research kind of work) | Initiative |
+| `44_DESIGN/` | how it should look and work | Initiative |
+| `45_BUILD/` | how it is being made, and what exists so far | Initiative |
+| `46_LAUNCH/` | getting it out — rollout, announcements, first use | Initiative |
+| `47_REVIEW/` | looking back — what happened against what was expected (a folder type — not reviewing in conversation) | Initiative |
+| `48_PROCESSES/` | how something is done, step by step — a page per process | Operation |
+| `49_CHECKLISTS/` | steps to run through each time | Operation |
+| `50_RUNS/` | notes on a single run — only when something was unusual | Operation |
+| `51_MEASURES/` | what is watched, and the range that counts as normal | Initiative, Operation |
+| `52_INCIDENTS/` | when something went wrong — what happened, the fix, what changes | Operation |
+| `53_IMPROVEMENTS/` | changes worth trying to make it work better | Operation |
+
+Set in MyRepo (repo ⚙ → Studying → choose the kind of work).
+<!-- myrepo:end folder-types -->
+
 ## Numbering
 
 - **Top-level areas start with a number** — any length, unused by another

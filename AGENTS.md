@@ -247,6 +247,33 @@ Finding things relies on the Area Map and indexes, never on what a number
 "should" mean. `scripts/check_new_folder_guidance.py` fails a push that adds a
 top-level area without a number or with a number already in use.
 
+<!-- myrepo:begin kinds-of-work -->
+## Kinds of work
+
+A folder holds one kind of work. **Study** works as §Working in a topic says. The others
+draw from the same menu of folder types (`02_REFERENCES/AREA_TEMPLATE/README.md` §Folder
+types); each kind suggests a starting set:
+
+| Kind | For | Ends | Suggested folder types |
+|---|---|---|---|
+| Study | understanding a subject over time | never — understanding keeps growing | `10_PEOPLE/` · `11_GROUPS/` · `12_PERIODS/` · `13_WORKS/` · `14_PLACES/` · `15_CONCEPTS/` · `16_PRACTICES/` · `17_SYSTEMS/` · `18_PATTERNS/` · `19_RESOURCES/` |
+| Research | answering a question well enough to act on it | when the question is answered; the answer moves up to the folder it served | `15_CONCEPTS/` · `19_RESOURCES/` · `30_SOURCES/` · `31_EVIDENCE/` · `32_INTERVIEWS/` · `33_DATA/` · `34_EXPERIMENTS/` · `35_RESULTS/` |
+| Initiative | reaching an outcome | when the outcome is reached; what lasts moves up to the folder above | `17_SYSTEMS/` · `34_EXPERIMENTS/` · `35_RESULTS/` · `36_OPTIONS/` · `37_PLANS/` · `38_WORKSTREAMS/` · `39_TIMELINE/` · `40_RESPONSIBILITIES/` · `41_DEPENDENCIES/` · `43_RESEARCH/` · `44_DESIGN/` · `45_BUILD/` · `46_LAUNCH/` · `47_REVIEW/` · `51_MEASURES/` |
+| Operation | running something that repeats | never — it repeats | `16_PRACTICES/` · `17_SYSTEMS/` · `40_RESPONSIBILITIES/` · `41_DEPENDENCIES/` · `42_SCHEDULE/` · `48_PROCESSES/` · `49_CHECKLISTS/` · `50_RUNS/` · `51_MEASURES/` · `52_INCIDENTS/` · `53_IMPROVEMENTS/` |
+
+- **Which kind a folder is** — its `AGENTS.md` says so. If it doesn’t, ask before creating
+  folders in it.
+- **Suggestions, not limits** — a folder may use any type on the menu. Each type keeps one
+  number everywhere, so a folder never gets renumbered.
+- **No empty folders** — a type’s folder appears with its first page. Turning a type off never
+  deletes or moves anything already there.
+- **Responsibilities** record only what someone has agreed to — a suggested owner is not one.
+- **When it ends** — when Research is answered or an Initiative reaches its outcome, move what
+  lasts up to the folder it served; the finished folder keeps its history.
+
+Set in MyRepo (repo ⚙ → Studying → choose the kind of work).
+<!-- myrepo:end kinds-of-work -->
+
 <!-- myrepo:begin working -->
 ## Working in a topic
 

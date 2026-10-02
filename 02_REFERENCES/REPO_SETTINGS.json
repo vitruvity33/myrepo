@@ -76,6 +76,150 @@
         "what": "what you learn from — books, papers, courses, videos — each with its link and what it contributes",
         "perItem": "page",
         "on": true
+      },
+      {
+        "name": "Sources",
+        "what": "where information came from — reports, sites, documents — each with its link",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Evidence",
+        "what": "facts that support or challenge a claim, each tied to its source",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Interviews",
+        "what": "conversations with people, and what was learned from each",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Data",
+        "what": "numbers and datasets, and where they came from",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Experiments",
+        "what": "tests that were run — what was tried, how, and what happened",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Results",
+        "what": "what came out of the work — outcomes, findings, numbers",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Options",
+        "what": "the choices on the table, side by side",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Plans",
+        "what": "how something will get done — steps, order, who",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Workstreams",
+        "what": "parallel strands of the work, each with its own owner",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Timeline",
+        "what": "milestones and target dates",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Responsibilities",
+        "what": "who does each part, and who covers when they’re out — only what people have agreed to",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Dependencies",
+        "what": "what this needs from other people or systems, and what relies on it",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Schedule",
+        "what": "how often something happens, deadlines and the calendar",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Research",
+        "what": "what was looked into for this work (a folder type — not the Research kind of work)",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Design",
+        "what": "how it should look and work",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Build",
+        "what": "how it is being made, and what exists so far",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Launch",
+        "what": "getting it out — rollout, announcements, first use",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Review",
+        "what": "looking back — what happened against what was expected (a folder type — not reviewing in conversation)",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Processes",
+        "what": "how something is done, step by step — a page per process",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Checklists",
+        "what": "steps to run through each time",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Runs",
+        "what": "notes on a single run — only when something was unusual",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Measures",
+        "what": "what is watched, and the range that counts as normal",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Incidents",
+        "what": "when something went wrong — what happened, the fix, what changes",
+        "perItem": "page",
+        "on": false
+      },
+      {
+        "name": "Improvements",
+        "what": "changes worth trying to make it work better",
+        "perItem": "page",
+        "on": false
       }
     ],
     "history": true,
@@ -88,6 +232,48 @@
         "Studied",
         "Reading queue",
         "Favorites"
+      ]
+    },
+    "suggested": {
+      "research": [
+        "Concepts",
+        "Resources",
+        "Sources",
+        "Evidence",
+        "Interviews",
+        "Data",
+        "Experiments",
+        "Results"
+      ],
+      "initiative": [
+        "Systems",
+        "Experiments",
+        "Results",
+        "Options",
+        "Plans",
+        "Workstreams",
+        "Timeline",
+        "Responsibilities",
+        "Dependencies",
+        "Research",
+        "Design",
+        "Build",
+        "Launch",
+        "Review",
+        "Measures"
+      ],
+      "operation": [
+        "Practices",
+        "Systems",
+        "Responsibilities",
+        "Dependencies",
+        "Schedule",
+        "Processes",
+        "Checklists",
+        "Runs",
+        "Measures",
+        "Incidents",
+        "Improvements"
       ]
     }
   },
