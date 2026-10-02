@@ -106,11 +106,6 @@ on a practice's page, never folders.
 per subject inside (`memory-and-context/`, `databases/`), not siblings sharing a
 prefix (`ai-infra-chats/`, `ai-infra-dbs/`). Name a topic after what it is about,
 not where the material came from.
-
-**Areas, Research, Initiatives and Operations** are laid out differently — an area keeps
-`OVERVIEW.md`, `DECISIONS.md` and `GAPS.md`; research starts with `QUESTION.md`; an initiative
-with `OVERVIEW.md`; an operation with `PROCESS.md`. Root `AGENTS.md` §Folder contexts and
-conversation modes has all of them.
 <!-- myrepo:end topic-layouts -->
 
 ## Numbering
