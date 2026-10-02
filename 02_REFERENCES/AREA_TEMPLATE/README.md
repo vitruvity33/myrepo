@@ -1,7 +1,7 @@
 ---
 title: Area Template
 status: draft
-last_verified: 2026-10-01
+last_verified: 2026-10-02
 ---
 
 # Area Template
@@ -47,6 +47,39 @@ everything under it.
 - **Status:** active
 ```
 
+## Topic layouts
+
+A topic (a sub-area someone studies — a subject, a practice, a field) is laid
+out so a person can browse it. Topics differ, so the layout is chosen per topic,
+from a short menu, and written into the topic's `AGENTS.md` §Layout.
+
+**In every topic:**
+
+| File | Holds |
+|---|---|
+| `RESOURCES.md` | Trusted reading — primary texts, books, papers, reference sources. Each with its link and what it contributes |
+| `STUDY_TRACKING/` | `STUDY_QUEUE.md` (what's next) · `READING_QUEUE.md` · `PEOPLE_TO_EXPLORE.md` · `STUDIED.md` (what was actually studied — only the owner marks things done) |
+
+**Then one shape:**
+
+| Shape | Fits | Index files |
+|---|---|---|
+| Things in the world | architecture, anthropology, history | `PEOPLE.md` · `PLACES.md` · `WORKS.md` · `IDEAS.md` |
+| Concepts and practice | philosophies, internal arts, awareness | `CONCEPTS.md` · `PRACTICES.md` · `PEOPLE.md` (teachers, lineages) |
+| Progression | a skill: stretching, a language, an instrument | `FOUNDATIONS.md` · `TECHNIQUES.md` (in study order, each with a level, basic → advanced) |
+| Method | a system that makes claims: a therapy, a framework | `METHODS.md` · `CONCEPTS.md` (incl. how to judge it) · `PEOPLE.md` |
+| Its own | anything else | whatever fits — written down in the topic's `AGENTS.md` |
+
+**How to choose:** when a topic is created — or once it holds a few files and
+it's clear what it is — propose a shape with one line of why, and ask. Use the
+names above so topics stay alike; add a kind only when the topic needs it.
+
+**Start flat.** Each kind is one index file (a table) while the topic is small.
+Give it a folder (`techniques/`, `people/`) only once several entries need their
+own pages; the index then links to them. Levels, favorites and queues are
+fields and views, not folders — a technique that proves harder changes its
+`level:`, it doesn't move.
+
 ## Numbering
 
 - **Top-level areas start with a number** — any length, unused by another
@@ -76,3 +109,4 @@ everything under it.
 - [ ] Area added to `01_READ_FIRST/02_AREA_MAP.md`
 - [ ] Top level: area added to the list in `02_REFERENCES/prompts/CHAT_CONTEXT.md`
 - [ ] Other slots appear on first use — not before
+- [ ] A topic: its shape proposed with a reason, chosen by the owner, and written in its `AGENTS.md` §Layout (§Topic layouts)

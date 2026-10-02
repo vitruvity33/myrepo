@@ -1,7 +1,7 @@
 ---
 title: Chat context block
 status: draft
-last_verified: 2026-10-01
+last_verified: 2026-10-02
 ---
 
 # Paste-in context for tools that can't read the repo
@@ -76,6 +76,17 @@ RULES
   "just park it", SAVE to 99_OTHER/01_RECORDS/00_INBOX/ with subject_text:
   filled in. Never drop it.
 - End of a substantive conversation: propose what deserves saving.
+- When you propose a folder, a number or a topic layout, give one line of
+  why and the alternative you considered. If I don't know, recommend one.
+- Before creating a topic folder, check whether it fits inside an existing
+  one. When three or more topics share a theme, propose grouping them.
+- Every topic has RESOURCES.md (trusted reading: link + what each source
+  contributes) and STUDY_TRACKING/ (study queue, reading queue, people to
+  explore, studied). Then propose a shape and ask me: things in the world
+  (people/places/works/ideas), concepts & practice, progression
+  (foundations → techniques basic→advanced), method (methods/concepts), or
+  its own. One index file per kind; folders only once a kind has several
+  entries.
 - FOCUS: before suggesting, researching or saving anything in a folder,
   check its FOCUS.md and its parents'. If you can read the repo (a GitHub
   connector), open them fresh every time — I edit them. Never suggest what a

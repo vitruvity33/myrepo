@@ -1,7 +1,7 @@
 ---
 title: Agents
 status: draft
-last_verified: 2026-10-01
+last_verified: 2026-10-02
 ---
 
 # AGENTS.md — MyRepo
@@ -204,8 +204,11 @@ Do this only when nothing existing fits — most new topics are sub-areas
    `620_` (or `622_` to go finer); something that belongs before everything
    else can be `062_` or `0622_`. Unrelated: take any free number. Don't infer
    meaning from a number — read the folder name and the Area Map.
-2. **Tell the owner the full folder name before creating it** (e.g.
-   `620_DESIGN/`) and wait for a yes.
+2. **Propose it with a reason, and wait for a yes.** Give the full folder name
+   (e.g. `620_DESIGN/`), why it is top level rather than inside the closest
+   existing area (usually: it is used differently — practiced or built with,
+   not only studied), why that number (which area it sorts next to), and the
+   alternative you considered.
 3. **In the same commit:** the folder's `AGENTS.md` + `README.md`
    (`02_REFERENCES/AREA_TEMPLATE/`), a row in `01_READ_FIRST/02_AREA_MAP.md`,
    its ID prefix in `02_REFERENCES/ID_REGISTRY.md`, and the folder in the area
@@ -214,6 +217,24 @@ Do this only when nothing existing fits — most new topics are sub-areas
 Finding things relies on the Area Map and indexes, never on what a number
 "should" mean. `scripts/check_new_folder_guidance.py` fails a push that adds a
 top-level area without a number or with a number already in use.
+
+## Proposing folders and topic layouts
+
+- **Say why.** Every folder, number or layout you propose comes with one line
+  of reasoning and the alternative you considered. If the owner doesn't know
+  where something goes, recommend — and when the content later shows a
+  pattern, say so and propose the better home.
+- **Group before adding.** Before creating a folder, check whether the subject
+  fits inside an existing one. When three or more sibling folders share a
+  theme, propose grouping them: in a group folder, or in a new top-level area
+  if they are used differently (§Creating a top-level area).
+- **Topic layouts.** Every topic has `RESOURCES.md` (trusted reading — each
+  source with its link and what it contributes) and `STUDY_TRACKING/` (study
+  queue, reading queue, what was actually studied). Beyond those, pick a shape
+  from the menu in `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts —
+  topics differ, so propose one with reasons, ask, and record it in the
+  topic's `AGENTS.md`. Start flat: one index file per kind of thing; give a
+  kind its own folder only once several entries need their own pages.
 
 ## Push-back is mandatory
 
