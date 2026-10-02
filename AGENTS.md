@@ -313,10 +313,13 @@ A person’s `WORKS.md` is a table: work · where / when · what to study.
   order) or **reference** (kept to look up and build with). Tell from how the
   owner talks; if unclear, ask that one question. A topic can change kind later.
 - **A new topic** picks its kinds from the one list (§Working in a topic) — propose
-  which, with reasons, ask, and record the choice in the topic's `AGENTS.md`. Never
-  invent a new kind of folder inside a topic; if nothing fits, propose adding a kind
-  to the list (MyRepo → repo ⚙ → Studying). Details: `02_REFERENCES/AREA_TEMPLATE/README.md`
-  §Topic layouts.
+  which, with reasons, ask, and record the choice in the topic's `AGENTS.md`.
+- **Folders of the owner's own.** When the owner asks for a folder the list doesn't
+  have (in one topic only), make it — numbered after the standard ones (`20_`, `21_` …)
+  — and note it in that topic's `AGENTS.md` §Layout so every tool finds it. Don't invent
+  one unasked: suggest it, or suggest adding a kind to the list for every topic
+  (MyRepo → repo ⚙ → Studying) when it would fit topics generally. Details:
+  `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts.
 <!-- myrepo:end proposing -->
 
 ## Push-back is mandatory
