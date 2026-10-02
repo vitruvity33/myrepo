@@ -290,6 +290,12 @@ Knowledge pages never say whether the owner studied them — progress lives only
   Only the owner marks things studied — talking about something isn’t studying it.
 - **“Another one we haven’t covered”** — anything not in `STUDIED.md`.
 
+**Writing** — every page is written the same way, in every topic:
+
+- Plain language; short titles inside a topic ("People", not "People — Architecture").
+- Facts carry their source (linked); anything unsourced is marked as interpretation.
+- Only write what resonated or what the owner thinks when they said it.
+
 **Page template** — every page starts with a record header (`CONTEXT_ITEM_SPEC.md`),
 then: a one-line memory hook · what it is · the story or how it works · what the
 sources say (linked) · how it connects (links to people, concepts, works) · what
