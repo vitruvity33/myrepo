@@ -247,6 +247,32 @@ Finding things relies on the Area Map and indexes, never on what a number
 "should" mean. `scripts/check_new_folder_guidance.py` fails a push that adds a
 top-level area without a number or with a number already in use.
 
+<!-- myrepo:begin queue -->
+## The queue
+
+Every folder, whatever its topic type, works things through in three steps — **explore →
+investigate → confirm** — so the owner can look at something without committing to it, AI
+never offers the same thing twice, and what matters is kept. One list per step, in the
+folder's `90_TRACKING/` (each made on first use):
+
+| Step | File | What goes in it |
+|---|---|---|
+| Explore | `90_TRACKING/TO_EXPLORE.md` | worth a look, not committed yet — why it’s queued, how it connects, the question to investigate, where to start |
+| Investigate | `90_TRACKING/STUDIED.md` | looked into — one line each, with what came of it, so it isn’t suggested again unless asked |
+| Confirm | `90_TRACKING/FAVORITES.md` | confirmed — keep it for later |
+
+- **"What's next?"** — offer the top of `TO_EXPLORE.md` (or ask which folder, if unclear).
+- **Before suggesting anything**, check all three lists: never re-offer what is already
+  studied or kept unless the owner asks.
+- **Move items along as the owner says** — looked at it → `STUDIED.md` with what came of it;
+  "keep this" → `FAVORITES.md`; "not interested" → `STUDIED.md` with that note.
+- **New things worth a look** go to `TO_EXPLORE.md` (why, how it connects, the question,
+  where to start) — never straight into the folder's pages.
+- **A folder's ⚙ can turn its queue off**; its `AGENTS.md` then says so.
+
+Set in MyRepo (repo ⚙ → Topic types; a folder's ⚙ → Topic type).
+<!-- myrepo:end queue -->
+
 <!-- myrepo:begin kinds-of-work -->
 ## Kinds of work
 
@@ -316,7 +342,7 @@ types); each kind suggests a starting set:
 - Close it when the recurring work is retired or replaced.
 - Progress, kept apart from the work in `90_TRACKING/`: `EXCEPTIONS_TO_REVIEW.md` · `IMPROVEMENTS_TO_TRY.md` · `CHANGES_DECIDED.md`.
 
-Set in MyRepo (repo ⚙ → Studying → choose the kind of work).
+Set in MyRepo (repo ⚙ → Topic types).
 <!-- myrepo:end kinds-of-work -->
 
 <!-- myrepo:begin working -->
@@ -444,17 +470,15 @@ A person’s `WORKS.md` is a table: work · where / when · what to study — wo
   fits inside an existing one. When 3 or more sibling folders share a
   theme, propose grouping them: in a group folder, or in a new top-level area
   if they are used differently (§Creating a top-level area).
-- **Explore, study, or keep?** A topic is for **exploring** (curiosity — things
-  the owner is drawn to and collects), **studying** (learning over time, in an
-  order) or **reference** (kept to look up and build with). Tell from how the
-  owner talks; if unclear, ask that one question. A topic can change kind later.
+- **Explore, investigate, confirm — per item, not per topic.** How committed the owner
+  is to something lives in the queue (§The queue), never as a label on the topic.
 - **A new topic** picks its kinds from the one list (§Working in a topic) — propose
   which, with reasons, ask, and record the choice in the topic's `AGENTS.md`.
 - **Folders of the owner's own.** When the owner asks for a folder the list doesn't
   have (in one topic only), make it — numbered after the standard ones (`20_`, `21_` …)
   — and note it in that topic's `AGENTS.md` §Layout so every tool finds it. Don't invent
   one unasked: suggest it, or suggest adding a kind to the list for every topic
-  (MyRepo → repo ⚙ → Studying) when it would fit topics generally. Details:
+  (MyRepo → repo ⚙ → Topic types) when it would fit topics generally. Details:
   `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts.
 <!-- myrepo:end proposing -->
 

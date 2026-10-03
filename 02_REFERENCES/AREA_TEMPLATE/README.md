@@ -52,14 +52,11 @@ everything under it.
 
 Every topic (one subject, practice or field) is laid out the same way, so the owner
 and every AI tool always know where to look. The list of kinds is set in MyRepo
-(repo ⚙ → Studying); each topic's choice is in its `AGENTS.md` (folder ⚙ → Topic).
+(repo ⚙ → Topic types); each topic's choice is in its `AGENTS.md` (folder ⚙ → Topic type).
 How agents work in a topic: root `AGENTS.md` §Working in a topic.
 
-**What the topic is for** — tell from how the owner talks, or ask:
-
-- **Explore** — curiosity: things the owner is drawn to and collects (architects, CEOs).
-- **Study** — learning over time, in an order (a stretching method, a practice).
-- **Reference** — kept to look up and build with (a technology).
+**Explore → investigate → confirm** happens item by item, in the queue every folder keeps
+(root `AGENTS.md` §The queue) — not by labelling the topic.
 
 **Every topic has:**
 
@@ -152,7 +149,10 @@ folder appears with its first page.
 | `52_INCIDENTS/` | when something went wrong — what happened, the fix, what changes | — |
 | `53_IMPROVEMENTS/` | changes worth trying to make it work better | Operation |
 
-Set in MyRepo (repo ⚙ → Studying → choose the kind of work).
+
+**Every folder also keeps a queue** — explore → investigate → confirm — in `90_TRACKING/`: `TO_EXPLORE.md` → `STUDIED.md` → `FAVORITES.md`, made on first use (root `AGENTS.md` §The queue). Ask “what's next?” in any chat.
+
+Set in MyRepo (repo ⚙ → Topic types).
 <!-- myrepo:end folder-types -->
 
 ## Numbering

@@ -16,6 +16,7 @@
   },
   "studying": {
     "askKind": true,
+    "queue": true,
     "kinds": [
       {
         "name": "People",
