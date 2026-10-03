@@ -268,7 +268,8 @@ folder's `90_TRACKING/` (each made on first use):
   "keep this" → `FAVORITES.md`; "not interested" → `STUDIED.md` with that note.
 - **New things worth a look** go to `TO_EXPLORE.md` (why, how it connects, the question,
   where to start) — never straight into the folder's pages.
-- **A folder's ⚙ can turn its queue off**; its `AGENTS.md` then says so.
+- **These sit with the folder's progress lists** (Track progress, in its topic type's
+  settings) — a folder that turns progress tracking off keeps no queue.
 
 Set in MyRepo (repo ⚙ → Topic types; a folder's ⚙ → Topic type).
 <!-- myrepo:end queue -->
