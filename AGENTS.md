@@ -265,6 +265,9 @@ types); each kind suggests a starting set:
 
 - **Which kind a folder is** — its `AGENTS.md` says so. If it doesn’t, ask before creating
   folders in it.
+- **A folder’s own settings win** — if its `AGENTS.md` lists “This folder’s own settings”
+  (set in that folder’s ⚙), follow those in that folder, Study included; anything it doesn’t
+  list comes from this file.
 - **Suggestions, not limits** — a folder may use any type on the menu. Each type keeps one
   number everywhere, so a folder never gets renumbered.
 - **No empty folders** — a type’s folder appears with its first page. Turning a type off never
