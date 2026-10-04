@@ -30,6 +30,17 @@ NN_AREA_NAME/                  top level: unused number, any length. Sub-area: n
 └── work/                      unvalidated space — drafts, artifacts-in-progress
 ```
 
+## First-use area check
+
+Use this template when creating a new area or sub-area (for example, a project,
+research topic, person, or company endeavor). Read root and parent `AGENTS.md`
+first. Create `AGENTS.md` and `README.md` in the new area in the same
+change, then complete the checklist below.
+
+Internal folders within that area inherit its instructions and do not need
+their own pair. If one later becomes a separately governed sub-area, add the
+pair and follow this template at that point.
+
 ## FOCUS.md (optional)
 
 One `##` section per focus; a folder can have several. Applies to the folder and

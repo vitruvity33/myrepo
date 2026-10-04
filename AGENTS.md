@@ -242,8 +242,8 @@ a chat window is a silent drop — which this repository exists to prevent.
   How to pick one: §Creating a top-level area.
 - A sub-area is any unnumbered folder with its own `AGENTS.md` — same shape
   recursively. **Every folder that owns ongoing work is a governed area** — it gets
-  `AGENTS.md` + `README.md` in the same operation. Promoting a sub-area to top
-  level is a move, not a redesign.
+  `AGENTS.md` + `README.md` in the same operation. Never create a folder just by
+  saving a file into it. Promoting a sub-area to top level is a move, not a redesign.
 - `01_RECORDS/` slots are a **menu, not a mandate** — each area's `AGENTS.md`
   declares which it uses; folders are created on first use. Every area has
   `00_INBOX`, `03_REFERENCES`, `99_ARCHIVE` available.
@@ -252,6 +252,24 @@ a chat window is a silent drop — which this repository exists to prevent.
 - **Never invent a registry ID** — use `subject_text:` and let a human mint the ID.
 - `work/` is unvalidated space — drafts and artifacts-in-progress. Quote it only
   when asked, and label it.
+
+## New area boundary — not every nested folder
+
+Create `AGENTS.md` and `README.md` **with each new area or sub-area**: for example,
+a project directly inside a projects area, a topic directly inside a learning area,
+or a person directly inside a people area. A new named endeavor inside an area
+follows the same rule. Read the root and parent instructions first, and use
+`02_REFERENCES/AREA_TEMPLATE/README.md` for the area checklist.
+
+Folders **inside** that area (record slots, `90_TRACKING/`, numbered page folders,
+drafts, assets, collections) inherit the area's `AGENTS.md`; they do not each need
+another `AGENTS.md` or `README.md`. Add a deeper pair only when deliberately
+creating a separately governed sub-area with its own purpose, ownership and
+routing (§A folder's purpose). Ask if it is unclear whether a new folder is an
+area or an internal folder.
+
+Before completing a save, check each newly created area or sub-area has both
+files. Existing folders missing them are legacy, not an example to follow.
 
 ## Creating a top-level area
 
