@@ -47,6 +47,24 @@ everything under it.
 - **Status:** active
 ```
 
+## This folder's purpose (optional, in AGENTS.md)
+
+When the owner and an AI work out how a folder should work — what it's for, how
+to find things in it, how to talk with the owner there, its own stages — write it
+into the folder's `AGENTS.md`, outside any MyRepo markers:
+
+```markdown
+## This folder's purpose
+<One or two lines: what this folder is for, in the owner's words.>
+
+- **How to work here:** …
+- **Stages (instead of the queue):** …
+- **Pages and folders:** …
+```
+
+It shapes the work in this folder and everything under it — never the root rules
+(root `AGENTS.md` §A folder's purpose).
+
 <!-- myrepo:begin topic-layouts -->
 ## Topic layouts
 
@@ -150,7 +168,7 @@ folder appears with its first page.
 | `53_IMPROVEMENTS/` | changes worth trying to make it work better | Operation |
 
 
-**Every folder also keeps a queue** — explore → investigate → confirm — in `90_TRACKING/`: `TO_EXPLORE.md` → `STUDIED.md` → `FAVORITES.md`, made on first use (root `AGENTS.md` §The queue). Ask “what's next?” in any chat.
+**Every folder also keeps a queue by default** — explore → investigate → confirm — in `90_TRACKING/`: `TO_EXPLORE.md` → `STUDIED.md` → `FAVORITES.md`, made on first use (root `AGENTS.md` §The queue); a folder may define its own stages instead. Ask “what's next?” in any chat.
 
 Set in MyRepo (repo ⚙ → Topic types).
 <!-- myrepo:end folder-types -->

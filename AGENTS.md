@@ -49,6 +49,34 @@ adding it to that folder's `FOCUS.md` — a rail left only in a chat window is l
 
 ---
 
+## A folder's purpose — found in conversation, then written down
+
+A folder's purpose is often discovered while talking, not picked from a menu, and
+it can be different in every folder. When a new purpose or way of working emerges —
+how a folder should be organised, how to find things in it, how to talk with the
+owner there, what stages things move through — **say so and propose writing it into
+that folder's `AGENTS.md`** under `## This folder's purpose` (and one line in its
+`README.md`). From then on every tool works that way there. A sub-folder that gets a
+purpose of its own is a governed area: it gets its own `AGENTS.md` + `README.md`
+(§Structure rules). When the same way of working shows up in several folders,
+propose making it a topic type (MyRepo → repo ⚙ → Topic types).
+
+**What a folder's own rules can change, and what they can't:**
+
+- **Can change** — its purpose, how to navigate it, how to talk with the owner there,
+  its own stages (instead of §The queue), its page types and folders.
+- **Can't change** — asking before saving and showing the plan · record headers and
+  routing · draft status · what never gets saved here · numbering · the repo rules
+  check. These hold in every folder; if a folder's rules seem to conflict with them,
+  these win — say so.
+
+**MyRepo's sections.** Text between `<!-- myrepo:begin … -->` and
+`<!-- myrepo:end … -->` is rewritten by MyRepo whenever the owner changes a setting.
+Never write inside those markers; anything specific to the owner or a folder goes
+outside them.
+
+---
+
 ## The ownership rule
 
 > **A folder owns what dies with it.**
@@ -66,7 +94,7 @@ the project taught → promoted to a research/topic area before archiving. A con
 relationship outlives the context. Fuzzy cases resolve by promotion, not perfect
 classification.
 
-## How to answer — two habits
+## How to answer — three habits
 
 1. **Say what kind of statement you're making.** "Your repo says…" (cite the
    path), "this source says…" (cite it), or "my interpretation…" — never present
@@ -76,6 +104,10 @@ classification.
    it** — against the repo and the sources. Wrong → say so and propose a
    `correction` record (it replaces the old statement). Right → keep the answer
    and show the evidence. Never switch sides just to agree.
+3. **What the owner brings may be newer than you know.** Pasted articles, links
+   and notes — especially on fast-moving subjects — are the source. Don't fill
+   gaps from memory, say when something can't be verified, and date every
+   observation (when it happened, and when it was added).
 
 ---
 
@@ -250,7 +282,7 @@ top-level area without a number or with a number already in use.
 <!-- myrepo:begin queue -->
 ## The queue
 
-Every folder, whatever its topic type, works things through in three steps — **explore →
+By default every folder, whatever its topic type, works things through in three steps — **explore →
 investigate → confirm** — so the owner can look at something without committing to it, AI
 never offers the same thing twice, and what matters is kept. One list per step, in the
 folder's `90_TRACKING/` (each made on first use):
@@ -270,6 +302,8 @@ folder's `90_TRACKING/` (each made on first use):
   where to start) — never straight into the folder's pages.
 - **These sit with the folder's progress lists** (Track progress, in its topic type's
   settings) — a folder that turns progress tracking off keeps no queue.
+- **A folder may use its own stages instead** — when its `AGENTS.md` (§This folder's
+  purpose) defines them, follow those there, kept in its `90_TRACKING/` the same way.
 
 Set in MyRepo (repo ⚙ → Topic types; a folder's ⚙ → Topic type).
 <!-- myrepo:end queue -->
@@ -481,6 +515,9 @@ A person’s `WORKS.md` is a table: work · where / when · what to study — wo
   one unasked: suggest it, or suggest adding a kind to the list for every topic
   (MyRepo → repo ⚙ → Topic types) when it would fit topics generally. Details:
   `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts.
+- **A way of working that repeats.** When the same purpose or stages show up in
+  several folders' `AGENTS.md`, propose making it a topic type (MyRepo → repo ⚙ →
+  Topic types) so any folder can pick it.
 <!-- myrepo:end proposing -->
 
 ## Push-back is mandatory
