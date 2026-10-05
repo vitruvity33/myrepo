@@ -137,7 +137,7 @@ not where the material came from.
 <!-- myrepo:begin folder-types -->
 ## Folder types
 
-One menu for every kind of work (Study, Research, Initiative, Operation). Each kind suggests
+One menu for every kind of work (Study, Research, Idea, Decide, Plan, Initiative, Operation). Each kind suggests
 some types; any folder may use any of them. A type keeps the same number everywhere; its
 folder appears with its first page.
 
@@ -153,13 +153,13 @@ folder appears with its first page.
 | `17_SYSTEMS/` | products, tools and implementations (technology topics) | Study |
 | `18_PATTERNS/` | reusable designs (technology topics) | Study |
 | `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes | Study, Idea |
-| `30_SOURCES/` | where information came from — reports, sites, documents — each with its link | Research, Decide |
-| `31_EVIDENCE/` | facts that support or challenge a claim, each tied to its source | Research, Decide |
+| `30_SOURCES/` | where information came from — reports, sites, documents — each with its link | Research, Decide, Plan |
+| `31_EVIDENCE/` | facts that support or challenge a claim, each tied to its source | Research, Decide, Plan |
 | `32_INTERVIEWS/` | conversations with people, and what was learned from each | — |
-| `33_DATA/` | numbers and datasets, and where they came from | Research |
+| `33_DATA/` | numbers and datasets, and where they came from | Research, Plan |
 | `34_EXPERIMENTS/` | tests that were run — what was tried, how, and what happened | Research |
 | `35_RESULTS/` | what came out of the work — outcomes, findings, numbers | Initiative |
-| `36_OPTIONS/` | the choices on the table, side by side | Idea, Decide, Initiative |
+| `36_OPTIONS/` | the choices on the table, side by side | Idea, Decide, Plan, Initiative |
 | `37_PLANS/` | how something will get done — steps, order, who | Initiative |
 | `38_WORKSTREAMS/` | parallel strands of the work, each with its own owner | Initiative |
 | `39_TIMELINE/` | milestones and target dates | — |

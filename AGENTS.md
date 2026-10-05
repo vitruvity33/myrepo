@@ -339,6 +339,7 @@ types); each kind suggests a starting set:
 | Research | answering a particular question | the answer is useful enough for its purpose, or what remains uncertain is clearly stated | `30_SOURCES/` · `31_EVIDENCE/` · `33_DATA/` · `34_EXPERIMENTS/` |
 | Idea | developing a thought before you know the question or goal | you choose a direction, set it aside, or turn it into other work | `15_CONCEPTS/` · `19_RESOURCES/` · `36_OPTIONS/` |
 | Decide | choosing between possible actions | a choice is made, deferred, or rejected with a reason | `30_SOURCES/` · `31_EVIDENCE/` · `36_OPTIONS/` |
+| Plan | finding a workable path to something you want | the path is clear enough to start (it becomes an Initiative, keeping PLAN.md), or the plan is dropped | `30_SOURCES/` · `31_EVIDENCE/` · `33_DATA/` · `36_OPTIONS/` |
 | Initiative | making a change or achieving an outcome | the outcome is achieved, abandoned, or handed into recurring work | `35_RESULTS/` · `36_OPTIONS/` · `37_PLANS/` · `38_WORKSTREAMS/` |
 | Operation | keeping recurring work running | the recurring work is retired or replaced | `48_PROCESSES/` · `49_CHECKLISTS/` · `50_RUNS/` · `51_MEASURES/` · `53_IMPROVEMENTS/` |
 
@@ -378,6 +379,26 @@ types); each kind suggests a starting set:
 - How I make a decision — work this way: I usually start with the choice in front of me and a gut feeling. Help me lay out the options and what matters most, find what I don’t know yet, and hear the views that differ from mine. Keep what’s been proposed apart from what’s been decided. When I choose, record the reason, what I’m giving up, and what would make me revisit it.
 - Close it when a choice is made, deferred, or rejected with a reason.
 - Progress, kept apart from the work in `90_TRACKING/`: `OPTIONS_TO_COMPARE.md` · `QUESTIONS_TO_ANSWER_FIRST.md` · `DECIDED.md`.
+
+**Plan folders**
+
+- When it isn’t clear, ask: “What are you planning toward — even if it’s still fuzzy?”
+- Every Plan folder keeps: `PLAN.md` (where you’re heading, what’s known, assumed and still open, the options, what’s chosen, and the path — order, timing, costs — with what would make you revisit it).
+- How I plan — work this way: I may start with a fuzzy picture or with much already settled. See how far along it is and start there; don’t walk me through steps in order. Build the picture with me instead of asking for everything up front. Keep what’s known, assumed and decided apart. Ask the question that most changes the path next, and leave open what wouldn’t change it yet. Say when something needs research or a decision. When numbers depend on each other, like costs, keep them in a table I can check.
+- Close it when the path is clear enough to start (it becomes an Initiative, keeping PLAN.md), or the plan is dropped.
+- Progress, kept apart from the work in `90_TRACKING/`: `RESEARCH_NEEDED.md` · `DECISIONS_NEEDED.md` · `REVISIT_TRIGGERS.md`.
+- A plan moves through framing, modelling, exploring, resolving, sequencing and adapting —
+  ways of thinking, not steps. Never make the owner go through them in order; work on the
+  open question that most affects the path.
+- Use the repo’s confidence words for what’s assumed (hypothesis → working → confirmed). A
+  choice is a decision record, and a decision can rest on assumptions that are still open.
+- `PLAN.md` is a living picture, not a form: fill only the parts that are known so far.
+- When the plan has calculations (costs, budgets, counts, dates that depend on each other), keep
+  the numbers as CSV in `33_DATA/` with a short page saying how they relate. `PLAN.md` says what
+  they mean and where they came from. No calculations, no table.
+- Research and decisions stay as records here unless they grow into work of their own; then
+  they become a folder inside this one.
+- When it becomes an Initiative, `PLAN.md` stays as it was — it’s how the work started.
 
 **Initiative folders**
 

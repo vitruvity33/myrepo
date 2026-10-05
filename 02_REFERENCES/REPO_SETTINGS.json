@@ -252,6 +252,12 @@
         "Evidence",
         "Sources"
       ],
+      "plan": [
+        "Options",
+        "Evidence",
+        "Sources",
+        "Data"
+      ],
       "initiative": [
         "Options",
         "Plans",
@@ -332,6 +338,26 @@
           ]
         },
         "closeWhen": "a choice is made, deferred, or rejected with a reason"
+      },
+      "plan": {
+        "ask": true,
+        "pages": [
+          {
+            "file": "PLAN.md",
+            "what": "where you’re heading, what’s known, assumed and still open, the options, what’s chosen, and the path — order, timing, costs — with what would make you revisit it",
+            "on": true
+          }
+        ],
+        "how": "I may start with a fuzzy picture or with much already settled. See how far along it is and start there; don’t walk me through steps in order. Build the picture with me instead of asking for everything up front. Keep what’s known, assumed and decided apart. Ask the question that most changes the path next, and leave open what wouldn’t change it yet. Say when something needs research or a decision. When numbers depend on each other, like costs, keep them in a table I can check.",
+        "tracking": {
+          "on": true,
+          "lists": [
+            "Research needed",
+            "Decisions needed",
+            "Revisit triggers"
+          ]
+        },
+        "closeWhen": "the path is clear enough to start (it becomes an Initiative, keeping PLAN.md), or the plan is dropped"
       },
       "initiative": {
         "ask": true,
