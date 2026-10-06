@@ -293,13 +293,19 @@ There are two kinds of number, and they never mix.
   decades (`10_`, `20_`, `30_` …); something related takes a number inside its decade
   (`30_SPORTS` → `33_SOCCER`), and finer still adds a digit (`335_MENS_SOCCER`).
   Folders sort digit by digit, whatever their names say: `30_` → `33_` → `335_` → `34_`.
-  A number only orders — it **means nothing on its own**; read the folder name and the
+  A number places a folder on the shelf; what the folder is comes from its name and the
   Area Map. **Each added digit is a sub-category of the number before it**, at any
   depth: the area `30_SPORTS` holds `31_` … `39_` (`33_SOCCER`); inside `33_` come `331_` …
   `339_` (`335_MENS_SOCCER`); inside `335_` come `3351_` …. Never restart at `10_` or
   `20_` inside a folder — those are top-level numbers. Each of these folders has its own
-  `AGENTS.md`, `README.md` and log. A sub-folder may also have no number. (Older type
-  folders such as `10_PEOPLE/` and `15_CONCEPTS/` keep their names — never renumber.) **Your numbers never start with 9.**
+  `AGENTS.md`, `README.md` and log. A sub-folder may also have no number. Folders for a kind of thing
+  inside a topic are numbered the same way (`531_PEOPLE/`, `533_CONCEPTS/` inside
+  `53_ARCHITECTURE/`); older repos may still have `10_PEOPLE/` or `15_CONCEPTS/` there —
+  rename them only when the owner asks. **Your numbers never start with 9.**
+- **Nine slots per level — plan ahead.** Each level holds `1` … `9`. When a subject
+  clearly will have many sub-categories, give it room: a higher level (its own decade
+  at the top, `70_`), or two neighbouring numbers (`41_` and `42_`). Suggest it to the
+  owner before the slots run out; when a level fills, group its folders one level down.
 - **The back end always starts with 9**, and each 9-number means one thing in every
   repo and every folder — so any AI tool, with no other context, knows where to look:
 
