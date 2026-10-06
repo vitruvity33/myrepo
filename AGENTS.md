@@ -368,7 +368,9 @@ idea, a snippet or something they learned, write one `.md` file named for its su
 (for example `semiconductors-electrical-and-quantum-states.md`) in the folder it belongs
 to, with its header (`topics:` lists what it's about). **`AGENTS.md` and `README.md`
 are instructions and a folder description — never put the owner's notes or saved
-content in them**, and never create a folder just to hold one note. A folder for one
+content in them**, and never create a folder just to hold one note. A `README.md` says what
+the folder is for and lists what's in it, with links — nothing more. A summary, an
+orientation or a "where things stand" is a saved file of its own. A folder for one
 item (a person, a work) only when it needs several files, and those files are named
 for what they hold (`PROFILE.md`, `WORKS.md`). Notes saved as files show up on the
 MyRepo website under their folder and open in the preview pane; text inside
