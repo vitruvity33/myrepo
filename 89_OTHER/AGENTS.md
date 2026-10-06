@@ -18,7 +18,7 @@ of a home** — it lands here with `subject_text:` filled in.
 
 - Root `AGENTS.md` rules apply — read it first.
 - **Never cite what's here until it's sorted** — unsorted and unreviewed. Each file has a
-  line in `89_OTHER/910_RECORDS/INDEX.md`.
+  line in `89_OTHER/910_RECORDS/INDEX.csv`.
 - Sorting the inbox is a human act, or a proposed act — an agent may suggest
   where an item belongs but does not promote it unilaterally.
 - If an item here reveals a missing area, propose the new area per

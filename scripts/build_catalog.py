@@ -2,14 +2,16 @@
 """Rebuild the catalog from the files actually in the repo, in three levels:
 - 901_READ_FIRST/04_CATALOG.md — one line per area: what it holds, how many files,
   by category and type, and where its full list is. Agents read this first.
-- <area>/910_RECORDS/CATALOG.md — every saved file in that area.
-- <folder>/910_RECORDS/INDEX.md — every saved file in that folder.
+- <area>/910_RECORDS/CATALOG.csv — every saved file in that area.
+- <folder>/910_RECORDS/INDEX.csv — every saved file in that folder.
+The two lists are CSV: back-end data for agents and tools, one row per file, not pages
+for people (older INDEX.md / CATALOG.md tables are replaced).
 Only this script writes them (people and AI tools never do), so saves never collide.
 
 Runs after every push to main (.github/workflows/catalog.yml), so the catalog
 is complete whichever tool saved a file. Root AGENTS.md §Routing.
 
-A line per saved file: id | date | title | description | kind | category | type | path.\n- id: YYYYMMDD-TTT-KKK-XXXX, stamped into the header the first time (or when it\n  duplicates another) and never changed after — so the job also commits those headers.\n- description: the header's subject_text.
+A row per saved file: id, date, title, description, kind, category, type, file.\n- id: YYYYMMDD-TTT-KKK-XXXX, stamped into the header the first time (or when it\n  duplicates another) and never changed after — so the job also commits those headers.\n- description: the header's subject_text.
 - category: one per file, from the header's context_type (decision → 926_DECISIONS,
   analysis → 924_MODELS …); 920_UNSORTED for a record not sorted yet; — for pages
   that aren't statements (a profile, a concept page).
@@ -22,7 +24,9 @@ name starts with 9 (910_RECORDS/, 990_TRACKING/ …), push-back, work/ — are n
 its lines change.
 """
 
+import csv
 import datetime
+import io
 import json
 import os
 import re
@@ -43,7 +47,7 @@ CATALOG = "901_READ_FIRST/04_CATALOG.md" if os.path.isdir("901_READ_FIRST") or n
 NUM = re.compile(r"^\d+_")
 RULES = {"AGENTS.md", "README.md", "FOCUS.md", "INDEX.md"}
 MACHINERY = {"901_READ_FIRST", "902_REFERENCES", "01_READ_FIRST", "02_REFERENCES"}
-HEAD = "| ID | Date | Title | Description | Kind | Category | Type | File |\n|---|---|---|---|---|---|---|---|"
+COLUMNS = ["id", "date", "title", "description", "kind", "category", "type", "file"]
 
 
 def routes():
@@ -166,6 +170,10 @@ def cell(s):
     return re.sub(r"\s+", " ", s.replace("|", "\\|")).strip()
 
 
+def flat(s):
+    return re.sub(r"\s+", " ", s).strip()
+
+
 def lines():
     route = routes()
     files = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
@@ -186,7 +194,7 @@ def lines():
         date = m.group(1) if m else next(
             (meta[k][:10] for k in ("date", "created", "last_verified") if re.match(r"^\d{4}-\d{2}-\d{2}", meta.get(k, ""))), "—")
         title = meta.get("title") or h1 or re.sub(r"\.[^.]+$", "", p[-1])
-        k = f"`{kind}`" if kind else (f"`{meta['kind']}`" if meta.get("kind") else "—")
+        k = kind or meta.get("kind", "")
         rid = meta.get("id", "")
         if f.lower().endswith(".md") and (not rid or rid in seen):  # every saved file gets an ID, once
             rid = make_id(date if date != "—" else datetime.date.today().isoformat(), "" if typ == "—" else typ, kind)
@@ -198,20 +206,26 @@ def lines():
         topics = meta.get("topics", "").strip("[] ")
         if topics:
             desc = f"{desc} — topics: {topics}" if desc != "—" else f"topics: {topics}"
-        rows.setdefault(folder, []).append((date, f, f"| {rid or '—'} | {date} | {cell(title)} | {cell(desc)} | {k} | {cat} | {cell(typ)} | `{f}` |", cat, typ))
+        rows.setdefault(folder, []).append((date, f, [rid, "" if date == "—" else date, flat(title), "" if desc == "—" else flat(desc), k, "" if cat == "—" else cat, "" if typ == "—" else flat(typ), f], cat, typ))
     return rows
 
 
-def write(path, title, intro, rows):
-    body = f"# {title}\n\n{intro}\n\n{HEAD}\n" + "".join(r + "\n" for r in rows)
-    if os.path.exists(path):
-        old = open(path, encoding="utf-8").read()
-        if old.endswith(body):
-            return False
-    today = datetime.date.today().isoformat()
+def write(path, rows):
+    """The list as CSV. Replaces an older .md table of the same name. False when nothing changed."""
+    buf = io.StringIO()
+    w = csv.writer(buf, lineterminator="\n")
+    w.writerow(COLUMNS)
+    w.writerows(rows)
+    body = buf.getvalue()
+    legacy = path[:-4] + ".md"
+    gone = os.path.exists(legacy)
+    if gone:
+        os.remove(legacy)
+    if os.path.exists(path) and open(path, encoding="utf-8").read() == body:
+        return gone
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as out:
-        out.write(f"---\ntitle: {title.replace('`', '')}\nstatus: draft\nreviewed_by: none\nlast_verified: {today}\n---\n\n{body}")
+        out.write(body)
     return True
 
 
@@ -252,19 +266,14 @@ def main():
         rs.sort()
         for r in rs:
             areas.setdefault(r[1].split("/")[0], []).append(r)
-        intro = ("What’s saved in this folder: one line per file — what kind of statement it is, its\n"
-                 "category, its type, and where it is. For agents and the back end; people browse the folder\n"
-                 "itself. Rebuilt after every push — never edit by hand. Root `AGENTS.md` §Routing.")
-        if write(f"{folder}/{records_dir(folder)}/INDEX.md", f"Log — `{folder}/`", intro, [r[2] for r in rs]):
+        if write(f"{folder}/{records_dir(folder)}/INDEX.csv", [r[2] for r in rs]):
             changed.append(folder)
     # Level 2: one full list per top-level area
     summary_rows = []
     for area, rs in sorted(areas.items()):
         rs.sort(key=lambda r: r[1])
-        path = f"{area}/{records_dir(area)}/CATALOG.md"
-        intro = (f"Every saved file in `{area}/`, one line each. The repo’s list of areas: `{CATALOG}`.\n"
-                 "Rebuilt after every push — never edit by hand. Root `AGENTS.md` §Routing.")
-        if write(path, f"Catalog — `{area}/`", intro, [r[2] for r in rs]):
+        path = f"{area}/{records_dir(area)}/CATALOG.csv"
+        if write(path, [r[2] for r in rs]):
             changed.append(f"{area} catalog")
         summary_rows.append(f"| `{area}/` | {summary(area)} | {len(rs)} | {counts(r[3] for r in rs)} | {counts(r[4] for r in rs)} | `{path}` |")
     # Level 1: the areas, with counts — read this first, then the area's catalog

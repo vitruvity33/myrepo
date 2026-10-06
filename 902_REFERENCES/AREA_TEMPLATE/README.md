@@ -16,7 +16,7 @@ NN_AREA_NAME/                  your number (never starting with 9); sub-areas: o
 ├── FOCUS.md                   optional. What the owner is after here — agents read it
 │                              before suggesting anything (root AGENTS.md §Focus)
 ├── 910_RECORDS/               The back end — never the owner's content:
-│   ├── INDEX.md               the log: every saved file, its category, where it is
+│   ├── INDEX.csv               the log: every saved file, its category, where it is
 │   ├── 911_GOALS/             00_GOALS.md — aligns_with: one level up
 │   └── 915_PUSH_BACK/         disputes about this folder
 ├── 990_TRACKING/              back end — the AI's lists (queue, research, decisions needed)
@@ -200,7 +200,7 @@ Set in MyRepo (repo ⚙ → Topic types).
 
 1. Area name and ID prefix
 2. What belongs to this area (and what doesn't)
-3. What gets saved here, and how it's logged (`910_RECORDS/INDEX.md`)
+3. What gets saved here, and how it's logged (`910_RECORDS/INDEX.csv`)
 4. Rules specific to the area
 5. Pointer to root `AGENTS.md` (full path from root)
 6. Push-back section — `915_PUSH_BACK/`, `YYYY-MM-DD_TOPIC.md`

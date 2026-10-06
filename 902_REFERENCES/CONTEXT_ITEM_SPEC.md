@@ -44,7 +44,7 @@ Any tool must be able to answer these from the front-matter alone.
 <!-- myrepo:end types -->
 
 **The header is the truth; the log follows it.** A saved file lives in the folder it's
-about; its `context_type` decides its category in that folder's `910_RECORDS/INDEX.md`
+about; its `context_type` decides its category in that folder's `910_RECORDS/INDEX.csv`
 and in `901_READ_FIRST/04_CATALOG.md` (root `AGENTS.md` §Routing).
 
 ## `record_form` — the container, never the meaning

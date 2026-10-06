@@ -26,7 +26,7 @@ numbered area as you create it.
 |---|---|---|---|---|
 | `901_READ_FIRST/` | Orientation — which area answers which question | reference | `RF-` | active |
 | `902_REFERENCES/` | Shared machinery: record spec, push-back protocol, ID registry, preferences, prompts | reference | `REF-` | active |
-| `89_OTHER/` | Catch-all for unsorted captures, logged in its `910_RECORDS/INDEX.md` | — | — | active |
+| `89_OTHER/` | Catch-all for unsorted captures, logged in its `910_RECORDS/INDEX.csv` | — | — | active |
 | _(your areas — `10_`, `30_`, `620_` …)_ | _one row per area you create_ | _endeavor / entity / governance_ | _`XXX-`_ | — |
 
 ## Reserved — not created

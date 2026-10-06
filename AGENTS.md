@@ -153,21 +153,23 @@ or a content folder inside it — as `YYYY-MM-DD_TITLE.md`, where the owner sees
 
 **The catalog — three levels, written only by the repo’s catalog job.** After every push
 `scripts/build_catalog.py` rebuilds them from the files themselves. **Never edit them** — just
-save the file with its header (including `id:`); its line appears on its own.
+save the file with its header (including `id:`); its row appears on its own.
 
 1. `901_READ_FIRST/04_CATALOG.md` — one line per area: what it holds, how many saved files, by
    category and type, and where its full list is. **Start here to find anything.**
-2. `<area>/910_RECORDS/CATALOG.md` — every saved file in that area.
-3. `<folder>/910_RECORDS/INDEX.md` — every saved file in that folder.
+2. `<area>/910_RECORDS/CATALOG.csv` — every saved file in that area.
+3. `<folder>/910_RECORDS/INDEX.csv` — every saved file in that folder.
 
-A line in levels 2 and 3:
+Levels 2 and 3 are CSV — back-end data for agents and tools, one row per saved file
+(people browse the folders, not these lists):
 
-| ID | Date | Title | Description | Kind | Category | Type | File |
-|---|---|---|---|---|---|---|---|
-| 20261005-SYS-ANA-7K2Q | 2026-10-05 | Conversation memory architecture | How conversation memory and context work | `analysis` | 924_MODELS | Systems | `10_Product/Infra-AWS/2026-10-05_CONVERSATION-MEMORY.md` |
-| 20261002-PEO-GEN-3MXA | 2026-10-02 | Frei Otto | Architect of lightweight structures | — | — | People | `50_LEARNING/architecture/People/frei-otto/PROFILE.md` |
+```csv
+id,date,title,description,kind,category,type,file
+20261005-SYS-ANA-7K2Q,2026-10-05,System design,How the parts fit together,analysis,924_MODELS,Systems,20_PROJECT/2026-10-05_SYSTEM-DESIGN.md
+20261002-PEO-GEN-3MXA,2026-10-02,Jane Doe,Who she is and why she matters,,,People,30_TEAM/31_PEOPLE/jane-doe/PROFILE.md
+```
 
-Every saved file gets **one line**:
+Every saved file gets **one row**:
 
 - **ID** — `YYYYMMDD-TTT-KKK-XXXX`: the date, its type and kind as three letters, four random
   characters. Put it in the header as `id:` the first time the file is saved and **never change
@@ -313,10 +315,10 @@ There are two kinds of number, and they never mix.
 |---|---|---|
 | `901_READ_FIRST/` | orientation, the Area Map, and `04_CATALOG.md` — every saved file | repo |
 | `902_REFERENCES/` | rules machinery: record spec, push-back protocol, settings, prompts | repo |
-| `910_RECORDS/` | the folder's log: `INDEX.md` — every saved file, its category, where it is | every folder |
+| `910_RECORDS/` | the folder's log: `INDEX.csv` — every saved file, its category, where it is | every folder |
 | `911_GOALS/` | goals, inside `910_RECORDS/` | every folder |
 | `915_PUSH_BACK/` | disputes and corrections — in `910_RECORDS/`, or at the top for cross-area | folder · repo |
-| `920_UNSORTED` · `922_QUESTIONS` · `923_REFERENCES` · `924_MODELS` · `926_DECISIONS` | categories in a log (labels in `INDEX.md`, not folders) | — |
+| `920_UNSORTED` · `922_QUESTIONS` · `923_REFERENCES` · `924_MODELS` · `926_DECISIONS` | categories in a log (labels in `INDEX.csv`, not folders) | — |
 | `990_TRACKING/` | the AI's working lists — the queue, research and decisions needed | every folder |
 
 The catch-all for unsorted captures is yours: `89_OTHER/`. **Never renumber** — it
@@ -333,7 +335,7 @@ breaks every link. Older repos used `01_RECORDS/`, `90_TRACKING/`, `01_READ_FIRS
   + `README.md` in the same operation (§Every folder gets AGENTS.md + README.md). Never create a folder just by
   saving a file into it. Promoting a sub-area to top level is a move, not a redesign.
 - `910_RECORDS/` is the **back end**, like `AGENTS.md` and `README.md`: the folder's log
-  (`INDEX.md` — every saved file, its category and where it is), its goals
+  (`INDEX.csv` — every saved file, its category and where it is), its goals
   (`911_GOALS/`) and push-back (`915_PUSH_BACK/`). **The owner's content never goes in
   it** (§Routing). Older files already in `00_INBOX/` … `06_DECISIONS/` stay where they
   are; log them and save anything new in the folder.
