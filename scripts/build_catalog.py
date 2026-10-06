@@ -143,9 +143,21 @@ def type_name(folder):
     return folder.split("_", 1)[1].replace("_", " ").title()
 
 
+def continues(parent, child):
+    """Library numbers: each added digit is a sub-category of the number before it (40_ → 41_ → 411_)."""
+    p, c = NUM.match(parent), NUM.match(child)
+    if not p or not c:
+        return False
+    p, c = p.group(0)[:-1], c.group(0)[:-1]
+    stem = p.rstrip("0") or p
+    return c != p and not c.startswith("9") and len(c) > len(stem) and c.startswith(stem)
+
+
 def log_folder(dirs):
+    # a numbered folder that continues its parent's number (41_ in 40_) keeps its own log;
+    # any other numbered folder (15_CONCEPTS/) is a type folder, logged by its parent
     for i in range(1, len(dirs)):
-        if NUM.match(dirs[i]):
+        if NUM.match(dirs[i]) and not continues(dirs[i - 1], dirs[i]):
             return "/".join(dirs[:i]), dirs[i]
     return "/".join(dirs), None
 

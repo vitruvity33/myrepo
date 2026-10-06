@@ -294,11 +294,12 @@ There are two kinds of number, and they never mix.
   (`30_SPORTS` → `33_SOCCER`), and finer still adds a digit (`335_MENS_SOCCER`).
   Folders sort digit by digit, whatever their names say: `30_` → `33_` → `335_` → `34_`.
   A number only orders — it **means nothing on its own**; read the folder name and the
-  Area Map. **Sub-folders inside an area take their numbers from the area's number**, at
-  any depth: inside `33_SOCCER` they are `331_`, `332_` …, and inside `335_` they are
-  `3351_`, `3352_` …. Never restart at `10_`, `20_` inside an area — those are top-level
-  numbers. A sub-folder may also have no number. (Older type folders such as `10_PEOPLE/`
-  and `15_CONCEPTS/` keep their names — never renumber.) **Your numbers never start with 9.**
+  Area Map. **Each added digit is a sub-category of the number before it**, at any
+  depth: the area `30_SPORTS` holds `31_` … `39_` (`33_SOCCER`); inside `33_` come `331_` …
+  `339_` (`335_MENS_SOCCER`); inside `335_` come `3351_` …. Never restart at `10_` or
+  `20_` inside a folder — those are top-level numbers. Each of these folders has its own
+  `AGENTS.md`, `README.md` and log. A sub-folder may also have no number. (Older type
+  folders such as `10_PEOPLE/` and `15_CONCEPTS/` keep their names — never renumber.) **Your numbers never start with 9.**
 - **The back end always starts with 9**, and each 9-number means one thing in every
   repo and every folder — so any AI tool, with no other context, knows where to look:
 
@@ -467,8 +468,8 @@ kind suggests a starting set:
   list comes from this file.
 - **Types are labels, not folder names.** A type (People, Sources, Options, Timeline …) says
   what kind of thing a folder holds. The owner names the folders the way they want to find
-  things (`Location/`, `Venues/`, `Buildings/`), numbered from their parent’s number (`331_`, `332_` inside
-  `33_`) or not at all; each
+  things (`Location/`, `Venues/`, `Buildings/`), numbered from their parent’s number (`31_` … `39_` inside
+  `30_`, `331_` inside `33_`) or not at all; each
   folder’s `AGENTS.md` says which types it holds (“Holds: places, options”). Suggest names;
   never create a folder just because a type is on the list. A folder may be named after a
   type (`People/`) when that is how the owner wants it. Suggestions, not limits.
