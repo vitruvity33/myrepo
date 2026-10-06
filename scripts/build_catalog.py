@@ -5,7 +5,7 @@
 Runs after every push to main (.github/workflows/catalog.yml), so the catalog
 is complete whichever tool saved a file. Root AGENTS.md §Routing.
 
-A line per saved file: date | title | kind | category | type | path.
+A line per saved file: id | date | title | description | kind | category | type | path.\n- id: YYYYMMDD-TTT-KKK-XXXX, stamped into the header the first time (or when it\n  duplicates another) and never changed after — so the job also commits those headers.\n- description: the header's subject_text.
 - category: one per file, from the header's context_type (decision → 926_DECISIONS,
   analysis → 924_MODELS …); 920_UNSORTED for a record not sorted yet; — for pages
   that aren't statements (a profile, a concept page).
@@ -22,6 +22,7 @@ import datetime
 import json
 import os
 import re
+import secrets
 import subprocess
 
 # The log's categories — back end, so they start with 9. Settings files store the older slot names.
@@ -38,7 +39,7 @@ CATALOG = "901_READ_FIRST/04_CATALOG.md" if os.path.isdir("901_READ_FIRST") or n
 NUM = re.compile(r"^\d+_")
 RULES = {"AGENTS.md", "README.md", "FOCUS.md", "INDEX.md"}
 MACHINERY = {"901_READ_FIRST", "902_REFERENCES", "01_READ_FIRST", "02_REFERENCES"}
-HEAD = "| Date | Title | Kind | Category | Type | File |\n|---|---|---|---|---|---|"
+HEAD = "| ID | Date | Title | Description | Kind | Category | Type | File |\n|---|---|---|---|---|---|---|---|"
 
 
 def routes():
@@ -70,6 +71,45 @@ def header(path):
             text = text[end + 4:]
     h1 = re.search(r"^#\s+(.+)$", text, re.M)
     return meta, (h1.group(1).strip() if h1 else None)
+
+
+# IDs: YYYYMMDD-TTT-KKK-XXXX — stamped into the header once, never changed (root AGENTS.md §Routing).
+TYPE_CODE = {
+    "people": "PEO", "groups": "GRO", "periods": "PER", "works": "WOR", "places": "PLA", "concepts": "CON",
+    "practices": "PRA", "systems": "SYS", "patterns": "PAT", "resources": "RES", "sources": "SOU",
+    "evidence": "EVI", "interviews": "INT", "data": "DAT", "experiments": "EXP", "results": "RSL",
+    "options": "OPT", "plans": "PLN", "workstreams": "WST", "timeline": "TIM", "responsibilities": "RSP",
+    "dependencies": "DEP", "schedule": "SCH", "research": "RSR", "design": "DES", "build": "BLD",
+    "launch": "LAU", "review": "REV", "processes": "PRO", "checklists": "CHK", "runs": "RUN",
+    "measures": "MEA", "incidents": "INC", "improvements": "IMP",
+}
+KIND_CODE = {
+    "analysis": "ANA", "assumption": "ASM", "decision": "DEC", "definition": "DEF", "dispute": "DIS",
+    "evidence": "EVI", "known_issue": "KNI", "methodology": "MET", "outcome": "OUT", "correction": "COR",
+    "preference": "PRE",
+}
+RANDOM = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
+
+
+def three(s):
+    return (re.sub(r"[^A-Za-z]", "", s)[:3].upper() or "XXX").ljust(3, "X")
+
+
+def make_id(date, typ, kind):
+    t = TYPE_CODE.get(typ.lower(), three(typ)) if typ else "GEN"
+    k = KIND_CODE.get(kind.lower(), three(kind)) if kind else "UNS"
+    return f"{date.replace('-', '')}-{t}-{k}-" + "".join(secrets.choice(RANDOM) for _ in range(4))
+
+
+def stamp(path, new_id):
+    """Put id: first in the file's header (adds it, or replaces a duplicate)."""
+    text = open(path, encoding="utf-8").read()
+    m = re.match(r"(\ufeff?---\r?\n)([\s\S]*?)(\r?\n---[ \t]*(?:\r?\n|$))", text)
+    if not m:
+        return False
+    body = re.sub(r"^id:.*\n?", "", m.group(2), flags=re.M)
+    open(path, "w", encoding="utf-8").write(f"{m.group(1)}id: {new_id}\n{body}{m.group(3)}{text[m.end():]}")
+    return True
 
 
 def backend(parts):
@@ -111,7 +151,8 @@ def lines():
     route = routes()
     files = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
     rows = {}
-    for f in files:
+    seen = set()
+    for f in sorted(files):
         p = f.split("/")
         if len(p) < 2 or not NUM.match(p[0]) or p[0] in MACHINERY or not re.search(r"\.(md|csv|tsv)$", f, re.I):
             continue
@@ -129,7 +170,15 @@ def lines():
             (meta[k][:10] for k in ("date", "created", "last_verified") if re.match(r"^\d{4}-\d{2}-\d{2}", meta.get(k, ""))), "—")
         title = meta.get("title") or h1 or re.sub(r"\.[^.]+$", "", p[-1])
         k = f"`{kind}`" if kind else (f"`{meta['kind']}`" if meta.get("kind") else "—")
-        rows.setdefault(folder, []).append((date, f, f"| {date} | {cell(title)} | {k} | {cat} | {cell(typ)} | `{f}` |"))
+        rid = meta.get("id", "")
+        if f.lower().endswith(".md") and (not rid or rid in seen):  # every saved file gets an ID, once
+            rid = make_id(date if date != "—" else datetime.date.today().isoformat(), "" if typ == "—" else typ, kind)
+            if not stamp(f, rid):
+                rid = ""
+        if rid:
+            seen.add(rid)
+        desc = (meta.get("subject_text") or meta.get("description") or "—")[:140]
+        rows.setdefault(folder, []).append((date, f, f"| {rid or '—'} | {date} | {cell(title)} | {cell(desc)} | {k} | {cat} | {cell(typ)} | `{f}` |"))
     return rows
 
 

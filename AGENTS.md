@@ -156,16 +156,33 @@ or a content folder inside it — as `YYYY-MM-DD_TITLE.md`, where the owner sees
 after every push (`scripts/build_catalog.py`). When you can, add the line in the same
 change so it’s there right away. To answer a question about the repo, start from the catalog.
 
-| Date | Title | Kind | Category | Type | File |
-|---|---|---|---|---|---|
-| 2026-10-05 | Conversation memory architecture | `analysis` | 924_MODELS | Systems | `10_Product/Infra-AWS/2026-10-05_CONVERSATION-MEMORY.md` |
-| 2026-10-02 | Frei Otto | — | — | People | `50_LEARNING/architecture/People/frei-otto/PROFILE.md` |
+| ID | Date | Title | Description | Kind | Category | Type | File |
+|---|---|---|---|---|---|---|---|
+| 20261005-SYS-ANA-7K2Q | 2026-10-05 | Conversation memory architecture | How conversation memory and context work | `analysis` | 924_MODELS | Systems | `10_Product/Infra-AWS/2026-10-05_CONVERSATION-MEMORY.md` |
+| 20261002-PEO-GEN-3MXA | 2026-10-02 | Frei Otto | Architect of lightweight structures | — | — | People | `50_LEARNING/architecture/People/frei-otto/PROFILE.md` |
 
-Every saved file gets **one line**: its kind of statement (`context_type`) and its **one**
-category — a single 9-number — plus, when it’s about a person, place, work, source and so on,
-its **type** from the list of types (header `type:`, or the type its folder holds). The type is
-what lets an agent find every person or every source across the repo, whatever the owner named
-the folders. Pages that aren’t statements (a profile, a concept page) have no category.
+Every saved file gets **one line**:
+
+- **ID** — `YYYYMMDD-TTT-KKK-XXXX`: the date, its type and kind as three letters, four random
+  characters. Put it in the header as `id:` the first time the file is saved and **never change
+  it** — not when the file is renamed, moved or re-classified. Link to files by ID; the catalog
+  says where each one is now. Read the current kind and type from the log, never from the ID.
+  A file that already has an `id:` (older ones like `COG-002`) keeps it.
+  Type codes: PEO People · GRO Groups · PER Periods · WOR Works · PLA Places · CON Concepts ·
+  PRA Practices · SYS Systems · PAT Patterns · RES Resources · SOU Sources · EVI Evidence ·
+  INT Interviews · DAT Data · EXP Experiments · RSL Results · OPT Options · PLN Plans ·
+  WST Workstreams · TIM Timeline · RSP Responsibilities · DEP Dependencies · SCH Schedule ·
+  RSR Research · DES Design · BLD Build · LAU Launch · REV Review · PRO Processes ·
+  CHK Checklists · RUN Runs · MEA Measures · INC Incidents · IMP Improvements · GEN none.
+  Kind codes: ANA analysis · ASM assumption · DEC decision · DEF definition · DIS dispute ·
+  EVI evidence · KNI known_issue · MET methodology · OUT outcome · COR correction ·
+  PRE preference · UNS not sorted yet. Any other type or kind: its first three letters.
+- **Description** — what it is about, from the header’s `subject_text:`.
+- **Kind** and its **one category** — a single 9-number. Pages that aren’t statements (a
+  profile, a concept page) have no category.
+- **Type** — what it is about, from the list of types (header `type:`, or the type its folder
+  holds). The type lets an agent find every person or every source across the repo, whatever
+  the owner named the folders.
 
 The category comes from the header’s `context_type`:
 
@@ -255,10 +272,10 @@ end the save by emitting a `SAVE` block — nothing omitted:
 SAVE
 path: <AREA>/<SUBJECT>/YYYY-MM-DD_TOPIC.md
 ---
-<complete file: full front-matter + body>
+<complete file: full front-matter (starting with id: YYYYMMDD-TTT-KKK-XXXX) + body>
 
 LOG (add to <AREA>/<SUBJECT>/910_RECORDS/INDEX.md and 901_READ_FIRST/04_CATALOG.md)
-| YYYY-MM-DD | <title> | `<context_type>` | <category> | `<AREA>/<SUBJECT>/YYYY-MM-DD_TOPIC.md` |
+| <id> | YYYY-MM-DD | <title> | <what it is about> | `<context_type>` | <category> | <type> | `<AREA>/<SUBJECT>/YYYY-MM-DD_TOPIC.md` |
 ```
 
 The human or a file-capable agent performs the write. A disagreement left only in
