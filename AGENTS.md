@@ -123,7 +123,7 @@ Every **knowledge record** answers three questions from its front-matter alone:
 
 **No front-matter, no save.** If a record can't answer the three questions yet, it is
 saved with `subject_text:` filled in and no `context_type`, and logged as unsorted
-(`00_INBOX`). Nothing is dropped.
+(`920_UNSORTED`). Nothing is dropped.
 
 Spec: `902_REFERENCES/CONTEXT_ITEM_SPEC.md`.
 
@@ -188,7 +188,7 @@ artifacts-in-progress live in `work/`.
 - **Merge ≠ promotion.** Git history tells what changed; the status field tells
   how much authority the content has. Drafts legitimately live on `main`.
 - Anything with `status: superseded` (or in an `Archive/` or `99_ARCHIVE/` folder) is
-  superseded — never cite it. Anything logged as unsorted (`00_INBOX`) is unreviewed —
+  superseded — never cite it. Anything logged as unsorted (`920_UNSORTED`) is unreviewed —
   never cite it.
 - **Superseding a saved file:** set `status: superseded`, move it into an `Archive/`
   folder inside its folder, and update its line in the log and the catalog.
