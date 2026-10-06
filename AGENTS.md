@@ -26,6 +26,10 @@ Not every tool discovers nested instruction files — this rule makes them load-
 
 Orientation: `901_READ_FIRST/01_START_HERE.md` → `901_READ_FIRST/02_AREA_MAP.md`.
 
+Sharing: `901_READ_FIRST/05_SHARING.md` — who can open this repo, pending invites and open
+invite links. MyRepo keeps it up to date; answer sharing questions ("who's invited? has Ana
+joined?") from it, and never edit it by hand.
+
 ---
 
 ## Focus — check it before you suggest anything
@@ -337,7 +341,7 @@ There are two kinds of number, and they never mix.
 
 | Name | What it is | Where |
 |---|---|---|
-| `901_READ_FIRST/` | orientation, the Area Map, and `04_CATALOG.md` — every saved file | repo |
+| `901_READ_FIRST/` | orientation, the Area Map, `04_CATALOG.md` — every saved file — and `05_SHARING.md` — who can open the repo | repo |
 | `902_REFERENCES/` | rules machinery: record spec, push-back protocol, settings, prompts | repo |
 | `910_RECORDS/` | the folder's log: `INDEX.csv` — every saved file, its category, where it is | every folder |
 | `911_GOALS/` | goals, inside `910_RECORDS/` | every folder |
