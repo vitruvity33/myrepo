@@ -221,7 +221,7 @@ def saved_item_problems(added):
         parts = path.split("/")
         if len(parts) < 2 or not is_area(parts[0]) or any(p.startswith(".") for p in parts):
             continue
-        if in_content_slot(path):
+        if in_content_slot(path) and parts[-1] not in RULES_FILES:
             owner = re.split(r"/(?:910|01)_RECORDS", "/".join(parts[:-1]))[0]
             problems.append(f"{path} — saved inside the back end ({'/'.join(parts[:-1])}); save it in {owner}/ instead")
     return problems
