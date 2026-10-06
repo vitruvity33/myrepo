@@ -6,11 +6,11 @@ Nothing here is hardcoded to this repo's areas — they are read from the tree:
 
 1. Every new folder for the owner's content, at any depth (60_FINANCE/,
    10_Wedding/Costs/, 50_LEARNING/acoustics/30_SOURCES/ …), needs AGENTS.md and
-   README.md in the same push. Back-end folders don't: 01_RECORDS and its slot
+   README.md in the same push. Back-end folders don't: 910_RECORDS and its slot
    folders (00_INBOX …), push-back folders, 90_TRACKING, work, and anything
    outside the areas.
-2. The owner's content lives in content folders, never inside 01_RECORDS/ (the
-   back end): a new file in 01_RECORDS/00_INBOX, 02_QUESTIONS, 03_REFERENCES,
+2. The owner's content lives in content folders, never inside 910_RECORDS/ (the
+   back end; older repos: 01_RECORDS/): a new file in its 00_INBOX, 02_QUESTIONS, 03_REFERENCES,
    04_MODELS or 06_DECISIONS fails. (The logs and the catalog are rebuilt after
    every push by scripts/build_catalog.py, so a missing line isn't a failure.)
    New push-back, goals and archive files need front-matter.
@@ -31,10 +31,13 @@ import subprocess
 import sys
 
 STRUCTURAL_NAMES = {
+    "910_RECORDS", "911_GOALS", "915_PUSH_BACK", "990_TRACKING",
     "00_INBOX", "01_RECORDS", "01_GOALS", "02_QUESTIONS", "03_REFERENCES",
     "04_MODELS", "05_PUSH_BACK", "06_DECISIONS", "99_ARCHIVE", "work",
 }
-REPO_MACHINERY = {"01_READ_FIRST", "02_REFERENCES"}
+REPO_MACHINERY = {"901_READ_FIRST", "902_REFERENCES", "01_READ_FIRST", "02_REFERENCES"}
+RECORDS = {"910_RECORDS", "01_RECORDS"}
+BACK_END = re.compile(r"^9\d*_")
 RULES_FILES = {"README.md", "AGENTS.md", "FOCUS.md"}
 RECORD_FOLDERS = STRUCTURAL_NAMES - {"work"}
 NUMBERED = re.compile(r"^(\d+)_")
@@ -49,7 +52,7 @@ ROUTES = {
 }
 NEEDS_SOURCE = {"evidence"}
 ROUTED_SLOTS = {"02_QUESTIONS", "03_REFERENCES", "04_MODELS", "06_DECISIONS"}
-SETTINGS = "02_REFERENCES/REPO_SETTINGS.json"
+SETTINGS = ("902_REFERENCES/REPO_SETTINGS.json", "02_REFERENCES/REPO_SETTINGS.json")
 CONTENT_SLOTS = {"00_INBOX", "02_QUESTIONS", "03_REFERENCES", "04_MODELS", "06_DECISIONS"}
 PUSH_BACK = re.compile(r"^\d+_PUSH_BACK$", re.IGNORECASE)
 TRACKING = re.compile(r"^\d+_TRACKING$", re.IGNORECASE)
@@ -72,7 +75,7 @@ def directories(files):
 
 
 def is_area(top):
-    return bool(NUMBERED.match(top)) and top not in REPO_MACHINERY and not top.endswith("_PUSH_BACK")
+    return bool(NUMBERED.match(top)) and top not in REPO_MACHINERY and not top.endswith("_PUSH_BACK") and not BACK_END.match(top)
 
 
 def requires_local_guidance(path):
@@ -94,6 +97,9 @@ def top_level_problems(new_dirs, head_files):
         if "/" in path or path.startswith("."):
             continue
         num = number_of(path)
+        if BACK_END.match(path) and path not in REPO_MACHINERY and not PUSH_BACK.match(path):
+            problems.append(f"{path}/ — numbers starting with 9 are the back end; give your area a number that starts with 1–8")
+            continue
         if num is None:
             if f"{path}/AGENTS.md" in head_files or f"{path}/README.md" in head_files:
                 problems.append(f"{path}/ — new top-level area without a number (e.g. 60_{path})")
@@ -160,10 +166,14 @@ def slot_of(path):
 
 def load_routes():
     """The repo's own kinds from its settings file — or the defaults above."""
-    try:
-        settings = json.loads(git("show", f"HEAD:{SETTINGS}"))
-        kinds = settings["classifications"]
-    except (subprocess.CalledProcessError, ValueError, KeyError, TypeError):
+    kinds = None
+    for path in SETTINGS:
+        try:
+            kinds = json.loads(git("show", f"HEAD:{path}"))["classifications"]
+            break
+        except (subprocess.CalledProcessError, ValueError, KeyError, TypeError):
+            continue
+    if kinds is None:
         return ROUTES, NEEDS_SOURCE
     routes, sourced = {}, set()
     for kind in kinds:
@@ -201,7 +211,7 @@ def routing_problems(changed):
 
 def in_content_slot(path):
     parts = path.split("/")[:-1]
-    return any(p == "01_RECORDS" and i + 1 < len(parts) and parts[i + 1].upper() in CONTENT_SLOTS for i, p in enumerate(parts))
+    return any(p in RECORDS and i + 1 < len(parts) and parts[i + 1].upper() in CONTENT_SLOTS for i, p in enumerate(parts))
 
 
 def saved_item_problems(added):
@@ -212,8 +222,8 @@ def saved_item_problems(added):
         if len(parts) < 2 or not is_area(parts[0]) or any(p.startswith(".") for p in parts):
             continue
         if in_content_slot(path):
-            owner = "/".join(parts[:-1]).split("/01_RECORDS")[0]
-            problems.append(f"{path} — saved inside 01_RECORDS/ (the back end); save it in {owner}/ instead")
+            owner = re.split(r"/(?:910|01)_RECORDS", "/".join(parts[:-1]))[0]
+            problems.append(f"{path} — saved inside the back end ({'/'.join(parts[:-1])}); save it in {owner}/ instead")
     return problems
 
 

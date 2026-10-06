@@ -11,7 +11,7 @@ last_verified: 2026-09-29
 **Devin, Claude Code, Codex, ChatGPT Codex tasks** — point at the root.
 It will find `AGENTS.md` automatically.
 
-> "Read AGENTS.md and 01_READ_FIRST/02_AREA_MAP.md, then work inside the
+> "Read AGENTS.md and 901_READ_FIRST/02_AREA_MAP.md, then work inside the
 > conventions there."
 
 - ChatGPT sees the **GitHub remote** only — local files are invisible until pushed.
@@ -20,7 +20,7 @@ It will find `AGENTS.md` automatically.
 ## Tools that cannot read files
 
 **ChatGPT chat (without a repo task), claude.ai, Gemini** — paste the context
-block from `02_REFERENCES/prompts/CHAT_CONTEXT.md` first. It carries the rules
+block from `902_REFERENCES/prompts/CHAT_CONTEXT.md` first. It carries the rules
 the tool cannot read.
 
 ## The SAVE block
@@ -48,7 +48,7 @@ fallback — not the primary workflow for tools with repo access.**
 ## Correction loop
 
 "That's cliché / not my format / not how I want it" is not just a fix to the
-current output — it triggers a proposed update to `02_REFERENCES/preferences/`
+current output — it triggers a proposed update to `902_REFERENCES/preferences/`
 with the right `scope:` (`global | artifact_type | area | project`). Corrections
 become permanent rules; the owner should never repeat one.
 

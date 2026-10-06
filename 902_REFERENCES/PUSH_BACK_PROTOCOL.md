@@ -23,8 +23,8 @@ Push-back is **mandatory** — see root `AGENTS.md`.
 
 | Scope | Folder |
 |---|---|
-| One area or sub-area | `<AREA>/01_RECORDS/05_PUSH_BACK/` |
-| Cross-area, or challenges the repo itself | `90_PUSH_BACK/` (create it on first use) |
+| One area or sub-area | `<AREA>/910_RECORDS/915_PUSH_BACK/` |
+| Cross-area, or challenges the repo itself | `915_PUSH_BACK/` (create it on first use) |
 
 Filename: `YYYY-MM-DD_SHORT-TOPIC.md`.
 
@@ -56,6 +56,6 @@ Front-matter for a dispute: `context_type: dispute`, `resolution: unresolved`,
 - A tool that cannot write files emits the entry as a `SAVE` block — the
   obligation to record travels even when the write capability doesn't.
 - Style/format disagreement is *also* a correction-loop event: propose a
-  `02_REFERENCES/preferences/` update when the correction is durable and
+  `902_REFERENCES/preferences/` update when the correction is durable and
   scoped `global` or `artifact_type`. Project-specific push-back stays in the
-  project's `05_PUSH_BACK/`.
+  project's `915_PUSH_BACK/`.

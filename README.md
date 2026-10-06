@@ -24,7 +24,7 @@ survives, not just the conclusion.
 
 - **Areas** are numbered top-level folders (`10_`, `20_` …) — the domains that
   matter to you. Each carries `AGENTS.md` (rules for agents) + `README.md`
-  (orientation for people) + `01_RECORDS/` (the back-end log of what's saved).
+  (orientation for people) + `910_RECORDS/` (the back-end log of what's saved).
 - **Sub-areas** are unnumbered folders inside an area with the same shape —
   a person inside a people area, a topic inside a research area.
 - **Every record answers three questions** from its front-matter: what it's about,
@@ -34,15 +34,15 @@ survives, not just the conclusion.
 ## Adopt it
 
 1. Clone this template into a repo you own.
-2. Name your areas in `01_READ_FIRST/02_AREA_MAP.md` — start with few, add later.
-   The shipped folders (`01_READ_FIRST`, `02_REFERENCES`, `99_OTHER`) are the
+2. Name your areas in `901_READ_FIRST/02_AREA_MAP.md` — start with few, add later.
+   The shipped folders (`901_READ_FIRST`, `902_REFERENCES`, `89_OTHER`) are the
    machinery, not your taxonomy.
 3. Set your name as context reviewer in `AGENTS.md`.
-4. Connect your AI tools — see `01_READ_FIRST/03_HOW_TO_USE_WITH_AI.md`.
+4. Connect your AI tools — see `901_READ_FIRST/03_HOW_TO_USE_WITH_AI.md`.
 
 ## For humans
 
-Start at `01_READ_FIRST/01_START_HERE.md`.
+Start at `901_READ_FIRST/01_START_HERE.md`.
 
 ## For AI agents
 

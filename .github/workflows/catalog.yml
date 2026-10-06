@@ -1,4 +1,4 @@
-# Rebuilds every folder's log (01_RECORDS/INDEX.md) and 01_READ_FIRST/04_CATALOG.md
+# Rebuilds every folder's log (910_RECORDS/INDEX.md) and 901_READ_FIRST/04_CATALOG.md
 # after each push, so the catalog lists every saved file whichever tool saved it.
 name: Update catalog
 

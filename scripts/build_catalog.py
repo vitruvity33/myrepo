@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Rebuild every folder's log (01_RECORDS/INDEX.md) and the repo's catalog
-(01_READ_FIRST/04_CATALOG.md) from the files actually in the repo.
+"""Rebuild every folder's log (910_RECORDS/INDEX.md) and the repo's catalog
+(901_READ_FIRST/04_CATALOG.md) from the files actually in the repo.
 
 Runs after every push to main (.github/workflows/catalog.yml), so the catalog
 is complete whichever tool saved a file. Root AGENTS.md §Routing.
 
 A line per saved file: date | title | kind | category | path. The category
-comes from the header's context_type (decision → 06_DECISIONS, analysis →
-04_MODELS …), else the folder type it sits in (15_CONCEPTS …), else 00_INBOX
-for a record that isn't sorted yet. Each file is logged in the nearest folder
+comes from the header's context_type (decision → 926_DECISIONS, analysis →
+924_MODELS …), else the folder type it sits in (15_CONCEPTS …), else
+for a record that isn't sorted yet (920_UNSORTED). Each file is logged in the nearest folder
 above any folder-type folder (a concept page in topic/15_CONCEPTS/ is in the
-topic's log). Back-end files — AGENTS.md, README.md, FOCUS.md, 01_RECORDS/,
-push-back, 90_TRACKING/, work/ — are not listed. A file is rewritten only when
+topic's log). Back-end files — AGENTS.md, README.md, FOCUS.md, and anything whose
+name starts with 9 (910_RECORDS/, 990_TRACKING/ …), push-back, work/ — are not listed. A file is rewritten only when
 its lines change.
 """
 
@@ -21,31 +21,36 @@ import os
 import re
 import subprocess
 
+# The log's categories — back end, so they start with 9. Settings files store the older slot names.
+CODE = {"00_INBOX": "920_UNSORTED", "02_QUESTIONS": "922_QUESTIONS", "03_REFERENCES": "923_REFERENCES",
+        "04_MODELS": "924_MODELS", "06_DECISIONS": "926_DECISIONS"}
 ROUTE = {
-    "decision": "06_DECISIONS", "outcome": "06_DECISIONS",
-    "assumption": "02_QUESTIONS", "known_issue": "02_QUESTIONS",
-    "methodology": "03_REFERENCES", "definition": "03_REFERENCES", "evidence": "03_REFERENCES",
-    "analysis": "04_MODELS",
+    "decision": "926_DECISIONS", "outcome": "926_DECISIONS",
+    "assumption": "922_QUESTIONS", "known_issue": "922_QUESTIONS",
+    "methodology": "923_REFERENCES", "definition": "923_REFERENCES", "evidence": "923_REFERENCES",
+    "analysis": "924_MODELS",
 }
-SLOTTED = {"00_INBOX", "02_QUESTIONS", "03_REFERENCES", "04_MODELS", "06_DECISIONS"}
-SETTINGS = "02_REFERENCES/REPO_SETTINGS.json"
-CATALOG = "01_READ_FIRST/04_CATALOG.md"
+SETTINGS = ("902_REFERENCES/REPO_SETTINGS.json", "02_REFERENCES/REPO_SETTINGS.json")
+CATALOG = "901_READ_FIRST/04_CATALOG.md" if os.path.isdir("901_READ_FIRST") or not os.path.isdir("01_READ_FIRST") else "01_READ_FIRST/04_CATALOG.md"
 NUM = re.compile(r"^\d+_")
 RULES = {"AGENTS.md", "README.md", "FOCUS.md", "INDEX.md"}
-MACHINERY = {"01_READ_FIRST", "02_REFERENCES"}
+MACHINERY = {"901_READ_FIRST", "902_REFERENCES", "01_READ_FIRST", "02_REFERENCES"}
 HEAD = "| Date | Title | Kind | Category | File |\n|---|---|---|---|---|"
 
 
 def routes():
     """The repo's own kinds (repo ⚙ → Classifications) when it has them."""
-    try:
-        kinds = json.load(open(SETTINGS))["classifications"]
-    except (OSError, ValueError, KeyError, TypeError):
-        return ROUTE
+    kinds = None
+    for path in SETTINGS:
+        try:
+            kinds = json.load(open(path))["classifications"]
+            break
+        except (OSError, ValueError, KeyError, TypeError):
+            continue
     out = dict(ROUTE)
-    for k in kinds:
-        if isinstance(k, dict) and isinstance(k.get("type"), str) and k.get("slot") in SLOTTED:
-            out[k["type"]] = k["slot"]
+    for k in kinds or []:
+        if isinstance(k, dict) and isinstance(k.get("type"), str) and k.get("slot") in CODE:
+            out[k["type"]] = CODE[k["slot"]]
     return out
 
 
@@ -66,7 +71,7 @@ def header(path):
 
 def backend(parts):
     return any(
-        p.startswith(".") or p in ("01_RECORDS", "work")
+        p.startswith(".") or p in ("910_RECORDS", "01_RECORDS", "work") or re.match(r"^9\d*_", p)
         or re.match(r"^\d+_PUSH_BACK$", p, re.I) or re.match(r"^\d+_TRACKING$", p, re.I)
         for p in parts
     )
@@ -98,7 +103,7 @@ def lines():
         meta, h1 = header(f) if f.lower().endswith(".md") else ({}, None)
         kind = meta.get("context_type", "").lower()
         folder, typed = log_folder(p[:-1])
-        cat = route.get(kind) or typed or ("00_INBOX" if meta.get("kind") == "record" or kind else "—")
+        cat = route.get(kind) or typed or ("920_UNSORTED" if meta.get("kind") == "record" or kind else "—")
         m = re.match(r"^(\d{4}-\d{2}-\d{2})", p[-1])
         date = m.group(1) if m else next(
             (meta[k][:10] for k in ("date", "created", "last_verified") if re.match(r"^\d{4}-\d{2}-\d{2}", meta.get(k, ""))), "—")
@@ -130,13 +135,14 @@ def main():
         every += rs
         intro = ("What’s saved in this folder: one line per file — what kind of statement it is, its\n"
                  "category, and where it is. For agents and the back end; people browse the folder itself.\n"
-                 "The whole repo’s: `01_READ_FIRST/04_CATALOG.md`. Rebuilt after every push. Root `AGENTS.md` §Routing.")
-        if write(f"{folder}/01_RECORDS/INDEX.md", f"Log — `{folder}/`", intro, [r for _, _, r in rs]):
+                 "The whole repo’s: `901_READ_FIRST/04_CATALOG.md`. Rebuilt after every push. Root `AGENTS.md` §Routing.")
+        records = "01_RECORDS" if os.path.isdir(f"{folder}/01_RECORDS") and not os.path.isdir(f"{folder}/910_RECORDS") else "910_RECORDS"
+        if write(f"{folder}/{records}/INDEX.md", f"Log — `{folder}/`", intro, [r for _, _, r in rs]):
             changed.append(folder)
     every.sort(key=lambda r: r[1])
     intro = ("Every saved file in this repo, one line each — what kind of statement it is, its category\n"
              "and where it is. Read this first to find anything; each folder keeps the same lines in\n"
-             "its own `01_RECORDS/INDEX.md`. Rebuilt after every push. Root `AGENTS.md` §Routing.")
+             "its own `910_RECORDS/INDEX.md`. Rebuilt after every push. Root `AGENTS.md` §Routing.")
     if write(CATALOG, "Catalog", intro, [r for _, _, r in every]):
         changed.append("catalog")
     print(f"{len(rows)} folder logs, {len(every)} files; updated: {', '.join(changed) or 'nothing'}")

@@ -14,8 +14,8 @@ they read this repo and write back through the same conventions. **The repo is t
 interface.**
 
 > **This is a template.** Set the owner's name in §Reviewer, register your areas in
-> `01_READ_FIRST/02_AREA_MAP.md`, and mint your ID prefixes in
-> `02_REFERENCES/ID_REGISTRY.md` as areas are created.
+> `901_READ_FIRST/02_AREA_MAP.md`, and mint your ID prefixes in
+> `902_REFERENCES/ID_REGISTRY.md` as areas are created.
 
 ---
 
@@ -24,7 +24,7 @@ interface.**
 **Before working in an area or sub-area, read that area's `AGENTS.md`.**
 Not every tool discovers nested instruction files — this rule makes them load-bearing.
 
-Orientation: `01_READ_FIRST/01_START_HERE.md` → `01_READ_FIRST/02_AREA_MAP.md`.
+Orientation: `901_READ_FIRST/01_START_HERE.md` → `901_READ_FIRST/02_AREA_MAP.md`.
 
 ---
 
@@ -117,7 +117,7 @@ Every **knowledge record** answers three questions from its front-matter alone:
 
 | # | Question | Fields |
 |---|---|---|
-| 1 | What is it about? | `subject:` (ID from `02_REFERENCES/ID_REGISTRY.md`) or `subject_text:` |
+| 1 | What is it about? | `subject:` (ID from `902_REFERENCES/ID_REGISTRY.md`) or `subject_text:` |
 | 2 | What kind of statement is it? | `context_type:` — its category in the log |
 | 3 | How much should it be trusted? | `status` + `confidence` + `raised_by` + `reviewed_by` |
 
@@ -125,7 +125,7 @@ Every **knowledge record** answers three questions from its front-matter alone:
 saved with `subject_text:` filled in and no `context_type`, and logged as unsorted
 (`00_INBOX`). Nothing is dropped.
 
-Spec: `02_REFERENCES/CONTEXT_ITEM_SPEC.md`.
+Spec: `902_REFERENCES/CONTEXT_ITEM_SPEC.md`.
 
 ### Do not conflate the axes
 
@@ -148,32 +148,32 @@ Spec: `02_REFERENCES/CONTEXT_ITEM_SPEC.md`.
 
 **A saved file lives in the content folder it’s about** — the folder the owner picked,
 or a content folder inside it — as `YYYY-MM-DD_TITLE.md`, where the owner sees it.
-**Never save the owner’s content inside `01_RECORDS/`** — that is the back end, like
+**Never save the owner’s content inside `910_RECORDS/`** — that is the back end, like
 `AGENTS.md` and `README.md`.
 
-**The log.** Every folder’s `01_RECORDS/INDEX.md` lists what’s saved in it, and the repo’s
-`01_READ_FIRST/04_CATALOG.md` lists every saved file — both are rebuilt automatically
+**The log.** Every folder’s `910_RECORDS/INDEX.md` lists what’s saved in it, and the repo’s
+`901_READ_FIRST/04_CATALOG.md` lists every saved file — both are rebuilt automatically
 after every push (`scripts/build_catalog.py`). When you can, add the line in the same
 change so it’s there right away. To answer a question about the repo, start from the catalog.
 
 | Date | Title | Kind | Category | File |
 |---|---|---|---|---|
-| 2026-10-05 | Conversation memory architecture | `analysis` | 04_MODELS | `10_Product/Infra-AWS/2026-10-05_CONVERSATION-MEMORY.md` |
+| 2026-10-05 | Conversation memory architecture | `analysis` | 924_MODELS | `10_Product/Infra-AWS/2026-10-05_CONVERSATION-MEMORY.md` |
 
 The category comes from the header’s `context_type`:
 
 | context_type | Category in the log |
 |---|---|
-| `decision`, `outcome` | `06_DECISIONS` |
-| `assumption`, `known_issue` | `02_QUESTIONS` |
-| `methodology`, `definition`, `evidence` | `03_REFERENCES` |
-| `dispute`, `correction` | the file goes in the area’s `01_RECORDS/05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
-| `analysis` | `04_MODELS` |
-| `preference` | the file goes in `02_REFERENCES/preferences/` (global/artifact_type) or the area (area/project scope) |
-| not sure yet (no `context_type`) | `00_INBOX` (unsorted) |
+| `decision`, `outcome` | `926_DECISIONS` |
+| `assumption`, `known_issue` | `922_QUESTIONS` |
+| `methodology`, `definition`, `evidence` | `923_REFERENCES` |
+| `dispute`, `correction` | the file goes in the area’s `910_RECORDS/915_PUSH_BACK/` (cross-area → `915_PUSH_BACK/`) |
+| `analysis` | `924_MODELS` |
+| `preference` | the file goes in `902_REFERENCES/preferences/` (global/artifact_type) or the area (area/project scope) |
+| not sure yet (no `context_type`) | `920_UNSORTED` |
 
 The header is the truth; the log follows it. A push that saves the owner’s content inside
-`01_RECORDS/` fails the repo rules check. `evidence` needs `source_refs:`; without a source it is an `assumption`.
+`910_RECORDS/` fails the repo rules check. `evidence` needs `source_refs:`; without a source it is an `assumption`.
 The kinds are set in MyRepo (repo ⚙ → Classifications). Older repos may still have files
 inside `01_RECORDS/00_INBOX/` … `06_DECISIONS/`: leave them, and save anything new in the folder.
 
@@ -197,7 +197,7 @@ artifacts-in-progress live in `work/`.
 ## Your settings
 
 Set in MyRepo (repo ⚙ → Rules, Organizing, Privacy) and stored in
-`02_REFERENCES/REPO_SETTINGS.json`. Where this file says otherwise, these win.
+`902_REFERENCES/REPO_SETTINGS.json`. Where this file says otherwise, these win.
 
 **How AI tools work here**
 
@@ -209,7 +209,7 @@ Set in MyRepo (repo ⚙ → Rules, Organizing, Privacy) and stored in
 
 **Organizing**
 
-- Top-level folders start with an unused number — numbers only sort, they mean nothing (§Creating a top-level area).
+- Top-level folders start with an unused number — numbers only sort, they mean nothing, and never start with 9 (9 = back end; §Numbers).
 - A new top-level folder needs the owner’s yes.
 - Suggest grouping when 3 or more sibling folders share a theme.
 
@@ -224,7 +224,7 @@ Set in MyRepo (repo ⚙ → Rules, Organizing, Privacy) and stored in
 
 - Any expression of "this should persist" — in any words — is a save event.
 - **Ask where, then confirm.** When the owner asks to save and didn't say where,
-  ask before writing: suggest 1–3 places from `01_READ_FIRST/02_AREA_MAP.md` (best
+  ask before writing: suggest 1–3 places from `901_READ_FIRST/02_AREA_MAP.md` (best
   guess first, with the reason) — the owner may not remember the folders. Then
   show the plan (every file, full path, and whether it updates or supersedes an
   existing record) and write only after a yes. Unsure where → ask; never default
@@ -235,7 +235,7 @@ Set in MyRepo (repo ⚙ → Rules, Organizing, Privacy) and stored in
 - **Close-out:** at the end of a substantive conversation, propose what deserves
   filing. Nothing is written without a yes.
 - **Correction loop:** durable style/format push-back ("that's cliché," "not my
-  format") must also propose an update to `02_REFERENCES/preferences/` with the
+  format") must also propose an update to `902_REFERENCES/preferences/` with the
   right `scope:`. Project-specific corrections stay in that area's records —
   they are not global preferences.
 
@@ -250,27 +250,53 @@ path: <AREA>/<SUBJECT>/YYYY-MM-DD_TOPIC.md
 ---
 <complete file: full front-matter + body>
 
-LOG (add to <AREA>/<SUBJECT>/01_RECORDS/INDEX.md and 01_READ_FIRST/04_CATALOG.md)
+LOG (add to <AREA>/<SUBJECT>/910_RECORDS/INDEX.md and 901_READ_FIRST/04_CATALOG.md)
 | YYYY-MM-DD | <title> | `<context_type>` | <category> | `<AREA>/<SUBJECT>/YYYY-MM-DD_TOPIC.md` |
 ```
 
 The human or a file-capable agent performs the write. A disagreement left only in
 a chat window is a silent drop — which this repository exists to prevent.
 
+## Numbers — yours, and the back end's
+
+There are two kinds of number, and they never mix.
+
+- **Your numbers** put your folders in order, like a library shelf. Main areas take
+  decades (`10_`, `20_`, `30_` …); something related takes a number inside its decade
+  (`30_SPORTS` → `33_SOCCER`), and finer still adds a digit (`335_MENS_SOCCER`).
+  Folders sort digit by digit, whatever their names say: `30_` → `33_` → `335_` → `34_`.
+  A number only orders — it **means nothing on its own**; read the folder name and the
+  Area Map. Inside a folder the owner may number sub-folders the same way, or not at
+  all. **Your numbers never start with 9.**
+- **The back end always starts with 9**, and each 9-number means one thing in every
+  repo and every folder — so any AI tool, with no other context, knows where to look:
+
+| Name | What it is | Where |
+|---|---|---|
+| `901_READ_FIRST/` | orientation, the Area Map, and `04_CATALOG.md` — every saved file | repo |
+| `902_REFERENCES/` | rules machinery: record spec, push-back protocol, settings, prompts | repo |
+| `910_RECORDS/` | the folder's log: `INDEX.md` — every saved file, its category, where it is | every folder |
+| `911_GOALS/` | goals, inside `910_RECORDS/` | every folder |
+| `915_PUSH_BACK/` | disputes and corrections — in `910_RECORDS/`, or at the top for cross-area | folder · repo |
+| `920_UNSORTED` · `922_QUESTIONS` · `923_REFERENCES` · `924_MODELS` · `926_DECISIONS` | categories in a log (labels in `INDEX.md`, not folders) | — |
+| `990_TRACKING/` | the AI's working lists — the queue, research and decisions needed | every folder |
+
+The catch-all for unsorted captures is yours: `89_OTHER/`. **Never renumber** — it
+breaks every link. Older repos used `01_RECORDS/`, `90_TRACKING/`, `01_READ_FIRST/`,
+`02_REFERENCES/` and `99_OTHER/` for the same things.
+
 ## Structure rules
 
-- Top-level areas start with a number and an underscore (`10_`, `620_`,
-  `0622_`). The number only keeps areas in order — it **means nothing on its
-  own**, can be any length, and must not already be used by another top-level
-  folder. `01_` and `02_` belong to MyRepo's own folders. **Never renumber.**
-  How to pick one: §Creating a top-level area.
+- Top-level areas start with one of your numbers (§Numbers) — unused by another
+  top-level folder, never starting with 9. **Never renumber.** How to pick one:
+  §Creating a top-level area.
 - A sub-area is any unnumbered folder with its own `AGENTS.md` — same shape
   recursively. **Every folder for the owner's content gets its own** `AGENTS.md`
   + `README.md` in the same operation (§Every folder gets AGENTS.md + README.md). Never create a folder just by
   saving a file into it. Promoting a sub-area to top level is a move, not a redesign.
-- `01_RECORDS/` is the **back end**, like `AGENTS.md` and `README.md`: the folder's log
+- `910_RECORDS/` is the **back end**, like `AGENTS.md` and `README.md`: the folder's log
   (`INDEX.md` — every saved file, its category and where it is), its goals
-  (`01_GOALS/`) and push-back (`05_PUSH_BACK/`). **The owner's content never goes in
+  (`911_GOALS/`) and push-back (`915_PUSH_BACK/`). **The owner's content never goes in
   it** (§Routing). Older files already in `00_INBOX/` … `06_DECISIONS/` stay where they
   are; log them and save anything new in the folder.
 - Filenames for dated records: `YYYY-MM-DD_TOPIC.md`.
@@ -294,12 +320,12 @@ with its own `AGENTS.md` and `README.md`, in the same change.** That includes:
 is how every folder is found and navigated — **never decide that a folder can do
 without them.** A folder still appears only when it has real content; never create
 empty ones. Read the root and parent instructions first, and use
-`02_REFERENCES/AREA_TEMPLATE/README.md` for an area or sub-area.
+`902_REFERENCES/AREA_TEMPLATE/README.md` for an area or sub-area.
 
-**Back end — never the owner's content, and no pair of their own:** `01_RECORDS/` (the
-log, goals and push-back), `90_TRACKING/` (the queue and progress lists — notes for
+**Back end — never the owner's content, and no pair of their own:** `910_RECORDS/` (the
+log, goals and push-back), `990_TRACKING/` (the queue and progress lists — notes for
 agents on what's been looked at, what's next and what's kept) and `work/` follow their
-folder's `AGENTS.md`; the repo's own machinery (`01_READ_FIRST/`, `02_REFERENCES/`,
+folder's `AGENTS.md`; the repo's own machinery (`901_READ_FIRST/`, `902_REFERENCES/`,
 `scripts/`) is described in this file. On the website the back end sits behind the cog.
 In a folder-type folder the pair is notes for agents too — what the owner likes and
 leaves out, where the conversation is heading.
@@ -320,7 +346,8 @@ Do this only when nothing existing fits — most new topics are sub-areas
    longer number that starts with a shorter one sits right after it:
    `60_` → `620_` → `622_` → `63_`. So a new area close to `60_HEALTH` can be
    `620_` (or `622_` to go finer); something that belongs before everything
-   else can be `062_` or `0622_`. Unrelated: take any free number. Don't infer
+   else can be `062_` or `0622_`. Unrelated: take the next free decade. Never a number
+   that starts with 9 — that's the back end. Don't infer
    meaning from a number — read the folder name and the Area Map.
 2. **Propose it with a reason, and wait for a yes.** Give the full folder name
    (e.g. `620_DESIGN/`), why it is top level rather than inside the closest
@@ -328,13 +355,14 @@ Do this only when nothing existing fits — most new topics are sub-areas
    not only studied), why that number (which area it sorts next to), and the
    alternative you considered.
 3. **In the same commit:** the folder's `AGENTS.md` + `README.md`
-   (`02_REFERENCES/AREA_TEMPLATE/`), a row in `01_READ_FIRST/02_AREA_MAP.md`,
-   its ID prefix in `02_REFERENCES/ID_REGISTRY.md`, and the folder in the area
-   list of `02_REFERENCES/prompts/CHAT_CONTEXT.md`.
+   (`902_REFERENCES/AREA_TEMPLATE/`), a row in `901_READ_FIRST/02_AREA_MAP.md`,
+   its ID prefix in `902_REFERENCES/ID_REGISTRY.md`, and the folder in the area
+   list of `902_REFERENCES/prompts/CHAT_CONTEXT.md`.
 
 Finding things relies on the Area Map and indexes, never on what a number
 "should" mean. `scripts/check_new_folder_guidance.py` fails a push that adds a
-top-level area without a number or with a number already in use.
+top-level area without a number, with a number already in use, or with one that
+starts with 9.
 
 <!-- myrepo:begin queue -->
 ## The queue
@@ -342,14 +370,14 @@ top-level area without a number or with a number already in use.
 By default every folder, whatever its topic type, works things through in three steps — **explore →
 investigate → confirm** — so the owner can look at something without committing to it, AI
 never offers the same thing twice, and what matters is kept. One list per step, in the
-folder's `90_TRACKING/` (each made on first use). `90_TRACKING/` is **back end**, like `01_RECORDS/` —
+folder's `990_TRACKING/` (each made on first use). `990_TRACKING/` is **back end**, like `910_RECORDS/` —
 lists for agents (what was looked at, what’s next, what’s kept); the owner’s content never goes there.
 
 | Step | File | What goes in it |
 |---|---|---|
-| Explore | `90_TRACKING/TO_EXPLORE.md` | worth a look, not committed yet — why it’s queued, how it connects, the question to investigate, where to start |
-| Investigate | `90_TRACKING/STUDIED.md` | looked into — one line each, with what came of it, so it isn’t suggested again unless asked |
-| Confirm | `90_TRACKING/FAVORITES.md` | confirmed — keep it for later |
+| Explore | `990_TRACKING/TO_EXPLORE.md` | worth a look, not committed yet — why it’s queued, how it connects, the question to investigate, where to start |
+| Investigate | `990_TRACKING/STUDIED.md` | looked into — one line each, with what came of it, so it isn’t suggested again unless asked |
+| Confirm | `990_TRACKING/FAVORITES.md` | confirmed — keep it for later |
 
 - **"What's next?"** — offer the top of `TO_EXPLORE.md` (or ask which folder, if unclear).
 - **Before suggesting anything**, check all three lists: never re-offer what is already
@@ -361,8 +389,8 @@ lists for agents (what was looked at, what’s next, what’s kept); the owner�
 - **These sit with the folder's progress lists** (Track progress, in its topic type's
   settings) — a folder that turns progress tracking off keeps no queue.
 - **A folder may use its own stages instead** — when its `AGENTS.md` (§This folder's
-  purpose) defines them, follow those there, kept in its `90_TRACKING/` the same way.
-- **The owner’s view is in the folder itself.** `90_TRACKING/` is your working list. What the owner
+  purpose) defines them, follow those there, kept in its `990_TRACKING/` the same way.
+- **The owner’s view is in the folder itself.** `990_TRACKING/` is your working list. What the owner
   reads is a page in the folder, in plain words — `OVERVIEW.md`: where things stand, what
   they like and don’t, what’s still to explore, what’s been looked into and what came of it.
   As it grows, split it into pages by category (one per kind of thing being considered).
@@ -376,7 +404,7 @@ Set in MyRepo (repo ⚙ → Topic types; a folder's ⚙ → Topic type).
 ## Kinds of work
 
 A folder holds one kind of work. **Study** works as §Working in a topic says. The others
-draw from the same menu of folder types (`02_REFERENCES/AREA_TEMPLATE/README.md` §Folder
+draw from the same menu of folder types (`902_REFERENCES/AREA_TEMPLATE/README.md` §Folder
 types); each kind suggests a starting set:
 
 | Kind | For | Close it when | Suggested folder types |
@@ -408,7 +436,7 @@ types); each kind suggests a starting set:
 - Every Research folder keeps: `QUESTION.md` (the question you’re actually trying to answer, what it’s for, and when you’ll know enough); `FINDINGS.md` (each finding, how sure we are, and its sources).
 - How I research — work this way: I may start with an approximate description, examples, or something that caught my attention. Help me locate the question I’m actually trying to answer. Begin broad enough to map the territory, then follow the strongest leads into specifics. Show me diagrams or maps when they make the relationships easier to see. Keep sources, findings, assumptions and disagreements distinct. Help me recognize when I know enough to use the answer, and what remains uncertain.
 - Close it when the answer is useful enough for its purpose, or what remains uncertain is clearly stated.
-- Progress, kept apart from the work in `90_TRACKING/`: `LEADS_TO_FOLLOW.md` · `SOURCES_TO_EXAMINE.md` · `FINDINGS_TO_CHECK.md` · `ANSWERED.md`.
+- Progress, kept apart from the work in `990_TRACKING/`: `LEADS_TO_FOLLOW.md` · `SOURCES_TO_EXAMINE.md` · `FINDINGS_TO_CHECK.md` · `ANSWERED.md`.
 
 **Idea folders**
 
@@ -416,7 +444,7 @@ types); each kind suggests a starting set:
 - Every Idea folder keeps: `IDEA.md` (the idea in your own words, and how it has changed).
 - How I develop an idea — work this way: I may start with a hunch, an image or half a sentence. Help me say it in my own words, then show me what it could become — possibilities, tensions, objections. Keep my idea apart from what you add. Don’t turn it into a plan before I’m ready; when a direction appears, help me decide whether to research it, decide on it or start it.
 - Close it when you choose a direction, set it aside, or turn it into other work.
-- Progress, kept apart from the work in `90_TRACKING/`: `POSSIBILITIES.md` · `OBJECTIONS.md` · `QUESTIONS_THAT_WOULD_SHARPEN_IT.md`.
+- Progress, kept apart from the work in `990_TRACKING/`: `POSSIBILITIES.md` · `OBJECTIONS.md` · `QUESTIONS_THAT_WOULD_SHARPEN_IT.md`.
 
 **Decide folders**
 
@@ -424,7 +452,7 @@ types); each kind suggests a starting set:
 - Every Decide folder keeps: `DECISION.md` (the choice, the options, what matters most, who decides — and the decision, why, what it gives up and what would make you revisit it).
 - How I make a decision — work this way: I usually start with the choice in front of me and a gut feeling. Help me lay out the options and what matters most, find what I don’t know yet, and hear the views that differ from mine. Keep what’s been proposed apart from what’s been decided. When I choose, record the reason, what I’m giving up, and what would make me revisit it.
 - Close it when a choice is made, deferred, or rejected with a reason.
-- Progress, kept apart from the work in `90_TRACKING/`: `OPTIONS_TO_COMPARE.md` · `QUESTIONS_TO_ANSWER_FIRST.md` · `DECIDED.md`.
+- Progress, kept apart from the work in `990_TRACKING/`: `OPTIONS_TO_COMPARE.md` · `QUESTIONS_TO_ANSWER_FIRST.md` · `DECIDED.md`.
 
 **Plan folders**
 
@@ -432,7 +460,7 @@ types); each kind suggests a starting set:
 - Every Plan folder keeps: `PLAN.md` (where you’re heading, what’s known, assumed and still open, the options, what’s chosen, and the path — order, timing, costs — with what would make you revisit it).
 - How I plan — work this way: I may start with a fuzzy picture or with much already settled. See how far along it is and start there; don’t walk me through steps in order. Build the picture with me instead of asking for everything up front. Keep what’s known, assumed and decided apart. Ask the question that most changes the path next, and leave open what wouldn’t change it yet. Say when something needs research or a decision. When numbers depend on each other, like costs, keep them in a table I can check.
 - Close it when the path is clear enough to start (it becomes an Initiative, keeping PLAN.md), or the plan is dropped.
-- Progress, kept apart from the work in `90_TRACKING/`: `RESEARCH_NEEDED.md` · `DECISIONS_NEEDED.md` · `REVISIT_TRIGGERS.md`.
+- Progress, kept apart from the work in `990_TRACKING/`: `RESEARCH_NEEDED.md` · `DECISIONS_NEEDED.md` · `REVISIT_TRIGGERS.md`.
 - A plan moves through framing, modelling, exploring, resolving, sequencing and adapting —
   ways of thinking, not steps. Never make the owner go through them in order; work on the
   open question that most affects the path.
@@ -452,7 +480,7 @@ types); each kind suggests a starting set:
 - Every Initiative folder keeps: `OVERVIEW.md` (what you’re trying to change, why, what’s in and out, and how you’ll know it’s done); `DECISIONS.md` (what was chosen, who chose, why, and what would change it).
 - How I move an initiative forward — work this way: I may start with a problem, a possibility, a request, or an outcome I want. Help me understand what is happening and who it affects. Bring in other perspectives where they matter, develop possible approaches, and help me choose what to try. Keep ideas and proposals separate from decisions. Record who actually accepted a commitment, what we did, what happened, and what still needs attention. Start wherever the work really is; I may need to revisit an earlier choice.
 - Close it when the outcome is achieved, abandoned, or handed into recurring work.
-- Progress, kept apart from the work in `90_TRACKING/`: `QUESTIONS_TO_RESOLVE.md` · `DECISIONS_NEEDED.md` · `NEXT_UP.md` · `OUTCOMES.md`.
+- Progress, kept apart from the work in `990_TRACKING/`: `QUESTIONS_TO_RESOLVE.md` · `DECISIONS_NEEDED.md` · `NEXT_UP.md` · `OUTCOMES.md`.
 
 **Operation folders**
 
@@ -460,7 +488,7 @@ types); each kind suggests a starting set:
 - Every Operation folder keeps: `PROCESS.md` (what normally happens, who handles each part, and what a good run looks like); `MEASURES.md` (what is watched, and what counts as normal).
 - How I run an operation — work this way: Help me describe what normally happens, who handles each part, and what a good result looks like. As it repeats, focus on meaningful exceptions and patterns rather than writing up every ordinary run. When we consider changing the process, show the reason, the alternatives, who decides, and how we will tell whether the change helped. Keep the current process aligned with decisions that were actually made.
 - Close it when the recurring work is retired or replaced.
-- Progress, kept apart from the work in `90_TRACKING/`: `EXCEPTIONS_TO_REVIEW.md` · `IMPROVEMENTS_TO_TRY.md` · `CHANGES_DECIDED.md`.
+- Progress, kept apart from the work in `990_TRACKING/`: `EXCEPTIONS_TO_REVIEW.md` · `IMPROVEMENTS_TO_TRY.md` · `CHANGES_DECIDED.md`.
 
 Set in MyRepo (repo ⚙ → Topic types).
 <!-- myrepo:end kinds-of-work -->
@@ -471,7 +499,7 @@ Set in MyRepo (repo ⚙ → Topic types).
 Every topic works the same way, so the owner can ask the same things anywhere.
 
 **Open a topic** — read, in order: its `AGENTS.md` (what it is for and which kinds it
-holds), `STUDY_GUIDE.md` if it has one, `LEARNING_PATH.md`, `HISTORY.md`, then `90_TRACKING/`.
+holds), `STUDY_GUIDE.md` if it has one, `LEARNING_PATH.md`, `HISTORY.md`, then `990_TRACKING/`.
 
 **How the owner learns** — teach this way in every topic:
 
@@ -489,26 +517,26 @@ holds), `STUDY_GUIDE.md` if it has one, `LEARNING_PATH.md`, `HISTORY.md`, then `
 | Knowledge | What have we actually learned about this person or thing? | `10_PEOPLE/`, `11_GROUPS/`, `12_PERIODS/` … |
 | Synthesis | What ideas has the owner developed from studying these things? | `15_CONCEPTS/` — marked as the owner’s |
 | Learning path | How did one question or discovery lead to the next? | `LEARNING_PATH.md` |
-| Future inquiry | What does the owner want to investigate, and why? | `90_TRACKING/TO_EXPLORE.md` |
+| Future inquiry | What does the owner want to investigate, and why? | `990_TRACKING/TO_EXPLORE.md` |
 
 **Where something goes — the lifecycle:**
 
 | What happened | Where it goes |
 |---|---|
 | Mentioned in passing (a building, a book, an example) | inside the existing page it belongs to — e.g. a person’s `WORKS.md` |
-| Interesting, not yet studied | a row in `90_TRACKING/TO_EXPLORE.md` — no page |
+| Interesting, not yet studied | a row in `990_TRACKING/TO_EXPLORE.md` — no page |
 | The conversation or research produced substantive knowledge worth retrieving on its own | its page (a person: `10_PEOPLE/first-last/`), and its row moves to `STUDIED.md` |
 | A cross-cutting insight emerged | `15_CONCEPTS/` — with its origin marked |
 | The inquiry changed direction | a short entry in `LEARNING_PATH.md` |
 | A repeatable way of studying the subject developed | `STUDY_GUIDE.md` (any topic may have one) |
-| The owner explicitly loves it | `90_TRACKING/FAVORITES.md` |
+| The owner explicitly loves it | `990_TRACKING/FAVORITES.md` |
 
 **A file existing means something.** A page exists only when there is substantive
 knowledge in it — never a placeholder, a stub or a “not written yet”. Agents must be
 able to trust that every page is real knowledge without opening it.
 
 **The folders are always the same** — numbered by the one list in
-`02_REFERENCES/REPO_SETTINGS.json`; a topic has only the ones it uses, and a folder
+`902_REFERENCES/REPO_SETTINGS.json`; a topic has only the ones it uses, and a folder
 appears with its first page, together with its own `AGENTS.md` + `README.md` (a person’s
 folder too):
 
@@ -524,14 +552,14 @@ folder too):
 | `17_SYSTEMS/` | products, tools and implementations (technology topics) | a page `short-name.md` |
 | `18_PATTERNS/` | reusable designs (technology topics) | a page `short-name.md` |
 | `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes | a page `short-name.md` |
-| `90_TRACKING/` | the owner’s progress — `TO_EXPLORE.md` · `STUDIED.md` · `READING_QUEUE.md` · `FAVORITES.md` | a row per item |
+| `990_TRACKING/` | the owner’s progress — `TO_EXPLORE.md` · `STUDIED.md` · `READING_QUEUE.md` · `FAVORITES.md` | a row per item |
 
 Pages never say whether the owner studied them — progress lives only in
-`90_TRACKING/`. Link with relative links (`../10_PEOPLE/frei-otto/PROFILE.md`) so pages open on GitHub and in MyRepo.
+`990_TRACKING/`. Link with relative links (`../10_PEOPLE/frei-otto/PROFILE.md`) so pages open on GitHub and in MyRepo.
 
 **When the owner says…**
 
-- **“What’s next?”** — the first row of `90_TRACKING/TO_EXPLORE.md`; in a topic with a
+- **“What’s next?”** — the first row of `990_TRACKING/TO_EXPLORE.md`; in a topic with a
   `STUDY_GUIDE.md`, follow its order. Teach from the row’s question and starting point.
 - **“Tell me more about X”** — read X’s page if it has one (or its row), then go further.
   When the conversation produces substantive knowledge, offer to save it — as a plan.
@@ -544,7 +572,7 @@ Pages never say whether the owner studied them — progress lives only in
 - **“Save this”** at the end of a study conversation — update the pages it touched (*What resonated*,
   *What to remember*), add any new concept, and add a `LEARNING_PATH.md` entry if the inquiry changed direction.
 
-**The lists in `90_TRACKING/`:**
+**The lists in `990_TRACKING/`:**
 
 - `TO_EXPLORE.md` — a rich row, no page: `| # | Name | Kind | Why queued | Connection to the current inquiry | Question to investigate | Start with |`
 - `STUDIED.md` — `| Date | [Name](link to its page) | Kind | favorite or not, and why — in the owner’s words |`
@@ -600,7 +628,7 @@ A person’s `WORKS.md` is a table: work · where / when · what to study — wo
   — and note it in that topic's `AGENTS.md` §Layout so every tool finds it. Don't invent
   one unasked: suggest it, or suggest adding a kind to the list for every topic
   (MyRepo → repo ⚙ → Topic types) when it would fit topics generally. Details:
-  `02_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts.
+  `902_REFERENCES/AREA_TEMPLATE/README.md` §Topic layouts.
 - **A way of working that repeats.** When the same purpose or stages show up in
   several folders' `AGENTS.md`, propose making it a topic type (MyRepo → repo ⚙ →
   Topic types) so any folder can pick it.
@@ -610,11 +638,11 @@ A person’s `WORKS.md` is a table: work · where / when · what to study — wo
 
 If you disagree with anything in this repository — or a human tells you something
 here is wrong — **write it down** (or emit a `SAVE` block). One area → its
-`05_PUSH_BACK/`; cross-area or repo-level → `90_PUSH_BACK/`. Record rejected
+`915_PUSH_BACK/`; cross-area or repo-level → `915_PUSH_BACK/`. Record rejected
 push-back as carefully as accepted. Do not silently comply with something you
 believe is wrong; do not silently override it either.
 
-Protocol: `02_REFERENCES/PUSH_BACK_PROTOCOL.md`.
+Protocol: `902_REFERENCES/PUSH_BACK_PROTOCOL.md`.
 
 ## Reviewer
 
@@ -627,7 +655,7 @@ to `canonical`.
   area or sub-area without AGENTS.md + README.md, or a new record without a
   header, or a new top-level area without an unused number, fails the check.
 - `03_REPORTS/` + index generator — add when cross-area search gets painful.
-- `90_PUSH_BACK/` — create on first cross-area dispute.
+- `915_PUSH_BACK/` — create on first cross-area dispute.
 - Sensitivity-gated areas (finance, health, admin) — not created by default;
   sensitive personal content does not enter this repo without an explicit owner
   decision.

@@ -10,15 +10,16 @@ last_verified: 2026-10-02
 repo navigable by an agent that cannot ask questions.
 
 ```
-NN_AREA_NAME/                  top level: unused number, any length. Sub-area: no number
+NN_AREA_NAME/                  your number (never starting with 9); sub-areas: optional
 ├── AGENTS.md                  REQUIRED. Scoped rules, ID prefix, what belongs here
 ├── README.md                  REQUIRED. Orientation for people
 ├── FOCUS.md                   optional. What the owner is after here — agents read it
 │                              before suggesting anything (root AGENTS.md §Focus)
-├── 01_RECORDS/                The back end — never the owner's content:
+├── 910_RECORDS/               The back end — never the owner's content:
 │   ├── INDEX.md               the log: every saved file, its category, where it is
-│   ├── 01_GOALS/              00_GOALS.md — aligns_with: one level up
-│   └── 05_PUSH_BACK/          disputes about this folder
+│   ├── 911_GOALS/             00_GOALS.md — aligns_with: one level up
+│   └── 915_PUSH_BACK/         disputes about this folder
+├── 990_TRACKING/              back end — the AI's lists (queue, research, decisions needed)
 ├── YYYY-MM-DD_TOPIC.md        saved files live here, in the folder (or one inside it)
 └── work/                      unvalidated space — drafts, artifacts-in-progress
 ```
@@ -33,7 +34,7 @@ change, then complete the checklist below.
 Every folder for the owner's content inside it gets its own `AGENTS.md` +
 `README.md` too, at any depth, in the same change (root `AGENTS.md` §Every folder
 gets AGENTS.md + README.md). Only the back-end folders —
-`01_RECORDS/`, `90_TRACKING/` and `work/` — don't.
+`910_RECORDS/`, `990_TRACKING/` and `work/` — don't.
 
 ## FOCUS.md (optional)
 
@@ -92,7 +93,7 @@ topic/
   11_GROUPS/            ← one page per item
   12_PERIODS/           ← one page per item
   …                     ← only the kinds this topic holds; each folder has its own AGENTS.md + README.md
-  90_TRACKING/          ← the owner’s progress: TO_EXPLORE.md, STUDIED.md, READING_QUEUE.md, FAVORITES.md
+  990_TRACKING/         ← the owner’s progress: TO_EXPLORE.md, STUDIED.md, READING_QUEUE.md, FAVORITES.md
 ```
 
 **The kinds** — one list for every topic; the number comes from the list order:
@@ -111,10 +112,10 @@ topic/
 | `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes |
 
 **Rules:** a page exists only when there is substantive knowledge worth retrieving on
-its own — something merely interesting is a row in `90_TRACKING/TO_EXPLORE.md`, something
+its own — something merely interesting is a row in `990_TRACKING/TO_EXPLORE.md`, something
 mentioned in passing lives inside the page it belongs to (a building in its architect’s `WORKS.md`). No stubs, no
 “not written yet”. A page grows into a folder only when it needs more than one file.
-Pages hold no status: “queued”, “studied”, “favorite” live only in `90_TRACKING/`.
+Pages hold no status: “queued”, “studied”, “favorite” live only in `990_TRACKING/`.
 Concept pages mark their origin (`origin: established` or `origin: owner`). Historical
 context of the field is `HISTORY.md`; the owner’s own path through the topic is `LEARNING_PATH.md`. Levels are a field
 on a practice's page, never folders.
@@ -173,7 +174,7 @@ folder appears with its first page, together with its own `AGENTS.md` + `README.
 | `53_IMPROVEMENTS/` | changes worth trying to make it work better | Operation |
 
 
-**Every folder also keeps a queue by default** — explore → investigate → confirm — in `90_TRACKING/`: `TO_EXPLORE.md` → `STUDIED.md` → `FAVORITES.md`, made on first use (root `AGENTS.md` §The queue); a folder may define its own stages instead. Ask “what's next?” in any chat.
+**Every folder also keeps a queue by default** — explore → investigate → confirm — in `990_TRACKING/`: `TO_EXPLORE.md` → `STUDIED.md` → `FAVORITES.md`, made on first use (root `AGENTS.md` §The queue); a folder may define its own stages instead. Ask “what's next?” in any chat.
 
 Set in MyRepo (repo ⚙ → Topic types).
 <!-- myrepo:end folder-types -->
@@ -183,28 +184,28 @@ Set in MyRepo (repo ⚙ → Topic types).
 - **Top-level areas start with a number** — any length, unused by another
   top-level folder, no fixed meaning (`10_`, `620_`, `0622_`). Pick one that
   sorts next to the most related area; add digits to refine (`60_` → `620_` →
-  `622_`). `01_`/`02_` are MyRepo's. Full steps: root `AGENTS.md`
-  §Creating a top-level area.
-- **Sub-areas are unnumbered** folders with their own `AGENTS.md`.
+  `622_`). Never start with 9 — that's MyRepo's back end (root `AGENTS.md`
+  §Numbers). Full steps: root `AGENTS.md` §Creating a top-level area.
+- **Sub-areas** may be unnumbered, or numbered the same way (`33_` → `335_`) — never with 9.
 - **Never renumber** — it breaks every cross-reference.
 
 ## Every area's AGENTS.md must contain
 
 1. Area name and ID prefix
 2. What belongs to this area (and what doesn't)
-3. What gets saved here, and how it's logged (`01_RECORDS/INDEX.md`)
+3. What gets saved here, and how it's logged (`910_RECORDS/INDEX.md`)
 4. Rules specific to the area
 5. Pointer to root `AGENTS.md` (full path from root)
-6. Push-back section — `05_PUSH_BACK/`, `YYYY-MM-DD_TOPIC.md`
+6. Push-back section — `915_PUSH_BACK/`, `YYYY-MM-DD_TOPIC.md`
 7. Context reviewer: the repo owner
 
 ## Checklist for a new area
 
 - [ ] Folder created (top level: unused number, told to the owner first · sub-area: no number)
 - [ ] `AGENTS.md` + `README.md` written **in the same operation**
-- [ ] If goals exist: `01_RECORDS/01_GOALS/00_GOALS.md` with `aligns_with:` up one level
-- [ ] ID prefix registered in `02_REFERENCES/ID_REGISTRY.md`
-- [ ] Area added to `01_READ_FIRST/02_AREA_MAP.md`
-- [ ] Top level: area added to the list in `02_REFERENCES/prompts/CHAT_CONTEXT.md`
-- [ ] Saved files go in the folder, each with a line in `01_RECORDS/INDEX.md` and `01_READ_FIRST/04_CATALOG.md`
+- [ ] If goals exist: `910_RECORDS/911_GOALS/00_GOALS.md` with `aligns_with:` up one level
+- [ ] ID prefix registered in `902_REFERENCES/ID_REGISTRY.md`
+- [ ] Area added to `901_READ_FIRST/02_AREA_MAP.md`
+- [ ] Top level: area added to the list in `902_REFERENCES/prompts/CHAT_CONTEXT.md`
+- [ ] Saved files go in the folder, each with a line in `910_RECORDS/INDEX.md` and `901_READ_FIRST/04_CATALOG.md`
 - [ ] A topic: what it is for and the kinds it holds, proposed with a reason, chosen by the owner, and recorded in its `AGENTS.md` (folder ⚙ → Topic; §Topic layouts)

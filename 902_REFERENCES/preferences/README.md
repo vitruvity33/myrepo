@@ -14,7 +14,7 @@ A preference is a record with `context_type: preference` and a `scope:`:
 |---|---|---|
 | `global` | this folder | voice and tone, general style |
 | `artifact_type` | this folder | decks, emails — add `applies_to:` |
-| `area`, `project` | the area itself, logged in its `01_RECORDS/INDEX.md` | how one project wants reports |
+| `area`, `project` | the area itself, logged in its `910_RECORDS/INDEX.md` | how one project wants reports |
 
 ## The correction loop
 
@@ -27,5 +27,5 @@ the owner should never repeat one.
 ## Empty by design
 
 This folder ships empty. Preferences accumulate from correction — one record per
-file, full front-matter per `02_REFERENCES/CONTEXT_ITEM_SPEC.md`, always
+file, full front-matter per `902_REFERENCES/CONTEXT_ITEM_SPEC.md`, always
 `status: draft` until the owner promotes.

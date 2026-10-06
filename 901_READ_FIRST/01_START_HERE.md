@@ -20,14 +20,14 @@ conclusion.
 | # | File | What it gives you |
 |---|---|---|
 | 1 | This file | What the repo is |
-| 2 | `01_READ_FIRST/02_AREA_MAP.md` | Which area owns which kind of thing — and the ownership rule |
-| 3 | `01_READ_FIRST/03_HOW_TO_USE_WITH_AI.md` | How each class of tool reads and writes |
-| 4 | `02_REFERENCES/CONTEXT_ITEM_SPEC.md` | The record format — the three questions |
+| 2 | `901_READ_FIRST/02_AREA_MAP.md` | Which area owns which kind of thing — and the ownership rule |
+| 3 | `901_READ_FIRST/03_HOW_TO_USE_WITH_AI.md` | How each class of tool reads and writes |
+| 4 | `902_REFERENCES/CONTEXT_ITEM_SPEC.md` | The record format — the three questions |
 
 ## The shape
 
 - **Areas** are numbered top-level folders — the domains that matter to the owner.
-  Each has `AGENTS.md` (rules) + `README.md` (orientation) + `01_RECORDS/` (the log)
+  Each has `AGENTS.md` (rules) + `README.md` (orientation) + `910_RECORDS/` (the log)
   (governed records).
 - **Sub-areas** are unnumbered folders inside an area with the same shape —
   a company inside a job-search area, a person inside a people area.
@@ -37,13 +37,13 @@ conclusion.
 
 ## Setting up your copy
 
-This repo ships with the machinery only — `01_READ_FIRST/`, `02_REFERENCES/`,
-`99_OTHER/`. Your areas are yours:
+This repo ships with the machinery only — `901_READ_FIRST/`, `902_REFERENCES/`,
+`89_OTHER/`. Your areas are yours:
 
 1. Create a numbered top-level folder per domain — see
-   `02_REFERENCES/AREA_TEMPLATE/` for the shape and checklist.
-2. Register each area's ID prefix in `02_REFERENCES/ID_REGISTRY.md`.
-3. Add it to `01_READ_FIRST/02_AREA_MAP.md`.
+   `902_REFERENCES/AREA_TEMPLATE/` for the shape and checklist.
+2. Register each area's ID prefix in `902_REFERENCES/ID_REGISTRY.md`.
+3. Add it to `901_READ_FIRST/02_AREA_MAP.md`.
 4. Set the reviewer name in root `AGENTS.md`.
 
 ## Current state

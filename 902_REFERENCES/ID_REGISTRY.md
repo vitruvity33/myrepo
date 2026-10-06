@@ -14,9 +14,9 @@ subject, use `subject_text:` and let the owner mint the ID.
 
 | Prefix | Owner (folder) | Status |
 |---|---|---|
-| `RF-` | `01_READ_FIRST/` | active |
-| `REF-` | `02_REFERENCES/` | active |
-| `REV-` | `90_PUSH_BACK/` | reserved — create on first cross-area dispute |
+| `RF-` | `901_READ_FIRST/` | active |
+| `REF-` | `902_REFERENCES/` | active |
+| `REV-` | `915_PUSH_BACK/` | reserved — create on first cross-area dispute |
 | _(add each area's prefix here when you create it)_ | | |
 
 ## `subject:` kinds

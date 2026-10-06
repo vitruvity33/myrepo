@@ -24,9 +24,9 @@ numbered area as you create it.
 
 | Folder | Owns | Kind | ID prefix | Status |
 |---|---|---|---|---|
-| `01_READ_FIRST/` | Orientation — which area answers which question | reference | `RF-` | active |
-| `02_REFERENCES/` | Shared machinery: record spec, push-back protocol, ID registry, preferences, prompts | reference | `REF-` | active |
-| `99_OTHER/` | Catch-all for unsorted captures, logged in its `01_RECORDS/INDEX.md` | — | — | active |
+| `901_READ_FIRST/` | Orientation — which area answers which question | reference | `RF-` | active |
+| `902_REFERENCES/` | Shared machinery: record spec, push-back protocol, ID registry, preferences, prompts | reference | `REF-` | active |
+| `89_OTHER/` | Catch-all for unsorted captures, logged in its `910_RECORDS/INDEX.md` | — | — | active |
 | _(your areas — `10_`, `30_`, `620_` …)_ | _one row per area you create_ | _endeavor / entity / governance_ | _`XXX-`_ | — |
 
 ## Reserved — not created
@@ -36,7 +36,7 @@ unused number (root AGENTS.md §Creating a top-level area).
 
 | Folder | Intended use | Note |
 |---|---|---|
-| `90_PUSH_BACK` | Cross-area disputes | Create on first one |
+| `915_PUSH_BACK` | Cross-area disputes | Create on first one |
 | `03_REPORTS` | Generated index/views | When search earns it |
 | _(finance, health, admin)_ | Sensitivity-gated areas | Only with an explicit owner decision; this repo may be public |
 
