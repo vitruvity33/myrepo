@@ -287,8 +287,7 @@ with its own `AGENTS.md` and `README.md`, in the same change.** That includes:
 - areas and sub-areas, and every folder inside them — the parts a folder is split
   into (for example `Location/`, `Things_To_Do/`, `Costs/`, `Design_Ideas/`), and the
   folders inside those;
-- folder-type folders (`30_SOURCES/`, `36_OPTIONS/` …), a person's folder, and
-  `90_TRACKING/`.
+- folder-type folders (`30_SOURCES/`, `36_OPTIONS/` …) and a person's folder.
 
 `AGENTS.md` says what belongs in the folder and which rules apply (root and parent
 `AGENTS.md`); `README.md` tells people what the folder is for and what's in it. This
@@ -297,11 +296,13 @@ without them.** A folder still appears only when it has real content; never crea
 empty ones. Read the root and parent instructions first, and use
 `02_REFERENCES/AREA_TEMPLATE/README.md` for an area or sub-area.
 
-The only folders without their own pair are the back-end ones: `01_RECORDS/` (the
-log, goals and push-back) and `work/` follow their area's `AGENTS.md`; the repo's own
-machinery (`01_READ_FIRST/`, `02_REFERENCES/`, `scripts/`) is described in this file.
-In a folder-type folder or `90_TRACKING/`, the pair is notes for agents — what the
-owner likes and leaves out, where the conversation is heading — shown behind the cog.
+**Back end — never the owner's content, and no pair of their own:** `01_RECORDS/` (the
+log, goals and push-back), `90_TRACKING/` (the queue and progress lists — notes for
+agents on what's been looked at, what's next and what's kept) and `work/` follow their
+folder's `AGENTS.md`; the repo's own machinery (`01_READ_FIRST/`, `02_REFERENCES/`,
+`scripts/`) is described in this file. On the website the back end sits behind the cog.
+In a folder-type folder the pair is notes for agents too — what the owner likes and
+leaves out, where the conversation is heading.
 
 Every saved file answers the three questions in its header, lives in the folder it's
 about, and gets a line in its folder's log and the repo's catalog (§Routing).
@@ -341,7 +342,8 @@ top-level area without a number or with a number already in use.
 By default every folder, whatever its topic type, works things through in three steps — **explore →
 investigate → confirm** — so the owner can look at something without committing to it, AI
 never offers the same thing twice, and what matters is kept. One list per step, in the
-folder's `90_TRACKING/` (each made on first use):
+folder's `90_TRACKING/` (each made on first use). `90_TRACKING/` is **back end**, like `01_RECORDS/` —
+lists for agents (what was looked at, what’s next, what’s kept); the owner’s content never goes there.
 
 | Step | File | What goes in it |
 |---|---|---|

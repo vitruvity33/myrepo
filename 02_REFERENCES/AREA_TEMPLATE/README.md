@@ -32,7 +32,8 @@ change, then complete the checklist below.
 
 Every folder for the owner's content inside it gets its own `AGENTS.md` +
 `README.md` too, at any depth, in the same change (root `AGENTS.md` §Every folder
-gets AGENTS.md + README.md). Only `01_RECORDS/` (the back end) and `work/` don't.
+gets AGENTS.md + README.md). Only the back-end folders —
+`01_RECORDS/`, `90_TRACKING/` and `work/` — don't.
 
 ## FOCUS.md (optional)
 

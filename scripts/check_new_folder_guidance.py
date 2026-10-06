@@ -7,7 +7,8 @@ Nothing here is hardcoded to this repo's areas — they are read from the tree:
 1. Every new folder for the owner's content, at any depth (60_FINANCE/,
    10_Wedding/Costs/, 50_LEARNING/acoustics/30_SOURCES/ …), needs AGENTS.md and
    README.md in the same push. Back-end folders don't: 01_RECORDS and its slot
-   folders (00_INBOX …), push-back folders, work, and anything outside the areas.
+   folders (00_INBOX …), push-back folders, 90_TRACKING, work, and anything
+   outside the areas.
 2. The owner's content lives in content folders, never inside 01_RECORDS/ (the
    back end): a new file in 01_RECORDS/00_INBOX, 02_QUESTIONS, 03_REFERENCES,
    04_MODELS or 06_DECISIONS fails. (The logs and the catalog are rebuilt after
@@ -51,6 +52,7 @@ ROUTED_SLOTS = {"02_QUESTIONS", "03_REFERENCES", "04_MODELS", "06_DECISIONS"}
 SETTINGS = "02_REFERENCES/REPO_SETTINGS.json"
 CONTENT_SLOTS = {"00_INBOX", "02_QUESTIONS", "03_REFERENCES", "04_MODELS", "06_DECISIONS"}
 PUSH_BACK = re.compile(r"^\d+_PUSH_BACK$", re.IGNORECASE)
+TRACKING = re.compile(r"^\d+_TRACKING$", re.IGNORECASE)
 
 
 def git(*args):
@@ -75,7 +77,7 @@ def is_area(top):
 
 def requires_local_guidance(path):
     parts = path.split("/")
-    if any(p.startswith(".") or p in STRUCTURAL_NAMES or PUSH_BACK.match(p) for p in parts):
+    if any(p.startswith(".") or p in STRUCTURAL_NAMES or PUSH_BACK.match(p) or TRACKING.match(p) for p in parts):
         return False
     return is_area(parts[0])
 
