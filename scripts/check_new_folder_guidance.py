@@ -8,18 +8,18 @@ Nothing here is hardcoded to this repo's areas — they are read from the tree:
    10_Wedding/Costs/, 50_LEARNING/acoustics/30_SOURCES/ …), needs AGENTS.md and
    README.md in the same push. Back-end folders don't: 01_RECORDS and its slot
    folders (00_INBOX …), push-back folders, work, and anything outside the areas.
-2. A new record — a Markdown file inside 01_RECORDS/ or a template slot
-   folder (00_INBOX … 06_DECISIONS, 99_ARCHIVE) — needs front-matter (--- … ---)
-   so it can answer the three questions (root AGENTS.md). Lists, profiles and
-   other views a topic defines in its own AGENTS.md are not records.
+2. The owner's content lives in content folders, never inside 01_RECORDS/ (the
+   back end): a new file in 01_RECORDS/00_INBOX, 02_QUESTIONS, 03_REFERENCES,
+   04_MODELS or 06_DECISIONS fails. A new saved file — Markdown whose header has
+   context_type: or kind: record — needs a line in its folder's
+   01_RECORDS/INDEX.md and in 01_READ_FIRST/04_CATALOG.md (root AGENTS.md
+   §Routing). New push-back, goals and archive files need front-matter.
 3. A new top-level area starts with a number nobody else uses. Numbers can be
    any length (60_, 620_, 0622_) and mean nothing on their own — they only
    keep areas in order. A new top-level folder with AGENTS.md or README.md but
    no number, or with a number another top-level folder already has, fails.
-4. A record's folder agrees with its header. For a record added or changed in
-   the push, context_type decides the slot (root AGENTS.md §Routing): an
-   analysis in 03_REFERENCES fails. Inbox, goals and archive take anything.
-   `evidence` must name its source in source_refs. The kinds and where each goes
+4. A dispute or correction goes in a push-back folder, and `evidence` must name
+   its source in source_refs, for any saved file added or changed. The kinds
    come from 02_REFERENCES/REPO_SETTINGS.json (set in MyRepo → Classifications)
    when the repo has it; the template's defaults otherwise.
 """
@@ -50,11 +50,13 @@ ROUTES = {
 NEEDS_SOURCE = {"evidence"}
 ROUTED_SLOTS = {"02_QUESTIONS", "03_REFERENCES", "04_MODELS", "06_DECISIONS"}
 SETTINGS = "02_REFERENCES/REPO_SETTINGS.json"
+CONTENT_SLOTS = {"00_INBOX", "02_QUESTIONS", "03_REFERENCES", "04_MODELS", "06_DECISIONS"}
+CATALOG = "01_READ_FIRST/04_CATALOG.md"
 PUSH_BACK = re.compile(r"^\d+_PUSH_BACK$", re.IGNORECASE)
 
 
 def git(*args):
-    return subprocess.check_output(["git", *args], text=True)
+    return subprocess.check_output(["git", *args], text=True, stderr=subprocess.DEVNULL)
 
 
 def tracked_files(ref):
@@ -183,21 +185,53 @@ def routing_problems(changed):
     for path in changed:
         if not path.lower().endswith(".md") or path.split("/")[-1] in RULES_FILES:
             continue
-        slot = slot_of(path)
-        if slot is None:
+        head = front_matter(path)
+        if head is None:
+            continue
+        kind, _ = field(head, "context_type")
+        kind = (kind or "").lower()
+        if routes.get(kind) == "PUSH_BACK" and slot_of(path) != "PUSH_BACK":
+            problems.append(f"{path} — context_type: {kind} belongs in a push-back folder; move it or fix the header")
+        if kind in sourced:
+            value, items = field(head, "source_refs")
+            if not items and value in (None, "", "[]"):
+                problems.append(f"{path} — {kind} without source_refs; name the source, or call it an assumption")
+    return problems
+
+
+def in_content_slot(path):
+    parts = path.split("/")[:-1]
+    return any(p == "01_RECORDS" and i + 1 < len(parts) and parts[i + 1].upper() in CONTENT_SLOTS for i, p in enumerate(parts))
+
+
+def saved_item_problems(added):
+    """The owner's files stay out of the back end, and every saved file is logged."""
+    problems = []
+    for path in added:
+        parts = path.split("/")
+        if len(parts) < 2 or not is_area(parts[0]) or any(p.startswith(".") for p in parts):
+            continue
+        folder = "/".join(parts[:-1])
+        if in_content_slot(path):
+            owner = folder.split("/01_RECORDS")[0]
+            problems.append(f"{path} — saved inside 01_RECORDS/ (the back end); save it in {owner}/ and log it in {owner}/01_RECORDS/INDEX.md")
+            continue
+        if not path.lower().endswith(".md") or parts[-1] in RULES_FILES or "01_RECORDS" in parts or slot_of(path) == "PUSH_BACK":
             continue
         head = front_matter(path)
         if head is None:
             continue
         kind, _ = field(head, "context_type")
-        want = routes.get((kind or "").lower())
-        if want and want != slot:
-            where = "a push-back folder" if want == "PUSH_BACK" else f"01_RECORDS/{want}/"
-            problems.append(f"{path} — context_type: {kind} belongs in {where}; move it or fix the header")
-        if (kind or "").lower() in sourced:
-            value, items = field(head, "source_refs")
-            if not items and value in (None, "", "[]"):
-                problems.append(f"{path} — {kind} without source_refs; name the source, or call it an assumption")
+        form, _ = field(head, "kind")
+        if not kind and (form or "").lower() != "record":
+            continue
+        for log in (f"{folder}/01_RECORDS/INDEX.md", CATALOG):
+            try:
+                text = git("show", f"HEAD:{log}")
+            except subprocess.CalledProcessError:
+                text = ""
+            if path not in text:
+                problems.append(f"{path} — saved without a line in {log}")
     return problems
 
 
@@ -218,8 +252,10 @@ def main():
     problems.extend(top_level_problems(new_dirs, head_files))
     changed = git("diff", "--name-only", "--diff-filter=AMR", args.base, "HEAD").splitlines()
     problems.extend(routing_problems(changed))
-    for path in sorted(head_files - base_files):
-        if needs_header(path) and not has_front_matter(path):
+    added = sorted(head_files - base_files)
+    problems.extend(saved_item_problems(added))
+    for path in added:
+        if needs_header(path) and not in_content_slot(path) and not has_front_matter(path):
             problems.append(f"{path} — new record without a front-matter header (the three questions)")
 
     if problems:

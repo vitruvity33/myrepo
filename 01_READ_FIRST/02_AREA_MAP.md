@@ -26,7 +26,7 @@ numbered area as you create it.
 |---|---|---|---|---|
 | `01_READ_FIRST/` | Orientation — which area answers which question | reference | `RF-` | active |
 | `02_REFERENCES/` | Shared machinery: record spec, push-back protocol, ID registry, preferences, prompts | reference | `REF-` | active |
-| `99_OTHER/` | Catch-all; `01_RECORDS/00_INBOX/` receives unsorted captures | — | — | active |
+| `99_OTHER/` | Catch-all for unsorted captures, logged in its `01_RECORDS/INDEX.md` | — | — | active |
 | _(your areas — `10_`, `30_`, `620_` …)_ | _one row per area you create_ | _endeavor / entity / governance_ | _`XXX-`_ | — |
 
 ## Reserved — not created
@@ -42,7 +42,7 @@ unused number (root AGENTS.md §Creating a top-level area).
 
 ## Promotion paths
 
-- **Contacts:** a note inside an endeavor's `03_REFERENCES/` → promoted to a
+- **Contacts:** a note inside an endeavor → promoted to a
   people area when the relationship outlives the context.
 - **Knowledge:** research inside an endeavor → distilled durable knowledge
   promoted to a research/topic area before the endeavor archives.

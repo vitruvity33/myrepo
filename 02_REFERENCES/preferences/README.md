@@ -14,7 +14,7 @@ A preference is a record with `context_type: preference` and a `scope:`:
 |---|---|---|
 | `global` | this folder | voice and tone, general style |
 | `artifact_type` | this folder | decks, emails — add `applies_to:` |
-| `area`, `project` | the area's `01_RECORDS/03_REFERENCES/` | how one project wants reports |
+| `area`, `project` | the area itself, logged in its `01_RECORDS/INDEX.md` | how one project wants reports |
 
 ## The correction loop
 

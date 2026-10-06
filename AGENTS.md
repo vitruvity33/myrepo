@@ -118,11 +118,12 @@ Every **knowledge record** answers three questions from its front-matter alone:
 | # | Question | Fields |
 |---|---|---|
 | 1 | What is it about? | `subject:` (ID from `02_REFERENCES/ID_REGISTRY.md`) or `subject_text:` |
-| 2 | What kind of statement is it? | `context_type:` — routes it to a folder slot |
+| 2 | What kind of statement is it? | `context_type:` — its category in the log |
 | 3 | How much should it be trusted? | `status` + `confidence` + `raised_by` + `reviewed_by` |
 
-**No front-matter, no save.** If a record can't answer the three questions yet, it
-goes to the nearest `00_INBOX/` with `subject_text:` filled in. Nothing is dropped.
+**No front-matter, no save.** If a record can't answer the three questions yet, it is
+saved with `subject_text:` filled in and no `context_type`, and logged as unsorted
+(`00_INBOX`). Nothing is dropped.
 
 Spec: `02_REFERENCES/CONTEXT_ITEM_SPEC.md`.
 
@@ -143,24 +144,40 @@ Spec: `02_REFERENCES/CONTEXT_ITEM_SPEC.md`.
   saving it, and treat `restricted` as "does not belong here."
 
 <!-- myrepo:begin routing -->
-### Routing (context_type → slot)
+### Routing (where a saved file goes, and its log)
 
-| context_type | Files to |
+**A saved file lives in the content folder it’s about** — the folder the owner picked,
+or a content folder inside it — as `YYYY-MM-DD_TITLE.md`, where the owner sees it.
+**Never save the owner’s content inside `01_RECORDS/`** — that is the back end, like
+`AGENTS.md` and `README.md`.
+
+**The log.** In the same change, add one line for the file to that folder’s
+`01_RECORDS/INDEX.md` and to the repo’s `01_READ_FIRST/04_CATALOG.md` (each made on
+first use). To answer a question about the repo, start from the catalog.
+
+| Date | Title | Kind | Category | File |
+|---|---|---|---|---|
+| 2026-10-05 | Conversation memory architecture | `analysis` | 04_MODELS | `10_Product/Infra-AWS/2026-10-05_CONVERSATION-MEMORY.md` |
+
+The category comes from the header’s `context_type`:
+
+| context_type | Category in the log |
 |---|---|
-| `decision`, `outcome` | `01_RECORDS/06_DECISIONS/` |
-| `assumption`, `known_issue` | `01_RECORDS/02_QUESTIONS/` |
-| `methodology`, `definition`, `evidence` | `01_RECORDS/03_REFERENCES/` |
-| `dispute`, `correction` | area `05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
-| `analysis` | `01_RECORDS/04_MODELS/` |
-| `preference` | `02_REFERENCES/preferences/` (global/artifact_type) or the area (area/project scope) |
-| anything unsortable | `00_INBOX/` |
+| `decision`, `outcome` | `06_DECISIONS` |
+| `assumption`, `known_issue` | `02_QUESTIONS` |
+| `methodology`, `definition`, `evidence` | `03_REFERENCES` |
+| `dispute`, `correction` | the file goes in the area’s `01_RECORDS/05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
+| `analysis` | `04_MODELS` |
+| `preference` | the file goes in `02_REFERENCES/preferences/` (global/artifact_type) or the area (area/project scope) |
+| not sure yet (no `context_type`) | `00_INBOX` (unsorted) |
 
-The header is the truth and the folder must agree — a push where they disagree
-fails the repo rules check. `evidence` needs `source_refs:`; without a source it is an `assumption`.
-The kinds are set in MyRepo (repo ⚙ → Classifications).
+The header is the truth; the log follows it. A push that saves the owner’s content inside
+`01_RECORDS/`, or a saved file with no line in its folder’s log, fails the repo rules check. `evidence` needs `source_refs:`; without a source it is an `assumption`.
+The kinds are set in MyRepo (repo ⚙ → Classifications). Older repos may still have files
+inside `01_RECORDS/00_INBOX/` … `06_DECISIONS/`: leave them, and save anything new in the folder.
 
-`record_form` never routes: raw conversations land in `00_INBOX/` or
-`03_REFERENCES/`; artifacts-in-progress live in `work/`.
+`record_form` never routes: a raw conversation is saved and logged like anything else;
+artifacts-in-progress live in `work/`.
 <!-- myrepo:end routing -->
 
 ## Status and promotion
@@ -169,8 +186,11 @@ The kinds are set in MyRepo (repo ⚙ → Classifications).
 - Promotion is a human act: the owner sets `status: canonical` + `reviewed_by:`.
 - **Merge ≠ promotion.** Git history tells what changed; the status field tells
   how much authority the content has. Drafts legitimately live on `main`.
-- Anything in `99_ARCHIVE/` is superseded — never cite it. Anything in
-  `00_INBOX/` is unsorted and unreviewed — never cite it.
+- Anything with `status: superseded` (or in an `Archive/` or `99_ARCHIVE/` folder) is
+  superseded — never cite it. Anything logged as unsorted (`00_INBOX`) is unreviewed —
+  never cite it.
+- **Superseding a saved file:** set `status: superseded`, move it into an `Archive/`
+  folder inside its folder, and update its line in the log and the catalog.
 
 <!-- myrepo:begin settings -->
 ## Your settings
@@ -225,9 +245,12 @@ end the save by emitting a `SAVE` block — nothing omitted:
 
 ```
 SAVE
-path: <AREA>/<SUBJECT>/01_RECORDS/06_DECISIONS/YYYY-MM-DD_TOPIC.md
+path: <AREA>/<SUBJECT>/YYYY-MM-DD_TOPIC.md
 ---
 <complete file: full front-matter + body>
+
+LOG (add to <AREA>/<SUBJECT>/01_RECORDS/INDEX.md and 01_READ_FIRST/04_CATALOG.md)
+| YYYY-MM-DD | <title> | `<context_type>` | <category> | `<AREA>/<SUBJECT>/YYYY-MM-DD_TOPIC.md` |
 ```
 
 The human or a file-capable agent performs the write. A disagreement left only in
@@ -244,9 +267,11 @@ a chat window is a silent drop — which this repository exists to prevent.
   recursively. **Every folder for the owner's content gets its own** `AGENTS.md`
   + `README.md` in the same operation (§Every folder gets AGENTS.md + README.md). Never create a folder just by
   saving a file into it. Promoting a sub-area to top level is a move, not a redesign.
-- `01_RECORDS/` slots are a **menu, not a mandate** — each area's `AGENTS.md`
-  declares which it uses; folders are created on first use. Every area has
-  `00_INBOX`, `03_REFERENCES`, `99_ARCHIVE` available.
+- `01_RECORDS/` is the **back end**, like `AGENTS.md` and `README.md`: the folder's log
+  (`INDEX.md` — every saved file, its category and where it is), its goals
+  (`01_GOALS/`) and push-back (`05_PUSH_BACK/`). **The owner's content never goes in
+  it** (§Routing). Older files already in `00_INBOX/` … `06_DECISIONS/` stay where they
+  are; log them and save anything new in the folder.
 - Filenames for dated records: `YYYY-MM-DD_TOPIC.md`.
 - Cross-references use full paths from the repository root.
 - **Never invent a registry ID** — use `subject_text:` and let a human mint the ID.
@@ -271,13 +296,14 @@ without them.** A folder still appears only when it has real content; never crea
 empty ones. Read the root and parent instructions first, and use
 `02_REFERENCES/AREA_TEMPLATE/README.md` for an area or sub-area.
 
-The only folders without their own pair are the back-end ones: `01_RECORDS/` and
-its slot folders (`00_INBOX/`, `01_GOALS/` … `06_DECISIONS/`, `05_PUSH_BACK/`,
-`99_ARCHIVE/`) and `work/` follow their area's `AGENTS.md`; the repo's own machinery
-(`01_READ_FIRST/`, `02_REFERENCES/`, `scripts/`) is described in this file.
+The only folders without their own pair are the back-end ones: `01_RECORDS/` (the
+log, goals and push-back) and `work/` follow their area's `AGENTS.md`; the repo's own
+machinery (`01_READ_FIRST/`, `02_REFERENCES/`, `scripts/`) is described in this file.
+In a folder-type folder or `90_TRACKING/`, the pair is notes for agents — what the
+owner likes and leaves out, where the conversation is heading — shown behind the cog.
 
-Filing doesn't change: every record still answers the three questions and goes in
-the slot its kind routes to (§Routing).
+Every saved file answers the three questions in its header, lives in the folder it's
+about, and gets a line in its folder's log and the repo's catalog (§Routing).
 
 Before completing a save, check each new folder has both files. An existing folder
 missing them: add the pair the next time you work there, as part of the plan you show.

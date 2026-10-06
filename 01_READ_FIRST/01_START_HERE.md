@@ -27,7 +27,7 @@ conclusion.
 ## The shape
 
 - **Areas** are numbered top-level folders — the domains that matter to the owner.
-  Each has `AGENTS.md` (rules) + `README.md` (orientation) + `01_RECORDS/`
+  Each has `AGENTS.md` (rules) + `README.md` (orientation) + `01_RECORDS/` (the log)
   (governed records).
 - **Sub-areas** are unnumbered folders inside an area with the same shape —
   a company inside a job-search area, a person inside a people area.

@@ -24,7 +24,7 @@ survives, not just the conclusion.
 
 - **Areas** are numbered top-level folders (`10_`, `20_` …) — the domains that
   matter to you. Each carries `AGENTS.md` (rules for agents) + `README.md`
-  (orientation for people) + `01_RECORDS/` (governed records).
+  (orientation for people) + `01_RECORDS/` (the back-end log of what's saved).
 - **Sub-areas** are unnumbered folders inside an area with the same shape —
   a person inside a people area, a topic inside a research area.
 - **Every record answers three questions** from its front-matter: what it's about,

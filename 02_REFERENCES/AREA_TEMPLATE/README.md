@@ -11,22 +11,15 @@ repo navigable by an agent that cannot ask questions.
 
 ```
 NN_AREA_NAME/                  top level: unused number, any length. Sub-area: no number
-├── AGENTS.md                  REQUIRED. Scoped rules, ID prefix, slot menu
+├── AGENTS.md                  REQUIRED. Scoped rules, ID prefix, what belongs here
 ├── README.md                  REQUIRED. Orientation for people
 ├── FOCUS.md                   optional. What the owner is after here — agents read it
 │                              before suggesting anything (root AGENTS.md §Focus)
-├── 01_RECORDS/                The governed layer. Slots are a menu — create on
-│   │                          first use; every area can use:
-│   ├── 00_INBOX/              unsorted captures — never cite
-│   ├── 01_GOALS/              goals with aligns_with: one level up
-│   ├── 02_QUESTIONS/          assumptions, known issues
-│   ├── 03_REFERENCES/         sourced facts (evidence), methods, definitions —
-│   │                          what you can rely on
-│   ├── 04_MODELS/             analysis: interpretations, proposed designs,
-│   │                          comparisons, scenarios — not facts
-│   ├── 05_PUSH_BACK/          disputes about this area
-│   ├── 06_DECISIONS/          decisions + outcomes
-│   └── 99_ARCHIVE/            superseded — never cite
+├── 01_RECORDS/                The back end — never the owner's content:
+│   ├── INDEX.md               the log: every saved file, its category, where it is
+│   ├── 01_GOALS/              00_GOALS.md — aligns_with: one level up
+│   └── 05_PUSH_BACK/          disputes about this folder
+├── YYYY-MM-DD_TOPIC.md        saved files live here, in the folder (or one inside it)
 └── work/                      unvalidated space — drafts, artifacts-in-progress
 ```
 
@@ -39,7 +32,7 @@ change, then complete the checklist below.
 
 Every folder for the owner's content inside it gets its own `AGENTS.md` +
 `README.md` too, at any depth, in the same change (root `AGENTS.md` §Every folder
-gets AGENTS.md + README.md). Only `01_RECORDS/`, its slot folders and `work/` don't.
+gets AGENTS.md + README.md). Only `01_RECORDS/` (the back end) and `work/` don't.
 
 ## FOCUS.md (optional)
 
@@ -198,7 +191,7 @@ Set in MyRepo (repo ⚙ → Topic types).
 
 1. Area name and ID prefix
 2. What belongs to this area (and what doesn't)
-3. Which `01_RECORDS/` slots are in use and why
+3. What gets saved here, and how it's logged (`01_RECORDS/INDEX.md`)
 4. Rules specific to the area
 5. Pointer to root `AGENTS.md` (full path from root)
 6. Push-back section — `05_PUSH_BACK/`, `YYYY-MM-DD_TOPIC.md`
@@ -212,5 +205,5 @@ Set in MyRepo (repo ⚙ → Topic types).
 - [ ] ID prefix registered in `02_REFERENCES/ID_REGISTRY.md`
 - [ ] Area added to `01_READ_FIRST/02_AREA_MAP.md`
 - [ ] Top level: area added to the list in `02_REFERENCES/prompts/CHAT_CONTEXT.md`
-- [ ] Other slots appear on first use — not before
+- [ ] Saved files go in the folder, each with a line in `01_RECORDS/INDEX.md` and `01_READ_FIRST/04_CATALOG.md`
 - [ ] A topic: what it is for and the kinds it holds, proposed with a reason, chosen by the owner, and recorded in its `AGENTS.md` (folder ⚙ → Topic; §Topic layouts)

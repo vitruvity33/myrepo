@@ -27,27 +27,25 @@ Any tool must be able to answer these from the front-matter alone.
 ## `context_type` — function of the statement, and where it files
 
 <!-- myrepo:begin types -->
-| `context_type` | Use when | File in |
+| `context_type` | Use when | Logged as |
 |---|---|---|
-| `decision` | Decision — A decision was made, with the evidence behind it | `01_RECORDS/06_DECISIONS/` |
-| `outcome` | Outcome — What happened after a decision | `01_RECORDS/06_DECISIONS/` |
-| `assumption` | Assumption — Taken as true, not yet tested | `01_RECORDS/02_QUESTIONS/` |
-| `known_issue` | Known issue — A confirmed, stable problem or limitation | `01_RECORDS/02_QUESTIONS/` |
-| `methodology` | Method / how-to — How something should be done or analyzed | `01_RECORDS/03_REFERENCES/` |
-| `definition` | Definition — What a term means | `01_RECORDS/03_REFERENCES/` |
-| `evidence` | Fact from a source — A fact from a source — a spec sheet, a measurement, a document, a test result; without a source it is an assumption | `01_RECORDS/03_REFERENCES/` |
-| `dispute` | Question / dispute — Someone questions a conclusion, number or record — still open ("are you sure?" counts) | area `05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
-| `correction` | Correction — An earlier statement was wrong; this replaces it. Fill supersedes: and mark the old record superseded | area `05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
-| `analysis` | Interpretation — An interpretation or reasoning — not a sourced fact; list what it rests on in references: / source_refs: | `01_RECORDS/04_MODELS/` |
-| `preference` | Preference — How the owner wants output produced | `02_REFERENCES/preferences/` (global/artifact_type) or the area (area/project scope) |
-| *(unsure)* | Unsorted capture | `00_INBOX/` |
+| `decision` | Decision — A decision was made, with the evidence behind it | `06_DECISIONS` |
+| `outcome` | Outcome — What happened after a decision | `06_DECISIONS` |
+| `assumption` | Assumption — Taken as true, not yet tested | `02_QUESTIONS` |
+| `known_issue` | Known issue — A confirmed, stable problem or limitation | `02_QUESTIONS` |
+| `methodology` | Method / how-to — How something should be done or analyzed | `03_REFERENCES` |
+| `definition` | Definition — What a term means | `03_REFERENCES` |
+| `evidence` | Fact from a source — A fact from a source — a spec sheet, a measurement, a document, a test result; without a source it is an assumption | `03_REFERENCES` |
+| `dispute` | Question / dispute — Someone questions a conclusion, number or record — still open ("are you sure?" counts) | the file goes in the area’s `01_RECORDS/05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
+| `correction` | Correction — An earlier statement was wrong; this replaces it. Fill supersedes: and mark the old record superseded | the file goes in the area’s `01_RECORDS/05_PUSH_BACK/` (cross-area → `90_PUSH_BACK/`) |
+| `analysis` | Interpretation — An interpretation or reasoning — not a sourced fact; list what it rests on in references: / source_refs: | `04_MODELS` |
+| `preference` | Preference — How the owner wants output produced | the file goes in `02_REFERENCES/preferences/` (global/artifact_type) or the area (area/project scope) |
+| *(unsure)* | Unsorted capture | `00_INBOX` (unsorted) |
 <!-- myrepo:end types -->
 
-**The header is the truth; the folder must agree.** A record's slot follows its
-`context_type` (inbox and archive take any). `scripts/check_new_folder_guidance.py`
-fails a push that adds or changes a record whose folder disagrees with its header.
-Reclassifying means changing both — and saying so in the header:
-`reclassified: <old> → <new>, YYYY-MM-DD`.
+**The header is the truth; the log follows it.** A saved file lives in the folder it's
+about; its `context_type` decides its category in that folder's `01_RECORDS/INDEX.md`
+and in `01_READ_FIRST/04_CATALOG.md` (root `AGENTS.md` §Routing).
 
 ## `record_form` — the container, never the meaning
 
