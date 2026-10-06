@@ -362,6 +362,12 @@ lists for agents (what was looked at, what’s next, what’s kept); the owner�
   settings) — a folder that turns progress tracking off keeps no queue.
 - **A folder may use its own stages instead** — when its `AGENTS.md` (§This folder's
   purpose) defines them, follow those there, kept in its `90_TRACKING/` the same way.
+- **The owner’s view is in the folder itself.** `90_TRACKING/` is your working list. What the owner
+  reads is a page in the folder, in plain words — `OVERVIEW.md`: where things stand, what
+  they like and don’t, what’s still to explore, what’s been looked into and what came of it.
+  As it grows, split it into pages by category (one per kind of thing being considered).
+  Whenever the lists change in a way the owner would care about, update that page in the
+  same change. (`README.md` is orientation and sits behind the cog on the website — not this.)
 
 Set in MyRepo (repo ⚙ → Topic types; a folder's ⚙ → Topic type).
 <!-- myrepo:end queue -->
