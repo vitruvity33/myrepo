@@ -351,6 +351,17 @@ without them.** A folder still appears only when it has real content; never crea
 empty ones. Read the root and parent instructions first, and use
 `902_REFERENCES/AREA_TEMPLATE/README.md` for an area or sub-area.
 
+**A saved note is a file, never a folder.** When the owner asks to save a note, an
+idea, a snippet or something they learned, write one `.md` file named for its subject
+(for example `semiconductors-electrical-and-quantum-states.md`) in the folder it belongs
+to, with its header (`topics:` lists what it's about). **`AGENTS.md` and `README.md`
+are instructions and a folder description — never put the owner's notes or saved
+content in them**, and never create a folder just to hold one note. A folder for one
+item (a person, a work) only when it needs several files, and those files are named
+for what they hold (`PROFILE.md`, `WORKS.md`). Notes saved as files show up on the
+MyRepo website under their folder and open in the preview pane; text inside
+`README.md` or `AGENTS.md` does not.
+
 **Back end — never the owner's content, and no pair of their own:** `910_RECORDS/` (the
 log, goals and push-back), `990_TRACKING/` (the queue and progress lists — notes for
 agents on what's been looked at, what's next and what's kept) and `work/` follow their

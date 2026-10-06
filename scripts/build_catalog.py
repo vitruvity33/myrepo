@@ -163,9 +163,7 @@ def lines():
         p = f.split("/")
         if len(p) < 2 or not NUM.match(p[0]) or p[0] in MACHINERY or not re.search(r"\.(md|csv|tsv)$", f, re.I):
             continue
-        # a page written as README.md in an item folder (topic/15_CONCEPTS/x/README.md) is content
-        item_readme = p[-1] == "README.md" and any(NUM.match(x) for x in p[1:-2])
-        if (p[-1] in RULES and not item_readme) or backend(p[:-1]) or not os.path.exists(f):
+        if p[-1] in RULES or backend(p[:-1]) or not os.path.exists(f):
             continue
         meta, h1 = header(f) if f.lower().endswith(".md") else ({}, None)
         kind = meta.get("context_type", "").lower()
@@ -185,6 +183,9 @@ def lines():
         if rid:
             seen.add(rid)
         desc = (meta.get("subject_text") or meta.get("description") or "—")[:140]
+        topics = meta.get("topics", "").strip("[] ")
+        if topics:
+            desc = f"{desc} — topics: {topics}" if desc != "—" else f"topics: {topics}"
         rows.setdefault(folder, []).append((date, f, f"| {rid or '—'} | {date} | {cell(title)} | {cell(desc)} | {k} | {cat} | {cell(typ)} | `{f}` |", cat, typ))
     return rows
 

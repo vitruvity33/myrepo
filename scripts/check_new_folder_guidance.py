@@ -227,6 +227,20 @@ def saved_item_problems(added):
     return problems
 
 
+def note_in_rules_file_problems(changed):
+    """AGENTS.md and README.md are instructions and a folder description, never a saved note."""
+    problems = []
+    for path in changed:
+        if path.split("/")[-1] not in ("AGENTS.md", "README.md"):
+            continue
+        head = front_matter(path)
+        if head is None:
+            continue
+        if any(field(head, k)[0] for k in ("id", "date_learned")):
+            problems.append(f"{path} — a saved note written into {path.split('/')[-1]}; save it as its own file named for its subject")
+    return problems
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True, help="commit to compare against")
@@ -244,6 +258,7 @@ def main():
     problems.extend(top_level_problems(new_dirs, head_files))
     changed = git("diff", "--name-only", "--diff-filter=AMR", args.base, "HEAD").splitlines()
     problems.extend(routing_problems(changed))
+    problems.extend(note_in_rules_file_problems(changed))
     added = sorted(head_files - base_files)
     problems.extend(saved_item_problems(added))
     for path in added:
