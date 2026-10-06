@@ -5,10 +5,13 @@
 Runs after every push to main (.github/workflows/catalog.yml), so the catalog
 is complete whichever tool saved a file. Root AGENTS.md §Routing.
 
-A line per saved file: date | title | kind | category | path. The category
-comes from the header's context_type (decision → 926_DECISIONS, analysis →
-924_MODELS …), else the folder type it sits in (15_CONCEPTS …), else
-for a record that isn't sorted yet (920_UNSORTED). Each file is logged in the nearest folder
+A line per saved file: date | title | kind | category | type | path.
+- category: one per file, from the header's context_type (decision → 926_DECISIONS,
+  analysis → 924_MODELS …); 920_UNSORTED for a record not sorted yet; — for pages
+  that aren't statements (a profile, a concept page).
+- type (People, Places, Sources …): the header's `type:`, else the older numbered
+  folder it sits in (15_CONCEPTS → Concepts), else the one type its folder holds.
+Each file is logged in the nearest folder
 above any folder-type folder (a concept page in topic/15_CONCEPTS/ is in the
 topic's log). Back-end files — AGENTS.md, README.md, FOCUS.md, and anything whose
 name starts with 9 (910_RECORDS/, 990_TRACKING/ …), push-back, work/ — are not listed. A file is rewritten only when
@@ -35,7 +38,7 @@ CATALOG = "901_READ_FIRST/04_CATALOG.md" if os.path.isdir("901_READ_FIRST") or n
 NUM = re.compile(r"^\d+_")
 RULES = {"AGENTS.md", "README.md", "FOCUS.md", "INDEX.md"}
 MACHINERY = {"901_READ_FIRST", "902_REFERENCES", "01_READ_FIRST", "02_REFERENCES"}
-HEAD = "| Date | Title | Kind | Category | File |\n|---|---|---|---|---|"
+HEAD = "| Date | Title | Kind | Category | Type | File |\n|---|---|---|---|---|---|"
 
 
 def routes():
@@ -77,6 +80,22 @@ def backend(parts):
     )
 
 
+def held_type(folder):
+    """The one type a folder's AGENTS.md says it holds ("**Holds:** People"), or None."""
+    try:
+        text = open(f"{folder}/AGENTS.md", encoding="utf-8").read()
+    except OSError:
+        return None
+    m = re.search(r"\*\*Holds:\*\*\s*([^\n]+)", text)
+    names = [x.strip() for x in m.group(1).split("·")] if m else []
+    return names[0] if len(names) == 1 and names[0] else None
+
+
+def type_name(folder):
+    """A numbered type folder from older repos (15_CONCEPTS) → its type (Concepts)."""
+    return folder.split("_", 1)[1].replace("_", " ").title() if folder else None
+
+
 def log_folder(dirs):
     for i in range(1, len(dirs)):
         if NUM.match(dirs[i]):
@@ -103,13 +122,14 @@ def lines():
         meta, h1 = header(f) if f.lower().endswith(".md") else ({}, None)
         kind = meta.get("context_type", "").lower()
         folder, typed = log_folder(p[:-1])
-        cat = route.get(kind) or typed or ("920_UNSORTED" if meta.get("kind") == "record" or kind else "—")
+        cat = route.get(kind) or ("920_UNSORTED" if meta.get("kind") == "record" or kind else "—")
+        typ = meta.get("type") or type_name(typed) or held_type("/".join(p[:-1])) or "—"
         m = re.match(r"^(\d{4}-\d{2}-\d{2})", p[-1])
         date = m.group(1) if m else next(
             (meta[k][:10] for k in ("date", "created", "last_verified") if re.match(r"^\d{4}-\d{2}-\d{2}", meta.get(k, ""))), "—")
         title = meta.get("title") or h1 or re.sub(r"\.[^.]+$", "", p[-1])
         k = f"`{kind}`" if kind else (f"`{meta['kind']}`" if meta.get("kind") else "—")
-        rows.setdefault(folder, []).append((date, f, f"| {date} | {cell(title)} | {k} | {cat} | `{f}` |"))
+        rows.setdefault(folder, []).append((date, f, f"| {date} | {cell(title)} | {k} | {cat} | {cell(typ)} | `{f}` |"))
     return rows
 
 

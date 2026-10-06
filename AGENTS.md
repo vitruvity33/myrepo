@@ -156,9 +156,16 @@ or a content folder inside it — as `YYYY-MM-DD_TITLE.md`, where the owner sees
 after every push (`scripts/build_catalog.py`). When you can, add the line in the same
 change so it’s there right away. To answer a question about the repo, start from the catalog.
 
-| Date | Title | Kind | Category | File |
-|---|---|---|---|---|
-| 2026-10-05 | Conversation memory architecture | `analysis` | 924_MODELS | `10_Product/Infra-AWS/2026-10-05_CONVERSATION-MEMORY.md` |
+| Date | Title | Kind | Category | Type | File |
+|---|---|---|---|---|---|
+| 2026-10-05 | Conversation memory architecture | `analysis` | 924_MODELS | Systems | `10_Product/Infra-AWS/2026-10-05_CONVERSATION-MEMORY.md` |
+| 2026-10-02 | Frei Otto | — | — | People | `50_LEARNING/architecture/People/frei-otto/PROFILE.md` |
+
+Every saved file gets **one line**: its kind of statement (`context_type`) and its **one**
+category — a single 9-number — plus, when it’s about a person, place, work, source and so on,
+its **type** from the list of types (header `type:`, or the type its folder holds). The type is
+what lets an agent find every person or every source across the repo, whatever the owner named
+the folders. Pages that aren’t statements (a profile, a concept page) have no category.
 
 The category comes from the header’s `context_type`:
 
@@ -313,7 +320,8 @@ with its own `AGENTS.md` and `README.md`, in the same change.** That includes:
 - areas and sub-areas, and every folder inside them — the parts a folder is split
   into (for example `Location/`, `Things_To_Do/`, `Costs/`, `Design_Ideas/`), and the
   folders inside those;
-- folder-type folders (`30_SOURCES/`, `36_OPTIONS/` …) and a person's folder.
+- folders named for a type (`People/`, `Sources/`, or older ones like `30_SOURCES/`) and a
+  person's folder.
 
 `AGENTS.md` says what belongs in the folder and which rules apply (root and parent
 `AGENTS.md`); `README.md` tells people what the folder is for and what's in it. This
@@ -327,7 +335,7 @@ log, goals and push-back), `990_TRACKING/` (the queue and progress lists — not
 agents on what's been looked at, what's next and what's kept) and `work/` follow their
 folder's `AGENTS.md`; the repo's own machinery (`901_READ_FIRST/`, `902_REFERENCES/`,
 `scripts/`) is described in this file. On the website the back end sits behind the cog.
-In a folder-type folder the pair is notes for agents too — what the owner likes and
+In a folder named for a type the pair is notes for agents too — what the owner likes and
 leaves out, where the conversation is heading.
 
 Every saved file answers the three questions in its header, lives in the folder it's
@@ -404,27 +412,31 @@ Set in MyRepo (repo ⚙ → Topic types; a folder's ⚙ → Topic type).
 ## Kinds of work
 
 A folder holds one kind of work. **Study** works as §Working in a topic says. The others
-draw from the same menu of folder types (`902_REFERENCES/AREA_TEMPLATE/README.md` §Folder
-types); each kind suggests a starting set:
+draw from the same list of types (`902_REFERENCES/AREA_TEMPLATE/README.md` §Types); each
+kind suggests a starting set:
 
-| Kind | For | Close it when | Suggested folder types |
+| Kind | For | Close it when | Suggested types |
 |---|---|---|---|
-| Study | building understanding over time | when you no longer want to keep it up | `10_PEOPLE/` · `11_GROUPS/` · `12_PERIODS/` · `13_WORKS/` · `14_PLACES/` · `15_CONCEPTS/` · `16_PRACTICES/` · `17_SYSTEMS/` · `18_PATTERNS/` · `19_RESOURCES/` |
-| Research | answering a particular question | the answer is useful enough for its purpose, or what remains uncertain is clearly stated | `30_SOURCES/` · `31_EVIDENCE/` · `33_DATA/` · `34_EXPERIMENTS/` |
-| Idea | developing a thought before you know the question or goal | you choose a direction, set it aside, or turn it into other work | `15_CONCEPTS/` · `19_RESOURCES/` · `36_OPTIONS/` |
-| Decide | choosing between possible actions | a choice is made, deferred, or rejected with a reason | `30_SOURCES/` · `31_EVIDENCE/` · `36_OPTIONS/` |
-| Plan | finding a workable path to something you want | the path is clear enough to start (it becomes an Initiative, keeping PLAN.md), or the plan is dropped | `30_SOURCES/` · `31_EVIDENCE/` · `33_DATA/` · `36_OPTIONS/` |
-| Initiative | making a change or achieving an outcome | the outcome is achieved, abandoned, or handed into recurring work | `35_RESULTS/` · `36_OPTIONS/` · `37_PLANS/` · `38_WORKSTREAMS/` |
-| Operation | keeping recurring work running | the recurring work is retired or replaced | `48_PROCESSES/` · `49_CHECKLISTS/` · `50_RUNS/` · `51_MEASURES/` · `53_IMPROVEMENTS/` |
+| Study | building understanding over time | when you no longer want to keep it up | People · Groups · Periods · Works · Places · Concepts · Practices · Systems · Patterns · Resources |
+| Research | answering a particular question | the answer is useful enough for its purpose, or what remains uncertain is clearly stated | Sources · Evidence · Data · Experiments |
+| Idea | developing a thought before you know the question or goal | you choose a direction, set it aside, or turn it into other work | Concepts · Resources · Options |
+| Decide | choosing between possible actions | a choice is made, deferred, or rejected with a reason | Sources · Evidence · Options |
+| Plan | finding a workable path to something you want | the path is clear enough to start (it becomes an Initiative, keeping PLAN.md), or the plan is dropped | Sources · Evidence · Data · Options |
+| Initiative | making a change or achieving an outcome | the outcome is achieved, abandoned, or handed into recurring work | Results · Options · Plans · Workstreams |
+| Operation | keeping recurring work running | the recurring work is retired or replaced | Processes · Checklists · Runs · Measures · Improvements |
 
 - **Which kind a folder is** — its `AGENTS.md` says so. If it doesn’t, ask before creating
   folders in it.
 - **A folder’s own settings win** — if its `AGENTS.md` lists “This folder’s own settings”
   (set in that folder’s ⚙), follow those in that folder, Study included; anything it doesn’t
   list comes from this file.
-- **Suggestions, not limits** — a folder may use any type on the menu. Each type keeps one
-  number everywhere, so a folder never gets renumbered.
-- **No empty folders** — a type’s folder appears with its first page, together with its own
+- **Types are labels, not folder names.** A type (People, Sources, Options, Timeline …) says
+  what kind of thing a folder holds. The owner names the folders the way they want to find
+  things (`Location/`, `Venues/`, `Buildings/`), numbered their own way or not at all; each
+  folder’s `AGENTS.md` says which types it holds (“Holds: places, options”). Suggest names;
+  never create a folder just because a type is on the list. A folder may be named after a
+  type (`People/`) when that is how the owner wants it. Suggestions, not limits.
+- **No empty folders** — a folder appears with its first page, together with its own
   `AGENTS.md` + `README.md`. Turning a type off never deletes or moves anything already there.
 - **Responsibilities** record only what someone has agreed to — a suggested owner is not one.
 - **When a folder closes** (each kind says when, below), move what lasts up to the folder it
@@ -468,7 +480,8 @@ types); each kind suggests a starting set:
   choice is a decision record, and a decision can rest on assumptions that are still open.
 - `PLAN.md` is a living picture, not a form: fill only the parts that are known so far.
 - When the plan has calculations (costs, budgets, counts, dates that depend on each other), keep
-  the numbers as CSV in `33_DATA/` with a short page saying how they relate. `PLAN.md` says what
+  the numbers as CSV in the folder that holds Data (named by the owner, e.g. `Costs/`), with a
+  short page saying how they relate. `PLAN.md` says what
   they mean and where they came from. No calculations, no table.
 - Research and decisions stay as records here unless they grow into work of their own; then
   they become a folder inside this one.
@@ -514,8 +527,8 @@ holds), `STUDY_GUIDE.md` if it has one, `LEARNING_PATH.md`, `HISTORY.md`, then `
 
 | Layer | The question it answers | Home |
 |---|---|---|
-| Knowledge | What have we actually learned about this person or thing? | `10_PEOPLE/`, `11_GROUPS/`, `12_PERIODS/` … |
-| Synthesis | What ideas has the owner developed from studying these things? | `15_CONCEPTS/` — marked as the owner’s |
+| Knowledge | What have we actually learned about this person or thing? | the folders holding People, Groups, Periods … |
+| Synthesis | What ideas has the owner developed from studying these things? | the folder holding Concepts — marked as the owner’s |
 | Learning path | How did one question or discovery lead to the next? | `LEARNING_PATH.md` |
 | Future inquiry | What does the owner want to investigate, and why? | `990_TRACKING/TO_EXPLORE.md` |
 
@@ -525,8 +538,8 @@ holds), `STUDY_GUIDE.md` if it has one, `LEARNING_PATH.md`, `HISTORY.md`, then `
 |---|---|
 | Mentioned in passing (a building, a book, an example) | inside the existing page it belongs to — e.g. a person’s `WORKS.md` |
 | Interesting, not yet studied | a row in `990_TRACKING/TO_EXPLORE.md` — no page |
-| The conversation or research produced substantive knowledge worth retrieving on its own | its page (a person: `10_PEOPLE/first-last/`), and its row moves to `STUDIED.md` |
-| A cross-cutting insight emerged | `15_CONCEPTS/` — with its origin marked |
+| The conversation or research produced substantive knowledge worth retrieving on its own | its page, in the folder that holds its type (a person: `first-last/` in the folder holding People), and its row moves to `STUDIED.md` |
+| A cross-cutting insight emerged | the folder holding Concepts — with its origin marked |
 | The inquiry changed direction | a short entry in `LEARNING_PATH.md` |
 | A repeatable way of studying the subject developed | `STUDY_GUIDE.md` (any topic may have one) |
 | The owner explicitly loves it | `990_TRACKING/FAVORITES.md` |
@@ -535,27 +548,29 @@ holds), `STUDY_GUIDE.md` if it has one, `LEARNING_PATH.md`, `HISTORY.md`, then `
 knowledge in it — never a placeholder, a stub or a “not written yet”. Agents must be
 able to trust that every page is real knowledge without opening it.
 
-**The folders are always the same** — numbered by the one list in
-`902_REFERENCES/REPO_SETTINGS.json`; a topic has only the ones it uses, and a folder
-appears with its first page, together with its own `AGENTS.md` + `README.md` (a person’s
-folder too):
+**The folders are the owner’s.** Name them the way the owner wants to find things
+(`People/`, `Buildings/`, `Timeline/` …), with the owner’s numbers or none — never create one
+just because a type is on the list. The types below are labels from the one list in
+`902_REFERENCES/REPO_SETTINGS.json`: each folder’s `AGENTS.md` says which it holds, a topic
+holds only the types it uses, and a folder appears with its first page, together with its
+own `AGENTS.md` + `README.md` (a person’s folder too):
 
-| Folder | Holds | One item is |
+| Type | Holds | One item is |
 |---|---|---|
-| `10_PEOPLE/` | a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md | a folder `first-last/` with `PROFILE.md` + `WORKS.md` |
-| `11_GROUPS/` | schools, movements, organizations, lineages | a page `short-name.md` |
-| `12_PERIODS/` | eras and events worth studying on their own | a page `short-name.md` |
-| `13_WORKS/` | buildings, books, artworks — studied as objects in themselves | a page `short-name.md` |
-| `14_PLACES/` | real locations | a page `short-name.md` |
-| `15_CONCEPTS/` | ideas, principles and terms | a page `short-name.md` |
-| `16_PRACTICES/` | techniques, methods, exercises — things you do (with a level when there is an order) | a page `short-name.md` |
-| `17_SYSTEMS/` | products, tools and implementations (technology topics) | a page `short-name.md` |
-| `18_PATTERNS/` | reusable designs (technology topics) | a page `short-name.md` |
-| `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes | a page `short-name.md` |
-| `990_TRACKING/` | the owner’s progress — `TO_EXPLORE.md` · `STUDIED.md` · `READING_QUEUE.md` · `FAVORITES.md` | a row per item |
+| People | a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md | a folder `first-last/` with `PROFILE.md` + `WORKS.md` |
+| Groups | schools, movements, organizations, lineages | a page `short-name.md` |
+| Periods | eras and events worth studying on their own | a page `short-name.md` |
+| Works | buildings, books, artworks — studied as objects in themselves | a page `short-name.md` |
+| Places | real locations | a page `short-name.md` |
+| Concepts | ideas, principles and terms | a page `short-name.md` |
+| Practices | techniques, methods, exercises — things you do (with a level when there is an order) | a page `short-name.md` |
+| Systems | products, tools and implementations (technology topics) | a page `short-name.md` |
+| Patterns | reusable designs (technology topics) | a page `short-name.md` |
+| Resources | what you learn from — books, papers, courses, videos — each with its link and what it contributes | a page `short-name.md` |
+| `990_TRACKING/` (back end) | the owner’s progress — `TO_EXPLORE.md` · `STUDIED.md` · `READING_QUEUE.md` · `FAVORITES.md` | a row per item |
 
 Pages never say whether the owner studied them — progress lives only in
-`990_TRACKING/`. Link with relative links (`../10_PEOPLE/frei-otto/PROFILE.md`) so pages open on GitHub and in MyRepo.
+`990_TRACKING/`. Link with relative links (`../People/frei-otto/PROFILE.md`) so pages open on GitHub and in MyRepo.
 
 **When the owner says…**
 

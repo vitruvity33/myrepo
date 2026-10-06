@@ -89,27 +89,29 @@ topic/
   STUDY_GUIDE.md        ← what to learn, in what order, how to judge it (any topic that has a method)
   LEARNING_PATH.md      ← how one question led to the next — sparse, one entry per turn
   HISTORY.md            ← how the field developed — links to its people, groups, works
-  10_PEOPLE/            ← first-last/PROFILE.md + WORKS.md
-  11_GROUPS/            ← one page per item
-  12_PERIODS/           ← one page per item
-  …                     ← only the kinds this topic holds; each folder has its own AGENTS.md + README.md
+  People/               ← holds People: first-last/PROFILE.md + WORKS.md
+  Groups/               ← holds Groups: one page per item
+  Periods/              ← holds Periods: one page per item
+  …                     ← folders the owner names, for the types this topic holds;
+                          each has its own AGENTS.md + README.md
   990_TRACKING/         ← the owner’s progress: TO_EXPLORE.md, STUDIED.md, READING_QUEUE.md, FAVORITES.md
 ```
 
-**The kinds** — one list for every topic; the number comes from the list order:
+**The types** — one list for every topic, labels for what a folder holds (folder names are
+the owner’s):
 
-| Folder | Holds |
+| Type | Holds |
 |---|---|
-| `10_PEOPLE/` | a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md |
-| `11_GROUPS/` | schools, movements, organizations, lineages |
-| `12_PERIODS/` | eras and events worth studying on their own |
-| `13_WORKS/` | buildings, books, artworks — studied as objects in themselves |
-| `14_PLACES/` | real locations |
-| `15_CONCEPTS/` | ideas, principles and terms |
-| `16_PRACTICES/` | techniques, methods, exercises — things you do (with a level when there is an order) |
-| `17_SYSTEMS/` | products, tools and implementations (technology topics) |
-| `18_PATTERNS/` | reusable designs (technology topics) |
-| `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes |
+| People | a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md |
+| Groups | schools, movements, organizations, lineages |
+| Periods | eras and events worth studying on their own |
+| Works | buildings, books, artworks — studied as objects in themselves |
+| Places | real locations |
+| Concepts | ideas, principles and terms |
+| Practices | techniques, methods, exercises — things you do (with a level when there is an order) |
+| Systems | products, tools and implementations (technology topics) |
+| Patterns | reusable designs (technology topics) |
+| Resources | what you learn from — books, papers, courses, videos — each with its link and what it contributes |
 
 **Rules:** a page exists only when there is substantive knowledge worth retrieving on
 its own — something merely interesting is a row in `990_TRACKING/TO_EXPLORE.md`, something
@@ -130,48 +132,53 @@ not where the material came from.
 <!-- myrepo:end topic-layouts -->
 
 <!-- myrepo:begin folder-types -->
-## Folder types
+## Types
 
-One menu for every kind of work (Study, Research, Idea, Decide, Plan, Initiative, Operation). Each kind suggests
-some types; any folder may use any of them. A type keeps the same number everywhere; its
-folder appears with its first page, together with its own `AGENTS.md` + `README.md`.
+One list of types for every kind of work (Study, Research, Idea, Decide, Plan, Initiative,
+Operation). **A type is a label for what a folder holds — not a folder name.** The owner names
+folders the way they want to find things; each folder’s `AGENTS.md` says which types it holds,
+and every saved file’s kind is in its folder’s log. Each kind of work suggests some types; any
+folder may hold any of them.
 
-| Folder | Holds | Suggested for |
+| Type | What it holds | Suggested for |
 |---|---|---|
-| `10_PEOPLE/` | a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md | Study |
-| `11_GROUPS/` | schools, movements, organizations, lineages | Study |
-| `12_PERIODS/` | eras and events worth studying on their own | Study |
-| `13_WORKS/` | buildings, books, artworks — studied as objects in themselves | Study |
-| `14_PLACES/` | real locations | Study |
-| `15_CONCEPTS/` | ideas, principles and terms | Study, Idea |
-| `16_PRACTICES/` | techniques, methods, exercises — things you do (with a level when there is an order) | Study |
-| `17_SYSTEMS/` | products, tools and implementations (technology topics) | Study |
-| `18_PATTERNS/` | reusable designs (technology topics) | Study |
-| `19_RESOURCES/` | what you learn from — books, papers, courses, videos — each with its link and what it contributes | Study, Idea |
-| `30_SOURCES/` | where information came from — reports, sites, documents — each with its link | Research, Decide, Plan |
-| `31_EVIDENCE/` | facts that support or challenge a claim, each tied to its source | Research, Decide, Plan |
-| `32_INTERVIEWS/` | conversations with people, and what was learned from each | — |
-| `33_DATA/` | numbers and datasets, and where they came from | Research, Plan |
-| `34_EXPERIMENTS/` | tests that were run — what was tried, how, and what happened | Research |
-| `35_RESULTS/` | what came out of the work — outcomes, findings, numbers | Initiative |
-| `36_OPTIONS/` | the choices on the table, side by side | Idea, Decide, Plan, Initiative |
-| `37_PLANS/` | how something will get done — steps, order, who | Initiative |
-| `38_WORKSTREAMS/` | parallel strands of the work, each with its own owner | Initiative |
-| `39_TIMELINE/` | milestones and target dates | — |
-| `40_RESPONSIBILITIES/` | who does each part, and who covers when they’re out — only what people have agreed to | — |
-| `41_DEPENDENCIES/` | what this needs from other people or systems, and what relies on it | — |
-| `42_SCHEDULE/` | how often something happens, deadlines and the calendar | — |
-| `43_RESEARCH/` | what was looked into for this work (a folder type — not the Research kind of work) | — |
-| `44_DESIGN/` | how it should look and work | — |
-| `45_BUILD/` | how it is being made, and what exists so far | — |
-| `46_LAUNCH/` | getting it out — rollout, announcements, first use | — |
-| `47_REVIEW/` | looking back — what happened against what was expected (a folder type — not reviewing in conversation) | — |
-| `48_PROCESSES/` | how something is done, step by step — a page per process | Operation |
-| `49_CHECKLISTS/` | steps to run through each time | Operation |
-| `50_RUNS/` | notes on a single run — only when something was unusual | Operation |
-| `51_MEASURES/` | what is watched, and the range that counts as normal | Operation |
-| `52_INCIDENTS/` | when something went wrong — what happened, the fix, what changes | — |
-| `53_IMPROVEMENTS/` | changes worth trying to make it work better | Operation |
+| People | a folder per person — PROFILE.md (who they are, their story, why they matter here) and WORKS.md | Study |
+| Groups | schools, movements, organizations, lineages | Study |
+| Periods | eras and events worth studying on their own | Study |
+| Works | buildings, books, artworks — studied as objects in themselves | Study |
+| Places | real locations | Study |
+| Concepts | ideas, principles and terms | Study, Idea |
+| Practices | techniques, methods, exercises — things you do (with a level when there is an order) | Study |
+| Systems | products, tools and implementations (technology topics) | Study |
+| Patterns | reusable designs (technology topics) | Study |
+| Resources | what you learn from — books, papers, courses, videos — each with its link and what it contributes | Study, Idea |
+| Sources | where information came from — reports, sites, documents — each with its link | Research, Decide, Plan |
+| Evidence | facts that support or challenge a claim, each tied to its source | Research, Decide, Plan |
+| Interviews | conversations with people, and what was learned from each | — |
+| Data | numbers and datasets, and where they came from | Research, Plan |
+| Experiments | tests that were run — what was tried, how, and what happened | Research |
+| Results | what came out of the work — outcomes, findings, numbers | Initiative |
+| Options | the choices on the table, side by side | Idea, Decide, Plan, Initiative |
+| Plans | how something will get done — steps, order, who | Initiative |
+| Workstreams | parallel strands of the work, each with its own owner | Initiative |
+| Timeline | milestones and target dates | — |
+| Responsibilities | who does each part, and who covers when they’re out — only what people have agreed to | — |
+| Dependencies | what this needs from other people or systems, and what relies on it | — |
+| Schedule | how often something happens, deadlines and the calendar | — |
+| Research | what was looked into for this work (a folder type — not the Research kind of work) | — |
+| Design | how it should look and work | — |
+| Build | how it is being made, and what exists so far | — |
+| Launch | getting it out — rollout, announcements, first use | — |
+| Review | looking back — what happened against what was expected (a folder type — not reviewing in conversation) | — |
+| Processes | how something is done, step by step — a page per process | Operation |
+| Checklists | steps to run through each time | Operation |
+| Runs | notes on a single run — only when something was unusual | Operation |
+| Measures | what is watched, and the range that counts as normal | Operation |
+| Incidents | when something went wrong — what happened, the fix, what changes | — |
+| Improvements | changes worth trying to make it work better | Operation |
+
+Older repos have folders named after a type with a number (`10_PEOPLE/`, `30_SOURCES/`). They
+stay as they are and count as holding that type; new folders get the owner’s own names.
 
 
 **Every folder also keeps a queue by default** — explore → investigate → confirm — in `990_TRACKING/`: `TO_EXPLORE.md` → `STUDIED.md` → `FAVORITES.md`, made on first use (root `AGENTS.md` §The queue); a folder may define its own stages instead. Ask “what's next?” in any chat.
