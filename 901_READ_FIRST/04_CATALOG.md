@@ -7,9 +7,9 @@ last_verified: 2026-10-06
 
 # Catalog
 
-Every saved file in this repo, one line each — what kind of statement it is, its category
-and where it is. Read this first to find anything; each folder keeps the same lines in
-its own `910_RECORDS/INDEX.md`. Rebuilt after every push. Root `AGENTS.md` §Routing.
+Start here to find anything. One line per area: what it holds, how many saved files, by
+category and by type, and where its full list is. Open that area’s catalog next, then the
+file. Rebuilt after every push — never edit by hand. Root `AGENTS.md` §Routing.
 
-| ID | Date | Title | Description | Kind | Category | Type | File |
-|---|---|---|---|---|---|---|---|
+| Area | What it holds | Files | Categories | Types | Full list |
+|---|---|---|---|---|---|

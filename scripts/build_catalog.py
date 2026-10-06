@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
-"""Rebuild every folder's log (910_RECORDS/INDEX.md) and the repo's catalog
-(901_READ_FIRST/04_CATALOG.md) from the files actually in the repo.
+"""Rebuild the catalog from the files actually in the repo, in three levels:
+- 901_READ_FIRST/04_CATALOG.md — one line per area: what it holds, how many files,
+  by category and type, and where its full list is. Agents read this first.
+- <area>/910_RECORDS/CATALOG.md — every saved file in that area.
+- <folder>/910_RECORDS/INDEX.md — every saved file in that folder.
+Only this script writes them (people and AI tools never do), so saves never collide.
 
 Runs after every push to main (.github/workflows/catalog.yml), so the catalog
 is complete whichever tool saved a file. Root AGENTS.md §Routing.
@@ -89,6 +93,7 @@ KIND_CODE = {
     "preference": "PRE",
 }
 RANDOM = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
+SLOT_NAMES = {"00_INBOX", "02_QUESTIONS", "03_REFERENCES", "04_MODELS", "06_DECISIONS", "99_ARCHIVE"}
 
 
 def three(s):
@@ -133,7 +138,9 @@ def held_type(folder):
 
 def type_name(folder):
     """A numbered type folder from older repos (15_CONCEPTS) → its type (Concepts)."""
-    return folder.split("_", 1)[1].replace("_", " ").title() if folder else None
+    if not folder or folder.upper() in SLOT_NAMES:
+        return None
+    return folder.split("_", 1)[1].replace("_", " ").title()
 
 
 def log_folder(dirs):
@@ -178,7 +185,7 @@ def lines():
         if rid:
             seen.add(rid)
         desc = (meta.get("subject_text") or meta.get("description") or "—")[:140]
-        rows.setdefault(folder, []).append((date, f, f"| {rid or '—'} | {date} | {cell(title)} | {cell(desc)} | {k} | {cat} | {cell(typ)} | `{f}` |"))
+        rows.setdefault(folder, []).append((date, f, f"| {rid or '—'} | {date} | {cell(title)} | {cell(desc)} | {k} | {cat} | {cell(typ)} | `{f}` |", cat, typ))
     return rows
 
 
@@ -195,26 +202,71 @@ def write(path, title, intro, rows):
     return True
 
 
+def summary(area):
+    """The first real sentence of an area's README.md — what it is for."""
+    try:
+        text = open(f"{area}/README.md", encoding="utf-8").read()
+    except OSError:
+        return "—"
+    if text.startswith("---"):
+        end = text.find("\n---", 3)
+        text = text[end + 4:] if end != -1 else text
+    for para in re.split(r"\n\s*\n", text):
+        para = " ".join(x.strip() for x in para.splitlines())
+        if para and not para.startswith(("#", "_", "|", "```", "-", ">")):
+            first = re.split(r"(?<=[.!?])\s", cell(para))[0]
+            return first if len(first) <= 160 else first[:159].rsplit(" ", 1)[0] + " …"
+    return "—"
+
+
+def records_dir(folder):
+    return "01_RECORDS" if os.path.isdir(f"{folder}/01_RECORDS") and not os.path.isdir(f"{folder}/910_RECORDS") else "910_RECORDS"
+
+
+def counts(values):
+    c = {}
+    for v in values:
+        if v and v != "—":
+            c[v] = c.get(v, 0) + 1
+    return " · ".join(f"{k} {n}" for k, n in sorted(c.items(), key=lambda x: (-x[1], x[0]))) or "—"
+
+
 def main():
     rows = lines()
     changed = []
-    every = []
+    areas = {}
     for folder, rs in sorted(rows.items()):
         rs.sort()
-        every += rs
+        for r in rs:
+            areas.setdefault(r[1].split("/")[0], []).append(r)
         intro = ("What’s saved in this folder: one line per file — what kind of statement it is, its\n"
-                 "category, and where it is. For agents and the back end; people browse the folder itself.\n"
-                 "The whole repo’s: `901_READ_FIRST/04_CATALOG.md`. Rebuilt after every push. Root `AGENTS.md` §Routing.")
-        records = "01_RECORDS" if os.path.isdir(f"{folder}/01_RECORDS") and not os.path.isdir(f"{folder}/910_RECORDS") else "910_RECORDS"
-        if write(f"{folder}/{records}/INDEX.md", f"Log — `{folder}/`", intro, [r for _, _, r in rs]):
+                 "category, its type, and where it is. For agents and the back end; people browse the folder\n"
+                 "itself. Rebuilt after every push — never edit by hand. Root `AGENTS.md` §Routing.")
+        if write(f"{folder}/{records_dir(folder)}/INDEX.md", f"Log — `{folder}/`", intro, [r[2] for r in rs]):
             changed.append(folder)
-    every.sort(key=lambda r: r[1])
-    intro = ("Every saved file in this repo, one line each — what kind of statement it is, its category\n"
-             "and where it is. Read this first to find anything; each folder keeps the same lines in\n"
-             "its own `910_RECORDS/INDEX.md`. Rebuilt after every push. Root `AGENTS.md` §Routing.")
-    if write(CATALOG, "Catalog", intro, [r for _, _, r in every]):
+    # Level 2: one full list per top-level area
+    summary_rows = []
+    for area, rs in sorted(areas.items()):
+        rs.sort(key=lambda r: r[1])
+        path = f"{area}/{records_dir(area)}/CATALOG.md"
+        intro = (f"Every saved file in `{area}/`, one line each. The repo’s list of areas: `{CATALOG}`.\n"
+                 "Rebuilt after every push — never edit by hand. Root `AGENTS.md` §Routing.")
+        if write(path, f"Catalog — `{area}/`", intro, [r[2] for r in rs]):
+            changed.append(f"{area} catalog")
+        summary_rows.append(f"| `{area}/` | {summary(area)} | {len(rs)} | {counts(r[3] for r in rs)} | {counts(r[4] for r in rs)} | `{path}` |")
+    # Level 1: the areas, with counts — read this first, then the area's catalog
+    intro = ("Start here to find anything. One line per area: what it holds, how many saved files, by\n"
+             "category and by type, and where its full list is. Open that area’s catalog next, then the\n"
+             "file. Rebuilt after every push — never edit by hand. Root `AGENTS.md` §Routing.")
+    head = "| Area | What it holds | Files | Categories | Types | Full list |\n|---|---|---|---|---|---|"
+    body = f"# Catalog\n\n{intro}\n\n{head}\n" + "".join(r + "\n" for r in summary_rows)
+    old = open(CATALOG, encoding="utf-8").read() if os.path.exists(CATALOG) else ""
+    if not old.endswith(body):
+        os.makedirs(os.path.dirname(CATALOG), exist_ok=True)
+        with open(CATALOG, "w", encoding="utf-8") as out:
+            out.write(f"---\ntitle: Catalog\nstatus: draft\nreviewed_by: none\nlast_verified: {datetime.date.today().isoformat()}\n---\n\n{body}")
         changed.append("catalog")
-    print(f"{len(rows)} folder logs, {len(every)} files; updated: {', '.join(changed) or 'nothing'}")
+    print(f"{len(rows)} folder logs, {len(areas)} areas, {sum(len(r) for r in areas.values())} files; updated: {', '.join(changed) or 'nothing'}")
 
 
 if __name__ == "__main__":

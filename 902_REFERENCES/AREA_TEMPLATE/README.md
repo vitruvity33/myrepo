@@ -214,5 +214,5 @@ Set in MyRepo (repo ⚙ → Topic types).
 - [ ] ID prefix registered in `902_REFERENCES/ID_REGISTRY.md`
 - [ ] Area added to `901_READ_FIRST/02_AREA_MAP.md`
 - [ ] Top level: area added to the list in `902_REFERENCES/prompts/CHAT_CONTEXT.md`
-- [ ] Saved files go in the folder, each with a line in `910_RECORDS/INDEX.md` and `901_READ_FIRST/04_CATALOG.md`
+- [ ] Saved files go in the folder, each with `id:` in its header (the catalog job logs them)
 - [ ] A topic: what it is for and the kinds it holds, proposed with a reason, chosen by the owner, and recorded in its `AGENTS.md` (folder ⚙ → Topic; §Topic layouts)

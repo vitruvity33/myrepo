@@ -151,10 +151,16 @@ or a content folder inside it — as `YYYY-MM-DD_TITLE.md`, where the owner sees
 **Never save the owner’s content inside `910_RECORDS/`** — that is the back end, like
 `AGENTS.md` and `README.md`.
 
-**The log.** Every folder’s `910_RECORDS/INDEX.md` lists what’s saved in it, and the repo’s
-`901_READ_FIRST/04_CATALOG.md` lists every saved file — both are rebuilt automatically
-after every push (`scripts/build_catalog.py`). When you can, add the line in the same
-change so it’s there right away. To answer a question about the repo, start from the catalog.
+**The catalog — three levels, written only by the repo’s catalog job.** After every push
+`scripts/build_catalog.py` rebuilds them from the files themselves. **Never edit them** — just
+save the file with its header (including `id:`); its line appears on its own.
+
+1. `901_READ_FIRST/04_CATALOG.md` — one line per area: what it holds, how many saved files, by
+   category and type, and where its full list is. **Start here to find anything.**
+2. `<area>/910_RECORDS/CATALOG.md` — every saved file in that area.
+3. `<folder>/910_RECORDS/INDEX.md` — every saved file in that folder.
+
+A line in levels 2 and 3:
 
 | ID | Date | Title | Description | Kind | Category | Type | File |
 |---|---|---|---|---|---|---|---|
@@ -273,12 +279,10 @@ SAVE
 path: <AREA>/<SUBJECT>/YYYY-MM-DD_TOPIC.md
 ---
 <complete file: full front-matter (starting with id: YYYYMMDD-TTT-KKK-XXXX) + body>
-
-LOG (add to <AREA>/<SUBJECT>/910_RECORDS/INDEX.md and 901_READ_FIRST/04_CATALOG.md)
-| <id> | YYYY-MM-DD | <title> | <what it is about> | `<context_type>` | <category> | <type> | `<AREA>/<SUBJECT>/YYYY-MM-DD_TOPIC.md` |
 ```
 
-The human or a file-capable agent performs the write. A disagreement left only in
+The human or a file-capable agent performs the write. The logs and catalog update on
+their own after the push — never write them. A disagreement left only in
 a chat window is a silent drop — which this repository exists to prevent.
 
 ## Numbers — yours, and the back end's
