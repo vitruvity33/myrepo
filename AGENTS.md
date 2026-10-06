@@ -287,6 +287,30 @@ The human or a file-capable agent performs the write. The logs and catalog updat
 their own after the push — never write them. A disagreement left only in
 a chat window is a silent drop — which this repository exists to prevent.
 
+## Breaking up a big file
+
+When the owner asks to break a file up ("break this up into digestible content" — often a
+summary of a long chat, saved so it can start context in another chat), turn it into
+folders and short notes they can study:
+
+1. **Read all of it first.** Find the big idea, then the groups of related material.
+2. **Show an outline, then wait.** The folders and notes you would make, each with one line
+   on what it covers, and where they go. Save nothing until the owner says OK; change the
+   outline when asked.
+3. **Folders follow the numbers** (§Numbers): inside a numbered folder its parts add a digit.
+   Each new folder gets its own `AGENTS.md` + `README.md`; the `README.md` lists its notes in
+   reading order. Usually three to seven folders with a few notes each — never a folder for
+   one note.
+4. **One note per idea**, a `.md` file named for its subject, with its header (`type:`,
+   `topics:`). Each starts with a few sentences in plain words, then the detail; diagrams and
+   tables go with the idea they explain. Each ends with a link back to the part of the
+   original it came from.
+5. **A start-here note** — the big idea on one page, and the order to read the rest.
+6. **Keep the original as it is** — it's what the owner copies to start context elsewhere.
+   Add one line near its top linking to the start-here note.
+7. **Nothing is lost:** everything in the original lands in some note, or the outline says
+   why it was left out.
+
 ## Numbers — yours, and the back end's
 
 There are two kinds of number, and they never mix.
