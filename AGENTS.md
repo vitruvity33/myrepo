@@ -151,9 +151,10 @@ or a content folder inside it — as `YYYY-MM-DD_TITLE.md`, where the owner sees
 **Never save the owner’s content inside `01_RECORDS/`** — that is the back end, like
 `AGENTS.md` and `README.md`.
 
-**The log.** In the same change, add one line for the file to that folder’s
-`01_RECORDS/INDEX.md` and to the repo’s `01_READ_FIRST/04_CATALOG.md` (each made on
-first use). To answer a question about the repo, start from the catalog.
+**The log.** Every folder’s `01_RECORDS/INDEX.md` lists what’s saved in it, and the repo’s
+`01_READ_FIRST/04_CATALOG.md` lists every saved file — both are rebuilt automatically
+after every push (`scripts/build_catalog.py`). When you can, add the line in the same
+change so it’s there right away. To answer a question about the repo, start from the catalog.
 
 | Date | Title | Kind | Category | File |
 |---|---|---|---|---|
@@ -172,7 +173,7 @@ The category comes from the header’s `context_type`:
 | not sure yet (no `context_type`) | `00_INBOX` (unsorted) |
 
 The header is the truth; the log follows it. A push that saves the owner’s content inside
-`01_RECORDS/`, or a saved file with no line in its folder’s log, fails the repo rules check. `evidence` needs `source_refs:`; without a source it is an `assumption`.
+`01_RECORDS/` fails the repo rules check. `evidence` needs `source_refs:`; without a source it is an `assumption`.
 The kinds are set in MyRepo (repo ⚙ → Classifications). Older repos may still have files
 inside `01_RECORDS/00_INBOX/` … `06_DECISIONS/`: leave them, and save anything new in the folder.
 
