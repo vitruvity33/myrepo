@@ -56,9 +56,9 @@ it can be different in every folder. When a new purpose or way of working emerge
 how a folder should be organised, how to find things in it, how to talk with the
 owner there, what stages things move through — **say so and propose writing it into
 that folder's `AGENTS.md`** under `## This folder's purpose` (and one line in its
-`README.md`). From then on every tool works that way there. A sub-folder that gets a
-purpose of its own is a governed area: it gets its own `AGENTS.md` + `README.md`
-(§Structure rules). When the same way of working shows up in several folders,
+`README.md`). From then on every tool works that way there. Every content folder already has its
+own `AGENTS.md` + `README.md` (§Every folder gets AGENTS.md + README.md) — write the
+purpose there. When the same way of working shows up in several folders,
 propose making it a topic type (MyRepo → repo ⚙ → Topic types).
 
 **What a folder's own rules can change, and what they can't:**
@@ -241,8 +241,8 @@ a chat window is a silent drop — which this repository exists to prevent.
   folder. `01_` and `02_` belong to MyRepo's own folders. **Never renumber.**
   How to pick one: §Creating a top-level area.
 - A sub-area is any unnumbered folder with its own `AGENTS.md` — same shape
-  recursively. **Every folder that owns ongoing work is a governed area** — it gets
-  `AGENTS.md` + `README.md` in the same operation. Never create a folder just by
+  recursively. **Every folder for the owner's content gets its own** `AGENTS.md`
+  + `README.md` in the same operation (§Every folder gets AGENTS.md + README.md). Never create a folder just by
   saving a file into it. Promoting a sub-area to top level is a move, not a redesign.
 - `01_RECORDS/` slots are a **menu, not a mandate** — each area's `AGENTS.md`
   declares which it uses; folders are created on first use. Every area has
@@ -253,23 +253,34 @@ a chat window is a silent drop — which this repository exists to prevent.
 - `work/` is unvalidated space — drafts and artifacts-in-progress. Quote it only
   when asked, and label it.
 
-## New area boundary — not every nested folder
+## Every folder gets AGENTS.md + README.md
 
-Create `AGENTS.md` and `README.md` **with each new area or sub-area**: for example,
-a project directly inside a projects area, a topic directly inside a learning area,
-or a person directly inside a people area. A new named endeavor inside an area
-follows the same rule. Read the root and parent instructions first, and use
-`02_REFERENCES/AREA_TEMPLATE/README.md` for the area checklist.
+**Every folder that holds the owner's content — at any depth — is created together
+with its own `AGENTS.md` and `README.md`, in the same change.** That includes:
 
-Folders **inside** that area (record slots, `90_TRACKING/`, numbered page folders,
-drafts, assets, collections) inherit the area's `AGENTS.md`; they do not each need
-another `AGENTS.md` or `README.md`. Add a deeper pair only when deliberately
-creating a separately governed sub-area with its own purpose, ownership and
-routing (§A folder's purpose). Ask if it is unclear whether a new folder is an
-area or an internal folder.
+- areas and sub-areas, and every folder inside them — the parts a folder is split
+  into (for example `Location/`, `Things_To_Do/`, `Costs/`, `Design_Ideas/`), and the
+  folders inside those;
+- folder-type folders (`30_SOURCES/`, `36_OPTIONS/` …), a person's folder, and
+  `90_TRACKING/`.
 
-Before completing a save, check each newly created area or sub-area has both
-files. Existing folders missing them are legacy, not an example to follow.
+`AGENTS.md` says what belongs in the folder and which rules apply (root and parent
+`AGENTS.md`); `README.md` tells people what the folder is for and what's in it. This
+is how every folder is found and navigated — **never decide that a folder can do
+without them.** A folder still appears only when it has real content; never create
+empty ones. Read the root and parent instructions first, and use
+`02_REFERENCES/AREA_TEMPLATE/README.md` for an area or sub-area.
+
+The only folders without their own pair are the back-end ones: `01_RECORDS/` and
+its slot folders (`00_INBOX/`, `01_GOALS/` … `06_DECISIONS/`, `05_PUSH_BACK/`,
+`99_ARCHIVE/`) and `work/` follow their area's `AGENTS.md`; the repo's own machinery
+(`01_READ_FIRST/`, `02_REFERENCES/`, `scripts/`) is described in this file.
+
+Filing doesn't change: every record still answers the three questions and goes in
+the slot its kind routes to (§Routing).
+
+Before completing a save, check each new folder has both files. An existing folder
+missing them: add the pair the next time you work there, as part of the plan you show.
 
 ## Creating a top-level area
 
@@ -350,8 +361,8 @@ types); each kind suggests a starting set:
   list comes from this file.
 - **Suggestions, not limits** — a folder may use any type on the menu. Each type keeps one
   number everywhere, so a folder never gets renumbered.
-- **No empty folders** — a type’s folder appears with its first page. Turning a type off never
-  deletes or moves anything already there.
+- **No empty folders** — a type’s folder appears with its first page, together with its own
+  `AGENTS.md` + `README.md`. Turning a type off never deletes or moves anything already there.
 - **Responsibilities** record only what someone has agreed to — a suggested owner is not one.
 - **When a folder closes** (each kind says when, below), move what lasts up to the folder it
   served; the finished folder keeps its history.
@@ -463,7 +474,8 @@ able to trust that every page is real knowledge without opening it.
 
 **The folders are always the same** — numbered by the one list in
 `02_REFERENCES/REPO_SETTINGS.json`; a topic has only the ones it uses, and a folder
-appears with its first page:
+appears with its first page, together with its own `AGENTS.md` + `README.md` (a person’s
+folder too):
 
 | Folder | Holds | One item is |
 |---|---|---|

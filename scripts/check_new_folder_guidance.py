@@ -4,10 +4,10 @@
 Runs on every push to main and every pull request (.github/workflows/new-folder-guidance.yml).
 Nothing here is hardcoded to this repo's areas — they are read from the tree:
 
-1. A new numbered top-level area (e.g. 60_FINANCE/), or a new folder directly
-   inside one (e.g. 50_LEARNING/acoustics/), needs AGENTS.md and README.md
-   in the same push. Template slot folders (01_RECORDS, 00_INBOX …, work) and
-   their contents inherit the area's rules.
+1. Every new folder for the owner's content, at any depth (60_FINANCE/,
+   10_Wedding/Costs/, 50_LEARNING/acoustics/30_SOURCES/ …), needs AGENTS.md and
+   README.md in the same push. Back-end folders don't: 01_RECORDS and its slot
+   folders (00_INBOX …), push-back folders, work, and anything outside the areas.
 2. A new record — a Markdown file inside 01_RECORDS/ or a template slot
    folder (00_INBOX … 06_DECISIONS, 99_ARCHIVE) — needs front-matter (--- … ---)
    so it can answer the three questions (root AGENTS.md). Lists, profiles and
@@ -75,11 +75,9 @@ def is_area(top):
 
 def requires_local_guidance(path):
     parts = path.split("/")
-    if parts[-1] in STRUCTURAL_NAMES or parts[-1].startswith("."):
+    if any(p.startswith(".") or p in STRUCTURAL_NAMES or PUSH_BACK.match(p) for p in parts):
         return False
-    if len(parts) == 1:
-        return is_area(parts[0])
-    return len(parts) == 2 and is_area(parts[0])
+    return is_area(parts[0])
 
 
 def number_of(name):

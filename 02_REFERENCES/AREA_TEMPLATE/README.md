@@ -37,9 +37,9 @@ research topic, person, or company endeavor). Read root and parent `AGENTS.md`
 first. Create `AGENTS.md` and `README.md` in the new area in the same
 change, then complete the checklist below.
 
-Internal folders within that area inherit its instructions and do not need
-their own pair. If one later becomes a separately governed sub-area, add the
-pair and follow this template at that point.
+Every folder for the owner's content inside it gets its own `AGENTS.md` +
+`README.md` too, at any depth, in the same change (root `AGENTS.md` §Every folder
+gets AGENTS.md + README.md). Only `01_RECORDS/`, its slot folders and `work/` don't.
 
 ## FOCUS.md (optional)
 
@@ -97,7 +97,7 @@ topic/
   10_PEOPLE/            ← first-last/PROFILE.md + WORKS.md
   11_GROUPS/            ← one page per item
   12_PERIODS/           ← one page per item
-  …                     ← only the kinds this topic holds; a folder appears with its first page
+  …                     ← only the kinds this topic holds; each folder has its own AGENTS.md + README.md
   90_TRACKING/          ← the owner’s progress: TO_EXPLORE.md, STUDIED.md, READING_QUEUE.md, FAVORITES.md
 ```
 
@@ -139,7 +139,7 @@ not where the material came from.
 
 One menu for every kind of work (Study, Research, Idea, Decide, Plan, Initiative, Operation). Each kind suggests
 some types; any folder may use any of them. A type keeps the same number everywhere; its
-folder appears with its first page.
+folder appears with its first page, together with its own `AGENTS.md` + `README.md`.
 
 | Folder | Holds | Suggested for |
 |---|---|---|
